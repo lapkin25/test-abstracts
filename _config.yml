@@ -3,6 +3,7 @@
 
 title: Элементы математики
 author: Кафедра математики и моделирования
+copyright: "2024"
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
