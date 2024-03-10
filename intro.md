@@ -1,11 +1,14 @@
-# Welcome to your Jupyter Book
+# Элементы математики
+## Интерактивные тест-конспекты
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Это конспекты по некоторым разделам прикладной математики. 
+Наша цель -- поделиться знаниями в такой интерактивной форме, чтобы читателю было интересно.
 
-Check out the content pages bundled with this sample book to see more.
+Мы используем [The Executable Books](https://executablebooks.org) для генерации web-страниц
+из Python-кода, а также [Trinket](https://trinket.io/) для исполняемых вставок и тест-заданий.
+
+[Мы в VK](https://vk.com/mathelem)
+
 
 ```{tableofcontents}
 ```
