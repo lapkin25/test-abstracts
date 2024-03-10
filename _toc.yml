@@ -4,6 +4,11 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: manual
+  sections:
+  - file: markdown
+  - file: notebooks
+  - file: markdown-notebooks
+- file: entertainment
+  sections:
+  - file: math_cards
