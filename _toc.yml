@@ -5,12 +5,10 @@ format: jb-book
 root: intro
 chapters:
 - file: linalg
-- file: statistics
-- file: manual
   sections:
-  - file: markdown
-  - file: notebooks
-  - file: markdown-notebooks
+  - file: linear-spaces
+  - file: linear-mappings
+- file: statistics
 - file: entertainment
   sections:
   - file: math_cards
