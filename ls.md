@@ -265,7 +265,7 @@ print(lst * 3)
 
 <textarea id="input1" value="sum([1, 2, 3, 4, 5])" style="width: 400px;" rows="20" hidden="1">
 def check_user_code():
-  if abs(theta1 - 2.2973) < 1e-2 and abs(theta0 + 1.6595) < 1e-2:
+  if abs(c1 - 2.2973) < 1e-2 and abs(c0 + 1.6595) < 1e-2:
       return "Result is correct!";
   else:
       return "Result is NOT correct!";
@@ -360,7 +360,8 @@ async function evaluatePython() {
   try {
     setStatus("Wait...");
     setTimeout(function() {
-    pyodide.globals.set("RESULT", 'Place here a result!');
+    pyodide.globals.set("c1", 'Place here a result!');
+    pyodide.globals.set("c0", 'Place here a result!');
     let userOutput = pyodide.runPython(userCode.value);
     let testOutput = pyodide.runPython(testCode.value);
     addToOutput(testOutput);
