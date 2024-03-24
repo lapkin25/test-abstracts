@@ -242,3 +242,135 @@ print(lst * 3)
 Будьте внимательны с типами имеющими схожее назначение.
 ```
 
+*Задание.* Перед вами результаты наблюдений длительности нахождения
+человека в очереди в зависимости от количества людей в этой очереди.
+
+|Номер наблюдения|Количество человек в очереди, $X$|Время, проведенное в очереди (мин), $Y$|
+|-|-|-|
+|1|22|45|
+|2|19|42|
+|3|11|23|
+|4|7|23|
+|5|13|23|
+|6|20|39|
+|7|8|19|
+|8|12|21|
+|9|15|28|
+|10|23|65|
+
+Используйте модель линейной регрессии для прогнозирования и вычислите
+коэффициенты регрессии $c_1, c_0$.
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+
+<textarea id="input1" value="sum([1, 2, 3, 4, 5])" style="width: 400px;" rows="20" hidden="1">
+def check_user_code():
+  if abs(theta1 - 2.2973) < 1e-2 and abs(theta0 + 1.6595) < 1e-2:
+      return "Result is correct!";
+  else:
+      return "Result is NOT correct!";
+      
+check_user_code()
+</textarea>
+
+<textarea id="input2" value="sum([1, 2, 3, 4, 5])" style="width: 400px;" rows="20">
+# Some calculations...
+
+def do_some_calc():
+    return 2*3
+    
+X = [22, 19, 11, 7, 13, 20, 8, 12, 15, 23]
+Y = [45, 42, 23, 23, 23, 39, 19, 21, 28, 65]
+
+c1 = 1.0
+c0 = 0.0
+</textarea>
+
+<button onclick="evaluatePython()">Run</button>
+<br />
+<br />
+<span>Output:</span><span id="status" style="margin-left: 40px; color: red;"> </span>
+<br />
+<textarea id="output1" style="width: 400px;" rows="40" disabled></textarea>
+<textarea id="output2" style="width: 400px;" rows="40" disabled></textarea>
+
+<script>
+const output1 = document.getElementById("output1");
+const output2 = document.getElementById("output2");
+const testCode = document.getElementById("input1");
+const userCode = document.getElementById("input2");
+const statusString = document.getElementById("status");
+
+function setOutput(s) {
+  output1.value = s;
+}
+
+function addToOutput(s) {
+  output1.value += s + "\n";
+}
+
+function setOutput2(s) {
+  output2.value = s;
+}
+
+function addToOutput2(s) {
+  output2.value += s + "\n";
+}
+      
+function setStatus(s)
+{
+  statusString.innerHTML = s;
+}
+
+setStatus("Initializing...");
+
+async function main() {
+  let pyodide = await loadPyodide();
+
+  //Load micropip package manager
+  await pyodide.loadPackage("micropip");
+  const micropip = pyodide.pyimport("micropip");
+
+  //Install matplot
+  await micropip.install("matplotlib");
+
+  //Install matplot
+  await micropip.install("numpy");
+
+  setStatus("Ready!");
+  return pyodide;
+}
+
+let pyodideReadyPromise = main();
+
+class StdinHandler {
+  constructor(results, options) {
+    this.results = results;
+    this.idx = 0;
+    Object.assign(this, options);
+}
+
+  stdin() {
+    return this.results[this.idx++];
+  }
+}
+
+async function evaluatePython() {
+  let pyodide = await pyodideReadyPromise;
+  try {
+    setStatus("Wait...");
+    setTimeout(function() {
+    pyodide.globals.set("RESULT", 'Place here a result!');
+    let userOutput = pyodide.runPython(userCode.value);
+    let testOutput = pyodide.runPython(testCode.value);
+    addToOutput(testOutput);
+    addToOutput2(userOutput);
+    setStatus("Ready!");
+    }, 40);
+
+  } catch (err) {
+    addToOutput(err);
+  }
+}
+</script>
+
