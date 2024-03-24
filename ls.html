@@ -661,7 +661,168 @@ Y = 2,24 + 0,75x
 </div>
 <p>Будьте внимательны с типами имеющими схожее назначение.</p>
 </div>
-</section>
+<p><em>Задание.</em> Перед вами результаты наблюдений длительности нахождения
+человека в очереди в зависимости от количества людей в этой очереди.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Номер наблюдения</p></th>
+<th class="head"><p>Количество человек в очереди, <span class="math notranslate nohighlight">\(X\)</span></p></th>
+<th class="head"><p>Время, проведенное в очереди (мин), <span class="math notranslate nohighlight">\(Y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>22</p></td>
+<td><p>45</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>19</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>11</p></td>
+<td><p>23</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>7</p></td>
+<td><p>23</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>13</p></td>
+<td><p>23</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>20</p></td>
+<td><p>39</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>8</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>12</p></td>
+<td><p>21</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>15</p></td>
+<td><p>28</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>23</p></td>
+<td><p>65</p></td>
+</tr>
+</tbody>
+</table>
+<p>Используйте модель линейной регрессии для прогнозирования и вычислите
+коэффициенты регрессии <span class="math notranslate nohighlight">\(c_1, c_0\)</span>.</p>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+<textarea id="input1" value="sum([1, 2, 3, 4, 5])" style="width: 400px;" rows="20" hidden="1">
+def check_user_code():
+  if abs(theta1 - 2.2973) < 1e-2 and abs(theta0 + 1.6595) < 1e-2:
+      return "Result is correct!";
+  else:
+      return "Result is NOT correct!";
+      
+check_user_code()
+</textarea>
+<textarea id="input2" value="sum([1, 2, 3, 4, 5])" style="width: 400px;" rows="20">
+# Some calculations...
+
+def do_some_calc():
+    return 2*3
+    
+X = [22, 19, 11, 7, 13, 20, 8, 12, 15, 23]
+Y = [45, 42, 23, 23, 23, 39, 19, 21, 28, 65]
+
+c1 = 1.0
+c0 = 0.0
+</textarea>
+<p><button onclick="evaluatePython()">Run</button>
+<br />
+<br />
+<span>Output:</span><span id="status" style="margin-left: 40px; color: red;"> </span>
+<br /></p>
+<textarea id="output1" style="width: 400px;" rows="40" disabled></textarea>
+<textarea id="output2" style="width: 400px;" rows="40" disabled></textarea>
+<script>
+const output1 = document.getElementById("output1");
+const output2 = document.getElementById("output2");
+const testCode = document.getElementById("input1");
+const userCode = document.getElementById("input2");
+const statusString = document.getElementById("status");
+
+function setOutput(s) {
+  output1.value = s;
+}
+
+function addToOutput(s) {
+  output1.value += s + "\n";
+}
+
+function setOutput2(s) {
+  output2.value = s;
+}
+
+function addToOutput2(s) {
+  output2.value += s + "\n";
+}
+      
+function setStatus(s)
+{
+  statusString.innerHTML = s;
+}
+
+setStatus("Initializing...");
+
+async function main() {
+  let pyodide = await loadPyodide();
+
+  //Load micropip package manager
+  await pyodide.loadPackage("micropip");
+  const micropip = pyodide.pyimport("micropip");
+
+  //Install matplot
+  await micropip.install("matplotlib");
+
+  //Install matplot
+  await micropip.install("numpy");
+
+  setStatus("Ready!");
+  return pyodide;
+}
+
+let pyodideReadyPromise = main();
+
+class StdinHandler {
+  constructor(results, options) {
+    this.results = results;
+    this.idx = 0;
+    Object.assign(this, options);
+}
+
+  stdin() {
+    return this.results[this.idx++];
+  }
+}
+
+async function evaluatePython() {
+  let pyodide = await pyodideReadyPromise;
+  try {
+    setStatus("Wait...");
+    setTimeout(function() {
+    pyodide.globals.set("RESULT", 'Place here a result!');
+    let userOutput = pyodide.runPython(userCode.value);
+    let testOutput = pyodide.runPython(testCode.value);
+    addToOutput(testOutput);
+    addToOutput2(userOutput);
+    setStatus("Ready!");
+    }, 40);
+
+  } catch (err) {
+    addToOutput(err);
+  }
+}
+</script></section>
 </section>
 
     <script type="text/x-thebe-config">
