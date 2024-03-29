@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Математические открытки &#8212; Элементы математики</title>
+    <title>Умножение матриц &#8212; Элементы математики</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math_cards';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'matrix-mult';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Математические песни" href="math_songs.html" />
-    <link rel="prev" title="Развлечения" href="entertainment.html" />
+    <link rel="next" title="Аппроксимация. Метод наименьших квадратов" href="ls.html" />
+    <link rel="prev" title="Линейные отображения" href="linear-mappings.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,16 +177,16 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="linalg.html">Линейная алгебра</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="linalg.html">Линейная алгебра</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linear-spaces.html">Линейные пространства и линейные отображения</a></li>
 <li class="toctree-l2"><a class="reference internal" href="linear-mappings.html">Линейные отображения</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matrix-mult.html">Умножение матриц</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Умножение матриц</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ls.html">Аппроксимация. Метод наименьших квадратов</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="statistics.html">Статистика</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Математические открытки</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="math_cards.html">Математические открытки</a></li>
 <li class="toctree-l2"><a class="reference internal" href="math_songs.html">Математические песни</a></li>
 </ul>
 </li>
@@ -261,7 +261,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fmath_cards.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fmatrix-mult.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +291,7 @@
       
       
       
-      <li><a href="_sources/math_cards.ipynb" target="_blank"
+      <li><a href="_sources/matrix-mult.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Математические открытки</h1>
+    <h1>Умножение матриц</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,7 +385,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Розочка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-opencv">Использование оператора Собеля для обнаружения краев в Python с OpenCV</a></li>
 </ul>
             </nav>
         </div>
@@ -398,51 +398,67 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Математические открытки<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<section id="id2">
-<h2>Розочка<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h1>Умножение матриц<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="python-opencv">
+<h2>Использование оператора Собеля для обнаружения краев в Python с OpenCV<a class="headerlink" href="#python-opencv" title="Link to this heading">#</a></h2>
+<p>Идеальные результаты обнаружения краев на изображениях могут показать, как набор соединенных кривых указывает на границы объектов. Эти границы, маркированные как контуры, а также кривая, отражающая непрерывную поверхность.</p>
+<p>Поэтому использование алгоритма обнаружения краев на изображениях поможет сократить объем обрабатываемых данных, позволяя отфильтровать несвязанную информацию, при этом сохраняя важные структурные атрибуты. Если этап обнаружения краев выполнен успешно, анализ изображения станет более простым, но получение идеального края средней сложности не всегда возможно.</p>
+<p>Часто контуры, извлеченные из сложных изображений, могут быть запутаны фрагментацией, где кривые краев не связаны, есть пропущенные участки контуров и ложные контуры, не имеющие отношения к изучаемому явлению на изображении.</p>
+<p>Обнаружение краев играет важную роль в обработке изображений, исследовании изображений, распознавании образов и компьютерном з</p>
+<p>В области обработки изображений и компьютерного зрения оператор Sobel, или также известный как оператор Sobel–Feldman или фильтр Sobel, играет важную роль в выделении краев на изображениях.
+Этот оператор назван в честь работы Фельдмана и Собела, которые представили его на конференции Стэнфордской лаборатории искусственного интеллекта в 1968 году. Он использует небольшие свертки фильтра в горизонтальном и вертикальном направлениях для вычисления градиента изображения, что делает его вычислительно эффективным.
+Однако следует учитывать, что иногда градиент, который он обнаруживает, может быть несколько грубым, особенно при комплексных изменениях на изображениях с высокой частотой.</p>
+<p>Оператор Sobel использует два 3x3 ядра и выполняет свертку с исходным изображением для вычисления приблизительного градиента: одно ядро для вертикальных изменений (SY) и одно для горизонтальных изменений (SX). Если обозначить исходное изображение как I, то два яд обозначаются</p>
+<img src="img/222.png"/>
+<p><img src="img/333.png"/>россе.</p>
+<p>ПРИМЕР ИЗОБРАЖЕНИЯ —-</p>
+<p><img alt="N1.png" src="attachment:107b4a4b-1ac8-4ec4-910a-395cda9268a4.png" /></p>
+<p>Код программы -</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
+<span class="n">imgCT</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;N1.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+<span class="n">imgCT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">imgCT</span><span class="p">)</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="c1"># Создание фильтров Собеля для горизонтального и вертикального направлений</span>
+<span class="n">S_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">S_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 
-<span class="n">t_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">s_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">T</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">t_grid</span><span class="p">,</span> <span class="n">s_grid</span><span class="p">)</span>
-<span class="n">theta_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">+</span> <span class="mf">0.1</span>
-<span class="n">phi_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">t</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
-  <span class="n">phi0</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">k</span>
-  <span class="n">r</span> <span class="o">=</span> <span class="mi">14</span> <span class="o">-</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">k</span>
-  <span class="n">x_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi0</span> <span class="o">+</span> <span class="n">phi_fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta_fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
-  <span class="n">y_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi0</span> <span class="o">+</span> <span class="n">phi_fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta_fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
-  <span class="n">z_fun</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta_fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
-  <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">x_fun</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">S</span><span class="o">.</span><span class="n">flatten</span><span class="p">())))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
-  <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">y_fun</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">S</span><span class="o">.</span><span class="n">flatten</span><span class="p">())))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
-  <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">z_fun</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">S</span><span class="o">.</span><span class="n">flatten</span><span class="p">())))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
-  <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">Z</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">))</span>
+<span class="n">row_CT</span><span class="p">,</span> <span class="n">col_CT</span> <span class="o">=</span> <span class="n">imgCT</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># Создание нового изображения для хранения результатов</span>
+<span class="n">out_new_CT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">row_CT</span><span class="p">,</span> <span class="n">col_CT</span><span class="p">))</span>
+
+<span class="c1"># Применение фильтра Собеля к каждому пикселю изображения</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_CT</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">col_CT</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Применение фильтра к окну размером 3x3 вокруг текущего пикселя</span>
+        <span class="n">I_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">imgCT</span><span class="p">[</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">c</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S_x</span><span class="p">)</span>
+        <span class="n">I_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">imgCT</span><span class="p">[</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">c</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">S_y</span><span class="p">)</span>
+        
+        <span class="c1"># Вычисление смешанного значения для текущего пикселя</span>
+        <span class="n">out_new_CT</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I_x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">I_y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Усиление контраста для лучшей видимости краев</span>
+<span class="n">out_new_CT</span><span class="p">[</span><span class="n">out_new_CT</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out_new_CT</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Готовый результат&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/25765723480881ead3e8ed0230eff7a4593c03a47f3f8027134db708e7814f7b.png" src="_images/25765723480881ead3e8ed0230eff7a4593c03a47f3f8027134db708e7814f7b.png" />
+<img alt="_images/bedda7a58df66dd90ed1a13179b07faa283118dc73ad0bd0cfb830c783cc80f5.png" src="_images/bedda7a58df66dd90ed1a13179b07faa283118dc73ad0bd0cfb830c783cc80f5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Готовый результат
+</pre></div>
 </div>
 </div>
-<p><em>Задание:</em> Оптимизируйте следующий код.</p>
-<iframe src="https://trinket.io/embed/python3/fbb7581526" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></section>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -476,20 +492,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="entertainment.html"
+       href="linear-mappings.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Развлечения</p>
+        <p class="prev-next-title">Линейные отображения</p>
       </div>
     </a>
     <a class="right-next"
-       href="math_songs.html"
+       href="ls.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Математические песни</p>
+        <p class="prev-next-title">Аппроксимация. Метод наименьших квадратов</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -509,7 +525,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Розочка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-opencv">Использование оператора Собеля для обнаружения краев в Python с OpenCV</a></li>
 </ul>
   </nav></div>
 
