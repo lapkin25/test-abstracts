@@ -8,6 +8,7 @@ chapters:
   sections:
   - file: linear-spaces
   - file: linear-mappings
+  - file: matrix-mult
   - file: ls
 - file: statistics
 - file: entertainment
