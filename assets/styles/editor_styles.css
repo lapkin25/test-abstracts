@@ -1,0 +1,54 @@
+
+.editor-dark {
+
+}
+
+.editor-wrapper {
+    width: 100%;
+    height: 400px;
+    background-color: white;
+}
+
+.editor-output {
+    border: 1px black solid;
+    border-radius: 3px;
+    height: 100px;
+    width: 100%;
+    display: block;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.editor-output.editor-dark
+{
+    border: 1px grey solid;
+    background-color: black;
+}
+
+.editor-output>span {
+    display: block;
+}
+
+.editor-output.editor-dark > span {
+    display: block;
+    color: white;
+}
+
+python-editor {
+    display: block;
+}
+
+.editor-button-run {
+    background-color: #31d100;
+    font-size: 16px;
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+.cm-editor {
+    height: 100%;
+}
