@@ -31,3 +31,17 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+sphinx:
+  config:
+    html_extra_path: ['assets']
+    html_css_files: [
+      '../styles/editor_styles.css'
+    ]
+    html_js_files: [ 
+          ['https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js', {}], 
+          ['../js/pyodide_api.js', {}],
+          ['../js/editor_api.js', {}],
+          ['../js/editor.bundle.js', {}]  
+    ]
+    
