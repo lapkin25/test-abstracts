@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/../styles/editor_styles.css?v=14e1f340" />
@@ -403,6 +403,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Двоичный поиск</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Задача “Ближайшее число”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Эффективное решение</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Стек</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Задача “Дифтонги”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Количество дифтонгов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Конечный автомат</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Поиск максимумов</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -515,7 +526,62 @@ document.write(`
 <span class="c1"># ans == True, если число x есть в массиве a[0..n-1]</span>
 </pre></div>
 </div>
-<p>.</p>
+</section>
+</section>
+<section id="id6">
+<h2>Задача “Ближайшее число”<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Дана последовательность чисел <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_N\)</span>. Для каждого элемента этой последовательности найти ближайшее к нему справа в этой последовательности, которое будет больше него, либо определить, что такого числа не существует.</p>
+<p>Например, для последовательности <span class="math notranslate nohighlight">\(1, 2, 4, 3, 3, 5, 4, 7\)</span> ответ будет таким: <span class="math notranslate nohighlight">\(2, 4, 5, 5, 5, 7, 7, 7\)</span> (для последнего числа искомого числа справа нет).</p>
+<p>Изобразим этот пример на диаграмме. Для каждого столбика требуется найти ближайший к нему столбик справа, не ниже его.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)],</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e98d93811334aeaf212a67fec99167b4e8c124758c34d532e5186488d709b230.png" src="_images/e98d93811334aeaf212a67fec99167b4e8c124758c34d532e5186488d709b230.png" />
+</div>
+</div>
+<section id="id7">
+<h3>Эффективное решение<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Алгоритм описан у <a class="reference external" href="https://yadi.sk/i/J0mS63RpEhH8tw">Луридаса</a> (с. 19).</p>
+<p>Будем при чтении массива справа налево поддерживать структуру данных “стек”, которая будет содержать возрастающую последовательность высот столбиков. Очередное число выталкивает из стека все столбики не выше него. Ответ для текущего числа - это высота столбика на вершине стека. Затем новое число добавляется в стек.</p>
+<p>Поскольку каждое число однажды добавляется в стек и однажды удаляется из стека, то сложность алгоритма <span class="math notranslate nohighlight">\(O(n)\)</span>.</p>
+</section>
+<section id="id8">
+<h3>Стек<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p><em>Стек</em> - это структура данных типа “последовательность”, добавление и удаление элементов из которой производится с конца. В качестве реализации стека подойдет обычный динамический массив. Например, в Python это список с операциями <code class="docutils literal notranslate"><span class="pre">append</span></code> и <code class="docutils literal notranslate"><span class="pre">pop</span></code>.</p>
+</section>
+</section>
+<section id="id9">
+<h2>Задача “Дифтонги”<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>Дан набор строк, состоящих из строчных гласных и согласных латинских букв. Найти все слова с максимальным количеством дифтонгов. Дифтонг - это пара гласных букв, окруженных либо согласными буквами, либо границами слова.</p>
+<p>Решение состоит из двух этапов.</p>
+<ol class="arabic simple">
+<li><p>Для каждого <span class="math notranslate nohighlight">\(i\)</span>-го слова вычислим число дифтонгов <span class="math notranslate nohighlight">\(d_i\)</span>.</p></li>
+<li><p>Выведем все <span class="math notranslate nohighlight">\(i\)</span>-е слова, для которых <span class="math notranslate nohighlight">\(d_i\)</span> максимально.</p></li>
+</ol>
+<section id="id10">
+<h3>Количество дифтонгов<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>Пусть <span class="math notranslate nohighlight">\(n\)</span> - число букв в слове. Добавим слева и справа к слову любую согласную. Тогда буквы слова будут иметь индексы <span class="math notranslate nohighlight">\(1..n\)</span>.</p>
+<p>Запишем условие <span class="math notranslate nohighlight">\(P(i)\)</span>, что <span class="math notranslate nohighlight">\(s[i..i+1]\)</span>, где <span class="math notranslate nohighlight">\(i \in 1..n-1\)</span>, - дифтонг.
+$<span class="math notranslate nohighlight">\(
+P(i) = s[i]\text{ - гласная} \,\&amp;\, s[i+1]\text{ - гласная} \,\&amp;\, s[i-1]\text{ - согласная} \,\&amp;\, s[i+2]\text{ - согласная}
+\)</span>$</p>
+</section>
+<section id="id11">
+<h3>Конечный автомат<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Представим себе машину Тьюринга, которая движется только вправо, читая слово, и периодически оказывается в состоянии, переход в которое означает, что найден очередной дифтонг. В такие моменты необходимо увеличить счетчик дифтонгов.</p>
+<p><em>Упражнение.</em> Составьте таблицу переходов для автомата, распознающего дифтонги.</p>
+</section>
+<section id="id12">
+<h3>Поиск максимумов<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Простейший алгоритм - двупроходный. Первым проходом по массиву <span class="math notranslate nohighlight">\(d_i\)</span> находим максимум <span class="math notranslate nohighlight">\(d_i\)</span>. Вторым проходом выводим все <span class="math notranslate nohighlight">\(i\)</span>-е слова, соответствующие максимумам <span class="math notranslate nohighlight">\(d_i\)</span>.</p>
 </section>
 </section>
 </section>
@@ -588,6 +654,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Наивный алгоритм</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Решение с помощью структуры данных</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Двоичный поиск</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Задача “Ближайшее число”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Эффективное решение</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Стек</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Задача “Дифтонги”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Количество дифтонгов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Конечный автомат</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Поиск максимумов</a></li>
 </ul>
 </li>
 </ul>
