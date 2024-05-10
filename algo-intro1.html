@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/../styles/editor_styles.css?v=14e1f340" />
@@ -446,11 +446,11 @@ document.write(`
 </pre></div>
 </div>
 <p>Если отправить приведенное выше решение в тестирующую систему, то получится результат “Превышено время выполнения программы”. Почему так происходит? В условии задачи сказано, что <span class="math notranslate nohighlight">\(n, m \leq 10^5\)</span>. Таким образом, цикл <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">b</span></code> выполнится <span class="math notranslate nohighlight">\(m\)</span> раз. Но функция <code class="docutils literal notranslate"><span class="pre">find_in_sorted_container</span></code>, несмотря на отсутствие явных циклов, потребует порядка <span class="math notranslate nohighlight">\(n\)</span> обращений к элементам контейнера <code class="docutils literal notranslate"><span class="pre">a</span></code>. Следовательно, сложность наивного алгоритма составила <span class="math notranslate nohighlight">\(O(nm)\)</span> операций.</p>
-<p>Эта запись означает, что с ростом <span class="math notranslate nohighlight">\(n, m\)</span> время выполнения вашей программы будет увеличиваться не сильнее, чем пропорционально <span class="math notranslate nohighlight">\(nm\)</span>. То есть, если 5 раз увеличить <span class="math notranslate nohighlight">\(n\)</span> и <span class="math notranslate nohighlight">\(m\)</span> в 10 раз, то рценка времени выполнения программы <span class="math notranslate nohighlight">\(O(nm)\)</span> возрастет в <span class="math notranslate nohighlight">\(10^{10}\)</span> раз - а это уже довольно много (для справки: одна секунда - это порядка <span class="math notranslate nohighlight">\(10^8\)</span> - <span class="math notranslate nohighlight">\(10^9\)</span> простейших операций).</p>
+<p>Эта запись означает, что с ростом <span class="math notranslate nohighlight">\(n, m\)</span> время выполнения вашей программы будет увеличиваться не сильнее, чем пропорционально <span class="math notranslate nohighlight">\(nm\)</span>. То есть, если 5 раз увеличить <span class="math notranslate nohighlight">\(n\)</span> и <span class="math notranslate nohighlight">\(m\)</span> в 10 раз, то оценка времени выполнения программы <span class="math notranslate nohighlight">\(O(nm)\)</span> возрастет в <span class="math notranslate nohighlight">\(10^{10}\)</span> раз - а это уже довольно много (для справки: одна секунда - это порядка <span class="math notranslate nohighlight">\(10^8\)</span> - <span class="math notranslate nohighlight">\(10^9\)</span> простейших операций).</p>
 </section>
 <section id="id4">
 <h3>Решение с помощью структуры данных<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p>Обратим внимание, как мы храним элементы массива <code class="docutils literal notranslate"><span class="pre">a</span></code>. В условии задаче сказано, что массив упорядочен по возрастанию, но мы никак этим не воспользовались. Вместо этого мы воспользовались операцией <code class="docutils literal notranslate"><span class="pre">in</span></code>, которая просматривает весь массив от начала до конца в поисках искомого числа.</p>
+<p>Обратим внимание, как мы храним элементы массива <code class="docutils literal notranslate"><span class="pre">a</span></code>. В условии задачи сказано, что массив упорядочен по возрастанию, но мы никак этим не воспользовались. Вместо этого мы воспользовались операцией <code class="docutils literal notranslate"><span class="pre">in</span></code>, которая просматривает весь массив от начала до конца в поисках искомого числа.</p>
 <p>Помимо массива, существуют другие способы организации хранения данных. Они различаются набором операций, выполняемых над множеством значений. В нашем случае нам нужна одна операция – это поиск. Так что нам подойдет любая структура данных, обеспечивающая поиск в числовом множестве. Например, хеш-таблица. В языке Python такая структура данных уже реализована в стандартном контейнере <code class="docutils literal notranslate"><span class="pre">set</span></code>.</p>
 <p>Давайте приведем наш список <code class="docutils literal notranslate"><span class="pre">a</span></code> к множеству <code class="docutils literal notranslate"><span class="pre">a_set</span></code> при помощи встроенной функции <code class="docutils literal notranslate"><span class="pre">set()</span></code>. А затем станем работать с этим новым контейнером.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -464,6 +464,58 @@ document.write(`
 </section>
 <section id="id5">
 <h3>Двоичный поиск<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Двоичный поиск - это самый эффективный алгоритм нахождения индекса заданного элемента в упорядоченном массиве. Алгоритм описан у <a class="reference external" href="https://yadi.sk/i/OgI3Y9bf5_NhAA">Кормена</a>.</p>
+<p>Идея алгоритма проста. Чтобы найти заданное число <span class="math notranslate nohighlight">\(x\)</span> в последовательности <span class="math notranslate nohighlight">\(\{a_i\}\)</span>, которая представлена как массив (так что в ней быстро реализована операция доступа к элементу по его индексу), разобьем весь массив на два подмассива (почти) равной длины: <span class="math notranslate nohighlight">\(a[1..k]\)</span> и <span class="math notranslate nohighlight">\(a[k+1..n]\)</span>. Элемент <span class="math notranslate nohighlight">\(a[k]\)</span> будет <em>опорным</em>. Полагаем <span class="math notranslate nohighlight">\(k = \lfloor(l + r)/2\rfloor\)</span>, чтобы в худшем случае отбросить половину массива и уменьшить пространство поиска в 2 раза.</p>
+<p>Справедливы утверждения:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x &lt; a[k] \to \left(\forall i \in k+1..n \colon x &lt; a[i] \right)\)</span>, то есть если <span class="math notranslate nohighlight">\(x\)</span> меньше опорного элемента, то <span class="math notranslate nohighlight">\(x\)</span> меньше любого элемента из правой половины массива;</p></li>
+<li><p><span class="math notranslate nohighlight">\(x &gt; a[k] \to \left(\forall i \in 1..k-1 \colon x &gt; a[i] \right)\)</span>, то есть если <span class="math notranslate nohighlight">\(x\)</span> больше опорного элемента, то <span class="math notranslate nohighlight">\(x\)</span> больше любого элемента из левой половины массива.</p></li>
+</ul>
+<p>Получаем алгоритм:</p>
+<ol class="arabic simple">
+<li><p>Если <span class="math notranslate nohighlight">\(x = a[k]\)</span>, то искомый элемент найден.</p></li>
+<li><p>Если <span class="math notranslate nohighlight">\(x &lt; a[k]\)</span>, то сводим задачу поиска в массиве <span class="math notranslate nohighlight">\(a[1..n]\)</span> к задаче поиска в подмассиве <span class="math notranslate nohighlight">\(a[1..k-1]\)</span>.</p></li>
+<li><p>Если <span class="math notranslate nohighlight">\(x &gt; a[k]\)</span>, то сводим задачу поиска в массиве <span class="math notranslate nohighlight">\(a[1..n]\)</span> к задаче поиска в подмассиве <span class="math notranslate nohighlight">\(a[k+1..n]\)</span>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>При реализации данного алгоритма важно перед доступом к опорному элементу проверить, что подмассив непуст!</p>
+</div>
+<p>Время выполнения алгоритма составит <span class="math notranslate nohighlight">\(O(\log n)\)</span>, что гораздо быстрее, чем полный перебор, который требует <span class="math notranslate nohighlight">\(O(n)\)</span> операций.</p>
+<p>Вариант рекурсивной реализации:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">:</span>  <span class="c1"># подмассив a[l..r] пуст?</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># индекс опорного элемента</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+        <span class="c1"># ...</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># x &gt; a[k]</span>
+        <span class="c1"># ...</span>
+        
+<span class="k">def</span> <span class="nf">find_in_sorted_container</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Вариант итеративной реализации:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">ans</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+    <span class="c1"># ищем число x в подмассиве a[l..r]</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">break</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+        <span class="c1"># изменить l, r - свести задачу к другой</span>
+    <span class="k">else</span>  <span class="c1"># x &gt; a[k]</span>
+        <span class="c1"># изменить l, r - свести задачу к другой</span>
+<span class="c1"># ans == True, если число x есть в массиве a[0..n-1]</span>
+</pre></div>
+</div>
+<p>.</p>
 </section>
 </section>
 </section>
