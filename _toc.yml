@@ -11,6 +11,9 @@ chapters:
   - file: matrix-mult
   - file: ls
 - file: statistics
+- file: algorithms
+  sections:
+  - file: algo-intro1
 - file: entertainment
   sections:
   - file: math_cards
