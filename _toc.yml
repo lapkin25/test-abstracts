@@ -11,6 +11,8 @@ chapters:
   - file: matrix-mult
   - file: ls
 - file: statistics
+  sections:
+  - file: linear-regression
 - file: algorithms
   sections:
   - file: algo-intro1
