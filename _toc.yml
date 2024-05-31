@@ -13,6 +13,7 @@ chapters:
 - file: statistics
   sections:
   - file: linear-regression
+  - file: regression_use
 - file: algorithms
   sections:
   - file: algo-intro1
