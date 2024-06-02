@@ -66,7 +66,7 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Алгоритмы" href="algorithms.html" />
+    <link rel="next" title="Наивный байесовский классификатор" href="naive-Bayes.html" />
     <link rel="prev" title="Линейная регрессия" href="linear-regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +193,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="statistics.html">Статистика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Использование линейной регрессии</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-Bayes.html">Наивный байесовский классификатор</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -404,6 +405,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2-r-2">R^2 : СКОРРЕКТИРОВАННОЕ R:2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f">F - ТЕСТ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ЛОГАРИФМИЧЕСКАЯ ФУНКЦИЯ ПРАВДОПОДОПИЯ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Примеры</a></li>
 </ul>
             </nav>
         </div>
@@ -478,8 +480,8 @@ document.write(`
 Dep. Variable:                Alcohol   R-squared:                       0.615
 Model:                            OLS   Adj. R-squared:                  0.567
 Method:                 Least Squares   F-statistic:                     12.78
-Date:                Fri, 31 May 2024   Prob (F-statistic):            0.00723
-Time:                        21:02:57   Log-Likelihood:                -4.9998
+Date:                Sun, 02 Jun 2024   Prob (F-statistic):            0.00723
+Time:                        23:00:12   Log-Likelihood:                -4.9998
 No. Observations:                  10   AIC:                             14.00
 Df Residuals:                       8   BIC:                             14.60
 Df Model:                           1                                         
@@ -585,6 +587,63 @@ y-variable.</p>
 </div>
 </div>
 </section>
+<section id="id4">
+<h2>Примеры<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Линейная регрессия - это статистический метод, используемый для оценки связи между зависимой переменной (объясняемой) и одной или несколькими независимыми переменными (объясняющими). Целью линейной регрессии является построение линейной модели, которая наилучшим образом описывает отношения между переменными.</p>
+<p>Формула для простой линейной регрессии (одна независимая переменная):
+Уравнение линейной регрессии имеет вид: y = β0 + β1x + ε
+где:</p>
+<ul class="simple">
+<li><p>y - зависимая переменная</p></li>
+<li><p>x - независимая переменная</p></li>
+<li><p>β0 - коэффициент сдвига (константа)</p></li>
+<li><p>β1 - коэффициент наклона (угловой коэффициент)</p></li>
+<li><p>ε - случайная ошибка</p></li>
+</ul>
+<p>Формула для множественной линейной регрессии (несколько независимых переменных):
+Уравнение множественной линейной регрессии имеет вид: y = β0 + β1x1 + β2x2 + … + βnxn + ε
+где:</p>
+<ul class="simple">
+<li><p>y - зависимая переменная</p></li>
+<li><p>x1, x2, …, xn - независимые переменные</p></li>
+<li><p>β0 - коэффициент сдвига (константа)</p></li>
+<li><p>β1, β2, …, βn - коэффициенты наклона для каждого независимого переменной</p></li>
+<li><p>ε - случайная ошибка</p></li>
+</ul>
+<p>Цель обучения модели линейной регрессии заключается в подборе значений коэффициентов, чтобы минимизировать сумму квадратов ошибок между прогнозами модели и реальными значениями.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Генерируем случайные данные для примера</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Обучаем модель линейной регрессии</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Предсказываем значения y на основе обученной модели</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Строим график и отображаем исходные данные и линейную регрессию</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Линейная регрессия&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7f85574a72f080b4c7f7b1a4f6deb6923e3f6025db60e2990b1dcdb7a69098ca.png" src="_images/7f85574a72f080b4c7f7b1a4f6deb6923e3f6025db60e2990b1dcdb7a69098ca.png" />
+</div>
+</div>
+<iframe src="https://trinket.io/embed/python3/be32898321?outputOnly=true" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -627,11 +686,11 @@ y-variable.</p>
       </div>
     </a>
     <a class="right-next"
-       href="algorithms.html"
+       href="naive-Bayes.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Алгоритмы</p>
+        <p class="prev-next-title">Наивный байесовский классификатор</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -656,6 +715,7 @@ y-variable.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2-r-2">R^2 : СКОРРЕКТИРОВАННОЕ R:2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f">F - ТЕСТ</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">ЛОГАРИФМИЧЕСКАЯ ФУНКЦИЯ ПРАВДОПОДОПИЯ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Примеры</a></li>
 </ul>
   </nav></div>
 
