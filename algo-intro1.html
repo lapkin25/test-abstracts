@@ -421,6 +421,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Поиск максимумов</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Задача “Максимум в скользящем окне”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Быстрое обновление максимума</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -591,6 +595,26 @@ P(i) = s[i]\text{ - гласная} \,\&amp;\, s[i+1]\text{ - гласная} \,
 <p>Простейший алгоритм - двупроходный. Первым проходом по массиву <span class="math notranslate nohighlight">\(d_i\)</span> находим максимум <span class="math notranslate nohighlight">\(d_i\)</span>. Вторым проходом выводим все <span class="math notranslate nohighlight">\(i\)</span>-е слова, соответствующие максимумам <span class="math notranslate nohighlight">\(d_i\)</span>.</p>
 </section>
 </section>
+<section id="id13">
+<h2>Задача “Максимум в скользящем окне”<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>Дан список из <span class="math notranslate nohighlight">\(n\)</span> целых чисел. По этому списку перемещаются два указателя: <span class="math notranslate nohighlight">\(l\)</span> и <span class="math notranslate nohighlight">\(r\)</span>. Изначально они оба указывают на начало списка. За один раз оба указателя могут перемещаться только вправо на одну позицию. Требуется определить для каждого перемещения указателей наибольший элемент среди <span class="math notranslate nohighlight">\(a[l], a[l+1], \ldots, a[r]\)</span>.</p>
+<p>Обратим внимание, что наивное решение (нахождение максимума с просмотром каждый раз заново всех элементов списка от <span class="math notranslate nohighlight">\(l\)</span>-го до <span class="math notranslate nohighlight">\(r\)</span>-го) займет порядка <span class="math notranslate nohighlight">\(O(n^2)\)</span> времени. Целью оптимизации является структурирование данных таким образом, чтобы при сдвиге указателей обновление максимума происходило очень быстро.</p>
+<section id="id14">
+<h3>Быстрое обновление максимума<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>Пусть <span class="math notranslate nohighlight">\(m\)</span> – индекс самого левого максимума среди чисел <span class="math notranslate nohighlight">\(a[l], a[l+1], \ldots, a[r]\)</span>, так что <span class="math notranslate nohighlight">\(\forall i \in l..r\colon a[m] \geq a[i]\)</span>.</p>
+<p>При сдвиге указателя <span class="math notranslate nohighlight">\(r\)</span> на единицу вправо максимум обновляется легко: если <span class="math notranslate nohighlight">\(a[r+1] &gt; a[m]\)</span>, то <span class="math notranslate nohighlight">\(m \leftarrow r + 1\)</span>, иначе <span class="math notranslate nohighlight">\(m\)</span> остается прежним.</p>
+<p>Разберемся, как обновить максимум при сдвиге указателя <span class="math notranslate nohighlight">\(l\)</span> на единицу вправо. Возможны случаи:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(m &gt; l\)</span>. Тогда <span class="math notranslate nohighlight">\(m\)</span> остается прежним.</p></li>
+<li><p><span class="math notranslate nohighlight">\(m = l\)</span>. Это значит, что после <span class="math notranslate nohighlight">\(l\)</span> последовательность <span class="math notranslate nohighlight">\(a[l], a[l+1], \ldots\)</span> сначала не возрастает, а потом, возможно, начинает возрастать. Начнем с индекса <span class="math notranslate nohighlight">\(k = l + 1\)</span> и будем итерационно переходить к новому значению <span class="math notranslate nohighlight">\(k \leftarrow {\rm nearest}[k]\)</span>. Здесь <span class="math notranslate nohighlight">\({\rm nearest}[k]\)</span> – индекс ближайшего справа числа к <span class="math notranslate nohighlight">\(k\)</span>-му, большего либо равного ему.
+Если <span class="math notranslate nohighlight">\(\mathrm{nearest}[k] &gt; r\)</span>, то это значит, что все числа от <span class="math notranslate nohighlight">\(k + 1\)</span>-го до <span class="math notranslate nohighlight">\(r\)</span>-го меньше, чем <span class="math notranslate nohighlight">\(k\)</span>-е число:
+$<span class="math notranslate nohighlight">\(
+(\mathrm{nearest}[k] &gt; r) \to \forall i \in k+1..r \colon a[i] &lt; a[k].
+\)</span>$</p></li>
+</ol>
+<p>Продолжение следует…</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -672,6 +696,10 @@ P(i) = s[i]\text{ - гласная} \,\&amp;\, s[i+1]\text{ - гласная} \,
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Количество дифтонгов</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Конечный автомат</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Поиск максимумов</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Задача “Максимум в скользящем окне”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Быстрое обновление максимума</a></li>
 </ul>
 </li>
 </ul>
