@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/../styles/editor_styles.css?v=14e1f340" />
@@ -607,12 +607,18 @@ P(i) = s[i]\text{ - гласная} \,\&amp;\, s[i+1]\text{ - гласная} \,
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(m &gt; l\)</span>. Тогда <span class="math notranslate nohighlight">\(m\)</span> остается прежним.</p></li>
 <li><p><span class="math notranslate nohighlight">\(m = l\)</span>. Это значит, что после <span class="math notranslate nohighlight">\(l\)</span> последовательность <span class="math notranslate nohighlight">\(a[l], a[l+1], \ldots\)</span> сначала не возрастает, а потом, возможно, начинает возрастать. Начнем с индекса <span class="math notranslate nohighlight">\(k = l + 1\)</span> и будем итерационно переходить к новому значению <span class="math notranslate nohighlight">\(k \leftarrow {\rm nearest}[k]\)</span>. Здесь <span class="math notranslate nohighlight">\({\rm nearest}[k]\)</span> – индекс ближайшего справа числа к <span class="math notranslate nohighlight">\(k\)</span>-му, большего либо равного ему.
-Если <span class="math notranslate nohighlight">\(\mathrm{nearest}[k] &gt; r\)</span>, то это значит, что все числа от <span class="math notranslate nohighlight">\(k + 1\)</span>-го до <span class="math notranslate nohighlight">\(r\)</span>-го меньше, чем <span class="math notranslate nohighlight">\(k\)</span>-е число:
-$<span class="math notranslate nohighlight">\(
-(\mathrm{nearest}[k] &gt; r) \to \forall i \in k+1..r \colon a[i] &lt; a[k].
-\)</span>$</p></li>
+Если <span class="math notranslate nohighlight">\(\mathrm{nearest}[k] &gt; r\)</span>, то это значит, что все числа от <span class="math notranslate nohighlight">\(k + 1\)</span>-го до <span class="math notranslate nohighlight">\(r\)</span>-го меньше, чем <span class="math notranslate nohighlight">\(k\)</span>-е число:</p></li>
 </ol>
-<p>Продолжение следует…</p>
+<p><span class="math notranslate nohighlight">\(
+(\mathrm{nearest}[k] &gt; r) \to \forall i \in k+1..r \colon a[i] &lt; a[k].
+\)</span></p>
+<p>Справедливо утверждение: после выполнения следующего цикла переменная <span class="math notranslate nohighlight">\(k\)</span> будет указывать на максимум <span class="math notranslate nohighlight">\(a[i]\)</span> на промежутке <span class="math notranslate nohighlight">\(i \in l+1..r\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">nearest</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nearest</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Для вычисления функции <span class="math notranslate nohighlight">\(\mathrm{nearest}[k]\)</span> потребуется решить задачу “Ближайшее число” (см. выше).</p>
 </section>
 </section>
 </section>
