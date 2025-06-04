@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Статистика &#8212; Элементы математики</title>
+    <title>Последовательности и множества &#8212; Элементы математики</title>
   
   
   
@@ -58,7 +58,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'statistics';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'algo-seq-sets';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
     <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
@@ -66,8 +68,8 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Линейная регрессия" href="linear-regression.html" />
-    <link rel="prev" title="Аппроксимация. Метод наименьших квадратов" href="ls.html" />
+    <link rel="next" title="Развлечения" href="entertainment.html" />
+    <link rel="prev" title="Начало тренировок" href="algo-intro1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,7 +192,7 @@
 <li class="toctree-l2"><a class="reference internal" href="ls.html">Аппроксимация. Метод наименьших квадратов</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Статистика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="statistics.html">Статистика</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regression_use.html">Использование линейной регрессии</a></li>
 <li class="toctree-l2"><a class="reference internal" href="naive-Bayes.html">Наивный байесовский классификатор</a></li>
@@ -198,9 +200,9 @@
 <li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="algo-intro1.html">Начало тренировок</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo-seq-sets.html">Последовательности и множества</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Последовательности и множества</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -279,7 +281,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fstatistics.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Falgo-seq-sets.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -309,7 +311,7 @@
       
       
       
-      <li><a href="_sources/statistics.md" target="_blank"
+      <li><a href="_sources/algo-seq-sets.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +321,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -380,7 +382,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -391,11 +395,25 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Статистика</h1>
+    <h1>Последовательности и множества</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Задача “Фрукты и овощи”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Наивный алгоритм</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Идея для оптимизации</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Оптимизированный алгоритм</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Дольше, но проще</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -406,16 +424,44 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Статистика<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression_use.html">Использование линейной регрессии</a></li>
-<li class="toctree-l1"><a class="reference internal" href="naive-Bayes.html">Наивный байесовский классификатор</a></li>
-<li class="toctree-l1"><a class="reference internal" href="monte_carlo.html">Метод Монте-Карло</a></li>
-<li class="toctree-l1"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
-</ul>
-</div>
+<h1>Последовательности и множества<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>Задача “Фрукты и овощи”<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><em>Задача с турнира <a class="reference external" href="https://imcs.dvfu.ru/cats/problems?cid=6348725;sid=">CODE Work Challenge 2025</a></em></p>
+<p>На прямоугольном поле размера <span class="math notranslate nohighlight">\(N\)</span> строк на <span class="math notranslate nohighlight">\(M\)</span> столбцов выращиваются фрукты и овощи разных типов. В ячейке <span class="math notranslate nohighlight">\((i, j)\)</span> выращивается один тип плодов, обозначаемый числом <span class="math notranslate nohighlight">\(a_{ij}\)</span>. Сколькими способами можно выбрать прямоугольник, во всех четырех углах которого выращиваются одинаковые плоды?</p>
+<section id="id3">
+<h3>Наивный алгоритм<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Переберем четыре координаты углов прямоугольника <span class="math notranslate nohighlight">\((x_1, y_1), (x_2, y_2)\)</span>, где <span class="math notranslate nohighlight">\(x_1, x_2 \in \{1..M\}\)</span>, <span class="math notranslate nohighlight">\(y_1, y_2 \in \{1..N\}\)</span>.
+Проверим для каждой четверки условие <span class="math notranslate nohighlight">\(a_{x_1y_1} = a_{x_1y_2} = a_{x_2y_1} = a_{x_2y_2}\)</span>. Если оно выполнено, увеличить счетчик на 1.
+Вывести значение счетчика.</p>
+<p>Временная сложность алгоритма составит <span class="math notranslate nohighlight">\(O(N^2M^2)\)</span>, что слишком долго при ограничениях <span class="math notranslate nohighlight">\(N, M \leq 500\)</span>.</p>
+</section>
+<section id="id4">
+<h3>Идея для оптимизации<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Попробуем сократить перебор. Будем перебирать сначала только пары чисел - координаты горизонтальных сторон прямоугольника <span class="math notranslate nohighlight">\(y_1, y_2\)</span>.
+Для каждого возможного типа плодов <span class="math notranslate nohighlight">\(z\)</span> определим множество координат столбцов <span class="math notranslate nohighlight">\(X_z\)</span>, в которых в строках <span class="math notranslate nohighlight">\(y_1\)</span> и <span class="math notranslate nohighlight">\(y_2\)</span> находятся одинаковые плоды:</p>
+<p><span class="math notranslate nohighlight">\(
+X_z(y_1,y_2) = \{x \in \{1..M\} \colon a_{xy_1} = a_{xy_2} = z \}.
+\)</span></p>
+<p>Пусть для типа плодов <span class="math notranslate nohighlight">\(z\)</span> таких хороших столбцов всего <span class="math notranslate nohighlight">\(n_z\)</span> штук, то есть <span class="math notranslate nohighlight">\(|X_z| = n_z\)</span>. Значит, общее число способов построить прямоугольник из чисел <span class="math notranslate nohighlight">\(z\)</span> на строках <span class="math notranslate nohighlight">\(y_1, y_2\)</span> равно <span class="math notranslate nohighlight">\(C_{n_z}^2 = \dfrac{n_z(n_z - 1)}{2}\)</span>. Теперь останется сложить <span class="math notranslate nohighlight">\(\dfrac{n_z(n_z - 1)}{2}\)</span>, перебрав разные <span class="math notranslate nohighlight">\(z\)</span>.</p>
+</section>
+<section id="id5">
+<h3>Оптимизированный алгоритм<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Общее число возможных значений <span class="math notranslate nohighlight">\(z\)</span> может достигать <span class="math notranslate nohighlight">\(10^6\)</span>, поэтому перебирать <span class="math notranslate nohighlight">\(z\)</span> не нужно.</p>
+<p>Вместо этого выделим в множестве столбцов <span class="math notranslate nohighlight">\(\{1..M\}\)</span> подмножества <span class="math notranslate nohighlight">\(X_z\)</span>. Для этого предварительно упорядочим элементы каждой строки, добавив к каждому числу <span class="math notranslate nohighlight">\(a_{ij}\)</span> дополнительные данные - номер столбца <span class="math notranslate nohighlight">\(i\)</span>. Тогда, имея пару строк <span class="math notranslate nohighlight">\(y_1, y_2\)</span>, можно выделить множества <span class="math notranslate nohighlight">\(X_z(y_1,y_2)\)</span> с помощью метода двух указателей.</p>
+<p>Временная сложность алгоритма составит <span class="math notranslate nohighlight">\(O(NM\log M + N^2M)\)</span>.</p>
+</section>
+<section id="id6">
+<h3>Дольше, но проще<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Существует более простой способ выделить множества <span class="math notranslate nohighlight">\(X_z(y_1, y_2)\)</span>. Но для этого потребуется сортировка порядка <span class="math notranslate nohighlight">\(M\)</span> чисел <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> раз (для каждой пары строк <span class="math notranslate nohighlight">\(y_1, y_2\)</span>).</p>
+<p>После выбора <span class="math notranslate nohighlight">\(y_1, y_2\)</span> найдем множество интересующих столбцов</p>
+<p><span class="math notranslate nohighlight">\(
+X(y_1,y_2) = \{x \in \{1..M\} \colon a_{xy_1} = a_{xy_2} \}.
+\)</span></p>
+<p>Упорядочим числа <span class="math notranslate nohighlight">\(a_{xy_1}\)</span>, где <span class="math notranslate nohighlight">\(x \in X(y_1, y_2)\)</span> по возрастанию и посчитаем классы эквивалентности, сложив <span class="math notranslate nohighlight">\(n(n-1)/2\)</span>, где <span class="math notranslate nohighlight">\(n\)</span> - число повторяющихся чисел.</p>
+<p>Временная сложность алгоритма составит <span class="math notranslate nohighlight">\(O(N^2M\log M)\)</span>. В связи с этим на языке Python такое решение вряд ли пройдет во времени.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -449,20 +495,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ls.html"
+       href="algo-intro1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Аппроксимация. Метод наименьших квадратов</p>
+        <p class="prev-next-title">Начало тренировок</p>
       </div>
     </a>
     <a class="right-next"
-       href="linear-regression.html"
+       href="entertainment.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Линейная регрессия</p>
+        <p class="prev-next-title">Развлечения</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -473,7 +519,26 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Задача “Фрукты и овощи”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Наивный алгоритм</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Идея для оптимизации</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Оптимизированный алгоритм</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Дольше, но проще</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
