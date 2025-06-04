@@ -21,6 +21,7 @@ chapters:
   sections:
   - file: algo-intro1
   - file: algo-seq-sets
+  - file: algo-trees-graphs
 - file: entertainment
   sections:
   - file: math_cards
