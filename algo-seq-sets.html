@@ -412,6 +412,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Дольше, но проще</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Метод двух указателей</a></li>
 </ul>
             </nav>
         </div>
@@ -461,6 +462,24 @@ X(y_1,y_2) = \{x \in \{1..M\} \colon a_{xy_1} = a_{xy_2} \}.
 <p>Упорядочим числа <span class="math notranslate nohighlight">\(a_{xy_1}\)</span>, где <span class="math notranslate nohighlight">\(x \in X(y_1, y_2)\)</span> по возрастанию и посчитаем классы эквивалентности, сложив <span class="math notranslate nohighlight">\(n(n-1)/2\)</span>, где <span class="math notranslate nohighlight">\(n\)</span> - число повторяющихся чисел.</p>
 <p>Временная сложность алгоритма составит <span class="math notranslate nohighlight">\(O(N^2M\log M)\)</span>. В связи с этим на языке Python такое решение вряд ли пройдет во времени.</p>
 </section>
+</section>
+<section id="id7">
+<h2>Метод двух указателей<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Поставим задачу вычисления пересечения двух множеств, заданных упорядоченными списками своих элементов.
+Точнее, для двух множеств</p>
+<div class="math notranslate nohighlight">
+\[
+A = \{a_1, a_2, \ldots, a_n\}, \;\; B = \{b_1, b_2, \ldots, b_m\},
+\]</div>
+<p>где <span class="math notranslate nohighlight">\(a_1 &lt; a_2 &lt; \ldots &lt; a_n\)</span> и <span class="math notranslate nohighlight">\(b_1 &lt; b_2 &lt; \ldots &lt; b_m\)</span>, нужно вычислить множество <span class="math notranslate nohighlight">\(A \cap B\)</span>, состоящее из их общих элементов.</p>
+<p>Заведем два курсора - это переменные <span class="math notranslate nohighlight">\(p, q\)</span>, содержащие индексы элементов списков <span class="math notranslate nohighlight">\(a\)</span> и <span class="math notranslate nohighlight">\(b\)</span>.
+Инициализируем их значениями <span class="math notranslate nohighlight">\(p = 1\)</span>, <span class="math notranslate nohighlight">\(q = 1\)</span>, инициализируем промежуточный результат пустым списком. Поддерживаем логический инвариант: промежуточный результат равен пересечению множеств <span class="math notranslate nohighlight">\(a[1..p-1] \cap b[1..q-1]\)</span>. Итерационный шаг:</p>
+<p>если <span class="math notranslate nohighlight">\(a[p] &lt; b[q]\)</span>, увеличиваем <span class="math notranslate nohighlight">\(p\)</span> на 1: <span class="math notranslate nohighlight">\(p \leftarrow p + 1\)</span>;</p>
+<p>если <span class="math notranslate nohighlight">\(a[p] &gt; b[q]\)</span>, увеличиваем <span class="math notranslate nohighlight">\(q\)</span> на 1: <span class="math notranslate nohighlight">\(q \leftarrow q + 1\)</span>;</p>
+<p>если <span class="math notranslate nohighlight">\(a[p] = b[q]\)</span>, добавим это число к результату и увеличим <span class="math notranslate nohighlight">\(p\)</span> и <span class="math notranslate nohighlight">\(q\)</span> на 1: <span class="math notranslate nohighlight">\(c.append(a[p])\)</span>; <span class="math notranslate nohighlight">\(p \leftarrow p + 1\)</span>; <span class="math notranslate nohighlight">\(q \leftarrow q + 1\)</span>.</p>
+<p>Во всех трех случаях инвариант сохраняется.</p>
+<p><em>Замечание.</em> Описанный метод пригоден для пересечения не только числовых множеств. Главное, чтобы на множестве значений типа данных был задан линейный порядок (рефлексивное, антисимметричное и транзитивное бинарное отношение, такое, что между любой парой элементов множества можно установить соответствие). Так, в задаче “Фрукты и овощи” типом элементов списков будет множество кортежей длины 2, упорядоченное лексикографически.</p>
+<p><em>Упражнение.</em> Примените метод двух указателей для вычисления объединения двух множеств, заданных упорядоченными списками своих элементов (аналог задачи слияния двух упорядоченных массивов).</p>
 </section>
 </section>
 
@@ -535,6 +554,7 @@ X(y_1,y_2) = \{x \in \{1..M\} \colon a_{xy_1} = a_{xy_2} \}.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Дольше, но проще</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Метод двух указателей</a></li>
 </ul>
   </nav></div>
 
