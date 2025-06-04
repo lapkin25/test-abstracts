@@ -20,6 +20,7 @@ chapters:
 - file: algorithms
   sections:
   - file: algo-intro1
+  - file: algo-seq-sets
 - file: entertainment
   sections:
   - file: math_cards
