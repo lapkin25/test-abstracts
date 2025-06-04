@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Матрица неточности &#8212; Элементы математики</title>
+    <title>Деревья и графы &#8212; Элементы математики</title>
   
   
   
@@ -58,7 +58,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'confusion';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'algo-trees-graphs';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
     <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
@@ -66,8 +66,8 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Алгоритмы" href="algorithms.html" />
-    <link rel="prev" title="Метод Монте-Карло" href="monte_carlo.html" />
+    <link rel="next" title="Развлечения" href="entertainment.html" />
+    <link rel="prev" title="Последовательности и множества" href="algo-seq-sets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,18 +190,18 @@
 <li class="toctree-l2"><a class="reference internal" href="ls.html">Аппроксимация. Метод наименьших квадратов</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="statistics.html">Статистика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="statistics.html">Статистика</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regression_use.html">Использование линейной регрессии</a></li>
 <li class="toctree-l2"><a class="reference internal" href="naive-Bayes.html">Наивный байесовский классификатор</a></li>
 <li class="toctree-l2"><a class="reference internal" href="monte_carlo.html">Метод Монте-Карло</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Матрица неточности</a></li>
+<li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="algo-intro1.html">Начало тренировок</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algo-seq-sets.html">Последовательности и множества</a></li>
-<li class="toctree-l2"><a class="reference internal" href="algo-trees-graphs.html">Деревья и графы</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Деревья и графы</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -280,7 +280,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fconfusion.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Falgo-trees-graphs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -310,7 +310,7 @@
       
       
       
-      <li><a href="_sources/confusion.ipynb" target="_blank"
+      <li><a href="_sources/algo-trees-graphs.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -394,7 +394,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Матрица неточности</h1>
+    <h1>Деревья и графы</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -404,10 +404,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Четыре результата матрицы неточности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Вычисление показателей по матрице путаницы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Создание матрицы путаницы в Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Визуализация матрицы путаницы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Двудольные графы</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Алгоритм проверки графа на двудольность</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -420,94 +420,18 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Матрица неточности<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>Матрица путаницы (confusion matrix) - это таблица, используемая для оценки эффективности классификационной модели. Это широко используемый инструмент в машинном обучении для измерения точности модели. Матрица строится путем сравнения прогнозируемых меток с фактическими метками данных. Матрица обычно используется, когда целевая переменная является категориальной или двоичной.</p>
+<h1>Деревья и графы<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>Четыре результата матрицы неточности<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Матрица путаницы визуализирует точность классификатора путем сравнения фактических и прогнозируемых классов. Матрица двоичной путаницы состоит из sqares: <img alt="image0.png" src="_images/image0.png" /></p>
-<p>TP: Прогнозируемые значения правильно прогнозируются как фактические положительные значения.</p>
-<p>FP: Прогнозируемые значения неверно предсказывали фактический положительный результат. т. е. отрицательные значения прогнозируются как положительные</p>
-<p>FN: Ложноотрицательный результат: положительные значения прогнозируются как отрицательные.</p>
-<p>TN: Прогнозируемые значения правильно прогнозируются как фактические отрицательные значения.</p>
-</section>
+<h2>Двудольные графы<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Граф называется <em>двудольным</em>, если множество его вершин можно разбить на два подмножества (т.е. представить в виде объединения двух непересекающихся подмножеств) так, что всякое ребро в этом графе соединит пару вершин из разных подмножеств. Другими словами, двудольный граф - это граф, который можно раскрасить в два цвета.</p>
+<p><em>Теорема Кёнига.</em> Граф двудольный тогда и только тогда, когда в нем нет циклов нечетной длины.</p>
+<p>Разберем задачу “<a class="reference external" href="https://acmp.ru/asp/do/index.asp?main=task&amp;amp;id_course=2&amp;amp;id_section=21&amp;amp;id_topic=50&amp;amp;id_problem=640">Банкет</a>”.
+В этой задаче требуется рассадить персон за два стола так, чтобы никакая пара людей, которые не ладят друг с другом, не сидели за одним столом. Заметим, что получающийся граф может не быть связным. В этом случае следует проверить двудольность всех его связных компонент.</p>
 <section id="id3">
-<h2>Вычисление показателей по матрице путаницы<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>Матрица путаницы может использоваться для расчета различных показателей, которые оценивают эффективность модели классификации. Некоторые распространенные показатели включают:</p>
-<ol class="arabic simple">
-<li><p>Accuracy: доля правильно классифицированных экземпляров, рассчитываемая как (TP + TN) / (TP + TN + FP + FN).</p></li>
-<li><p>Precision: доля истинных положительных прогнозов среди всех положительных прогнозов, рассчитываемая как TP / (TP + FP).</p></li>
-<li><p>Recall: Доля истинных положительных прогнозов среди всех реальных положительных примеров, рассчитываемая как TP / (TP + FN).</p></li>
-<li><p>F1-score: среднее гармоническое значение точности и запоминания, рассчитываемое как 2 * (Точность * запоминание) / (Точность + запоминание).</p></li>
-</ol>
+<h3>Алгоритм проверки графа на двудольность<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Запустим в графе обход в глубину. Такой обход строит в связном графе остовное дерево. Если в графе есть циклы, то при обходе в глубину будут появляться обратные ребра.</p>
+<p>Любое дерево можно раскрасить в два цвета, просто обходя его. Если в графе нет обратных ребер, соединяющих две вершины с одинаковыми цветами - значит, он двудольный, иначе не двудольный.</p>
 </section>
-<section id="python">
-<h2>Создание матрицы путаницы в Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h2>
-<p>В Python вы можете создать матрицу путаницы, используя функцию confusion_matrix из модуля sklearn.metrics:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-
-<span class="c1"># Предположим, у вас есть классификационная модель и ее прогнозы</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># Create a confusion matrix</span>
-<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-
-<span class="c1"># Создайте матрицу путаницы</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
-
-<span class="c1"># Вычислите показатели по матрице путаницы</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">precision</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">recall</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="n">f1_score</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">precision</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recall:&quot;</span><span class="p">,</span> <span class="n">recall</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;F1-score:&quot;</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3 2]
- [1 3]]
-Accuracy: 0.6666666666666666
-Precision: 0.6
-Recall: 0.75
-F1-score: 0.6666666666666665
-</pre></div>
-</div>
-</div>
-</div>
-<p>Этот код создает матрицу путаницы для модели классификации и вычисляет accuracy, precision, recall, and F1-score, используя матрицу путаницы.</p>
-</section>
-<section id="id4">
-<h2>Визуализация матрицы путаницы<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>Вы также можете визуализировать матрицу путаницы, используя тепловую карту:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted labels&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True labels&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/4e327f926585ba17a11b976dcdbf2cc3c0bb3577238ad45aa170cc025b42fa47.png" src="_images/4e327f926585ba17a11b976dcdbf2cc3c0bb3577238ad45aa170cc025b42fa47.png" />
-</div>
-</div>
-<p>Этот код создает тепловую карту матрицы путаницы с предсказанными метками на оси x и истинными метками на оси y.</p>
 </section>
 </section>
 
@@ -542,20 +466,20 @@ F1-score: 0.6666666666666665
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="monte_carlo.html"
+       href="algo-seq-sets.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Метод Монте-Карло</p>
+        <p class="prev-next-title">Последовательности и множества</p>
       </div>
     </a>
     <a class="right-next"
-       href="algorithms.html"
+       href="entertainment.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Алгоритмы</p>
+        <p class="prev-next-title">Развлечения</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -575,10 +499,10 @@ F1-score: 0.6666666666666665
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Четыре результата матрицы неточности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Вычисление показателей по матрице путаницы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Создание матрицы путаницы в Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Визуализация матрицы путаницы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Двудольные графы</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Алгоритм проверки графа на двудольность</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
