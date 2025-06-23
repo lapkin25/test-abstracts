@@ -497,6 +497,109 @@ document.write(`
 <p><u>Заключение</u>: <span class="math notranslate nohighlight">\(S\)</span> суть <span class="math notranslate nohighlight">\(P\)</span>.</p>
 <p>Всего существует четыре различных конфигурации: <span class="math notranslate nohighlight">\((MP, SM, SP)\)</span>, <span class="math notranslate nohighlight">\((PM, SM, SP)\)</span>, <span class="math notranslate nohighlight">\((MP, MS, SP)\)</span>, <span class="math notranslate nohighlight">\((PM, MS, SP)\)</span>, причем слова “все” и “некоторые” (возможно, с частицей “не”) относятся к <span class="math notranslate nohighlight">\(P, M, S\)</span>. Всего получаем 256 типов силлогизмов. Известно, что лишь <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_valid_argument_forms">24 из них правильны</a>.</p>
 <p>Работа Аристотеля по силлогизмам лежит в основе разработки формально-логических систем, которые относятся к структуре выводов и не зависят от содержания. Сейчас нам ясно, что главной целью формализации логики является высочайший уровень абстракции, нейтрализация и универсализация субъектов рассуждения, а также механизация процесса рассуждения и проверка его правильности.</p>
+<p><strong>Формально-логические системы.</strong> Хотя логика силлогизмов Аристотеля заложила основы формальной логики, она не могла вполне достичь целей формализации, общности и механизации. Американский логик Льюис внес свой вклад в разработку символической логики, введя три ключевые характеристики, которым должна удовлетворять формальная логика:</p>
+<ol class="arabic simple">
+<li><p>Использование символов для понятий: В формальной логике символы представляют понятия. Например, символ <span class="math notranslate nohighlight">\(\times\)</span> обозначает умножение, и в языках программирования с той же целью пользуются символом *. Символы позволяют достичь абстракции и обобщенности логических рассуждений.</p></li>
+<li><p>Метод логического вывода (дедукции): В формальной логике используется дедуктивный метод, позволяющий получить бесконечно много новых структур из конечного множества простых структур. Из нескольких основных структур получаются сложные процессы. Это обеспечивает возможность систематически получать новые выводы из принятых посылок.</p></li>
+<li><p>Использование переменных: Переменные обозначают некоторый элемент заданного множества, что обеспечивает гибкость и абстрактность логических выражений. Переменные могут представлять любой объект в рамках заданной области, делая возможным обобщение в разных контекстах.</p></li>
+</ol>
+<p>Мы можем определить, что составляет формально-логическую систему, согласно этим принципам.</p>
+<p><u>Определение.</u> Формально-логическая система <span class="math notranslate nohighlight">\(\mathcal S\)</span> определяется несколькими компонентами, которые вместе создают структурированную платформу для рассуждений. Вот ключевые компоненты формально-логической системы:</p>
+<ul class="simple">
+<li><p>Алфавит: Множество символов, используемых в этой системе.</p></li>
+<li><p>Формальная грамматика: Множество синтаксических правил, определяющих, как могут быть выстроены символы алфавита, чтобы образовать правильные предложения или формулы.</p></li>
+<li><p>Правила вывода: Множество правил, определяющее, как одну формула можно пошагово вывести из заданного множества формул (оно может быть пустым), называемых посылками. Эти правила регламентируют процессы логического вывода в системе.</p></li>
+</ul>
+<p>Правило с пустым множеством посылок называется аксиомой.</p>
+<p>Итак, формальная система состоит из двух главных частей: формального языка и системы выводов (доказательств). Формальный язык обеспечивает структуру для выражения логических утверждений, а система выводов предлагает правила для получения новых утверждений и проверки правильности логических рассуждений.</p>
+<p>Формально-логические системы упрощают точное формулирование и строгий анализ логических утверждений и их формальных доказательств, гарантируя, что выводы получены систематически и надежно. Изучение формально-логических систем также выявило важность формальных или полуформальных языков, таких, как математический язык, языки компьютерного программирования и языки спецификаций (или языки моделирования), вдобавок к формальным языкам логических систем. Если говорить о существенных преимуществах символических языков над прочими языками, в том числе естественными, можно процитировать Льюиса:</p>
+<p>“… Во-вторых, идеографическая запись превосходит любую другую по точности. Многие идеи, выражаемые математическими символами, могут быть переданы обычным языком только с величайшими трудностями. Даже арифметика была бы сложной без идеограмм, а более высокие уровни были бы невозможны.” (“Обзор символической логики”, 1918 г.)</p>
+<p>Формально-логические системы с гильбертовскими системами доказательств широко используются в науке. Как предложили Гильберт и Аккерман в книге “Принципы математической логики”, эти системы определяют аксиомы и правила вывода в схематической форме. В гильбертовских системах используется много схем аксиом и мало правил вывода.</p>
+<p>В другом классе систем, называемых системами естественного вывода, напротив, вводится много правил вывода, но очень мало схем аксиом. Ниже мы представим вариант гильбертовской системы для исчисления предиктов первого порядка.</p>
+<p><u>Определение.</u> Язык логики предикатов первого порядка <span class="math notranslate nohighlight">\(\mathcal L\)</span> определяется с помощью следующих синтаксических категорий.</p>
+<ul class="simple">
+<li><p>Алфавит <span class="math notranslate nohighlight">\(\Sigma\)</span>, состоящий из таких символов:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(A = \{a_1, a_2, \ldots \}\)</span> - индивидные константы;</p></li>
+<li><p><span class="math notranslate nohighlight">\(X = \{x_1, x_2, \ldots\}\)</span> - индивидные переменные;</p></li>
+<li><p><span class="math notranslate nohighlight">\(F = \{f_1^1, f_2^1, \ldots, f_1^2, f_2^2, \ldots \}\)</span> - функциональные символы;</p></li>
+<li><p><span class="math notranslate nohighlight">\(R = \{P_1^1, P_2^1, \ldots, P_1^2, P_2^2, \ldots \}\)</span> - предикатные символы;</p></li>
+<li><p><span class="math notranslate nohighlight">\(()\)</span> - технические символы;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall\)</span> - квантор общности;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\to\)</span> - логические связки.</p></li>
+</ul>
+</li>
+<li><p>Синтаксические правила:</p>
+<ul>
+<li><p>Термы: <span class="math notranslate nohighlight">\(t ::= a \;|\; x \;|\; f_i^n(t, \ldots, t)\)</span>, где <span class="math notranslate nohighlight">\(a \in A\)</span>, <span class="math notranslate nohighlight">\(x \in X\)</span>, <span class="math notranslate nohighlight">\(f_i^n \in F\)</span>;</p></li>
+<li><p>Атомарные формулы: <span class="math notranslate nohighlight">\(AF ::= P^n_i(t, \ldots, t)\)</span>, где <span class="math notranslate nohighlight">\(P_i^n \in R\)</span>;</p></li>
+<li><p>Формулы: <span class="math notranslate nohighlight">\(\varphi ::= Q \; | \; (\neg \varphi) \; | \; (\varphi \to \varphi) \; | \; (\forall x)\varphi\)</span>, где <span class="math notranslate nohighlight">\(Q \in AF\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p>Это определение записано с помощью формы Бэкуса-Наура (BNF), которая обычно используется для определения синтаксиса языков программирования. Вообще языки программирования и формально-логические языки определяются сходным образом.</p>
+<p>Например, вот так выглядит язык первого порядка <span class="math notranslate nohighlight">\(\mathcal N\)</span> для арифметики:</p>
+<ul class="simple">
+<li><p>Переменные: <span class="math notranslate nohighlight">\(x_1, x_2, \ldots\)</span></p></li>
+<li><p>Индивидные константы: <span class="math notranslate nohighlight">\(a_1\)</span> - это константа <span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>Предикат: <span class="math notranslate nohighlight">\(P_1^2\)</span> - это равенство <span class="math notranslate nohighlight">\(=\)</span></p></li>
+<li><p>Функции:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f_1^1\)</span> - это функция следования</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_1^2\)</span> - это сложение</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_2^2\)</span> - это умножение</p></li>
+</ul>
+</li>
+</ul>
+<p>Важно отметить, что множество термов <span class="math notranslate nohighlight">\(\mathcal T\)</span> и множество формул <span class="math notranslate nohighlight">\(\mathcal F\)</span> являются рекурсивными. Следовательно, синтаксическая корректность терма или формулы - это разрешимое свойство. Это значит, что его можно проверить с помощью компьютерной программы.</p>
+<p>Для языка первого порядка <span class="math notranslate nohighlight">\(\mathcal L\)</span> будем использовать систему доказательств <span class="math notranslate nohighlight">\(\mathcal K_{\mathcal L}\)</span> в виде гильбертовской системы со следующими 6 схемами аксиом и 2 правилами вывода:</p>
+<ul class="simple">
+<li><p>Аксиомы:</p>
+<ul>
+<li><p>(K1) <span class="math notranslate nohighlight">\((\varphi \to (\psi \to \varphi))\)</span></p></li>
+<li><p>(K2) <span class="math notranslate nohighlight">\(((\varphi \to (\psi \to \theta)) \to ((\varphi \to \psi) \to (\varphi \to \theta)))\)</span></p></li>
+<li><p>(K3) <span class="math notranslate nohighlight">\((((\neg \varphi) \to (\neg \psi)) \to (\psi \to \varphi))\)</span></p></li>
+<li><p>(K4) <span class="math notranslate nohighlight">\((\forall x_i)\varphi \to \varphi\)</span>, где переменная <span class="math notranslate nohighlight">\(x_i\)</span> не имеет свободных вхождений в формулу <span class="math notranslate nohighlight">\(\varphi\)</span></p></li>
+<li><p>(К5) <span class="math notranslate nohighlight">\((\forall x_i)\varphi \to \varphi(t)\)</span>, где терм <span class="math notranslate nohighlight">\(t\)</span> входит вместо всех свободных вхождений переменной <span class="math notranslate nohighlight">\(x_i\)</span> в формулу <span class="math notranslate nohighlight">\(\varphi\)</span></p></li>
+<li><p>(K6) <span class="math notranslate nohighlight">\((\forall x_i)(\varphi \to \psi) \to (\varphi \to (\forall x_i)\psi)\)</span>, где переменная <span class="math notranslate nohighlight">\(x_i\)</span> не имеет свободных вхождений в формулу <span class="math notranslate nohighlight">\(\psi\)</span></p></li>
+</ul>
+</li>
+<li><p>Правила вывода:</p>
+<ul>
+<li><p>Modus Ponens (MP): <span class="math notranslate nohighlight">\(\dfrac{\varphi, \; (\varphi \to \psi)}{\psi}\)</span></p></li>
+<li><p>Обобщение (Gen): <span class="math notranslate nohighlight">\(\dfrac{\varphi}{(\forall x_i)\varphi}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Формулы (K1)-(K6) и правила вывода (MP), (Gen) - это схемы, из которых получается бесконечно много примеров. Например, две следующие формулы - это примеры (K1):</p>
+<p><span class="math notranslate nohighlight">\((p_1 \to (p_2 \to p_2))\)</span></p>
+<p><span class="math notranslate nohighlight">\((((\neg p_1) \to p_3) \to (((\neg p_3) \to p_4) \to ((\neg p_1) \to p_3)))\)</span></p>
+<p>Вот пример для правила вывода (MP):</p>
+<p><span class="math notranslate nohighlight">\(\dfrac{(p_1 \to ((\neg p_2) \to (\neg p_3))), \;\; ((p_1 \to ((\neg p_2) \to (\neg p_3))) \to (p_3 \to p_4))}{(p_3 \to p_4)}\)</span></p>
+<p>Неформальный анализ показывает, что все примеры 6 схем аксиом правильны. В том смысле, что они выполняются в любой интерпретации.</p>
+<p>В формально-логической системе понятия рассуждения (как процесса) и вывода формализовано в виде доказательств. А результат процесса рассуждений определяется как теорема этой системы.</p>
+<p><u>Определение.</u> Для заданной формально-логической системы <span class="math notranslate nohighlight">\(\mathcal S\)</span> доказательство в этой системе определяется как конечная, непустая последовательность <span class="math notranslate nohighlight">\(\varphi_1, \ldots, \varphi_n\)</span> правильно построенных формул, таких, что каждая формула <span class="math notranslate nohighlight">\(\varphi_i\)</span> в этой последовательности - это либо аксиома, либо она выводится из предыдущих формул этой последовательности с помощью одного из правил вывода системы <span class="math notranslate nohighlight">\(\mathcal S\)</span>. Последняя формула <span class="math notranslate nohighlight">\(\varphi_n\)</span> в доказательстве называется теоремой этой системы, обозначается <span class="math notranslate nohighlight">\(\vdash_{\mathcal S} \varphi_n\)</span>.</p>
+<p>Доказательства в формальной системе называются формальными доказательствами. Теоремы также формальны, поэтому не имеют предметного содержания. Согласно введенному определению, любой непустой префикс доказательства также является доказательством, и все формулы в доказательстве - это теоремы.</p>
+<p>Пример формального доказательства в системе <span class="math notranslate nohighlight">\(\mathcal K_{\mathcal L}\)</span>:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((P_1^1(x_1) \to (P_2^2(x_1, x_2) \to P_1^1(x_1)))\)</span> - из схемы аксиом (K1)</p></li>
+<li><p><span class="math notranslate nohighlight">\(((P_1^1(x_1) \to (P_2^2(x_1, x_2) \to P_1^1(x_1))) \to ((P_1^1(x_1) \to P_2^2(x_1, x_2)) \to (P_1^1(x_1) \to P_1^1(x_1))))\)</span> - из схемы аксиом (K2)</p></li>
+<li><p><span class="math notranslate nohighlight">\(((P_1^1(x_1) \to P_2^2(x_1, x_2)) \to (P_1^1(x_1) \to P_1^1(x_1)))\)</span> - по правилу (MP) из 1, 2</p></li>
+<li><p><span class="math notranslate nohighlight">\((\forall x_1)((P_1^1(x_1) \to P_2^2(x_1, x_2)) \to (P_1^1(x_1) \to P_1^1(x_1)))\)</span> - по правилу (Gen) из 3</p></li>
+<li><p><span class="math notranslate nohighlight">\((\forall x_2)(\forall x_1)((P_1^1(x_1) \to P_2^2(x_1, x_2)) \to (P_1^1(x_1) \to P_1^1(x_1)))\)</span> - по правилу (Gen) из 4</p></li>
+</ol>
+<p>В формальном доказательстве конкретные примеры схем аксиом и схем правил вывода получаются в результате сопоставления шаблонов.</p>
+<p>Можно видеть, что три ключевых аспекта аристотелевской логики выполняются для формальных доказательств. Например, отделение формы от содержания и требование явного указания всех посылок. Каждый тип силлогизмов можно формализовать в качестве правила вывода. Например, силлогизм из нашего текстового примера можно записать так:</p>
+<p><span class="math notranslate nohighlight">\(\dfrac{(\forall x_i)(\varphi(x_i) \to \psi(x_i)), \;\; \varphi(a_i)}{\psi(a_i)}\)</span></p>
+<p>Правильность данного правила вытекает из правильности формулы</p>
+<p><span class="math notranslate nohighlight">\((((\forall x_i)(\varphi(x_i) \to \psi(x_i)) \land \psi(a_i)) \to \psi(a_i))\)</span></p>
+<p>В качестве упражнения можно построить доказательство этой формулы как теоремы в системе <span class="math notranslate nohighlight">\(\mathcal K_{\mathcal L}\)</span>.</p>
+<p>Рассуждение в примере неправильного рассуждения можно формализовать следующим образом:</p>
+<p><span class="math notranslate nohighlight">\(\dfrac{(\exists x_i)(\varphi(x_i) \land \psi(x_i)), \;\; \varphi(a_i)}{\psi(a_i)}\)</span></p>
+<p>Легко понять, что это неправильное правило, и соответствующая формула не является теоремой:</p>
+<p><span class="math notranslate nohighlight">\((((\exists x_i)(\varphi(x_i) \land \psi(x_i)) \land \varphi(a_i)) \to \psi(a_i))\)</span></p>
+<p>Поэтому такое рассуждение будет неправильным.</p>
+<p>Создание формальных доказательств непосредственно на основе аксиом и правил вывода является утомительным и сложным делом. Однако основная цель формализации логических выводов состоит в том, чтобы обеспечить строгость и систематичность изложения доказательств и обеспечить возможность механической проверки их достоверности. Кроме того, изучение теории доказательств также привело к разработке методов формального доказательства теорем. В частности, методы формального доказательства теорем быстро развивались благодаря исследованиям и разработке автоматизированных средств.</p>
 </section>
 <section id="id4">
 <h2>Вычислительные модели и теории<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
