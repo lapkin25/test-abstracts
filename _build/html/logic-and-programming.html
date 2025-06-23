@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Логика в программировании &#8212; Элементы математики</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/../styles/editor_styles.css?v=14e1f340" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'logic-and-programming';</script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="_static/../js/pyodide_api.js?v=56641602"></script>
+    <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
+    <script src="_static/../js/editor.bundle.js?v=1047e269"></script>
+    <script src="_static/tests/ls_task1.js?v=115f8710"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Развлечения" href="entertainment.html" />
+    <link rel="prev" title="Логика и вычисления" href="logic-computation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Элементы математики - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Элементы математики - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Элементы математики
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="linalg.html">Линейная алгебра</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-spaces.html">Линейные пространства и линейные отображения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-mappings.html">Линейные отображения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix-mult.html">Умножение матриц</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ls.html">Аппроксимация. Метод наименьших квадратов</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="statistics.html">Статистика</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression_use.html">Использование линейной регрессии</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-Bayes.html">Наивный байесовский классификатор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monte_carlo.html">Метод Монте-Карло</a></li>
+<li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algo-intro1.html">Начало тренировок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-seq-sets.html">Последовательности и множества</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-trees-graphs.html">Деревья и графы</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="logic-computation.html">Логика и вычисления</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Логика в программировании</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="math_cards.html">Математические открытки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_songs.html">Математические песни</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lapkin25/test-abstracts" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Flogic-and-programming.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/logic-and-programming.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Логика в программировании</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Введение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Формализация логики</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Вычислительные модели и теории</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Логика в программировании</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Заключение</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Логика в программировании<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><em>Конспект статьи <a class="reference external" href="https://doi.org/10.1007/978-981-96-4656-2_2">Liu et al. - From logic to programming (2025)</a></em></p>
+<p>Математическая логика - это естественное основание компьютерных наук и компьютерных систем. Вычислительные модели и языки программирования представляют собой формально-логические системы. Выполнение программ следует рассматривать в свете логических выводов.</p>
+<p>Статья выявляет, как в процессе возникновения фундаментальных проблем в логике, математике и теории вычислений образовалась современная наука и технологии. Наряду с философскими следствиями теоремы Гёделя о неполноте, языки формальных логических систем, как и построение доказательства теорем с помощью вывода из аксиом, приводят к неполноте возможностей логического выражения и умозаключений по сравнению с человеческой интуицией, восприятием и сознанием. Пожалуй, это фундаментальные факторы, отличающие человеческий интеллект от машинного (т.е. ИИ).</p>
+<section id="id2">
+<h2>Введение<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Развитие логики и вычислений в нашей цивилизации отражает эволюцию того, как мы мыслим, как происходит обработка информации и решение проблем. От древних философских изысканий к современным технологическим инновациям, логика и вычисления отражают интеллектуальное, технологическое и социальное развитие.</p>
+<p>Эта статья представляет обзор следующих направлений.</p>
+<ul class="simple">
+<li><p><strong>Истоки и формализация логики.</strong> Обсуждается логика, основанная на естественном языке. Естественный язык имеет свои ограничения. Аристотель сформулировал формальную логику, включающую силлогизмы. Обсуждаются принципы символической логики. Возникновение математической логики после работ Гильберта и др. по формальным языкам, системам доказательств и моделям. В дальнейшем возникла метатеория формально-логических систем, она затронула такие фундаментальные вопросы, как: непротиворечивость логических систем, корректность, адекватность, полнота и разрешимость. Мы обсудим теорему Гёделя о неполноте и ее философские следствия, включая творческие способности человека и машины.</p></li>
+<li><p><strong>Возникновение современных моделей вычислений.</strong> Развитие современных вычислительных моделей последовало за ответом на программу Гильберта после доказательства теорем Гёделя. С развитием нашей цивилизации стали развиваться средства вычислений. Ранняя история вычислительных приборов включает изобретение абака и пр. в работах Паскаля, Лейбница и Бэббиджа. Определение рекурсивных функций было дано Гёделем, что стало “поворотной точкой” между логикой и вычислениями. Впоследствии в работах Аккермана, Клини и Чёрча сформировалась теория вычислимости. Разработанное Чёрчем λ-исчисление продемонстрировало, что сформулированная Гильбертом и Аккерманом проблема разрешимости не может быть решена, что приводит к понятию вычислимости. Примерно в то же время Тьюринг предложил машины Тьюринга, чтобы лучше прояснить понятие вычислимой функции. И хотя главной целью Тьюринга было показать, что проблема разрешимости Гильберта и Аккермана не может быть решена, его работы сформировали перспективы для проведения вычислений. В дальнейшем с помощью тезиса Чёрча и тезиса Тьюринга-Чёрча было доказано, что три модели - рекурсивные функции, λ-исчисление и машины Тьюринга - эквивалентны в своей вычислительной способности. Вместе эти модели стали теоретическим основанием современных цифровых вычислений, хотя изначально их цель была в том, чтобы найти ответы на вопросы, поставленные в программе Гильберта. Теоретические модели вычислений совершили революцию в области вычислений. Однако все они имеют логическую природу и поэтому обладают ограничениями, характерными для формальных систем, как следует из теорем Гёделя и теорем о неразрешимости Чёрча и Тьюринга. Эти ограничения касаются глубоких вопросов о человеческом и искусственном интеллекте, способности ИИ к созданию инноваций, логическом выводе, планировании и объяснимости систем искусственного интеллекта.</p></li>
+<li><p><strong>Появление цифровых компьютеров и теории языков программирования.</strong> Середина XX века ознаменовалась созданием программируемых компьютеров, начиная с машин таких, как ENIAC и Colossus. Архитектура фон Неймана остается основой современных компьютеров, делая возможной автоматизацию сложных вычислений, что привело к цифровой революции. С тех пор произошло существенное развитие языков программирования и инструментальных платформ для разработки, благодаря эволюции программных абстракций. Сначала произошел прогресс от машинных языков к символическим ассемблерам и затем к языкам программирования высокого уровня с компиляторами и интерпретаторами; далее возникли абстрактные типы данных, модульность, объектно-ориентированное программирование и т.д. Следовательно, проектирование и реализация языков программирования стали центральной частью компьютерных наук и системной инженерии. Мы обсудим естественную взаимосвязь между математической логикой, моделями вычислений и языками программирования. Языки программирования - это формальные языки, их синтаксис и семантика определяется аналогично языкам формальной логики. Эта взаимосвязь подтверждает мысль, что всякое вычисление можно представить как построение доказательства, что было показано Тьюрингом и Постом. Чтобы это проиллюстрировать, мы введем минимальный (но полный по Тьюрингу) язык программирования вместе с операциональной семантикой языка, денотационной семантикой и аксиоматической семантикой в логике Хоара. Мы обсудим взаимосвязь между этими семантическими моделями и то, как они соотносятся к алгебраической семантикой.</p></li>
+</ul>
+<p>В заключении обсуждается, как разрабатывать основанные на логике теории для сегодняшних компьютерных систем. Новейшие разработки в аппаратном обеспечении, такие как разработка транзисторов и эволюция языков программирования высокого уровня, сделали возможным повсеместное распространение вычислительных систем в обществе. От ранних компьютеров размером с комнату до сегодняшних компактных и взаимосвязанных устройств, вычислительные мощности расширились до возможности поддержки глобальных коммуникаций, коммерции и инноваций в области искусственного интеллекта. Сейчас сообщество столкнулось с новыми проблемами, которые связаны с разработкой теорий, основанных на логике, созданием методов и инструментов для понимания и развития этих систем.</p>
+</section>
+<section id="id3">
+<h2>Формализация логики<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Логика - учение об искусстве, теории, методах, способах и инструментах для рассуждения и принятия решений. Прежде всего, это относится к определению правильности понятий, а также истинности или ложности высказываний.</p>
+<p>Термин “логическая система” обычно относится к специальной системе, состоящей из правил формулирования, рассуждения или доказательства утверждений.</p>
+<p>Логика охватывает множество областей, от науки, инженерии и технологии до лингвистики, гуманитарных и социальных наук, права. Например, определяя понятие, необходимо уточнить и оценить его правильность, чтобы удостовериться в его осмысленности. Делая утверждение или суждение, всегда ставится вопрос о его логичности.</p>
+<p><strong>Зачем нужна логика?</strong> Всякая система: инженерное устройство, социальная организация или отдельный человек - ведет себя согласно определенной логике. Последовательность суждений обеспечивает гармоничное и правильное функционирование при проектировании, использовании или интеграции любой системы. Прикладные концепции понятности (объяснимости), достоверности и надежности берут свое начало в логике. Логическая непротиворечивости, целостность и полнота упомянутых систем имеют решающее значение для их стабильности, эффективности и надежности.</p>
+<p><strong>Формализация логики.</strong> Древние участники дебатов и философы изначально пользовались логикой в рамках естественных языков. Неточная структура естественного языка приводит к неоднозначности трактовок, что служит причиной парадоксов. Китайский парадокс: “Если белые лошади - это лошади, то черные лошади - это лошади. Значит, белые лошади - это черные лошади.”</p>
+<p>При отсутствии логической структуры сложно избежать в рамках высказывания ссылок на само же это высказывание. Парадокс лжеца: “это утверждение ложно”. Парадокс брадобрея, или парадокс Рассела: противоречие с возможностью определить любое множество как “коллекцию различимых объектов”. Если определить множество всех множеств, не содержащих самого себя в качестве элемента, <span class="math notranslate nohighlight">\(Y = \{S \colon S \notin S\}\)</span>, а потом спросить, принадлежит ли это множество самому себе, т.е. <span class="math notranslate nohighlight">\(Y \in Y\)</span>, приходим к противоречию.</p>
+<p>Эти и прочие парадоксы приводят к проблеме формулирования процессов рассуждений и проверки их правильности. Как сказано выше, в рамках естественного языка это затруднительно. Поэтому необходима более структурированная и формальная система, чтобы исключить противоречия и непоследовательность в рассуждениях.</p>
+<p><em>Парадокс Рассела и аксиоматизация теории множеств.</em> Парадокс Рассела стал причиной кризиса в теории множеств как основании математики. За ним последовали многочисленные усилия, направленные на то, чтобы обойти этот парадокс.</p>
+<p>Рассел разработал теорию типов, которая предлагает рассматривать иерархическую структуру, состоящую из множеств, определенных на разных слоях. Множество, находящееся на некотором слое, не может быть определено через множества, находящиеся на более нижних слоях. Стоит отметить, что архитектуры многих инженерных систем построены по аналогичному иерархическому принципу.</p>
+<p>Другой подход известен как теория множеств Цермело. Она предшествовало современной теории Цермело-Френкеля (ZF) и ее расширениям, таким, как теория множеств Неймана-Бернайса-Гёделя (NBG). На сегодняшний день, в сочетании с аксиомой выбора (аббревиатура ZFC), теория множеств ZF служит стандартной формой аксиоматической теории множеств. Эта теория рассматривается как наиболее важная составляющая оснований математики.</p>
+<p><em>Программа Гильберта и теорема Гёделя о неполноте.</em> В конце XIX - начале XX в. Гильберт привлек значительное внимание к основаниям математики. Сосредоточившись на геометрических аксиомах, Гильберт высказал идею, чтобы свести вопрос о непротиворечивости геометрии к непротиворечивости анализа, интерпретируя геометрическую систему в рамках действительной плоскости. Однако доказательство непротиворечивости его аксиоматизации столкнулось с значительными трудностями ввиду допущений анализа Дедекинда, примерно как и с парадоксом Рассела в теории множеств.</p>
+<p>Гильберт подчеркивал важность доказательств непроворечивости аксиоматических систем:
+“Главное требование теории аксиом должно идти дальше (чем просто избегать известных парадоксов), а именно аксиомы должны давать возможность показать, что в каждой области знания противоречия, основанные на лежащей в ее основе системе аксиом, абсолютно невозможны.”</p>
+<p>Помимо вопроса о непротиворечивости, Гильберт интересовался и другими проблемами аксиоматизации, такими, как “разрешимость всякого математического вопроса”.</p>
+<p>Сформулированная Гильбертом программа предназначалась для разрешения фундаментального кризиса в математике того времени. Вот цели программы Гильберта:</p>
+<ol class="arabic simple">
+<li><p>Формальная логическая система для математики: все математические утверждения следует выражать на точном формальном языке и действовать с ними в соответствии с корректно определенными правилами.</p></li>
+<li><p>Полнота: доказательство, что все истинные математические утверждения можно вывести в рамках введенного формализма.</p></li>
+<li><p>Непротиворечивость: доказательство, что в рамках формализма не возникает противоречий. В идеале это доказательство должно использовать только “конечностные” рассуждения о конечных математических объектах.</p></li>
+<li><p>Консервативность: доказательство, что всякий результат о “реальных объектах”, полученный с помощью рассуждений над “идеальными объектами” (такими, как несчетные множества) также можно доказать, не прибегая к идеальным объектам.</p></li>
+<li><p>Разрешимость: должен существовать алгоритм, способный определить истинность либо ложность математических утверждений.</p></li>
+</ol>
+<p>Однако в 1930 г. Гёдель показал, что большая часть целей этой программы недостижима. Это вытекает из теорем Гёделя о неполноте и результатов Чёрча и Тьюринга о неразрешимости. Теорема Гёделя дает понять, что всякая непротиворечивая  логическая система, с помощью которой можно выразить арифметику, будет неполной; всегда будут истинные утверждения в рамках этой системы, которые не могут быть доказаны. Несуществование алгоритма, выясняющего истинность произвольного математического утверждения, показано Чёрчем и Тьюрингом - таким образом, проблема разрешимости Гильберта-Аккермана (известная также как Entscheidungsproblem) не имеет решения.</p>
+<p><em>Теория вычислимости.</em> Хотя программа Гильберта оказалась невыполнимой, многие исследования в математической логике и математике являются продолжением этой программы. Стремление формализовать математику играло важную роль в обходе многочисленных математических парадоксов и помогло создать новые области математики и науки.</p>
+<p>Влияние формальной логики и ее формализации выходит далеко за рамки самой математики; благодаря логике возникли и развились компьютерные науки. Доказательство Гёделем его первой теоремы о неполноте ознаменовало начало развития теории рекурсивных функций. Теория рекурсивных функций и доказательство теоремы о неполноте сильно повлияли на развитие λ-исчисления и определение машин Тьюринга, которые изначально предназначались для того, чтобы показать, что проблема разрешимости Гильберта-Аккермана не имеет решения. Теория рекурсивных функций, λ-исчисление и теория машин Тьюринга формируют современную теорию вычислимости.</p>
+<p><em>Компьютерные науки и программная инженерия.</em> Модель компьютера с хранимой программой, которая носит название фон-неймановской архитектуры, была предложена фон Нейманом в 1945 г. Она была основана на модели универсальной машины Тьюринга. Эта концепция открыла дорогу к разработке языков программирования и абстракций программного обеспечения, и формальная логика здесь - твердое основание.</p>
+<p><strong>Ранняя форма формальной логики.</strong> У естественного языка есть свои ограничения, затрудняющие правильные рассуждения и планирование. Естественного языка недостаточно для строгого мышления, с его помощью затруднительно сформулировать процессы рассуждений и определить правильность рассуждений. Развитие формальной логики началось с основополагающей работы Аристотеля. Мыслитель предложил три ключевые идеи, на которых построена формальная логика. Его идеи оказали значимое влияние на логику, философию, современную науку и технику.</p>
+<p>Одна из идей Аристотеля - отделить форму рассуждений от их содержания. Это значит, что правильность рассуждений определяется прежде всего их формой, а не конкретным содержанием предпосылок. Это ранняя идея формализации логических выводов, в которых рассуждения касаются только структуры выводов. Другими словами, корректность логических рассуждений зависит только от формы выводов и не зависит от содержания предмета.</p>
+<p><em>Явные посылки в рассуждениях.</em> Аристотель подчеркивал, что для того чтобы рассуждение было правильным, все посылки должны быть указаны явно. Это требование гарантирует ясность и строгость логических выводов. При любом пропуске посылок рассуждения будут неполными, или это приведет к скрытым допущениям, что вводит неясность выводов и подрывает их логическую правильность.</p>
+<p><em>Искусственные символы.</em> Аристотель объяснил ограничения естественного языка и предложил использовать искусственные символы. Формальные языки, как в современной формальной логике, он изобретать не стал. Аристотель использовал греческие буквы в своих обозначениях.</p>
+<p>В своей работе “Первая аналитика” Аристотель ввел понятие силлогизма. Впоследствии на принципы Аристотеля опирался логик Фреге в своей книге “Язык формул для чистой мысли, основанный на арифметике”. Подход Аристотеля к логике отражает его философию в целом, известную как “Метафизика”. В философии Аристотеля все вещи представляются как единство формы и содержания.</p>
+<ul class="simple">
+<li><p>Форма: Структура и организация объекта. Определяет первичную функцию, назначение и сходство между объектами одного типа.</p></li>
+<li><p>Содержание: Разные части, из которых состоит объект. Определяет конкретные свойства объекта, характеристики и индивидуальность.</p></li>
+</ul>
+<p>Для понимания природы любого объекта нужно учесть как форму, так и содержание. Форма дает организационную структуру, а содержание отражает отдельные характеристики объекта. Это соотношение между формой и содержанием имеет далеко идущие следствия за рамками логики и математики (где важны изоморфизмы и гомоморфизмы между алгебраическими структурами), расширяясь до гуманитарных и естественных наук, техники. В этих дисциплинах организационная структура, системная архитектура и алгебраические структуры часто проявляют гомоморфизмы и изоморфизмы, отражая единство формы и содержания. Эти идеи имеют фундаментальное значение в проектировании целостных и эффективных систем, относясь будь то к человеческим организациям, научным моделям или техническим структурам.</p>
+<p><em>Рассуждения посредством аристотелевских силлогизмов.</em> Аристотель, основатель формальной логики, ввел силлогизмы как способ формулирования рассуждений в рамках логических выводов. По Аристотелю, силлогизм - это “рассуждение, в котором предполагаются определенные вещи, причем из них с необходимостью вытекает нечто отличное от предполагаемых вещей, потому что эти вещи таковы”.</p>
+<p>Центральная часть этого определения - “с необходимостью вытекает”. Это соответствует современному понятию логического следствия: мы говорим, что <span class="math notranslate nohighlight">\(X\)</span> с необходимостью вытекает из <span class="math notranslate nohighlight">\(Y\)</span> и <span class="math notranslate nohighlight">\(Z\)</span>, если ситуация, в которой <span class="math notranslate nohighlight">\(X\)</span> ложна при том, что <span class="math notranslate nohighlight">\(Y\)</span> и <span class="math notranslate nohighlight">\(Z\)</span> одновременно истинны, является невозможной. Такой вывод оказывается правильным по своей форме.</p>
+<p>В формальной логике предполагаемые вещи называются посылками (т.е. <span class="math notranslate nohighlight">\(Y\)</span> и <span class="math notranslate nohighlight">\(Z\)</span>), а другая вещь, с необходимостью вытекающая из посылок, - это заключение. Чтобы рассуждение было правильным, посылки и заключение должны быть связаны подходящим образом. Вывод по силлогизму состоит из главной посылки, побочной посылки и заключения, которое с необходимостью следует из посылок. Вот пример вывода по силлогизму:</p>
+<p><u>Главная посылка</u>: Все люди смертны.</p>
+<p><u>Побочная посылка</u>: Цинь Шихуанди - человек.</p>
+<p><u>Заключение</u>: Следовательно, Цинь Шихуанди смертен.</p>
+<p>Это рассуждение верно, потому что заключение логически следует из посылок, независимо от конкретного содержания. Именно форма вывода, в которой две посылки приводят к заключению, обеспечивает правильность рассуждений. Пример неправильного силлогизма:</p>
+<p><u>Главная посылка</u>: Некоторые музыканты - пианисты.</p>
+<p><u>Побочная посылка</u>: Лан Лан - музыкант.</p>
+<p><u>Заключение</u>: Следовательно, Лан Лан - пианист.</p>
+<p>Вывод неправилен, поскольку только некоторые, но не обязательно все, музыканты - пианисты. Поэтому могут существовать примеры музыкантов, которые не являются пианистами. Даже хотя Лан Лан - известный китайский пианист, такой вывод не следует с необходимостью из этих двух посылок.</p>
+<p>Назовем сказуемое заключения основной частью вывода (обозначим ее через <span class="math notranslate nohighlight">\(P\)</span>), сказуемое побочной посылки - это средняя часть вывода (обозначим ее через <span class="math notranslate nohighlight">\(M\)</span>), и подлежащее заключения - это побочная часть вывода (обозначим ее через <span class="math notranslate nohighlight">\(S\)</span>). Средняя часть (M) входит в обе посылки, но не входит в заключение, она служит связкой между подлежащим и сказуемым. Стандартный силлогизм можно сформулировать с помощью символов так:</p>
+<p><u>Главная посылка</u>: Все <span class="math notranslate nohighlight">\(M\)</span> суть <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p><u>Побочная посылка</u>: <span class="math notranslate nohighlight">\(S\)</span> суть <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p><u>Заключение</u>: <span class="math notranslate nohighlight">\(S\)</span> суть <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p>Всего существует четыре различных конфигурации: <span class="math notranslate nohighlight">\((MP, SM, SP)\)</span>, <span class="math notranslate nohighlight">\((PM, SM, SP)\)</span>, <span class="math notranslate nohighlight">\((MP, MS, SP)\)</span>, <span class="math notranslate nohighlight">\((PM, MS, SP)\)</span>, причем слова “все” и “некоторые” (возможно, с частицей “не”) относятся к <span class="math notranslate nohighlight">\(P, M, S\)</span>. Всего получаем 256 типов силлогизмов. Известно, что лишь <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_valid_argument_forms">24 из них правильны</a>.</p>
+<p>Работа Аристотеля по силлогизмам лежит в основе разработки формально-логических систем, которые относятся к структуре выводов и не зависят от содержания. Сейчас нам ясно, что главной целью формализации логики является высочайший уровень абстракции, нейтрализация и универсализация субъектов рассуждения, а также механизация процесса рассуждения и проверка его правильности.</p>
+</section>
+<section id="id4">
+<h2>Вычислительные модели и теории<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+</section>
+<section id="id5">
+<h2>Логика в программировании<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+</section>
+<section id="id6">
+<h2>Заключение<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="logic-computation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Логика и вычисления</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="entertainment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Развлечения</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Введение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Формализация логики</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Вычислительные модели и теории</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Логика в программировании</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Заключение</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Кафедра математики и моделирования
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
