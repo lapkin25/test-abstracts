@@ -418,6 +418,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Метод двух указателей</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Задача “Нарезка фантиков”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Формализация задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Алгоритм</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -485,6 +490,56 @@ A = \{a_1, a_2, \ldots, a_n\}, \;\; B = \{b_1, b_2, \ldots, b_m\},
 <p>Во всех трех случаях инвариант сохраняется.</p>
 <p><em>Замечание.</em> Описанный метод пригоден для пересечения не только числовых множеств. Главное, чтобы на множестве значений типа данных был задан линейный порядок (рефлексивное, антисимметричное и транзитивное бинарное отношение, такое, что между любой парой элементов множества можно установить соответствие). Так, в задаче “Фрукты и овощи” типом элементов списков будет множество кортежей длины 2, упорядоченное лексикографически.</p>
 <p><em>Упражнение.</em> Примените метод двух указателей для вычисления объединения двух множеств, заданных упорядоченными списками своих элементов (аналог задачи слияния двух упорядоченных массивов).</p>
+</section>
+<section id="id8">
+<h2>Задача “Нарезка фантиков”<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p><em>Задача с турнира <a class="reference external" href="https://imcs.dvfu.ru/cats/main.pl?f=problem_text;cpid=714428;cid=706500">Школьники ACM 2009</a></em></p>
+<p>Для производства конфетных фантиков изготовлена длинная узкая лента с напечатанными на ней картинками. Длина каждой картинки - <span class="math notranslate nohighlight">\(L\)</span> мм, расстояние между двумя соседними картинками - <span class="math notranslate nohighlight">\(d\)</span> мм, расстояние от начала ленты до первой картинки - <span class="math notranslate nohighlight">\(a\)</span> мм.</p>
+<p>Нужно получить <span class="math notranslate nohighlight">\(N\)</span> фантиков длиной <span class="math notranslate nohighlight">\(W\)</span> мм каждый. Аппарат по производству фантиков работает так: сперва от начала ленты отрезается и выбрасывается кусок длиной <span class="math notranslate nohighlight">\(x\)</span> мм. Затем от начала ленты один за другим отрезаются фантики длиной
+<span class="math notranslate nohighlight">\(W\)</span> мм каждый.</p>
+<p>Каким должно быть <span class="math notranslate nohighlight">\(x\)</span>, чтобы на каждом фантике была целиком расположена ровно одна картинка? Картинки, попадающие на фантик только частично, не считаются.</p>
+<p><img alt="candies.png" src="_images/candies.png" /></p>
+<section id="id9">
+<h3>Формализация задачи<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Это задача “на реализацию”, решается перебором возможных ответов.</p>
+<p>Для каждого <span class="math notranslate nohighlight">\(x\)</span> определим <span class="math notranslate nohighlight">\(N\)</span> предикатов <span class="math notranslate nohighlight">\(P_i(x) = \)</span> “на <span class="math notranslate nohighlight">\(i\)</span>-м фантике целиком расположена ровно одна картинка” (<span class="math notranslate nohighlight">\(i = 1..N\)</span>). Требуется найти любое <span class="math notranslate nohighlight">\(x\)</span>, для которого истинно условие <span class="math notranslate nohighlight">\(\forall i\, P_i(x)\)</span>.</p>
+<p>Чтобы выразить предикат <span class="math notranslate nohighlight">\(P_i(x)\)</span>, заметим, что число картинок, целиком расположенных на фантике, зависит от расстояния от начала фантика до ближайшей картинки.
+Обозначим расстояние от начала <span class="math notranslate nohighlight">\(i\)</span>-го фантика до ближайшей картинки через <span class="math notranslate nohighlight">\(r_i(x)\)</span>. Тогда <span class="math notranslate nohighlight">\(P_i(x) = (r_i(x) + L \leq W) \,\&amp;\, (r_i(x) + 2L + d &gt; W)\)</span>.</p>
+<p>Для первого фантика <span class="math notranslate nohighlight">\(r_1(x) = \begin{cases}a-x, &amp; \text{ если }x \leq a,\\ 
+a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
+<p>Координата начала картинки, ближайшей к началу <span class="math notranslate nohighlight">\(1\)</span>-го фантика, при переходе к следующему фантику сдвинется на <span class="math notranslate nohighlight">\(W\)</span> мм влево. При этом картинки повторяются с периодом <span class="math notranslate nohighlight">\(L + d\)</span> мм. Поэтому <span class="math notranslate nohighlight">\(r_2(x) = (r_1(x) - W) \bmod (L + d)\)</span>. Важно отметить, что вычисление остатка от деления отрицательного числа на положительное в языках программирования может отличаться от математического определения.</p>
+<p>Вообще,</p>
+<p><span class="math notranslate nohighlight">\(r_1(x) = (a - x) \bmod (L + d)\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(r_{i+1}(x) = (r_i(x) - W) \bmod (L + d)\)</span>, <span class="math notranslate nohighlight">\(i = 1, 2, \ldots\)</span></p>
+</section>
+<section id="id10">
+<h3>Алгоритм<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>Определим функцию для вычисления <span class="math notranslate nohighlight">\(r_1(x), r_2(x), \ldots, r_N(x)\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_r</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># индексация с 1</span>
+    <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_mod</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">my_mod</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">W</span><span class="p">,</span> <span class="n">L</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p>Определим функцию для вычисления <span class="math notranslate nohighlight">\(P_1(x), P_2(x), \ldots, P_N(x)\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_P</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># индексация с 1</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">calc_r</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">L</span> <span class="o">&lt;=</span> <span class="n">W</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">L</span> <span class="o">+</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="n">W</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">P</span>
+</pre></div>
+</div>
+<p>Тогда ответ для выбранного <span class="math notranslate nohighlight">\(x\)</span> вычисляется следующим образом.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_proper</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">calc_P</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</pre></div>
+</div>
+<p>Остается реализовать функцию <code class="docutils literal notranslate"><span class="pre">my_mod(a,</span> <span class="pre">b)</span></code> для вычисления остатка от деления целого числа <span class="math notranslate nohighlight">\(a\)</span> на натуральное число <span class="math notranslate nohighlight">\(b\)</span>.</p>
+</section>
 </section>
 </section>
 
@@ -560,6 +615,11 @@ A = \{a_1, a_2, \ldots, a_n\}, \;\; B = \{b_1, b_2, \ldots, b_m\},
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Метод двух указателей</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Задача “Нарезка фантиков”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Формализация задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Алгоритм</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
