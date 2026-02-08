@@ -17,6 +17,11 @@ chapters:
   - file: naive-Bayes
   - file: monte_carlo
   - file: confusion
+- file: discr
+  sections:
+  - file: discr-intro
+  - file: discr-induction
+  - file: discr-graphs
 - file: algorithms
   sections:
   - file: algo-intro1
