@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Математические песни &#8212; Элементы математики</title>
+    <title>Дискретная математика &#8212; Элементы математики</title>
   
   
   
@@ -58,7 +58,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math_songs';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'discr';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
     <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
@@ -66,7 +66,8 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Математические открытки" href="math_cards.html" />
+    <link rel="next" title="Дискретная математика: введение" href="discr-intro.html" />
+    <link rel="prev" title="Матрица неточности" href="confusion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -197,7 +198,7 @@
 <li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="discr.html">Дискретная математика</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Дискретная математика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-graphs.html">Графы</a></li>
@@ -213,9 +214,9 @@
 <li class="toctree-l2"><a class="reference internal" href="logic-and-programming.html">Логика в программировании</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="math_cards.html">Математические открытки</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Математические песни</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_songs.html">Математические песни</a></li>
 </ul>
 </li>
 </ul>
@@ -289,7 +290,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fmath_songs.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fdiscr.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +320,7 @@
       
       
       
-      <li><a href="_sources/math_songs.md" target="_blank"
+      <li><a href="_sources/discr.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -390,9 +391,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -403,22 +402,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Математические песни</h1>
+    <h1>Дискретная математика</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Логика</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Множества</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Системы линейных уравнений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Производные</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -429,133 +417,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Математические песни<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<section id="id2">
-<h2>Логика<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://vk.com/wall-91031095_34014">Слушать песню</a></p>
-<p>Язык первого порядка</p>
-<p>Для мышления зарядка</p>
-<p>Что угодно записать на нём ты сможешь</p>
-<p>И понять тебя поможешь</p>
-<p>Припев:</p>
-<p>Квантор – существует</p>
-<p>Квантор – для любого</p>
-<p>Предикаты от термов</p>
-<p>И друг с другом связаны</p>
-<p>Терм – функциональный символ</p>
-<p>От предметных переменных</p>
-<p>Вместо переменных термы</p>
-<p>Тоже могут быть, наверно</p>
-<p>Припев.</p>
-<p>Формула атомарная,</p>
-<p>Не элементарная -</p>
-<p>Это предикат от термов,</p>
-<p>Какой из них, смотри в модели</p>
-<p>Припев.</p>
-<p>Раз, два – конъюнкция</p>
-<p>Элементарных формул</p>
-<p>Три, четыре – импликация</p>
-<p>Вот и весь язык.</p>
-<p>Припев.</p>
-<p>Язык первого порядка –</p>
-<p>Программисту разнарядка</p>
-<p>Чтоб про код могли всё знать,</p>
-<p>На языке всё записать</p>
-<p>Припев.</p>
-</section>
-<section id="id3">
-<h2>Множества<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://group22x.narod.ru/grenkin/music_new/relations.mp3">Слушать песню</a></p>
-<p>Муз. В. Соловьев-Седой - Пилоты</p>
-<p>Чтоб найти подходящую пару,</p>
-<p>Отношение нужно ввести,</p>
-<p>Для чего обязательно надо</p>
-<p>Нам теорию множеств пройти.</p>
-<p>Потому, потому что на матфаке</p>
-<p>Матанализ - он как родимый дом.</p>
-<p>Первым делом - умножение Декарта,</p>
-<p>Ну а девушки? А девушки потом.</p>
-<p>Отношение не инъективно,</p>
-<p>И поэтому надо сказать,</p>
-<p>Что взаимную тут однозначность</p>
-<p>Невозможно подчас отыскать.</p>
-<p>Потому, потому, что у девчонок</p>
-<p>Отношения есть разные к парням -</p>
-<p>Отношения частичного порядка,</p>
-<p>Первым быть в которых очень трудно нам.</p>
-<p>Если всё же удача свершилась</p>
-<p>И ваш выбор друг с другом совпал,</p>
-<p>Ты следи, чтобы лайнер учёбы</p>
-<p>Из-за чувств прям в хвосты не упал.</p>
-<p>Потому, потому что на матфаке</p>
-<p>Вся учеба - затруднительный процесс,</p>
-<p>И ответственные отменяют встречи,</p>
-<p>Если сдать экзамен нужно позарез.</p>
-<p>Потому, потому что на матфаке</p>
-<p>Вся учеба - затруднительный процесс.</p>
-<p>Но надежные взаимоотношения</p>
-<p>Помогают чуть облегчить этот стресс.</p>
-</section>
-<section id="id4">
-<h2>Системы линейных уравнений<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://group22x.narod.ru/grenkin/music_new/Gauss.mp3">Слушать песню</a></p>
-<p>Муз. Валерий Сюткин - Красавчик</p>
-<p>Уравнений линейных систему</p>
-<p>Решить может и средний талант.</p>
-<p>Только нужно сначала проверить,</p>
-<p>Что не ноль её детерминант.</p>
-<p>Припев:</p>
-<p>Гаусс хотел, чтоб по нему с ума сходили,</p>
-<p>И это правда, нет занятия веселей.</p>
-<p>Мы все по его методу чего-то находили.</p>
-<p>Не знаю, что, но Гауссу видней.</p>
-<p>Есть в системе N неизвестных.</p>
-<p>Чтоб одно из них исключить,</p>
-<p>Нужно взять одно уравненье</p>
-<p>И все числа в столбце обнулить.</p>
-<p>Припев.</p>
-<p>Стала матрица вдруг треугольной,</p>
-<p>И пойдём мы в обратном пути.</p>
-<p>Выражая иксы друг за другом,</p>
-<p>Мы сумели решенье найти.</p>
-<p>Припев.</p>
-</section>
-<section id="id5">
-<h2>Производные<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://youtu.be/aenv417BsFw">Слушать песню</a></p>
-<p>Муз. PSY – Gangnam style</p>
-<p>Знаешь ли ты, сколько бывает производных?</p>
-<p>Производную порядка “пи” ты можешь взять свободно.</p>
-<p>Но мы начнем с простого и поэтому введем</p>
-<p>Отображение из R^n в R^m.</p>
-<p>Составь якобиан – ты знаешь якобы матан.</p>
-<p>Определение дам, и удивить ты сможешь дам.</p>
-<p>Ты точку выбери, в которой производную считать,</p>
-<p>Из этой точки будем мы плясать.</p>
-<p>Приращение получает аргумент,</p>
-<p>И его мы умножаем на градиент.</p>
-<p>И еще плюс бесконечно малое…</p>
-<p>Oppa nabla style!</p>
-<p>Допустим теперь, что наша функция комплексна.</p>
-<p>Определение дадим мы точно так же, если честно.</p>
-<p>Осталось умножение комплексным заменить –</p>
-<p>Проделав это, ты будешь знаменит.</p>
-<p>Составь якобиан – ты знаешь якобы матан.</p>
-<p>Определение дам, и удивить ты сможешь дам.</p>
-<p>Ты точку выбери, в которой производную считать,</p>
-<p>Из этой точки будем танцевать.</p>
-<p>Приращение получает аргумент,</p>
-<p>И его мы умножаем на градиент.</p>
-<p>И еще плюс бесконечно малое…</p>
-<p>Oppa nabla style!</p>
-<p>Это не всё, далеко не всё…</p>
-<p>Мы банаховы пространства не ввели еще.</p>
-<p>Можно по Фреше, а можно по Гато…</p>
-<p>Но в смысле обобщенных функций будет само то!</p>
-<p>Это Соболев!</p>
-<p>Oppa nabla style!</p>
-<p>Что-то я устал…</p>
-</section>
+<h1>Дискретная математика<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
+<li class="toctree-l1"><a class="reference internal" href="discr-graphs.html">Графы</a></li>
+</ul>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -589,13 +458,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="math_cards.html"
+       href="confusion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Математические открытки</p>
+        <p class="prev-next-title">Матрица неточности</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="discr-intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Дискретная математика: введение</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -604,23 +482,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Логика</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Множества</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Системы линейных уравнений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Производные</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

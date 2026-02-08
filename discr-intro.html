@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Математические песни &#8212; Элементы математики</title>
+    <title>Дискретная математика: введение &#8212; Элементы математики</title>
   
   
   
@@ -58,7 +58,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'math_songs';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'discr-intro';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
     <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
@@ -66,7 +68,8 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Математические открытки" href="math_cards.html" />
+    <link rel="next" title="Метод математической индукции" href="discr-induction.html" />
+    <link rel="prev" title="Дискретная математика" href="discr.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -197,8 +200,8 @@
 <li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="discr.html">Дискретная математика</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="discr.html">Дискретная математика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Дискретная математика: введение</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-graphs.html">Графы</a></li>
 </ul>
@@ -213,9 +216,9 @@
 <li class="toctree-l2"><a class="reference internal" href="logic-and-programming.html">Логика в программировании</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="math_cards.html">Математические открытки</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Математические песни</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_songs.html">Математические песни</a></li>
 </ul>
 </li>
 </ul>
@@ -289,7 +292,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fmath_songs.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fdiscr-intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +322,7 @@
       
       
       
-      <li><a href="_sources/math_songs.md" target="_blank"
+      <li><a href="_sources/discr-intro.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,7 +332,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -403,7 +406,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Математические песни</h1>
+    <h1>Дискретная математика: введение</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,10 +416,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Логика</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Множества</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Системы линейных уравнений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Производные</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Пример моделирования</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Формальная постановка задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Алгоритм Прима</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Пример работы алгоритма</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -429,132 +436,228 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Математические песни<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>Дискретная математика: введение<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>Источник: Хаггарти - Дискретная математика для программистов</p>
+<p>“Дискретный” - составленный из отдельных частей.</p>
+<p><em>Дискретная математика</em> изучает множества конечной/счетной мощности и определенные на них структуры (кортежи, таблицы, графы).
+Компьютер можно смоделировать в виде дискретной математической системы. Чтобы понимать, как эта система устроена, мы этот предмет и изучаем.</p>
 <section id="id2">
-<h2>Логика<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://vk.com/wall-91031095_34014">Слушать песню</a></p>
-<p>Язык первого порядка</p>
-<p>Для мышления зарядка</p>
-<p>Что угодно записать на нём ты сможешь</p>
-<p>И понять тебя поможешь</p>
-<p>Припев:</p>
-<p>Квантор – существует</p>
-<p>Квантор – для любого</p>
-<p>Предикаты от термов</p>
-<p>И друг с другом связаны</p>
-<p>Терм – функциональный символ</p>
-<p>От предметных переменных</p>
-<p>Вместо переменных термы</p>
-<p>Тоже могут быть, наверно</p>
-<p>Припев.</p>
-<p>Формула атомарная,</p>
-<p>Не элементарная -</p>
-<p>Это предикат от термов,</p>
-<p>Какой из них, смотри в модели</p>
-<p>Припев.</p>
-<p>Раз, два – конъюнкция</p>
-<p>Элементарных формул</p>
-<p>Три, четыре – импликация</p>
-<p>Вот и весь язык.</p>
-<p>Припев.</p>
-<p>Язык первого порядка –</p>
-<p>Программисту разнарядка</p>
-<p>Чтоб про код могли всё знать,</p>
-<p>На языке всё записать</p>
-<p>Припев.</p>
-</section>
+<h2>Пример моделирования<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Поставим задачу выделить подмножество дорог, соединяющее все города между собой, суммарная длина которых будет минимальной. (Например, какие дороги надо отремонтировать, чтобы минимизировать стоимость ремонта?)</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>расстояние (в км)</p></th>
+<th class="head"><p>Вл</p></th>
+<th class="head"><p>Нах</p></th>
+<th class="head"><p>Усс</p></th>
+<th class="head"><p>Арт</p></th>
+<th class="head"><p>Арс</p></th>
+<th class="head"><p>См</p></th>
+<th class="head"><p>Шк</p></th>
+<th class="head"><p>Пог</p></th>
+<th class="head"><p>Пар</p></th>
+<th class="head"><p>Фок</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Владивосток</p></td>
+<td><p></p></td>
+<td><p>172</p></td>
+<td><p>98</p></td>
+<td><p>45</p></td>
+<td><p>239</p></td>
+<td><p>75</p></td>
+<td><p>66</p></td>
+<td><p>195</p></td>
+<td><p>160</p></td>
+<td><p>118</p></td>
+</tr>
+<tr class="row-odd"><td><p>Находка</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>209</p></td>
+<td><p>132</p></td>
+<td><p>350</p></td>
+<td><p>98</p></td>
+<td><p>109</p></td>
+<td><p>306</p></td>
+<td><p>55</p></td>
+<td><p>57</p></td>
+</tr>
+<tr class="row-even"><td><p>Уссурийск</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>77</p></td>
+<td><p>144</p></td>
+<td><p>113</p></td>
+<td><p>104</p></td>
+<td><p>97</p></td>
+<td><p>198</p></td>
+<td><p>156</p></td>
+</tr>
+<tr class="row-odd"><td><p>Артем</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>220</p></td>
+<td><p>36</p></td>
+<td><p>26</p></td>
+<td><p>175</p></td>
+<td><p>121</p></td>
+<td><p>78</p></td>
+</tr>
+<tr class="row-even"><td><p>Арсеньев</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>255</p></td>
+<td><p>246</p></td>
+<td><p>209</p></td>
+<td><p>340</p></td>
+<td><p>298</p></td>
+</tr>
+<tr class="row-odd"><td><p>Смоляниново</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>11</p></td>
+<td><p>208</p></td>
+<td><p>98</p></td>
+<td><p>43</p></td>
+</tr>
+<tr class="row-even"><td><p>Шкотово</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>199</p></td>
+<td><p>96</p></td>
+<td><p>54</p></td>
+</tr>
+<tr class="row-odd"><td><p>Пограничный</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>295</p></td>
+<td><p>252</p></td>
+</tr>
+<tr class="row-even"><td><p>Партизанск</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>104</p></td>
+</tr>
+<tr class="row-odd"><td><p>Фокино</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <section id="id3">
-<h2>Множества<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://group22x.narod.ru/grenkin/music_new/relations.mp3">Слушать песню</a></p>
-<p>Муз. В. Соловьев-Седой - Пилоты</p>
-<p>Чтоб найти подходящую пару,</p>
-<p>Отношение нужно ввести,</p>
-<p>Для чего обязательно надо</p>
-<p>Нам теорию множеств пройти.</p>
-<p>Потому, потому что на матфаке</p>
-<p>Матанализ - он как родимый дом.</p>
-<p>Первым делом - умножение Декарта,</p>
-<p>Ну а девушки? А девушки потом.</p>
-<p>Отношение не инъективно,</p>
-<p>И поэтому надо сказать,</p>
-<p>Что взаимную тут однозначность</p>
-<p>Невозможно подчас отыскать.</p>
-<p>Потому, потому, что у девчонок</p>
-<p>Отношения есть разные к парням -</p>
-<p>Отношения частичного порядка,</p>
-<p>Первым быть в которых очень трудно нам.</p>
-<p>Если всё же удача свершилась</p>
-<p>И ваш выбор друг с другом совпал,</p>
-<p>Ты следи, чтобы лайнер учёбы</p>
-<p>Из-за чувств прям в хвосты не упал.</p>
-<p>Потому, потому что на матфаке</p>
-<p>Вся учеба - затруднительный процесс,</p>
-<p>И ответственные отменяют встречи,</p>
-<p>Если сдать экзамен нужно позарез.</p>
-<p>Потому, потому что на матфаке</p>
-<p>Вся учеба - затруднительный процесс.</p>
-<p>Но надежные взаимоотношения</p>
-<p>Помогают чуть облегчить этот стресс.</p>
+<h3>Формальная постановка задачи<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Имеем <em>полный граф</em> из 10 вершин.</p>
+<p>Неформально, граф - это сеть из <em>вершин</em>, соединенных <em>ребрами</em>. Вершины изображают города, а ребра - дороги между ними. Каждое ребро помечено числом, называемым <em>весом ребра</em>.</p>
+<p>Таким образом, в абстрактной формулировке нам нужно, имея таблицу весов ребер графа, найти его <em>минимальное остовное дерево</em>.</p>
+<p><strong>Определение.</strong> Остовным деревом графа <span class="math notranslate nohighlight">\(G\)</span> называют его подграф <span class="math notranslate nohighlight">\(G'\)</span>, включающий все вершины графа <span class="math notranslate nohighlight">\(G\)</span>, для которого выполняются условия:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(G'\)</span> <em>связен</em>: между любыми двумя вершинами <span class="math notranslate nohighlight">\(G'\)</span> существует путь в <span class="math notranslate nohighlight">\(G'\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(G'\)</span> <em>ацикличен</em>: в графе <span class="math notranslate nohighlight">\(G'\)</span> нет замкнутых путей (циклов)</p></li>
+</ol>
+<p>Связный ациклический граф называется <em>деревом</em>.</p>
+<p><em>Стоимостью остовного дерева</em> назовем сумму весов его ребер.</p>
+<p>Остовное дерево, имеющее минимально возможную стоимость (среди всевозможных остовных деревьев графа <span class="math notranslate nohighlight">\(G\)</span>), называется <em>минимальным остовным деревом</em> графа <span class="math notranslate nohighlight">\(G\)</span>.</p>
 </section>
 <section id="id4">
-<h2>Системы линейных уравнений<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://group22x.narod.ru/grenkin/music_new/Gauss.mp3">Слушать песню</a></p>
-<p>Муз. Валерий Сюткин - Красавчик</p>
-<p>Уравнений линейных систему</p>
-<p>Решить может и средний талант.</p>
-<p>Только нужно сначала проверить,</p>
-<p>Что не ноль её детерминант.</p>
-<p>Припев:</p>
-<p>Гаусс хотел, чтоб по нему с ума сходили,</p>
-<p>И это правда, нет занятия веселей.</p>
-<p>Мы все по его методу чего-то находили.</p>
-<p>Не знаю, что, но Гауссу видней.</p>
-<p>Есть в системе N неизвестных.</p>
-<p>Чтоб одно из них исключить,</p>
-<p>Нужно взять одно уравненье</p>
-<p>И все числа в столбце обнулить.</p>
-<p>Припев.</p>
-<p>Стала матрица вдруг треугольной,</p>
-<p>И пойдём мы в обратном пути.</p>
-<p>Выражая иксы друг за другом,</p>
-<p>Мы сумели решенье найти.</p>
-<p>Припев.</p>
-</section>
+<h3>Алгоритм Прима<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><em>Вход:</em> граф <span class="math notranslate nohighlight">\(G\)</span></p>
+<p><em>Выход:</em> минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>, заданное как подмножество ребер</p>
+<p><em><strong>Шаг 1.</strong></em> <em>Инициализация:</em></p>
+<p><strong>Шаг 1.1.</strong> Выбрать произвольную вершину <span class="math notranslate nohighlight">\(u_0\)</span> графа <span class="math notranslate nohighlight">\(G\)</span></p>
+<p><strong>Шаг 1.2.</strong> Найти в множестве ребер <span class="math notranslate nohighlight">\(\{(u_0, v) \colon v \text{ - вершина графа }G\}\)</span> ребро с минимальным весом: <span class="math notranslate nohighlight">\(d(u_0, v) \to \min\limits_v = d(u_0, v_0)\)</span>.</p>
+<p><strong>Шаг 1.3.</strong> Присоединить ребро <span class="math notranslate nohighlight">\((u_0, v_0)\)</span> к остовному дереву:</p>
+<p><span class="math notranslate nohighlight">\(E' \leftarrow \{(u_0, v_0)\}; \quad V' \leftarrow \{u_0, v_0\}\)</span></p>
+<p><em><strong>Шаг 2.</strong></em> <em>Цикл по числу вершин:</em></p>
+<p>Положим <span class="math notranslate nohighlight">\(k = 1\)</span>.</p>
+<p><em>Пока не все вершины графа <span class="math notranslate nohighlight">\(G\)</span> присоединены к остовному дереву (т.е. <span class="math notranslate nohighlight">\(V' \neq V\)</span>), выполнять шаги:</em></p>
+<p><strong>Шаг 2.1.</strong> Найти в множестве рёбер <span class="math notranslate nohighlight">\(\{(u, v) \colon u \in V', \; v \notin V', \; (u, v) \in E \}\)</span> ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> с минимальным весом: <span class="math notranslate nohighlight">\(d(u, v) \to \min\limits_{\substack{u \in V' \\ v \notin V' \\ (u, v) \in E}} = d(u_k, v_k)\)</span></p>
+<p><strong>Шаг 2.2.</strong> Присоединить ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> к остовному дереву; увеличить <span class="math notranslate nohighlight">\(k\)</span> на <span class="math notranslate nohighlight">\(1\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(E' \leftarrow E' \cup \{(u_k, v_k)\}; \quad V' \leftarrow V' \cup \{v_k\}; \quad k \leftarrow k + 1\)</span></p>
+<p><em><strong>Шаг 3.</strong></em> Выдать ответ: граф <span class="math notranslate nohighlight">\(G' = (V', E')\)</span> - это минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G = (V, E)\)</span>.</p>
 <section id="id5">
-<h2>Производные<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://youtu.be/aenv417BsFw">Слушать песню</a></p>
-<p>Муз. PSY – Gangnam style</p>
-<p>Знаешь ли ты, сколько бывает производных?</p>
-<p>Производную порядка “пи” ты можешь взять свободно.</p>
-<p>Но мы начнем с простого и поэтому введем</p>
-<p>Отображение из R^n в R^m.</p>
-<p>Составь якобиан – ты знаешь якобы матан.</p>
-<p>Определение дам, и удивить ты сможешь дам.</p>
-<p>Ты точку выбери, в которой производную считать,</p>
-<p>Из этой точки будем мы плясать.</p>
-<p>Приращение получает аргумент,</p>
-<p>И его мы умножаем на градиент.</p>
-<p>И еще плюс бесконечно малое…</p>
-<p>Oppa nabla style!</p>
-<p>Допустим теперь, что наша функция комплексна.</p>
-<p>Определение дадим мы точно так же, если честно.</p>
-<p>Осталось умножение комплексным заменить –</p>
-<p>Проделав это, ты будешь знаменит.</p>
-<p>Составь якобиан – ты знаешь якобы матан.</p>
-<p>Определение дам, и удивить ты сможешь дам.</p>
-<p>Ты точку выбери, в которой производную считать,</p>
-<p>Из этой точки будем танцевать.</p>
-<p>Приращение получает аргумент,</p>
-<p>И его мы умножаем на градиент.</p>
-<p>И еще плюс бесконечно малое…</p>
-<p>Oppa nabla style!</p>
-<p>Это не всё, далеко не всё…</p>
-<p>Мы банаховы пространства не ввели еще.</p>
-<p>Можно по Фреше, а можно по Гато…</p>
-<p>Но в смысле обобщенных функций будет само то!</p>
-<p>Это Соболев!</p>
-<p>Oppa nabla style!</p>
-<p>Что-то я устал…</p>
+<h4>Пример работы алгоритма<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(u_0 = \text{Владивосток}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_0 = \text{Артем}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_0, v_0) = 45\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_1 = \text{Артем}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_1 = \text{Шкотово}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_1, v_1) = 26\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_2 = \text{Шкотово}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_2 = \text{Смоляниново}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_2, v_2) = 11\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_3 = \text{Смоляниново}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_3 = \text{Фокино}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_3, v_3) = 43\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_4 = \text{Фокино}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_4 = \text{Находка}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_4, v_4) = 57\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_5 = \text{Артем}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_5 = \text{Уссурийск}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_5, v_5) = 77\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_6 = \text{Шкотово}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_6 = \text{Партизанск}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_6, v_6) = 96\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_7 = \text{Уссурийск}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_7 = \text{Пограничный}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_7, v_7) = 97\)</span></p>
+<br/>
+<p><span class="math notranslate nohighlight">\(u_8 = \text{Уссурийск}\)</span></p>
+<p><span class="math notranslate nohighlight">\(v_8 = \text{Арсеньев}\)</span></p>
+<p><span class="math notranslate nohighlight">\(d(u_8, v_8) = 144\)</span></p>
+<br/>
+<p>Стоимость минимального остовного дерева равна <span class="math notranslate nohighlight">\(45 + 26 + 11 + 43 + 57 + 77 + 96 + 97 + 144 = 596\)</span></p>
+<p><em>Вопрос:</em> Если граф <span class="math notranslate nohighlight">\(G\)</span> содержит <span class="math notranslate nohighlight">\(n\)</span> вершин и <span class="math notranslate nohighlight">\(m\)</span> ребер, то сколько вершин и ребер содержит остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>?</p>
+<p><strong>Упражнение.</strong> Выполните алгоритм Прима для подграфа, состоящего из 5 первых городов: Владивосток, Находка, Уссурийск, Артем, Арсеньев. Заполните таблицу <span class="math notranslate nohighlight">\(u_k\; v_k, \; k = 0, 1, 2, 3\)</span>. Вычислите стоимость остовного дерева.</p>
+<p>Пока работоспособность этого алгоритма для любого заданного графа - для нас магия; поэтому в разделе “Графы” мы строго проанализируем алгоритм и докажем его корректность.</p>
+<p>Именно понимание алгоритмов, а не “умение” перепечатать готовый псевдокод на языках программирования делает вас хорошим программистом.</p>
+<p>В доказательстве корректности алгоритма Прима используется метод математической индукции, которому посвящен наш первый раздел.</p>
+</section>
+</section>
 </section>
 </section>
 
@@ -589,13 +692,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="math_cards.html"
+       href="discr.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Математические открытки</p>
+        <p class="prev-next-title">Дискретная математика</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="discr-induction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Метод математической индукции</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -613,10 +725,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Логика</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Множества</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Системы линейных уравнений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Производные</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Пример моделирования</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Формальная постановка задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Алгоритм Прима</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Пример работы алгоритма</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
