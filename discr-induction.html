@@ -58,6 +58,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'discr-induction';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
@@ -391,7 +393,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -407,6 +411,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Идея метода</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Несложные примеры</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Примеры посложнее</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Применение метода математической индукции к анализу алгоритмов</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -418,6 +433,96 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>Метод математической индукции<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>Идея метода<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Источник: Шень - Математическая индукция</p>
+<p>Допустим, мы хотим доказать последовательность утверждений <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n, \ldots\)</span>
+Эта последовательность может быть конечной или бесконечной.</p>
+<p>Идея метода математической индукции - последовательно доказывать утверждения шаг за шагом, используя при этом уже доказанные ранее утверждения.</p>
+<p>Таким образом, обосновав переход</p>
+<p><span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_{k-1} \to A_k\)</span></p>
+<p>получаем истинность всех утверждений</p>
+<p><span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n, \ldots\)</span></p>
+<p><img alt="" src="_images/induction1.png" /></p>
+<p>Иллюстрация - кости домино. Если упадет первая из них, то упадут по очереди и все остальные (падая, костяшка толкает следующую).</p>
+<p><strong>Пример.</strong> <em>(вежливая очередь)</em> Правила хорошего тона запрещают мужчине стоять в очереди сразу перед женщиной (он должен пропустить ее вперед). Поэтому, если первый человек в очереди - мужчина, то и все остальные - мужчины.</p>
+<p><span class="math notranslate nohighlight">\(A_k = \)</span> “<span class="math notranslate nohighlight">\(k\)</span>-й человек в очереди - мужчина”</p>
+<p>Для любого <span class="math notranslate nohighlight">\(k = 1..n-1\)</span> ситуация <span class="math notranslate nohighlight">\(A_k = 1\)</span>, <span class="math notranslate nohighlight">\(A_{k+1} = 0\)</span> запрещена (ложна). Следовательно, импликация <span class="math notranslate nohighlight">\(A_k \to A_{k+1}\)</span> истинна.</p>
+<p>Итак,</p>
+<p><span class="math notranslate nohighlight">\(\dfrac{\begin{align}&amp; A_1 = 1\\&amp;  \forall k \, (A_k \to A_{k+1}) \end{align}}{\forall n\, A_n}\)</span></p>
+<p>В этой формуле обозначен <em>принцип математической индукции</em>.</p>
+</section>
+<section id="id3">
+<h2>Несложные примеры<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Источник: Хаггарти - Дискретная математика для программистов</p>
+<p><strong>Пример.</strong> <em>(сумма арифметической прогрессии)</em></p>
+<p>Докажем по индукции, что равенство</p>
+<p><span class="math notranslate nohighlight">\(1 + 2 + \ldots + n = \dfrac{n(n+1)}{2}\)</span> выполнено при всех натуральных <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Пусть <span class="math notranslate nohighlight">\(A_n\)</span> обозначает утверждение для числа <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span></p>
+<p>Например:</p>
+<p><span class="math notranslate nohighlight">\(A_1: \quad 1 = \dfrac{1 (1+1)}{2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(A_2: \quad 1 + 2 = \dfrac{2(2+1)}{2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(A_3: \quad 1 + 2 + 3 = \dfrac{3(3+1)}{2}\)</span></p>
+<p>и так далее.</p>
+<p>Схема доказательства методом математической индукции включает 3 этапа:</p>
+<ol class="arabic simple">
+<li><p>База индукции: доказываем утверждение <span class="math notranslate nohighlight">\(A_1\)</span></p></li>
+<li><p>Гипотеза индукции: предполагаем, что утверждение <span class="math notranslate nohighlight">\(A_k\)</span> истинно</p></li>
+<li><p>Шаг индукции: выводим <span class="math notranslate nohighlight">\(A_{k+1}\)</span> из <span class="math notranslate nohighlight">\(A_k\)</span></p></li>
+</ol>
+<p><em>База индукции:</em></p>
+<p><span class="math notranslate nohighlight">\(1 = \dfrac{1 + 1}{2}\)</span> - верное утверждение</p>
+<p><em>Гипотеза индукции:</em>
+допустим, что</p>
+<p><span class="math notranslate nohighlight">\(1 + 2 + \ldots + k = \dfrac{k(k+1)}{2}\)</span></p>
+<p><em>Шаг индукции:</em>
+докажем, что</p>
+<p><span class="math notranslate nohighlight">\(1 + 2 + \ldots + k + (k + 1) = \dfrac{(k + 1)((k + 1) + 1)}{2}\)</span></p>
+<p>Для этого сгруппируем первые <span class="math notranslate nohighlight">\(k\)</span> слагаемых в левой части равенства и заменим их сумму на <span class="math notranslate nohighlight">\(\dfrac{k(k+1)}{2}\)</span> (используем гипотезу индукции).</p>
+<p><span class="math notranslate nohighlight">\(\dfrac{k(k+1)}{2} + (k + 1) = \dfrac{(k + 1)((k + 1) + 1)}{2}\)</span></p>
+<p>Несложные преобразования показывают, что это верное равенство. Утверждение доказано методом математической индукции.</p>
+<p><strong>Пример.</strong> При любом <span class="math notranslate nohighlight">\(n \in \mathbb N\)</span> число <span class="math notranslate nohighlight">\(7^n - 1\)</span> кратно <span class="math notranslate nohighlight">\(6\)</span>.</p>
+<p><em>База индукции:</em> <span class="math notranslate nohighlight">\(n = 1 \; \Rightarrow \; 7^1 - 1 = 6 \,\vdots\, 6\)</span></p>
+<p><em>Гипотеза индукции:</em> <span class="math notranslate nohighlight">\(n = k \; \Rightarrow \; (7^k - 1) \, \vdots \, 6\)</span> - утверждение верно</p>
+<p><em>Шаг индукции:</em> <span class="math notranslate nohighlight">\(n = k + 1 \; \Rightarrow \;\)</span> докажем, что <span class="math notranslate nohighlight">\((7^{k+1} - 1) \,\vdots\, 6\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(7^{k+1} - 1 = 7 \cdot (7^k - 1) + 7 - 1 = 7 \cdot (7^k - 1) + 6\)</span></p>
+<p>Так как <span class="math notranslate nohighlight">\((7^k - 1) \, \vdots \, 6\)</span>, то <span class="math notranslate nohighlight">\(7 \cdot (7^k - 1) \, \vdots\, 6\)</span>.</p>
+<p>Оба слагаемых делятся на <span class="math notranslate nohighlight">\(6\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> вся сумма делится на <span class="math notranslate nohighlight">\(6\)</span>. Утверждение доказано.</p>
+<p><strong>Пример.</strong> Пусть числа <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_n\)</span> таковы, что
+<span class="math notranslate nohighlight">\(x_1 = 1\)</span>, <span class="math notranslate nohighlight">\(x_{k+1} = x_k + 8k\)</span> при <span class="math notranslate nohighlight">\(k \geq 1\)</span>.
+Докажем, что <span class="math notranslate nohighlight">\(x_n = (2n - 1)^2\)</span>, <span class="math notranslate nohighlight">\(n = 1, 2, 3, \ldots\)</span></p>
+<p><em>Б.и.</em> <span class="math notranslate nohighlight">\(x_1 = 1 = (2 \cdot 1 - 1)^2\)</span></p>
+<p><em>Г.и.</em> <span class="math notranslate nohighlight">\(x_k = (2k - 1)^2\)</span> - верное утверждение</p>
+<p><em>Ш.и.</em> Докажем, что <span class="math notranslate nohighlight">\(x_{k+1} = (2(k+1) - 1)^2 = (2k+1)^2\)</span>.</p>
+<p>В самом деле,</p>
+<p><span class="math notranslate nohighlight">\(x_{k+1} = x_k + 8k = (2k-1)^2 + 8k =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= 4k^2 - 4k + 1 + 8k = (2k+1)^2\)</span></p>
+<p>Таким образом, из истинности утверждения при <span class="math notranslate nohighlight">\(n = k\)</span> вытекает истинность при <span class="math notranslate nohighlight">\(n = k + 1\)</span>.</p>
+</section>
+<section id="id4">
+<h2>Примеры посложнее<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>…</p>
+</section>
+<section id="id5">
+<h2>Применение метода математической индукции к анализу алгоритмов<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>Пример.</strong> <em>(поиск максимума в последовательности)</em></p>
+<p>Вход: <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n\)</span> - натуральные числа</p>
+<p>Выход: <span class="math notranslate nohighlight">\(\max\{a_1, a_2, \ldots, a_n\}\)</span></p>
+<br/>
+<p>Инициализация: <span class="math notranslate nohighlight">\(M \leftarrow 0\)</span></p>
+<p>Цикл:</p>
+<p><strong>for</strong> <span class="math notranslate nohighlight">\(i \leftarrow 1..n\)</span>:</p>
+<p>    # инвариант цикла:</p>
+<p>    # <span class="math notranslate nohighlight">\((i = 1 \,\&amp;\, M = 0) \vee (i \geq 2 \,\&amp;\, M = \max\{a_1, a_2, \ldots, a_{i-1}\})\)</span></p>
+<p>    <span class="math notranslate nohighlight">\(M \leftarrow \max\{M, a_i\}\)</span></p>
+<p>    # Сделаем вывод:</p>
+<p>    #   а) если <span class="math notranslate nohighlight">\(i = 1 \,\&amp;\, M = 0\)</span>, то <span class="math notranslate nohighlight">\(M' = a_1 = \max\{a_1\}\)</span></p>
+<p>    #   б) если <span class="math notranslate nohighlight">\(i \geq 2 \,\&amp;\, M = \max\{a_1, a_2, \ldots, a_{i-1}\}\)</span>, то</p>
+<p>    #   <span class="math notranslate nohighlight">\(M' = \max\{\max\{a_1, a_2, \ldots, a_{i-1}\}, a_i\} =\)</span></p>
+<p>    #   <span class="math notranslate nohighlight">\( = \max\{a_1, a_2, \ldots, a_i\}\)</span></p>
+<p>Завершение: <span class="math notranslate nohighlight">\(M = \max\{a_1, a_2, \ldots, a_n\}\)</span></p>
+<p><strong>Упражнение.</strong> Перепишите алгоритм, чтобы он работал для любых <em>целых</em> чисел <span class="math notranslate nohighlight">\(a_i\)</span>. Снабдите псевдокод своего алгоритма логическими комментариями.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,7 +580,23 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Идея метода</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Несложные примеры</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Примеры посложнее</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Применение метода математической индукции к анализу алгоритмов</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
