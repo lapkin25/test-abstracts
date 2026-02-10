@@ -58,6 +58,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'discr-graphs';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
@@ -391,7 +393,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -407,6 +411,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Алгоритм Прима</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Доказательство корректности алгоритма</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -418,6 +433,47 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>Графы<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>Алгоритм Прима<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p> # <span class="math notranslate nohighlight">\(G = (V, E)\)</span> - исходный граф</p>
+<p><span class="math notranslate nohighlight">\(\sqsupset \, u_0 \in V\)</span> - произвольная вершина</p>
+<p><span class="math notranslate nohighlight">\(V' \leftarrow \{u_0\}; \;\; E' \leftarrow \varnothing\)</span></p>
+<p><strong>for</strong> <span class="math notranslate nohighlight">\(k \leftarrow 1..|V|-1\)</span>:</p>
+<p>    # Найти не присоединенную (ещё) вершину,</p>
+<p>    # ближе всего лежащую к одной из присоединенных</p>
+<p>    <span class="math notranslate nohighlight">\((u_k, v_k) = \mathrm{argmin}\, \{ d(u, v) \colon (u, v) \in (V' \times (V \setminus V')) \cap E \}\)</span></p>
+<p>    # Присоединить вершину <span class="math notranslate nohighlight">\(v_k\)</span> к ближайшей присоединенной</p>
+<p>    <span class="math notranslate nohighlight">\(V' \leftarrow V' \cup \{v_k\}\)</span></p>
+<p>    <span class="math notranslate nohighlight">\(E' \leftarrow E' \cup \{(u_k, v_k)\}\)</span></p>
+<p> # <span class="math notranslate nohighlight">\((V', E')\)</span> - минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span></p>
+<section id="id3">
+<h3>Доказательство корректности алгоритма<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Проведем доказательство по индукции. Докажем следующее утверждение.</p>
+<p><em>На любом <span class="math notranslate nohighlight">\(k\)</span>-м шаге алгоритма (<span class="math notranslate nohighlight">\(k = 0..|V|-1\)</span>) построенное дерево <span class="math notranslate nohighlight">\(G' = (V', E')\)</span> содержится (является подграфом) в некотором минимальном остовном дереве графа <span class="math notranslate nohighlight">\(G\)</span>.</em></p>
+<p><strong>База индукции.</strong> При <span class="math notranslate nohighlight">\(k = 0\)</span> граф <span class="math notranslate nohighlight">\(G' = (V', E')\)</span>, где <span class="math notranslate nohighlight">\(V' = \{u_0\}\)</span>, <span class="math notranslate nohighlight">\(E' = \varnothing\)</span>, очевидно, является подграфом любого остовного дерева графа <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p><strong>Гипотеза индукции.</strong> Предположим, что наше утверждение истинно на <span class="math notranslate nohighlight">\((k-1)\)</span>-м шаге алгоритма (<span class="math notranslate nohighlight">\(k \in 1..|V|-1\)</span>).</p>
+<p><strong>Шаг индукции.</strong> Докажем тогда, что утверждение истинно на <span class="math notranslate nohighlight">\(k\)</span>-м шаге.</p>
+<p>Пусть <span class="math notranslate nohighlight">\(T\)</span> - любое минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>, содержащее в качестве подграфа граф <span class="math notranslate nohighlight">\(G'\)</span>, построенный на <span class="math notranslate nohighlight">\((k-1)\)</span>-м шаге алгоритма. Существует хотя бы одно такое дерево <span class="math notranslate nohighlight">\(T\)</span> (по гипотезе индукции).</p>
+<p>Разберем два случая:</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\((u_k, v_k)\)</span> принадлежит <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>В этом случае утверждение на <span class="math notranslate nohighlight">\(k\)</span>-м шаге истинно. Доказывать нечего.</p>
+</li>
+<li><p><span class="math notranslate nohighlight">\((u_k, v_k)\)</span> не принадлежит <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>Напомним, что ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> выбиралось так, что <span class="math notranslate nohighlight">\(d(u_k, v_k) = \min\{d(u, v) \colon (u, v) \in E, \; u \in V', \; V \in V \setminus V'\}\)</span>.</p>
+<p>Разобьем дерево <span class="math notranslate nohighlight">\(T\)</span> на три подграфа - два поддерева и соединяющее их ребро:</p>
+<p><span class="math notranslate nohighlight">\(T_1 = (V_1, E_1), \quad V_1 = V'\)</span> ;</p>
+<p><span class="math notranslate nohighlight">\(T_2 = (V_2, E_2), \quad V_2 = V \setminus V'\)</span> ;</p>
+<p><span class="math notranslate nohighlight">\(T_3 = (V_3, E_3), \quad V_3 = \{u, v\}\)</span> .</p>
+<p>Здесь <span class="math notranslate nohighlight">\((u, v) \neq (u_k, v_k)\)</span>, поскольку ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> не принадлежит <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p><img alt="" src="_images/graphs1.png" /></p>
+<p>Заменим ребро <span class="math notranslate nohighlight">\((u, v)\)</span>, соединяющее подграфы <span class="math notranslate nohighlight">\(T_1\)</span> и <span class="math notranslate nohighlight">\(T_2\)</span>, на ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> - получим новое остовное дерево <span class="math notranslate nohighlight">\(T'\)</span>. Докажем его минимальность. В самом деле, в результате замены ребра <span class="math notranslate nohighlight">\((u, v)\)</span> на ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> стоимость остовного дерева не увеличится. Следовательно, стоимость дерева <span class="math notranslate nohighlight">\(T'\)</span> минимальна.</p>
+<p>Значит, в графе <span class="math notranslate nohighlight">\(G\)</span> существует минимальное остовное дерево <span class="math notranslate nohighlight">\(T'\)</span>, содержащее подграф <span class="math notranslate nohighlight">\(G'\)</span>, построенный на <span class="math notranslate nohighlight">\((k-1)\)</span>-м шаге, и ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span>. А это и есть подграф <span class="math notranslate nohighlight">\(G'\)</span>, построенный на <span class="math notranslate nohighlight">\(k\)</span>-м шаге.</p>
+<p>Из доказанного утверждения вытекает, что после выполнения всех шагов алгоритма будет построено минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>. Корректность алгоритма доказана.</p>
+</li>
+</ol>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,7 +531,23 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Алгоритм Прима</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Доказательство корректности алгоритма</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
