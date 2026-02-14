@@ -419,7 +419,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Идея метода</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Несложные примеры</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Примеры посложнее</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Применение метода математической индукции к анализу алгоритмов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Геометрические задачи на индукцию</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Комбинаторный пример</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">“Ложная” индукция</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Принцип наименьшего числа</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Индукция по структуре</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Неравенство Коши-Буняковского</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Применение метода математической индукции к анализу алгоритмов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Дополнительный материал</a></li>
 </ul>
             </nav>
         </div>
@@ -501,10 +508,225 @@ document.write(`
 </section>
 <section id="id4">
 <h2>Примеры посложнее<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>…</p>
+<p>Источник: Вялый и др. - Лекции по дискретной математике</p>
+<p><strong>Пример.</strong> Докажем, что</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{1}{1^2} + \dfrac{1}{2^2} + \ldots + \dfrac{1}{100^2} &lt; 2.
+\)</span></p>
+<p>Чтобы применить метод математической индукции, обобщим это утвежрждение. А именно, будем доказывать, что для любого <span class="math notranslate nohighlight">\(n &gt; 1\)</span> выполняется неравенство</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{1}{1^2} + \dfrac{1}{2^2} + \ldots + \dfrac{1}{n^2} &lt; 2 - \dfrac{1}{n}.
+\)</span></p>
+<p>Это утверждение <span class="math notranslate nohighlight">\(A_n\)</span>.</p>
+<p>Согласно методу математической индукции, сформулируем утверждения <span class="math notranslate nohighlight">\(A_2\)</span>, <span class="math notranslate nohighlight">\(A_k\)</span> и <span class="math notranslate nohighlight">\(A_{k+1}\)</span> и докажем, что <span class="math notranslate nohighlight">\(A_2\)</span> верно и из <span class="math notranslate nohighlight">\(A_k\)</span> следует <span class="math notranslate nohighlight">\(A_{k+1}\)</span>. Тогда, согласно принципу математической индукции, мы получим, что <span class="math notranslate nohighlight">\(A_n\)</span> верно для каждого <span class="math notranslate nohighlight">\(n = 2, 3, 4, \ldots\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(A_2: \quad \dfrac{1}{1^2} + \dfrac{1}{2^2} &lt; 1 - \dfrac{1}{2}\)</span> - верное утверждение</p>
+<p><span class="math notranslate nohighlight">\(A_k: \quad \dfrac{1}{1^2} + \dfrac{1}{2^2} + \ldots + \dfrac{1}{k^2} &lt; 2 - \dfrac{1}{k}\)</span> - предположение индукции</p>
+<p><span class="math notranslate nohighlight">\(A_{k + 1}: \quad \dfrac{1}{1^2} + \dfrac{1}{2^2} + \ldots + \dfrac{1}{k^2} + \dfrac{1}{(k+1)^2} &lt; 2 - \dfrac{1}{k + 1}\)</span> - то, что требуется доказать</p>
+<p>Используя <span class="math notranslate nohighlight">\(A_k\)</span>, получаем, что, если прибавить к левой и правой частям неравенства <span class="math notranslate nohighlight">\(A_k\)</span> число <span class="math notranslate nohighlight">\(\dfrac{1}{(k+1)^2}\)</span>, получим неравенство</p>
+<p><span class="math notranslate nohighlight">\(
+(*) \quad \dfrac{1}{1^2} + \dfrac{1}{2^2} + \ldots + \dfrac{1}{k^2} + \dfrac{1}{(k+1)^2} &lt; 2 - \dfrac{1}{k} + \dfrac{1}{(k+1)^2},
+\)</span></p>
+<p>которое тоже верно, так как предположение индукции <span class="math notranslate nohighlight">\(A_k\)</span> считается верным при некотором <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Остается оценить правую часть полученного неравенства, воспользовавшись неравенством <span class="math notranslate nohighlight">\(k(k+1) &lt; (k+1)^2\)</span>, из которого вытекает, что <span class="math notranslate nohighlight">\(\dfrac{1}{(k+1)^2} &lt; \dfrac{1}{k(k+1)}\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+2 - \dfrac{1}{k} + \dfrac{1}{(k+1)^2} &lt; 2 - \dfrac{1}{k} + \dfrac{1}{k(k+1)} = ?
+\)</span></p>
+<p>Если продолжить упрощать правую часть этого неравенства, мы получим в точности <span class="math notranslate nohighlight">\(2 - \dfrac{1}{k+1}\)</span>. Таким образом,
+<span class="math notranslate nohighlight">\(
+(**) \quad 2 - \dfrac{1}{k} + \dfrac{1}{(k+1)^2} &lt; 2 - \dfrac{1}{k+1}.
+\)</span></p>
+<p>Если из неравенств (*) и (**) сделать цепочку неравенств, придем к такому неравенству:</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{1}{1^2} + \dfrac{1}{2^2} + \ldots + \dfrac{1}{k^2} + \dfrac{1}{(k+1)^2} &lt; 2 - \dfrac{1}{k+1}
+\)</span></p>
+<p>Но это и есть утверждение <span class="math notranslate nohighlight">\(A_{k+1}\)</span>, которое мы вывели из <span class="math notranslate nohighlight">\(A_k\)</span>. Утверждение <span class="math notranslate nohighlight">\(A_n\)</span> верно для любого <span class="math notranslate nohighlight">\(n &gt; 1\)</span> по принципу математической индукции.</p>
+<p><strong>Пример.</strong> Докажем, что для всякого натурального числа <span class="math notranslate nohighlight">\(n\)</span> число <span class="math notranslate nohighlight">\(5 \cdot 9^{n-1} + 2^{4n-3}\)</span> делится на <span class="math notranslate nohighlight">\(7\)</span>.</p>
+<p>Индукция по <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>База индукции: <span class="math notranslate nohighlight">\(n = 1\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(5 \cdot 9^0 + 2^1 = 7\)</span> делится на <span class="math notranslate nohighlight">\(7\)</span> - утверждение верно</p>
+<p>Гипотеза индукции: считаем, что утверждение верно при <span class="math notranslate nohighlight">\(n = k\)</span>, то есть <span class="math notranslate nohighlight">\(9^{k-1} + 2^{4k-3}\)</span> делится на <span class="math notranslate nohighlight">\(7\)</span>.</p>
+<p>Шаг индукции: докажем, что в предположении индукции утверждение верно и при <span class="math notranslate nohighlight">\(n = k + 1\)</span>, то есть <span class="math notranslate nohighlight">\(9^k + 2^{4k+1}\)</span> делится на <span class="math notranslate nohighlight">\(7\)</span>.</p>
+<p>Из предположения индукции следует, что <span class="math notranslate nohighlight">\(9^{k-1} + 2^{4k-3} = 7m\)</span>, где <span class="math notranslate nohighlight">\(m\)</span> - некоторое целое число. Выразим отсюда первое слагаемое: <span class="math notranslate nohighlight">\(9^{k-1} = 7m - 2^{4k-3}\)</span>.</p>
+<p>Тогда (см. шаг индукции)</p>
+<p><span class="math notranslate nohighlight">\(9^k + 2^{4k+1} = 9 \cdot 9^{k-1} + 2^{4k+1} = 9 \cdot (7m - 2^{4k-3}) + 2^{4k+1} =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= 7\cdot 9m + 2^{4k-3} \cdot (2^4 - 9) = 7(9m + 2^{4k-3})\)</span></p>
+<p>Итак, <span class="math notranslate nohighlight">\(9^k + 2^{4k+1}\)</span> делится на 7, что и требовалось доказать.</p>
 </section>
 <section id="id5">
-<h2>Применение метода математической индукции к анализу алгоритмов<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2>Геометрические задачи на индукцию<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Источники: Зуев - По океану дискретной математики; Вялый и др. - Лекции по дискретной математике; Николаева - <a class="reference external" href="https://elbib.nbchr.ru/lib_files/0/koch_0_0000166.pdf">Метод математической индукции</a></p>
+<p><strong>Пример.</strong> Пусть на плоскости проведено <span class="math notranslate nohighlight">\(n\)</span> прямых, причем среди них нет параллельных,
+и никакие три прямые не пересекаются в одной точке.
+Плоскость разбивается прямыми на некоторое число областей.
+Докажите, что число областей равно <span class="math notranslate nohighlight">\(\dfrac{n^2 + n + 2}{2}\)</span>.</p>
+<p>Пример для <span class="math notranslate nohighlight">\(n = 3\)</span>:</p>
+<p><img alt="" src="_images/induction3.png" /></p>
+<p>Новая прямая добавляет <span class="math notranslate nohighlight">\(n + 1\)</span> новых областей!</p>
+<p>(Эта прямая пересекает <span class="math notranslate nohighlight">\(n\)</span> прямых,
+а потому проходит через <span class="math notranslate nohighlight">\(n + 1\)</span> старых частей, рассекая каждую из них на две.)</p>
+<p><img alt="" src="_images/induction4.png" /></p>
+<p><strong>Упражнение.</strong> Проведите выкладки по индукции.</p>
+<p><strong>Пример.</strong> Докажите, что сумма углов выпуклого <span class="math notranslate nohighlight">\(n\)</span>-угольника равна <span class="math notranslate nohighlight">\((n-2)\cdot 180^\circ\)</span>.</p>
+<p>Разобьем <span class="math notranslate nohighlight">\((n+1)\)</span>-угольник на <span class="math notranslate nohighlight">\(n\)</span>-угольник и треугольник. Из рисунка видим, что при увеличении <span class="math notranslate nohighlight">\(n\)</span> на <span class="math notranslate nohighlight">\(1\)</span> к сумме углов многоугольника добавляется сумма углов треугольника, то есть <span class="math notranslate nohighlight">\(180^\circ\)</span>.</p>
+<p><strong>Пример.</strong> Пусть выпуклый 1000-угольник разрезан на треугольники диагоналями, которые не пересекаются во внутренних точках (но могут иметь общие вершины). Докажите, что получилось 998 треугольников.</p>
+<p>Докажем по индукции общее утверждение, что если выпуклый <span class="math notranslate nohighlight">\(n\)</span>-угольник (при <span class="math notranslate nohighlight">\(n \geq 3\)</span>) разрезан на треугольники диагоналями, то этих треугольников <span class="math notranslate nohighlight">\(n - 2\)</span>. Итак, докажем это для какого-то <span class="math notranslate nohighlight">\(n\)</span>, считая известным для всех меньших <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Посмотрим на какую-то диагональ, по которой разрезали. (Если диагоналей нет, то <span class="math notranslate nohighlight">\(n = 3\)</span> и этот треугольник уже разрезан на <span class="math notranslate nohighlight">\((n - 2)\)</span> треугольников.) С одной стороны будет какой-то <span class="math notranslate nohighlight">\(k\)</span>-угольник, а с другой стороны - какой-то <span class="math notranslate nohighlight">\(l\)</span>-угольник. Оба числа <span class="math notranslate nohighlight">\(k\)</span> и <span class="math notranslate nohighlight">\(l\)</span> будут меньше <span class="math notranslate nohighlight">\(n\)</span>. При этом <span class="math notranslate nohighlight">\(k + l\)</span> будет равно <span class="math notranslate nohighlight">\(n + 2\)</span>, поскольку, считая вершины сначала <span class="math notranslate nohighlight">\(k\)</span>-угольника, а потом <span class="math notranslate nohighlight">\(l\)</span>-угольника, мы посчитаем все вершины многоугольника, причём концы диагонали посчитаем дважды.</p>
+<p>По предположению индукции при разрезании на треугольники получится <span class="math notranslate nohighlight">\((k-2)\)</span> и <span class="math notranslate nohighlight">\((l-2)\)</span> треугольников, всего <span class="math notranslate nohighlight">\((k-2) + (l-2) = k + l - 4 = (n + 2) - 4 = (n - 2)\)</span> треугольников, что и требовалось доказать.</p>
+<p><strong>Упражнение.</strong> Докажите, что при каждом натуральном <span class="math notranslate nohighlight">\(n\)</span>, начиная с <span class="math notranslate nohighlight">\(3\)</span>, существует выпуклый <span class="math notranslate nohighlight">\(n\)</span>-угольник, имеющий ровно три острых угла.</p>
+<p>Подсказка. Пусть есть такой <span class="math notranslate nohighlight">\((K-1)\)</span>-угольник. Возьмём один из его тупых углов и отрежем его. Число вершин станет <span class="math notranslate nohighlight">\(K\)</span>. Новые два угла, появившиеся вместо старого, будут ещё тупее, так как они - внешние углы отрезанного треугольника.</p>
+</section>
+<section id="id6">
+<h2>Комбинаторный пример<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Источник - <a class="reference external" href="https://vkvideo.ru/video-9594364_456239508?sh=4">лекции УрФУ</a></p>
+<p><strong>Задача.</strong> Доказать, что <span class="math notranslate nohighlight">\(n\)</span>-элементное множество имеет <span class="math notranslate nohighlight">\(2^n\)</span> подмножеств.</p>
+<p>Например:</p>
+<p><span class="math notranslate nohighlight">\(\{1\} \quad \longrightarrow \quad \varnothing, \{1\}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\{1, 2\} \quad \longrightarrow \quad \varnothing, \{1\}, \{2\}, \{1, 2\}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\{1, 2, 3\} \quad  \longrightarrow \quad ?\)</span></p>
+<p>Закономерность подтверждается, но доказательства в общем случае у нас пока нет.</p>
+<p>А зачем доказательство? Вообще “подход тестировщика” может привести к ошибке.</p>
+<p><em>Пример Эйлера.</em> Многочлен <span class="math notranslate nohighlight">\(p(x) = x^2 + x + 41\)</span> принимает простые значения при <span class="math notranslate nohighlight">\(x = 1, 2, 3, \ldots, 38, 39\)</span>.</p>
+<p>“Закономерность подтверждается.”</p>
+<p><span class="math notranslate nohighlight">\(p(40) = 1600 + 40 + 41 = 1681 = 41^2\)</span> - составное число</p>
+<p><strong>Упражнение.</strong> Докажите, что никакой многочлен с целыми коэффициентами не может принимать простые значения при всех натуральных значениях переменной. <a class="reference external" href="https://blog.skillfactory.ru/teorema-bezu-i-shema-gornera-cupersily-dlya-raboty-s-mnogochlenami/">(подсказка)</a></p>
+<p><em>Решение задачи:</em></p>
+<p>Пусть исходное множество <span class="math notranslate nohighlight">\(S\)</span> содержит <span class="math notranslate nohighlight">\(n\)</span> элементов. Добавим к <span class="math notranslate nohighlight">\(S\)</span> “новый” элемент <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(S' := S \cup \{x\}\)</span></p>
+<p>Каждое подмножество <span class="math notranslate nohighlight">\(M' \subset S'\)</span>, которое содержит элемент <span class="math notranslate nohighlight">\(x\)</span>, можно представить как</p>
+<p><span class="math notranslate nohighlight">\(M' = \{x\} \cup M\)</span>, где <span class="math notranslate nohighlight">\(M \subset S\)</span>.</p>
+<p>Из этого наблюдения вытекает, что при добавлении одного элемента к множеству количество подмножеств удваивается: для каждого подмножества <span class="math notranslate nohighlight">\(M \subset S\)</span> добавляется ровно одно “новое” подмножество <span class="math notranslate nohighlight">\(\{x\} \cup M\)</span>.</p>
+<p>Итак, <em>база индукции</em>: в пустом множестве (<span class="math notranslate nohighlight">\(n = 0\)</span>) ровно одно подмножество - само это множество <span class="math notranslate nohighlight">\(\varnothing\)</span>.</p>
+<p>Сделаем <em>шаг индукции</em>: докажем, что если в любом <span class="math notranslate nohighlight">\(n\)</span>-элементном множестве <span class="math notranslate nohighlight">\(2^n\)</span> подмножеств, то в любом <span class="math notranslate nohighlight">\((n+1)\)</span>-элементном множестве <span class="math notranslate nohighlight">\(2^{n+1}\)</span> подмножеств.</p>
+<p>Пусть <span class="math notranslate nohighlight">\(S\)</span> - любое <span class="math notranslate nohighlight">\((n+1)\)</span>-элементное множество. Выделим в нем любой элемент <span class="math notranslate nohighlight">\(a \in S\)</span>. Разобьем множество подмножеств <span class="math notranslate nohighlight">\(\mathcal P(S)\)</span> на два подмножества: <span class="math notranslate nohighlight">\(\{M \in \mathcal P(S) \colon M \text{ содержит } a\}\)</span> и <span class="math notranslate nohighlight">\(\{M \in \mathcal P(S) \colon M \text{ не содержит } a\}\)</span>. Второе подмножество совпадает в точности с множеством <span class="math notranslate nohighlight">\(\mathcal P(S \setminus \{a\})\)</span> - это множество всех подмножеств <span class="math notranslate nohighlight">\(n\)</span>-элементного множества <span class="math notranslate nohighlight">\(S \setminus \{a\}\)</span> - таких подмножеств <span class="math notranslate nohighlight">\(2^n\)</span> (по гипотезе индукции). А первое подмножество находится во взаимно однозначном соответствии со вторым, поэтому в нём также <span class="math notranslate nohighlight">\(2^n\)</span> элементов. Значит, <span class="math notranslate nohighlight">\(|\mathcal P(S)| = 2^n + 2^n = 2^{n+1}\)</span>.</p>
+<p><strong>Упражнение.</strong> На встрече компании из 15 человек некоторые из участников пожали друг другу руки. Могло ли получиться так, что каждый из 15 участников сделал три рукопожатия (пожал руки трём другим)? Докажите, что нет.</p>
+</section>
+<section id="id7">
+<h2>“Ложная” индукция<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><strong>Пример.</strong> Докажем, что все кошки одного цвета.</p>
+<p>Применим метод математической индукции, чтобы доказать, что любые <span class="math notranslate nohighlight">\(n\)</span> кошек одного цвета.</p>
+<p><em>База индукции.</em> При <span class="math notranslate nohighlight">\(n = 1\)</span> получаем верное утверждение: одна кошка одного цвета с самой собой.</p>
+<p><em>Гипотеза индукции.</em> Допустим, что любые <span class="math notranslate nohighlight">\(k\)</span> кошек одного цвета.</p>
+<p><em>Шаг индукции.</em> Докажем, что тогда любые <span class="math notranslate nohighlight">\(k + 1\)</span> кошек одного цвета. Расположим <span class="math notranslate nohighlight">\(k + 1\)</span> выбранных кошек в ряд. Первые <span class="math notranslate nohighlight">\(k\)</span> из них одного цвета по гипотезе индукции. Последние <span class="math notranslate nohighlight">\(k\)</span> из них тоже одного цвета по гипотезе индукции. Следовательно, все <span class="math notranslate nohighlight">\(k + 1\)</span> кошек одного цвета.</p>
+<p>Где ошибка?</p>
+<p><strong>Пример.</strong> Докажем, что произведение любых <span class="math notranslate nohighlight">\(n \geq 0\)</span> чисел равно нулю, используя индукцию по <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p><em>База индукции.</em> При <span class="math notranslate nohighlight">\(n = 0\)</span> сомножителей нет, так что перемножать нечего.</p>
+<p><em>Гипотеза индукции.</em> Пусть утверждение верно для некоторого <span class="math notranslate nohighlight">\(n\)</span>, т.е. произведение любых <span class="math notranslate nohighlight">\(n\)</span> чисел <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n\)</span> равно нулю.</p>
+<p><em>Шаг индукции.</em> Докажем то же утверждение для любых <span class="math notranslate nohighlight">\((n+1)\)</span> чисел <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_{n+1}\)</span>. Рассуждая по индукции, мы считаем известным, что</p>
+<p><span class="math notranslate nohighlight">\(
+a_1 \cdot a_2 \cdot \ldots \cdot a_n = 0
+\)</span></p>
+<p>Умножим это равенство на <span class="math notranslate nohighlight">\(a_{n+1}\)</span>, получится</p>
+<p><span class="math notranslate nohighlight">\(
+a_1 \cdot a_2 \cdot \ldots \cdot a_n \cdot a_{n+1} = 0 \cdot a_{n+1} = 0,
+\)</span></p>
+<p>что и требовалось.</p>
+<p>Где ошибка?</p>
+<p><strong>Упражнение.</strong> Найдите ошибку в следующем доказательстве. Докажем, что для любого положительного числа <span class="math notranslate nohighlight">\(n\)</span> выполняется равенство</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{1}{1\cdot 2} + \dfrac{1}{2 \cdot 3} + \ldots + \dfrac{1}{(n-1)n} = \dfrac{3}{2} - \dfrac{1}{n}
+\)</span></p>
+<p><em>База индукции.</em> При <span class="math notranslate nohighlight">\(n = 1\)</span> получаем</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{1}{1\cdot 2} = \dfrac{3}{2} - \dfrac{1}{1}.
+\)</span></p>
+<p><em>Шаг индукции.</em> Предположим, что для некоторого <span class="math notranslate nohighlight">\(n\)</span> равенство выполнено. Выведем отсюда такое же равенство для <span class="math notranslate nohighlight">\(n + 1\)</span>. Получим</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{1}{1\cdot 2} + \dfrac{1}{2 \cdot 3} + \ldots + \dfrac{1}{(n-1)n} + \dfrac{1}{n(n+1)} =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \dfrac{3}{2} - \dfrac{1}{n} + \left(\dfrac{1}{n} - \dfrac{1}{n+1}\right) =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \dfrac{3}{2} - \dfrac{1}{n+1}
+\)</span></p>
+<p>Итак, если равенство верно для <span class="math notranslate nohighlight">\(n\)</span>, то оно должно быть верным и для <span class="math notranslate nohighlight">\(n + 1\)</span>. По индукции равенство верно для всех <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</section>
+<section id="id8">
+<h2>Принцип наименьшего числа<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Источник: Вялый и др. - Лекции по дискретной математике</p>
+<p>Принцип математической индукции можно переформулировать, используя принцип наименьшего числа.</p>
+<p><em>Принцип наименьшего числа.</em> Если есть натуральное число, обладающее каким-то свойством, то найдется и наименьшее число с этим свойством.</p>
+<p>Это выражается следующей формулой:</p>
+<p><span class="math notranslate nohighlight">\(
+\exists n\, P(n) \to \exists n_0 \forall n (P(n) \to n \geq n_0)
+\)</span></p>
+<p><strong>Пример.</strong> Докажем, что любую сумму в <span class="math notranslate nohighlight">\(n\)</span> копеек, где <span class="math notranslate nohighlight">\(n \geq 8\)</span>, можно заплатить трёх- и пятикопеечными монетами.
+Возьмём наименьшую сумму, которую заплатить нельзя. Пусть это какое-то <span class="math notranslate nohighlight">\(n_0\)</span>. Может ли <span class="math notranslate nohighlight">\(n_0\)</span> быть равно 8, 9 или 10? Нет, потому что мы знаем как заплатить столько. Значит, <span class="math notranslate nohighlight">\(n \geq 11\)</span> и <span class="math notranslate nohighlight">\(n - 3 \geq 8\)</span>. Поскольку <span class="math notranslate nohighlight">\(n\)</span> было наименьшим “плохим” числом (которое нельзя заплатить) среди чисел от 8, то <span class="math notranslate nohighlight">\((n - 3)\)</span> заплатить можно. В чём противоречие? Понятно: <span class="math notranslate nohighlight">\((n-3)\)</span> заплатить можно, а <span class="math notranslate nohighlight">\(n\)</span> нельзя, хотя видно, что можно (надо добавить трёхкопеечную монету к <span class="math notranslate nohighlight">\((n-3)\)</span>).</p>
+<p><strong>Пример.</strong> Рассмотрим <em>последовательность Фибоначчи</em>:</p>
+<p><span class="math notranslate nohighlight">\(1, 1, 2, 3, 5, 8, 13, 21, 34, \ldots\)</span>,</p>
+<p>в которой первые два числа равны единице, а каждое следующее равно сумме двух предыдущих. Докажем, что в последовательности Фибоначчи нет двух подряд идущих чётных чисел.</p>
+<p>Используем принцип наименьшего числа. Из всех пар соседних чётных членов последовательности возьмём первую: <span class="math notranslate nohighlight">\(F_n, F_{n+1}\)</span>. Но поскольку <span class="math notranslate nohighlight">\(F_{n+1} = F_{n-1} + F_n\)</span>, то из чётности <span class="math notranslate nohighlight">\(F_n\)</span> и <span class="math notranslate nohighlight">\(F_{n+1}\)</span> следует чётность <span class="math notranslate nohighlight">\(F_{n-1}\)</span>. Следовательно, пара <span class="math notranslate nohighlight">\(F_n, F_{n+1}\)</span> не первая, потому что пара чётных чисел <span class="math notranslate nohighlight">\(F_{n-1}\)</span> и <span class="math notranslate nohighlight">\(F_n\)</span> первее.</p>
+</section>
+<section id="id9">
+<h2>Индукция по структуре<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>Источник: Журавлев, Флёров, Вялый - Дискретный анализ. Формальные системы и алгоритмы</p>
+<p><strong>Пример.</strong> Докажем, что в любой формуле количество открывающих скобок равно количеству закрывающих скобок.</p>
+<p>Индукция по длине формулы (количеству символов). Для формул, которые состоят из одной переменной, утверждение справедливо: <span class="math notranslate nohighlight">\(0 - 0 = 0\)</span>. Других формул длины <span class="math notranslate nohighlight">\(1\)</span> нет. Это доказывает базу индукции.</p>
+<p>Шаг индукции. Предположим, что утверждение справедливо для формул длины меньше, чем <span class="math notranslate nohighlight">\(n\)</span> (<span class="math notranslate nohighlight">\(n &gt; 1\)</span>). Рассмотрим формулу <span class="math notranslate nohighlight">\(A\)</span> длины <span class="math notranslate nohighlight">\(n\)</span>. Если корневая операция в формуле <span class="math notranslate nohighlight">\(A\)</span> унарная, то формула имеет вид <span class="math notranslate nohighlight">\((*B)\)</span>, где <span class="math notranslate nohighlight">\(*\)</span> - операция. А если корневая операция бинарная, то формула имеет вид <span class="math notranslate nohighlight">\((B * C)\)</span>. Здесь <span class="math notranslate nohighlight">\(B\)</span> и <span class="math notranslate nohighlight">\(C\)</span> - более короткие формулы, в которых одинаково количество открывающих и закрывающих скобок по предположению индукции. Но тогда и в формуле <span class="math notranslate nohighlight">\(A\)</span> количество открывающих и закрывающих скобок одинаково.</p>
+</section>
+<section id="id10">
+<h2>Неравенство Коши-Буняковского<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>Источник: Шишмарёв - Дискретная математика</p>
+<p><em>Для любых чисел <span class="math notranslate nohighlight">\(a_1, \ldots, a_n\)</span>, <span class="math notranslate nohighlight">\(b_1, \ldots, b_n\)</span> выполняется неравенство</em>
+$<span class="math notranslate nohighlight">\(
+(a_1b_1 + a_2b_2 + \ldots a_nb_n)^2 \leq (a_1^2 + \ldots + a_n^2)(b_1^2 + \ldots + b_n^2)
+\)</span>$</p>
+<p><strong>Доказательство.</strong></p>
+<p><em>База индукции.</em> <span class="math notranslate nohighlight">\(n = 1\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\((a_1b_1)^2 \leq a_1^2 b_1^2\)</span> - верно</p>
+<p><em>Гипотеза индукции.</em> Допустим, что</p>
+<p><span class="math notranslate nohighlight">\(
+(a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2 \leq (a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2)
+\)</span></p>
+<p><em>Шаг индукции.</em> Докажем, что отсюда вытекает</p>
+<p><span class="math notranslate nohighlight">\(
+(a_1b_1 + a_2b_2 + \ldots + a_kb_k + a_{k+1}b_{k+1})^2 \leq (a_1^2 + \ldots + a_k^2 + a_{k+1}^2)(b_1^2 + \ldots + b_k^2 + b_{k+1}^2)
+\)</span></p>
+<p>Раскроем скобки в левой части неравенства:
+<span class="math notranslate nohighlight">\(
+\begin{multline*}
+(a_1b_1 + a_2b_2 + \ldots + a_kb_k + a_{k+1}b_{k+1})^2 = \\
+= (a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2 + 2 a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k) + 
+(a_{k+1}b_{k+1})^2
+\end{multline*}
+\)</span></p>
+<p>Раскроем скобки в правой части неравенства:
+$
+\begin{multline*}
+(a_1^2 + \ldots + a_k^2 + a_{k+1}^2)(b_1^2 + \ldots + b_k^2 + b_{k+1}^2) = (a_{k+1}b_{k+1})^2 +
+\</p>
+<ul class="simple">
+<li><p>(a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2) + a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
+\end{multline*}
+$</p></li>
+</ul>
+<p>Остается доказать, используя гипотезу
+<span class="math notranslate nohighlight">\(
+\begin{equation}
+\tag{1}
+(a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2 \leq (a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2),
+\end{equation}
+\)</span></p>
+<p>следующее неравенство:
+<span class="math notranslate nohighlight">\(
+\begin{multline*}
+{\color{red}(a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2} + 2 a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k)  \leq \\ \leq {\color{red} (a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2)} + a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
+\end{multline*}
+\)</span></p>
+<p>Докажем
+<span class="math notranslate nohighlight">\(
+\begin{multline}
+\tag{2}
+2a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k) \leq \\ \leq a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
+\end{multline}
+\)</span></p>
+<p><strong>Упражнение.</strong> Распишите преобразование этого неравенства к равносильной формуле
+<span class="math notranslate nohighlight">\(
+(a_{k+1}b_1 - a_1b_{k+1})^2 + (a_{k+1}b_2 - a_2b_{k+1})^2 + \ldots + (a_{k+1}b_k - a_kb_{k+1})^2 \geq 0
+\)</span></p>
+<p>Сложив (1) с (2), получим неравенство Коши-Буняковского.</p>
+</section>
+<section id="id11">
+<h2>Применение метода математической индукции к анализу алгоритмов<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>Источники: Хаггарти - Дискретная математика для программистов; Haggard, Schlipf, Whitesides - Discrete mathematics for computer science</p>
 <p><strong>Пример.</strong> <em>(поиск максимума в последовательности)</em></p>
 <p>Вход: <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n\)</span> - натуральные числа</p>
 <p>Выход: <span class="math notranslate nohighlight">\(\max\{a_1, a_2, \ldots, a_n\}\)</span></p>
@@ -522,6 +744,44 @@ document.write(`
 <p>    #   <span class="math notranslate nohighlight">\( = \max\{a_1, a_2, \ldots, a_i\}\)</span></p>
 <p>Завершение: <span class="math notranslate nohighlight">\(M = \max\{a_1, a_2, \ldots, a_n\}\)</span></p>
 <p><strong>Упражнение.</strong> Перепишите алгоритм, чтобы он работал для любых <em>целых</em> чисел <span class="math notranslate nohighlight">\(a_i\)</span>. Снабдите псевдокод своего алгоритма логическими комментариями.</p>
+<p><strong>Пример.</strong> <em>(двоичный поиск)</em> Составим алгоритм, который найдёт в упорядоченном числовом массиве наибольший элемент, не превосходящий заданного числа.</p>
+<p>Дана числовая последовательность <span class="math notranslate nohighlight">\(a_1, a_2, \ldots, a_n\)</span> и число <span class="math notranslate nohighlight">\(x\)</span>. Выполняется условие <span class="math notranslate nohighlight">\(a_1 \leq a_2 \leq \ldots \leq a_n\)</span>. Найти наибольший среди индексов <span class="math notranslate nohighlight">\(i \in 1..n\)</span>, для которых выполняется условие <span class="math notranslate nohighlight">\(a_i \leq x\)</span>, либо определить, что таких индексов нет.</p>
+<p>Введем параметры <span class="math notranslate nohighlight">\(l, r\)</span> - границы рассматриваемого фрагмента массива. На каждом шаге алгоритма будет сохраняться <em>логический инвариант</em>: слева от индекса <span class="math notranslate nohighlight">\(l\)</span> находятся числа, меньшие либо равные <span class="math notranslate nohighlight">\(x\)</span>, а справа от индекса находятся числа, большие <span class="math notranslate nohighlight">\(x\)</span>. Это свойство выражается формулой</p>
+<p><span class="math notranslate nohighlight">\(
+\forall i \in 1..n: (i &lt; l \to a_i \leq x) \land (i &gt; r \to a_i &gt; x)
+\)</span></p>
+<p>Если предположить (по индукции), что инвариант выполнен на текущем шаге, и доказать, что при переходе на следующий шаг инвариант сохранится, то можно утверждать (по принципу математической индукции), что инвариант будет выполняться вплоть до окончания цикла.</p>
+<p>Выберем на интервале <span class="math notranslate nohighlight">\(l..r\)</span> средний элемент с индексом <span class="math notranslate nohighlight">\(m=\left\lfloor \dfrac{l+r}{2} \right\rfloor\)</span> и сравним его с <span class="math notranslate nohighlight">\(x\)</span>. Если <span class="math notranslate nohighlight">\(a_m\leq x\)</span>, то после присваивания <span class="math notranslate nohighlight">\(l \leftarrow m + 1\)</span> инвариант сохранится. Если <span class="math notranslate nohighlight">\(a_m &gt; x\)</span>, то после присваивания <span class="math notranslate nohighlight">\(r \leftarrow m - 1\)</span> инвариант сохранится.</p>
+<p>После окончания итераций будет выполнено <span class="math notranslate nohighlight">\(l = r+1\)</span>. Возможен случай <span class="math notranslate nohighlight">\(r=0\)</span> - тогда искомого индекса не существует. В противном случае искомый индекс равен <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<p><strong>Упражнение.</strong> Проверьте реализацию алгоритма на собственном наборе тестов.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Вход: a – упорядоченный по возрастанию список, </span>
+<span class="c1">#   x – число</span>
+<span class="c1"># Выход: индекс наибольшего элемента i:</span>
+<span class="c1">#   a[i] &lt;= x или -1, если такого индекса нет</span>
+<span class="k">def</span> <span class="nf">upper_bound</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">n</span> <span class="err">–</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">m</span> <span class="err">–</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span>
+</pre></div>
+</div>
+<p><strong>Пример.</strong> <em>(пирамидальная сортировка)</em> При анализе алгоритма построения структуры данных “пирамида” доказывается, что сложность этого алгоритма <span class="math notranslate nohighlight">\(O(m)\)</span>, где <span class="math notranslate nohighlight">\(m\)</span> - число элементов в пирамиде. Делается это при помощи следующего тождества (где <span class="math notranslate nohighlight">\(m = 2^n\)</span>):</p>
+<p><span class="math notranslate nohighlight">\(
+0 \cdot 2^n + 1 \cdot 2^{n-1} + 2 \cdot 2^{n-2} + 3 \cdot 2^{n-3} + \ldots + (n-1) \cdot 2^1 + n \cdot 2^0 = 2^{n+1} - n - 2
+\)</span></p>
+<p>Докажите его методом математической индукции.</p>
+</section>
+<section id="id12">
+<h2>Дополнительный материал<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://vk.com/video-225887804_456239031">Клип про матиндукцию</a></p>
+<p>Разберите самостоятельно задачу про солдат (<a class="reference external" href="https://old.mccme.ru/free-books/shen/shen-induction.pdf">Шень - Математическая индукция</a>, с. 26).</p>
+<p>Задавайте вопросы <a class="reference external" href="https://vk.com/wall-224597166_15">в комментариях</a>.</p>
 </section>
 </section>
 
@@ -592,7 +852,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Идея метода</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Несложные примеры</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Примеры посложнее</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Применение метода математической индукции к анализу алгоритмов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Геометрические задачи на индукцию</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Комбинаторный пример</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">“Ложная” индукция</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Принцип наименьшего числа</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Индукция по структуре</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Неравенство Коши-Буняковского</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Применение метода математической индукции к анализу алгоритмов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Дополнительный материал</a></li>
 </ul>
   </nav></div>
 
