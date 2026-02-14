@@ -666,10 +666,10 @@ a_1 \cdot a_2 \cdot \ldots \cdot a_n \cdot a_{n+1} = 0 \cdot a_{n+1} = 0,
 <section id="id10">
 <h2>Неравенство Коши-Буняковского<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>Источник: Шишмарёв - Дискретная математика</p>
-<p><em>Для любых чисел <span class="math notranslate nohighlight">\(a_1, \ldots, a_n\)</span>, <span class="math notranslate nohighlight">\(b_1, \ldots, b_n\)</span> выполняется неравенство</em>
-$<span class="math notranslate nohighlight">\(
+<p><em>Для любых чисел <span class="math notranslate nohighlight">\(a_1, \ldots, a_n\)</span>, <span class="math notranslate nohighlight">\(b_1, \ldots, b_n\)</span> выполняется неравенство</em></p>
+<p><span class="math notranslate nohighlight">\(
 (a_1b_1 + a_2b_2 + \ldots a_nb_n)^2 \leq (a_1^2 + \ldots + a_n^2)(b_1^2 + \ldots + b_n^2)
-\)</span>$</p>
+\)</span></p>
 <p><strong>Доказательство.</strong></p>
 <p><em>База индукции.</em> <span class="math notranslate nohighlight">\(n = 1\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\((a_1b_1)^2 \leq a_1^2 b_1^2\)</span> - верно</p>
 <p><em>Гипотеза индукции.</em> Допустим, что</p>
@@ -680,46 +680,44 @@ $<span class="math notranslate nohighlight">\(
 <p><span class="math notranslate nohighlight">\(
 (a_1b_1 + a_2b_2 + \ldots + a_kb_k + a_{k+1}b_{k+1})^2 \leq (a_1^2 + \ldots + a_k^2 + a_{k+1}^2)(b_1^2 + \ldots + b_k^2 + b_{k+1}^2)
 \)</span></p>
-<p>Раскроем скобки в левой части неравенства:
-<span class="math notranslate nohighlight">\(
-\begin{multline*}
-(a_1b_1 + a_2b_2 + \ldots + a_kb_k + a_{k+1}b_{k+1})^2 = \\
-= (a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2 + 2 a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k) + 
+<p>Раскроем скобки в левой части неравенства:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp;(a_1b_1 + a_2b_2 + \ldots + a_kb_k + a_{k+1}b_{k+1})^2 = \\
+&amp;= (a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2 + 2 a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k) + 
 (a_{k+1}b_{k+1})^2
-\end{multline*}
+\end{aligned}
 \)</span></p>
-<p>Раскроем скобки в правой части неравенства:
-$
-\begin{multline*}
-(a_1^2 + \ldots + a_k^2 + a_{k+1}^2)(b_1^2 + \ldots + b_k^2 + b_{k+1}^2) = (a_{k+1}b_{k+1})^2 +
-\</p>
-<ul class="simple">
-<li><p>(a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2) + a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
-\end{multline*}
-$</p></li>
-</ul>
-<p>Остается доказать, используя гипотезу
-<span class="math notranslate nohighlight">\(
+<p>Раскроем скобки в правой части неравенства:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp;(a_1^2 + \ldots + a_k^2 + a_{k+1}^2)(b_1^2 + \ldots + b_k^2 + b_{k+1}^2) = (a_{k+1}b_{k+1})^2 +
+\\
+&amp;+ (a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2) + a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
+\end{aligned}
+\)</span></p>
+<p>Остается доказать, используя гипотезу</p>
+<p><span class="math notranslate nohighlight">\(
 \begin{equation}
 \tag{1}
 (a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2 \leq (a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2),
 \end{equation}
 \)</span></p>
-<p>следующее неравенство:
-<span class="math notranslate nohighlight">\(
+<p>следующее неравенство:</p>
+<p><span class="math notranslate nohighlight">\(
 \begin{multline*}
 {\color{red}(a_1b_1 + a_2b_2 + \ldots + a_kb_k)^2} + 2 a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k)  \leq \\ \leq {\color{red} (a_1^2 + \ldots + a_k^2)(b_1^2 + \ldots + b_k^2)} + a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
 \end{multline*}
 \)</span></p>
-<p>Докажем
-<span class="math notranslate nohighlight">\(
+<p>Докажем</p>
+<p><span class="math notranslate nohighlight">\(
 \begin{multline}
 \tag{2}
 2a_{k+1}b_{k+1}(a_1b_1 + a_2b_2 + \ldots + a_kb_k) \leq \\ \leq a_{k+1}^2(b_1^2 + \ldots + b_k^2 ) + b_{k+1}^2 (a_1^2 + \ldots + a_k^2 )
 \end{multline}
 \)</span></p>
-<p><strong>Упражнение.</strong> Распишите преобразование этого неравенства к равносильной формуле
-<span class="math notranslate nohighlight">\(
+<p><strong>Упражнение.</strong> Распишите преобразование этого неравенства к равносильной формуле</p>
+<p><span class="math notranslate nohighlight">\(
 (a_{k+1}b_1 - a_1b_{k+1})^2 + (a_{k+1}b_2 - a_2b_{k+1})^2 + \ldots + (a_{k+1}b_k - a_kb_{k+1})^2 \geq 0
 \)</span></p>
 <p>Сложив (1) с (2), получим неравенство Коши-Буняковского.</p>
