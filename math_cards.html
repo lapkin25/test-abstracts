@@ -417,6 +417,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Розочка</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ёлочка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">К 8 Марта</a></li>
 </ul>
             </nav>
         </div>
@@ -510,6 +511,92 @@ document.write(`
 </div>
 <p><em>Задание:</em> Добавьте отрисовку шаров на ветках, чтобы украсить ёлочку.</p>
 </section>
+<section id="id4">
+<h2>К 8 Марта<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+
+<span class="c1"># Параметры формы</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">2.0</span>          <span class="c1"># полуширина восьмёрки по оси X</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>          <span class="c1"># амплитуда восьмёрки по оси Y</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span>      <span class="c1"># ширина ленты</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mi">200</span>         <span class="c1"># число точек вдоль ленты (параметр u)</span>
+<span class="n">nv</span> <span class="o">=</span> <span class="mi">20</span>          <span class="c1"># число точек поперёк ленты (параметр v)</span>
+
+<span class="c1"># Сетка параметров</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">nu</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">width</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">nv</span><span class="p">)</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Центральная кривая в форме восьмёрки (лемниската)</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="n">Y0</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">Z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># Производные центральной кривой (касательный вектор)</span>
+<span class="n">X0p</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="n">Y0p</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># Длина касательной (защита от деления на ноль)</span>
+<span class="n">Tlen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">X0p</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y0p</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Tlen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Tlen</span> <span class="o">&lt;</span> <span class="mf">1e-12</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">,</span> <span class="n">Tlen</span><span class="p">)</span>
+
+<span class="c1"># Единичный вектор, перпендикулярный касательной в плоскости XY (горизонтальная нормаль)</span>
+<span class="n">Nx</span> <span class="o">=</span> <span class="o">-</span><span class="n">Y0p</span> <span class="o">/</span> <span class="n">Tlen</span>
+<span class="n">Ny</span> <span class="o">=</span>  <span class="n">X0p</span> <span class="o">/</span> <span class="n">Tlen</span>
+<span class="n">Nz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Nx</span><span class="p">)</span>
+
+<span class="c1"># Поворот вектора ширины на половину угла u (создаёт перекручивание)</span>
+<span class="n">cos_half</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">u</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sin_half</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">u</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Вектор ширины (комбинация горизонтальной нормали и вертикального направления)</span>
+<span class="n">Wx</span> <span class="o">=</span> <span class="n">cos_half</span> <span class="o">*</span> <span class="n">Nx</span>
+<span class="n">Wy</span> <span class="o">=</span> <span class="n">cos_half</span> <span class="o">*</span> <span class="n">Ny</span>
+<span class="n">Wz</span> <span class="o">=</span> <span class="n">sin_half</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>   <span class="c1"># вертикальная компонента</span>
+
+<span class="c1"># Координаты поверхности</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X0</span> <span class="o">+</span> <span class="n">v</span> <span class="o">*</span> <span class="n">Wx</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Y0</span> <span class="o">+</span> <span class="n">v</span> <span class="o">*</span> <span class="n">Wy</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z0</span> <span class="o">+</span> <span class="n">v</span> <span class="o">*</span> <span class="n">Wz</span>
+
+<span class="c1"># Построение графика</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+                       <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Настройка осей и заголовка</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Лента Мёбиуса в форме восьмёрки&#39;</span><span class="p">)</span>
+
+<span class="c1"># Равный масштаб для всех осей</span>
+<span class="n">max_range</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">*</span> <span class="mf">1.1</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">max_range</span><span class="p">,</span> <span class="n">max_range</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">max_range</span><span class="p">,</span> <span class="n">max_range</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="o">-</span><span class="n">max_range</span><span class="p">,</span> <span class="n">max_range</span><span class="p">)</span>
+
+<span class="c1"># угол обзора</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">azim</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Цветовая шкала</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c2586fdab85bb74b4ffa47fe29629836e422c0494ebba859d8cdc8b7f51bbb35.png" src="_images/c2586fdab85bb74b4ffa47fe29629836e422c0494ebba859d8cdc8b7f51bbb35.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -578,6 +665,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Розочка</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Ёлочка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">К 8 Марта</a></li>
 </ul>
   </nav></div>
 
