@@ -21,6 +21,7 @@ chapters:
   sections:
   - file: discr-intro
   - file: discr-induction
+  - file: discr-boolean
   - file: discr-graphs
 - file: algorithms
   sections:
