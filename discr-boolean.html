@@ -425,11 +425,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Полные системы булевых функций</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Замкнутые классы</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Критерий полноты</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Полнота одной системы через полноту другой системы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Замкнутые классы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Критерий полноты</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Минимизация ДНФ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Минимизация ДНФ</a></li>
 </ul>
             </nav>
         </div>
@@ -444,6 +445,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>Булевы функции<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p><span style="text-align:right"><small>«… в математике истинный смысл теоремы до конца раскрывается лишь в ходе ее доказательства, и если найдется такой болван, который будет заучивать только формулировки теорем, игнорируя доказательства, — он будет тратить время впустую.» (Л. Янг)</small></span></p>
+<p>Главная цель изучения данной темы - не просто приобрести навыки упрощения булевых формул (эти стандартные алгоритмы реализованы в готовых пакетах, например SymPy). Мы изучаем теорию, чтобы лучше понять логику алгоритмов.</p>
 <section id="id2">
 <h2>Основные понятия<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>Источник: Соболева, Чечкин - <a class="reference external" href="https://znanium.ru/catalog/document?id=343807">Дискретная математика. Углубленный курс</a></p>
@@ -638,15 +640,29 @@ f(x_1, \ldots, x_n) = \bigvee\limits_{s}  x_1^{s_1} \cdot \ldots \cdot x_n^{s_n}
 <section id="id7">
 <h2>Полные системы булевых функций<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>Источник: <a class="reference external" href="https://vkvideo.ru/video-186208863_456243902?sh=4">лекции ВМК МГУ</a></p>
+<p><strong>Определение.</strong> Система булевых функций называется <em>полной</em>, если всякую булеву функцию любого числа переменных можно выразить с помощью формулы глубины не меньше 1 с участием операций из данной системы (глубина формулы - это число операций в формуле).</p>
+<p>Примеры полных систем:</p>
+<p><span class="math notranslate nohighlight">\(\text{Б}_0 = \{x_1 \land x_2, x_1 \vee x_2, \overline{x_1} \}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{Б}_+ = \{x_1 \oplus x_2, x_1 \land x_2, 1 \}\)</span></p>
+<p>В первом случае сошлемся на возможность выразить любую функцию, не равную тождественно <span class="math notranslate nohighlight">\(0\)</span>, в виде СДНФ (константу <span class="math notranslate nohighlight">\(0\)</span> тоже можно выразить с помощью системы <span class="math notranslate nohighlight">\(\text{Б}_0\)</span> следующим образом: <span class="math notranslate nohighlight">\(0 = x_1 \land \neg x_1\)</span>).</p>
+<p>Во втором случае ссылаемся на возможность выразить всякую функцию с помощью многочлена Жегалкина (особый случай - константа <span class="math notranslate nohighlight">\(0\)</span>, которая выражается так: <span class="math notranslate nohighlight">\(0 = x_1 \oplus x_1\)</span>).</p>
 <section id="id8">
-<h3>Замкнутые классы<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3>Полнота одной системы через полноту другой системы<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Существует приём, который бы доказывал полноту систем на основе уже построенных полных систем.</p>
+<p><strong>Теорема.</strong> Пусть <span class="math notranslate nohighlight">\(A\)</span> - полная система булевых функций, и пусть <span class="math notranslate nohighlight">\(A'\)</span> - другая система булевых функций, такая, что всякая функция из <span class="math notranslate nohighlight">\(A\)</span> реализуется некоторой формулой над <span class="math notranslate nohighlight">\(A'\)</span>. Тогда <span class="math notranslate nohighlight">\(A'\)</span> - полная система.</p>
+<p><em>Примеры:</em> <span class="math notranslate nohighlight">\(\{x_1 \land x_2, \overline{x_1}\}\)</span>, <span class="math notranslate nohighlight">\(\{x_1 \vee x_2, \overline{x_1}\}\)</span>, <span class="math notranslate nohighlight">\(\{x_1 \,|\, x_2\}\)</span>, <span class="math notranslate nohighlight">\(\{x_1 \downarrow x_2\}\)</span> - полные системы булевых функций, поскольку каждую из этих систем можно выразить с помощью функций системы <span class="math notranslate nohighlight">\(\text{Б}_0\)</span>.</p>
+<p>Например, <span class="math notranslate nohighlight">\(\overline{x_1} = x_1 \, | \, x_1\)</span>, <span class="math notranslate nohighlight">\(x_1 \land x_2 = \neg (x_1 \, | \, x_2) = (x_1 \, | \, x_2) \, | \, (x_1 \, | \, x_2)\)</span>. Поэтому по теореме, если <span class="math notranslate nohighlight">\(\{\overline{x_1}, x_1 \land x_2\}\)</span> - полная система, то <span class="math notranslate nohighlight">\(\{|\}\)</span> - также полная система.</p>
+<p><strong>Упражнение.</strong> Докажите полноту системы <span class="math notranslate nohighlight">\(\{x_1 \to x_2, 0\}\)</span>.</p>
 </section>
 <section id="id9">
-<h3>Критерий полноты<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
-</section>
+<h3>Замкнутые классы<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 </section>
 <section id="id10">
-<h2>Минимизация ДНФ<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h3>Критерий полноты<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="id11">
+<h2>Минимизация ДНФ<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>Источники: Судоплатов, Овчинникова - <a class="reference external" href="https://urait.ru/bcode/582836">Дискретная математика</a>; Никишечкин - <a class="reference external" href="https://urait.ru/bcode/586769">Дискретная математика и дискретные системы управления</a>; Алексеев - <a class="reference external" href="https://znanium.ru/catalog/document?id=420623">Дискретная математика</a></p>
 </section>
 </section>
@@ -723,11 +739,12 @@ f(x_1, \ldots, x_n) = \bigvee\limits_{s}  x_1^{s_1} \cdot \ldots \cdot x_n^{s_n}
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Полные системы булевых функций</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Замкнутые классы</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Критерий полноты</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Полнота одной системы через полноту другой системы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Замкнутые классы</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Критерий полноты</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Минимизация ДНФ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Минимизация ДНФ</a></li>
 </ul>
   </nav></div>
 
