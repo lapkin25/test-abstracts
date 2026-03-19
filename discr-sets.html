@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Дискретная математика: введение &#8212; Элементы математики</title>
+    <title>Множества &#8212; Элементы математики</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'discr-intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'discr-sets';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
     <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
@@ -68,8 +68,8 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Метод математической индукции" href="discr-induction.html" />
-    <link rel="prev" title="Дискретная математика" href="discr.html" />
+    <link rel="next" title="Графы" href="discr-graphs.html" />
+    <link rel="prev" title="Булевы функции" href="discr-boolean.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,10 +201,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="discr.html">Дискретная математика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Дискретная математика: введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-boolean.html">Булевы функции</a></li>
-<li class="toctree-l2"><a class="reference internal" href="discr-sets.html">Множества</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Множества</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-graphs.html">Графы</a></li>
 </ul>
 </li>
@@ -294,7 +294,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fdiscr-intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fdiscr-sets.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +324,7 @@
       
       
       
-      <li><a href="_sources/discr-intro.ipynb" target="_blank"
+      <li><a href="_sources/discr-sets.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +408,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Дискретная математика: введение</h1>
+    <h1>Множества</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,14 +418,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Пример моделирования</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Формальная постановка задачи</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Алгоритм Прима</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Пример работы алгоритма</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Понятие множества</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Включение и равенство множеств</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Характеристический вектор</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Диаграммы Венна</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Операции над множествами</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Основные тождества</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Типовые задачи</a></li>
 </ul>
             </nav>
         </div>
@@ -438,228 +439,113 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Дискретная математика: введение<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>Источник: Хаггарти - Дискретная математика для программистов</p>
-<p>“Дискретный” - составленный из отдельных частей.</p>
-<p><em>Дискретная математика</em> изучает множества конечной/счетной мощности и определенные на них структуры (кортежи, таблицы, графы).
-Компьютер можно смоделировать в виде дискретной математической системы. Чтобы понимать, как эта система устроена, мы этот предмет и изучаем.</p>
+<h1>Множества<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><span style="text-align:right"><small>”Множество людей могут говорить хорошие вещи, но очень немногие умеют слушать, так как это требует силы ума.” (Р. Тагор)</small></span></p>
+<p>С понятием множества в программировании вы уже знакомы, если применяли стандартный контейнер <code class="docutils literal notranslate"><span class="pre">set</span></code>. Тем не менее, понятие множества не исчерпывается конкретным способом реализации в виде структуры данных. Множество - это универсальная абстракция: любой набор объектов, порядок следования которых не имеет существенного значения.</p>
+<p>В этой абстракции, с практической точки зрения, должны быть реализованы операции доступа:</p>
+<ul class="simple">
+<li><p>проверка принадлежности заданного элемента множеству;</p></li>
+<li><p>проверка включения одного множества в другое множество</p></li>
+</ul>
+<p>и операции модификации:</p>
+<ul class="simple">
+<li><p>добавление элемента в множество;</p></li>
+<li><p>извлечение элемента из множества,</p></li>
+</ul>
+<p>а также операции над множествами:</p>
+<ul class="simple">
+<li><p>объединение двух множеств;</p></li>
+<li><p>пересечение двух множеств;</p></li>
+<li><p>разность двух множеств.</p></li>
+</ul>
+<p>В объектно-ориентированном программировании указанная абстракция может быть инкапсулирована в соответствующем классе, но не обязательно. Любые данные, расположенные в любом порядке, - это уже множество. Даже если они хранятся в обычном массиве или списке.</p>
 <section id="id2">
-<h2>Пример моделирования<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Поставим задачу выделить подмножество дорог, соединяющее все города между собой, суммарная длина которых будет минимальной. (Например, какие дороги надо отремонтировать, чтобы минимизировать стоимость ремонта?)</p>
+<h2>Понятие множества<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Источники: Кузнецов - Дискретная математика для инженера; Казанский - Дискретная математика: краткий курс</p>
+<p>Основатель теории множеств Георг Кантор определял множество так: “многое, понимаемое как единое”.</p>
+<p><strong>Примеры.</strong> 1. Хоккейная команда “Адмирал” - это множество хоккеистов.</p>
+<ol class="arabic simple" start="2">
+<li><p>Товары, которые покупатель сложил в корзину в интернет-магазине, образуют множество.</p></li>
+<li><p>Все функции, объявленные в скрипте на Python, образуют множество. Функции без параметров - <em>подмножество</em> данного множества.</p></li>
+<li><p>Рассмотрим множество <span class="math notranslate nohighlight">\(A\)</span> имён переменных, используемых в функциях, и множество имён переменных <span class="math notranslate nohighlight">\(B\)</span>, используемых в основном коде. Желательно, чтобы у этих множеств не было общих элементов. На языке теории множеств говорят, что множества <em>не пересекаются</em>: <span class="math notranslate nohighlight">\(A \cap B = \varnothing\)</span>.</p></li>
+</ol>
+<p>Запишем свойство отсутствия пересечения у двух множеств <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> на языке логики предикатов:</p>
+<p><span class="math notranslate nohighlight">\(A \cap B = \varnothing \quad \Longleftrightarrow \quad \neg \exists x\, (x \in A \land x \in B)\)</span></p>
+<p>Другим способом:</p>
+<p><span class="math notranslate nohighlight">\(A \cap B = \varnothing \quad \Longleftrightarrow \quad \forall x\, (x \notin A \vee x \notin B)\)</span></p>
+<ol class="arabic simple" start="5">
+<li><p>Множество решений уравнения <span class="math notranslate nohighlight">\(\sin x = 1\)</span> в действительных числах:</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(M = \{x \in \mathbb R \colon \sin x = 1\} = \{x \in \mathbb R \colon \exists k \in \mathbb Z \, (x = \pi/2 + 2k\pi)\}\)</span></p>
+<section id="id3">
+<h3>Включение и равенство множеств<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><em>Равенство</em> двух множеств <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> означает следующее: всякий элемент множества <span class="math notranslate nohighlight">\(A\)</span> принадлежит множеству <span class="math notranslate nohighlight">\(B\)</span>, и всякий элемент множества <span class="math notranslate nohighlight">\(B\)</span> принадлежит множеству <span class="math notranslate nohighlight">\(A\)</span>. Иными словами, равные множества состоят из одних и тех же элементов.</p>
+<p><strong>Пример.</strong> Множество равнобедренных треугольников равно множеству треугольников с двумя равными углами.</p>
+<p>Множество <span class="math notranslate nohighlight">\(A\)</span> <em>включено</em> в множество <span class="math notranslate nohighlight">\(B\)</span> (является его подмножеством: <span class="math notranslate nohighlight">\(A \subset B\)</span>), если всякий элемент множества <span class="math notranslate nohighlight">\(A\)</span> принадлежит множеству <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Запишем это определение на языке логики предикатов:</p>
+<p><span class="math notranslate nohighlight">\(A \subset B \quad \Longleftrightarrow \quad \forall x\, (x \in A \to x \in B)\)</span></p>
+<p>Пустое множество <span class="math notranslate nohighlight">\(\varnothing\)</span> - это множество, не содержащее элементов.</p>
+<p>Докажем, что <span class="math notranslate nohighlight">\(\varnothing \subset A\)</span> для любого множества <span class="math notranslate nohighlight">\(A\)</span>.
+В самом деле,</p>
+<p><span class="math notranslate nohighlight">\(\forall x\, (x \in \varnothing \to x \in A) = (\forall x\, (0 \to (x \in A))) = \forall x\, 1 = 1\)</span></p>
+</section>
+<section id="id4">
+<h3>Характеристический вектор<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Пусть задано конечное универсальное множество <span class="math notranslate nohighlight">\(U\)</span>, в котором <span class="math notranslate nohighlight">\(n\)</span> элементов (пишут: <span class="math notranslate nohighlight">\(|U| = n\)</span>). Множество возможных подмножеств множества <span class="math notranslate nohighlight">\(U\)</span> называется <em>булеаном</em> (обозначение <span class="math notranslate nohighlight">\(\mathcal P(U)\)</span> или <span class="math notranslate nohighlight">\(2^U\)</span>). В булеане <span class="math notranslate nohighlight">\(2^n\)</span> элементов.</p>
+<p>Например, если <span class="math notranslate nohighlight">\(U = \{1, 2, 3\}\)</span>, то <span class="math notranslate nohighlight">\(\mathcal P(U) = \{ \varnothing, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\} \}\)</span>.</p>
+<p>Чтобы задать любое множество из <span class="math notranslate nohighlight">\(\mathcal P(U)\)</span>, можно пронумеровать все <span class="math notranslate nohighlight">\(n\)</span> элементов множества <span class="math notranslate nohighlight">\(U = \{a_1, a_2, \ldots, a_n\}\)</span> и составить таблицу, в которой указана принадлежность каждого элемента универсума <span class="math notranslate nohighlight">\(U\)</span> множеству <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p><strong>Пример.</strong> В следующей таблице задано множество <span class="math notranslate nohighlight">\(A = \{a_2, a_4\}\)</span>.</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>расстояние (в км)</p></th>
-<th class="head"><p>Вл</p></th>
-<th class="head"><p>Нах</p></th>
-<th class="head"><p>Усс</p></th>
-<th class="head"><p>Арт</p></th>
-<th class="head"><p>Арс</p></th>
-<th class="head"><p>См</p></th>
-<th class="head"><p>Шк</p></th>
-<th class="head"><p>Пог</p></th>
-<th class="head"><p>Пар</p></th>
-<th class="head"><p>Фок</p></th>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(a_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(a_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(a_3\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(a_4\)</span></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Владивосток</p></td>
-<td><p></p></td>
-<td><p>172</p></td>
-<td><p>98</p></td>
-<td><p>45</p></td>
-<td><p>239</p></td>
-<td><p>75</p></td>
-<td><p>66</p></td>
-<td><p>195</p></td>
-<td><p>160</p></td>
-<td><p>118</p></td>
-</tr>
-<tr class="row-odd"><td><p>Находка</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>209</p></td>
-<td><p>132</p></td>
-<td><p>350</p></td>
-<td><p>98</p></td>
-<td><p>109</p></td>
-<td><p>306</p></td>
-<td><p>55</p></td>
-<td><p>57</p></td>
-</tr>
-<tr class="row-even"><td><p>Уссурийск</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>77</p></td>
-<td><p>144</p></td>
-<td><p>113</p></td>
-<td><p>104</p></td>
-<td><p>97</p></td>
-<td><p>198</p></td>
-<td><p>156</p></td>
-</tr>
-<tr class="row-odd"><td><p>Артем</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>220</p></td>
-<td><p>36</p></td>
-<td><p>26</p></td>
-<td><p>175</p></td>
-<td><p>121</p></td>
-<td><p>78</p></td>
-</tr>
-<tr class="row-even"><td><p>Арсеньев</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>255</p></td>
-<td><p>246</p></td>
-<td><p>209</p></td>
-<td><p>340</p></td>
-<td><p>298</p></td>
-</tr>
-<tr class="row-odd"><td><p>Смоляниново</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>11</p></td>
-<td><p>208</p></td>
-<td><p>98</p></td>
-<td><p>43</p></td>
-</tr>
-<tr class="row-even"><td><p>Шкотово</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>199</p></td>
-<td><p>96</p></td>
-<td><p>54</p></td>
-</tr>
-<tr class="row-odd"><td><p>Пограничный</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>295</p></td>
-<td><p>252</p></td>
-</tr>
-<tr class="row-even"><td><p>Партизанск</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>104</p></td>
-</tr>
-<tr class="row-odd"><td><p>Фокино</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
-<section id="id3">
-<h3>Формальная постановка задачи<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>Имеем <em>полный граф</em> из 10 вершин.</p>
-<p>Неформально, граф - это сеть из <em>вершин</em>, соединенных <em>ребрами</em>. Вершины изображают города, а ребра - дороги между ними. Каждое ребро помечено числом, называемым <em>весом ребра</em>.</p>
-<p>Таким образом, в абстрактной формулировке нам нужно, имея таблицу весов ребер графа, найти его <em>минимальное остовное дерево</em>.</p>
-<p><strong>Определение.</strong> Остовным деревом графа <span class="math notranslate nohighlight">\(G\)</span> называют его подграф <span class="math notranslate nohighlight">\(G'\)</span>, включающий все вершины графа <span class="math notranslate nohighlight">\(G\)</span>, для которого выполняются условия:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(G'\)</span> <em>связен</em>: между любыми двумя вершинами <span class="math notranslate nohighlight">\(G'\)</span> существует путь в <span class="math notranslate nohighlight">\(G'\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(G'\)</span> <em>ацикличен</em>: в графе <span class="math notranslate nohighlight">\(G'\)</span> нет замкнутых путей (циклов)</p></li>
-</ol>
-<p>Связный ациклический граф называется <em>деревом</em>.</p>
-<p><em>Стоимостью остовного дерева</em> назовем сумму весов его ребер.</p>
-<p>Остовное дерево, имеющее минимально возможную стоимость (среди всевозможных остовных деревьев графа <span class="math notranslate nohighlight">\(G\)</span>), называется <em>минимальным остовным деревом</em> графа <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>Двоичный вектор, который задает некоторое множество <span class="math notranslate nohighlight">\(A\)</span> (при выбранной нумерации элементов множества <span class="math notranslate nohighlight">\(U\)</span>) называется <em>характеристическим вектором множества <span class="math notranslate nohighlight">\(A\)</span></em>.</p>
 </section>
-<section id="id4">
-<h3>Алгоритм Прима<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<p><em>Вход:</em> граф <span class="math notranslate nohighlight">\(G\)</span></p>
-<p><em>Выход:</em> минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>, заданное как подмножество ребер</p>
-<p><em><strong>Шаг 1.</strong></em> <em>Инициализация:</em></p>
-<p><strong>Шаг 1.1.</strong> Выбрать произвольную вершину <span class="math notranslate nohighlight">\(u_0\)</span> графа <span class="math notranslate nohighlight">\(G\)</span></p>
-<p><strong>Шаг 1.2.</strong> Найти в множестве ребер <span class="math notranslate nohighlight">\(\{(u_0, v) \colon v \text{ - вершина графа }G\}\)</span> ребро с минимальным весом: <span class="math notranslate nohighlight">\(d(u_0, v) \to \min\limits_v = d(u_0, v_0)\)</span>.</p>
-<p><strong>Шаг 1.3.</strong> Присоединить ребро <span class="math notranslate nohighlight">\((u_0, v_0)\)</span> к остовному дереву:</p>
-<p><span class="math notranslate nohighlight">\(E' \leftarrow \{(u_0, v_0)\}; \quad V' \leftarrow \{u_0, v_0\}\)</span></p>
-<p><em><strong>Шаг 2.</strong></em> <em>Цикл по числу вершин:</em></p>
-<p>Положим <span class="math notranslate nohighlight">\(k = 1\)</span>.</p>
-<p><em>Пока не все вершины графа <span class="math notranslate nohighlight">\(G\)</span> присоединены к остовному дереву (т.е. <span class="math notranslate nohighlight">\(V' \neq V\)</span>), выполнять шаги:</em></p>
-<p><strong>Шаг 2.1.</strong> Найти в множестве рёбер <span class="math notranslate nohighlight">\(\{(u, v) \colon u \in V', \; v \notin V', \; (u, v) \in E \}\)</span> ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> с минимальным весом: <span class="math notranslate nohighlight">\(d(u, v) \to \min\limits_{\substack{u \in V' \\ v \notin V' \\ (u, v) \in E}} = d(u_k, v_k)\)</span></p>
-<p><strong>Шаг 2.2.</strong> Присоединить ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> к остовному дереву; увеличить <span class="math notranslate nohighlight">\(k\)</span> на <span class="math notranslate nohighlight">\(1\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(E' \leftarrow E' \cup \{(u_k, v_k)\}; \quad V' \leftarrow V' \cup \{v_k\}; \quad k \leftarrow k + 1\)</span></p>
-<p><em><strong>Шаг 3.</strong></em> Выдать ответ: граф <span class="math notranslate nohighlight">\(G' = (V', E')\)</span> - это минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G = (V, E)\)</span>.</p>
 <section id="id5">
-<h4>Пример работы алгоритма<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
-<p><span class="math notranslate nohighlight">\(u_0 = \text{Владивосток}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_0 = \text{Артем}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_0, v_0) = 45\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_1 = \text{Артем}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_1 = \text{Шкотово}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_1, v_1) = 26\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_2 = \text{Шкотово}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_2 = \text{Смоляниново}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_2, v_2) = 11\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_3 = \text{Смоляниново}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_3 = \text{Фокино}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_3, v_3) = 43\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_4 = \text{Фокино}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_4 = \text{Находка}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_4, v_4) = 57\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_5 = \text{Артем}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_5 = \text{Уссурийск}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_5, v_5) = 77\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_6 = \text{Шкотово}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_6 = \text{Партизанск}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_6, v_6) = 96\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_7 = \text{Уссурийск}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_7 = \text{Пограничный}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_7, v_7) = 97\)</span></p>
-<br/>
-<p><span class="math notranslate nohighlight">\(u_8 = \text{Уссурийск}\)</span></p>
-<p><span class="math notranslate nohighlight">\(v_8 = \text{Арсеньев}\)</span></p>
-<p><span class="math notranslate nohighlight">\(d(u_8, v_8) = 144\)</span></p>
-<br/>
-<p>Стоимость минимального остовного дерева равна <span class="math notranslate nohighlight">\(45 + 26 + 11 + 43 + 57 + 77 + 96 + 97 + 144 = 596\)</span></p>
-<p><em>Вопрос:</em> Если граф <span class="math notranslate nohighlight">\(G\)</span> содержит <span class="math notranslate nohighlight">\(n\)</span> вершин и <span class="math notranslate nohighlight">\(m\)</span> ребер, то сколько вершин и ребер содержит остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>?</p>
-<p><strong>Упражнение.</strong> Выполните алгоритм Прима для подграфа, состоящего из 5 первых городов: Владивосток, Находка, Уссурийск, Артем, Арсеньев. Заполните таблицу <span class="math notranslate nohighlight">\(u_k\; v_k, \; k = 0, 1, 2, 3\)</span>. Вычислите стоимость остовного дерева.</p>
-<p>Пока работоспособность этого алгоритма для любого заданного графа - для нас магия; поэтому в разделе “Графы” мы строго проанализируем алгоритм и докажем его корректность.</p>
-<p>Именно понимание алгоритмов, а не “умение” перепечатать готовый псевдокод на языках программирования делает вас хорошим программистом.</p>
-<p>В доказательстве корректности алгоритма Прима используется метод математической индукции, которому посвящен наш первый раздел.</p>
+<h3>Диаграммы Венна<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Диаграмма Венна позволяет получить визуальное представление множеств в виде замкнутых областей на плоскости.
+Универсальное множество представляется внутренними точками прямоугольника, а другие множества представляются точками кругов, лежащих внутри этого прямоугольника.</p>
+<p>На рисунке показаны три случая взаимосвязи двух множеств.</p>
+<p><img alt="" src="_images/sets1.png" /></p>
 </section>
 </section>
+<section id="id6">
+<h2>Операции над множествами<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Источник: White, Ray - Practical discrete mathematics</p>
+<p>Всякому подмножеству <span class="math notranslate nohighlight">\(A\)</span> некоторого универсума <span class="math notranslate nohighlight">\(U\)</span> соответствует одноместный предикат (характеристическое свойство) <span class="math notranslate nohighlight">\(P(x) = \{x \in U \colon x \in A\}\)</span>. И обратно, всякий одноместный предикат <span class="math notranslate nohighlight">\(P(x)\)</span>, определенный на множестве <span class="math notranslate nohighlight">\(U\)</span>, задает множество (область истинности предиката) <span class="math notranslate nohighlight">\(I_P = \{x \in U \colon P(x)\}\)</span>. (В логике множество составляет объём понятия, а его характеристическое свойство составляет содержание понятия.)</p>
+<p>Пусть <span class="math notranslate nohighlight">\(A, B \subset U\)</span> - два множества. Применим к их характеристическим свойствам операцию логического сложения (дизъюнкции). Получим множество <span class="math notranslate nohighlight">\(A \cup B\)</span>, называемое <em>объединением</em> множеств <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span>.
+По определению,</p>
+<p><span class="math notranslate nohighlight">\(A \cup B = \{x \colon x \in A \vee x \in B\}\)</span></p>
+<p><img alt="" src="_images/sets2.png" /></p>
+<p>Если применить к характеристическим свойствам множеств операцию конъюнкции, то получится множество, состоящее из элементов, принадлежащих одновременно к обоим множествам. Это <em>пересечение</em> множеств <span class="math notranslate nohighlight">\(A \cap B\)</span>. По определению,</p>
+<p><span class="math notranslate nohighlight">\(A \cap B = \{x \colon x \in A \land x \in B\}\)</span></p>
+<p><img alt="" src="_images/sets3.png" /></p>
+<p>Если инвертировать характеристическое свойство множества <span class="math notranslate nohighlight">\(A\)</span>, получим его <em>дополнение</em> <span class="math notranslate nohighlight">\(\overline{A}\)</span>. Другое обозначение: <span class="math notranslate nohighlight">\(A^c\)</span>. По определению,</p>
+<p><span class="math notranslate nohighlight">\(\overline{A} = \{x \in U \colon x \notin A\}\)</span></p>
+<p><img alt="" src="_images/sets4.png" /></p>
+<p><em>Разность</em> множеств <span class="math notranslate nohighlight">\(A \setminus B\)</span> состоит из всех элементов множества <span class="math notranslate nohighlight">\(A\)</span>, не принадлежащих множеству <span class="math notranslate nohighlight">\(B\)</span>.
+По определению, <span class="math notranslate nohighlight">\(A \setminus B = A \cap \overline{B}\)</span>.</p>
+<p><img alt="" src="_images/sets5.png" /></p>
+<p><strong>Упражнение.</strong> Запишите характеристическое свойство разности двух множеств:</p>
+<p><span class="math notranslate nohighlight">\(A \setminus B = \{x \colon \; {\color{red} ? }\; \}\)</span></p>
+</section>
+<section id="id7">
+<h2>Основные тождества<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+</section>
+<section id="id8">
+<h2>Типовые задачи<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -694,20 +580,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="discr.html"
+       href="discr-boolean.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Дискретная математика</p>
+        <p class="prev-next-title">Булевы функции</p>
       </div>
     </a>
     <a class="right-next"
-       href="discr-induction.html"
+       href="discr-graphs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Метод математической индукции</p>
+        <p class="prev-next-title">Графы</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -727,14 +613,15 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Пример моделирования</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Формальная постановка задачи</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Алгоритм Прима</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Пример работы алгоритма</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Понятие множества</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Включение и равенство множеств</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Характеристический вектор</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Диаграммы Венна</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Операции над множествами</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Основные тождества</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Типовые задачи</a></li>
 </ul>
   </nav></div>
 
