@@ -23,6 +23,7 @@ chapters:
   - file: discr-induction
   - file: discr-boolean
   - file: discr-sets
+  - file: discr-relations
   - file: discr-graphs
 - file: algorithms
   sections:
