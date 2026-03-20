@@ -543,9 +543,126 @@ document.write(`
 </section>
 <section id="id7">
 <h2>Основные тождества<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Коммутативность:</p>
+<p><span class="math notranslate nohighlight">\(A \cap B = B \cap A, \quad A \cup B = B \cup A\)</span></p>
+<p>Ассоциативность:</p>
+<p><span class="math notranslate nohighlight">\((A \cap B) \cap C = A \cap (B \cap C)\)</span></p>
+<p><span class="math notranslate nohighlight">\((A \cup B) \cup C = A \cup (B \cup C)\)</span></p>
+<p>Идемпотентность:</p>
+<p><span class="math notranslate nohighlight">\(A \cap A = A, \quad A \cup A = A\)</span></p>
+<p>Дистрибутивность:</p>
+<p><span class="math notranslate nohighlight">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span></p>
+<p><span class="math notranslate nohighlight">\(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)</span></p>
+<p>Законы поглощения:</p>
+<p><span class="math notranslate nohighlight">\(A \cap (A \cup B) = A\)</span></p>
+<p><span class="math notranslate nohighlight">\(A \cup (A \cap B) = A\)</span></p>
+<p>Законы де Моргана:</p>
+<p><span class="math notranslate nohighlight">\(\overline{A \cup B} = \overline{A} \cap \overline{B}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\overline{A \cap B} = \overline{A} \cup \overline{B}\)</span></p>
+<p>Инволюция:</p>
+<p><span class="math notranslate nohighlight">\(\overline{\overline{A}} = A\)</span></p>
+<p>Законы дополнения:</p>
+<p><span class="math notranslate nohighlight">\(A \cap \overline{A} = \varnothing, \quad \overline{\varnothing} = U\)</span></p>
+<p><span class="math notranslate nohighlight">\(A \cup \overline{A} = U, \quad \overline{U} = \varnothing\)</span></p>
+<p>Законы тождества:</p>
+<p><span class="math notranslate nohighlight">\(A \cap U = A, \quad A \cap\varnothing = \varnothing\)</span></p>
+<p><span class="math notranslate nohighlight">\(A \cup \varnothing = A, \quad A \cup U = U\)</span></p>
+<p>Чтобы убедиться в правильности основных тождеств, перейдем от множеств к характеристическим свойствам. Получим соответствующие равносильности логики высказываний.</p>
+<p>Докажем, например, закон де Моргана <span class="math notranslate nohighlight">\(\overline{A \cup B} = \overline{A} \cap \overline{B}\)</span>.</p>
+<p>Обозначим (для произвольного элемента универсума <span class="math notranslate nohighlight">\(x \in U\)</span>) характеристическое свойство принадлежности множеству <span class="math notranslate nohighlight">\(A\)</span> через <span class="math notranslate nohighlight">\(a\)</span> (свойство <span class="math notranslate nohighlight">\(x \in A\)</span>). Аналогично свойство <span class="math notranslate nohighlight">\(x \in B\)</span> обозначим через <span class="math notranslate nohighlight">\(b\)</span>. Придем к равносильности:</p>
+<p><span class="math notranslate nohighlight">\(\neg (a \vee b) = \neg a \land \neg b\)</span></p>
+<p>Законы тождества сводятся к знакомым равносильностям логики высказываний:</p>
+<p><span class="math notranslate nohighlight">\(a \land 1 = a, \quad a \land 0 = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(a \vee 0 = a, \quad a \vee 1 = 1\)</span></p>
+<p><strong>Упражнение.</strong> <em>Симметрическая разность</em> двух множеств <span class="math notranslate nohighlight">\(A \triangle B\)</span> соответствует логической операции “сложение по модулю 2” <span class="math notranslate nohighlight">\(a \oplus b\)</span>. Пользуясь описанным методом, докажите тождество:</p>
+<p><span class="math notranslate nohighlight">\(
+A \triangle B = (A \cup B) \cap \overline{(A \cap B)}
+\)</span></p>
+<p>С помощью основных тождеств можно получать новые тождества.</p>
+<p><strong>Пример.</strong> Докажем тождество <span class="math notranslate nohighlight">\(\overline{A \setminus B} = \overline{A} \cup B\)</span>.</p>
+<p>В самом деле,</p>
+<p><span class="math notranslate nohighlight">\(\overline{A \setminus B} = \overline{A} \cup B = \overline{A \cup \overline{B}} = \overline{A} \cap \overline{\overline{B}} = \overline{A} \cap B\)</span></p>
+<p><strong>Упражнение.</strong> Пользуясь описанным методом, докажите тождество <span class="math notranslate nohighlight">\((A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A)\)</span>.</p>
 </section>
 <section id="id8">
 <h2>Типовые задачи<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Источники: Андерсон - Дискретная математика и комбинаторика; Конышева, Мешков - Задачник по дискретной математике</p>
+<p><strong>Пример.</strong> Опишем множество, обозначенное штриховкой на диаграмме Венна.</p>
+<p><img alt="" src="_images/sets6.png" /></p>
+<p>Для этого построим таблицу истинности составного высказывания, выражающего принадлежность элемента закрашенному множеству.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(a\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(b\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(c\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(F(a, b, c)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Теперь запишем формулу для полученной булевой функции. Для этого сперва построим СДНФ:</p>
+<p><span class="math notranslate nohighlight">\(F(a, b, c) = \overline{a} \cdot b \cdot \overline{c} \vee a \cdot \overline{b} \cdot \overline{c} \vee a \cdot b \cdot \overline{c} \vee a \cdot b \cdot c\)</span></p>
+<p>Сократим ДНФ:</p>
+<p><span class="math notranslate nohighlight">\(F(a, b, c) = \overline{a} \cdot b \cdot \overline{c} \vee a \cdot \overline{b} \cdot \overline{c} \vee a \cdot b \cdot \overline{c} \vee a \cdot b \cdot c \vee a \cdot b \vee b \cdot \overline{c} =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= a \cdot b \vee b \cdot \overline{c} \vee a \cdot \overline{b} \cdot \overline{c}\)</span></p>
+<p>Таким образом, закрашенное множество выражается формулой:</p>
+<p><span class="math notranslate nohighlight">\((A \cap B) \cup (B \setminus C) \cup (A \setminus (B \cup C))\)</span></p>
+<p>На диаграмме Эйлера видно, что формулу можно ещё сократить:</p>
+<p><span class="math notranslate nohighlight">\((A \cap B) \cup (B \setminus C) \cup (A \setminus C)\)</span></p>
+<p><strong>Пример.</strong> Решим систему уравнений с множествами:</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{ \begin{aligned}A \setminus X &amp;= B\\ A \cup X &amp;= C \end{aligned} \right.
+\)</span></p>
+<p>Найдем условия на множества <span class="math notranslate nohighlight">\(A, B, C\)</span>, при которых система имеет решение. Для этого заметим, что (из второго уравнения) множество <span class="math notranslate nohighlight">\(C\)</span> содержит множество <span class="math notranslate nohighlight">\(A\)</span>, и (из первого уравнения) множество <span class="math notranslate nohighlight">\(A\)</span> содержит множество <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Таким образом, для разрешимости системы обязано выполняться соотношение <span class="math notranslate nohighlight">\(B \subset A \subset C\)</span>.</p>
+<p>Теперь докажем, что если это выполнено, то система уравнений всегда имеет решение.
+Нарисуем диаграмму Венна.</p>
+<p><img alt="" src="_images/sets7.png" /></p>
+<p>Из второго уравнения следует, что множество <span class="math notranslate nohighlight">\(X\)</span> содержит в себе множество <span class="math notranslate nohighlight">\(C \setminus A\)</span>, то есть <span class="math notranslate nohighlight">\(C \setminus A \subset X\)</span>. Из первого уравнения вытекает, что <span class="math notranslate nohighlight">\(A \setminus B \subset X\)</span>.</p>
+<p>Следовательно, <span class="math notranslate nohighlight">\(X\)</span> содержит в себе множество <span class="math notranslate nohighlight">\((C \setminus A) \cup (A \setminus B) = C \setminus B\)</span>. Итак, <span class="math notranslate nohighlight">\(C \setminus B \subset X\)</span>.</p>
+<p>С другой стороны, множество <span class="math notranslate nohighlight">\(X\)</span> не может быть шире, чем <span class="math notranslate nohighlight">\(C \setminus B\)</span>. В самом деле, если существует <span class="math notranslate nohighlight">\(x\)</span>, такой, что <span class="math notranslate nohighlight">\(x \in X\)</span> и при этом <span class="math notranslate nohighlight">\(x \notin C\)</span> или <span class="math notranslate nohighlight">\(x \in B\)</span>, то в первом случае получаем противоречие со вторым уравнением, а во втором случае - с первым уравнением.</p>
+<p>Ответ: <span class="math notranslate nohighlight">\(X = C \setminus B\)</span> при условии <span class="math notranslate nohighlight">\(B \subset A \subset C\)</span>.</p>
 </section>
 </section>
 
