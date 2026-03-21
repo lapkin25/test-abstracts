@@ -427,7 +427,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Перечисление пар</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Свойства бинарных отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Суперпозиция отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Лексикографический порядок</a></li>
 </ul>
             </nav>
         </div>
@@ -456,8 +461,28 @@ document.write(`
 </section>
 <section id="id3">
 <h2>Бинарные отношения<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Источник: Дехтярь и др. - Лекции по дискретной математике</p>
 <p>Выделим в множестве <span class="math notranslate nohighlight">\(M \times M\)</span> из предыдущего примера произвольное подмножество <span class="math notranslate nohighlight">\(R \subset M \times M\)</span>. Например, по признаку <span class="math notranslate nohighlight">\(R(x, y) = \)</span> “существует дорога, соединяющая населенные пункты <span class="math notranslate nohighlight">\(x\)</span> и <span class="math notranslate nohighlight">\(y\)</span>”.</p>
 <p>Всякий двухместный предикат на множестве <span class="math notranslate nohighlight">\(M\)</span> выделяет на этом множестве <em>бинарное отношение</em>. По определению, бинарное отношение на множестве <span class="math notranslate nohighlight">\(M\)</span> - это подмножество декартова квадрата <span class="math notranslate nohighlight">\(M \times M\)</span>.</p>
+<p>Пусть <span class="math notranslate nohighlight">\(R\)</span> - отношение. Следующие две записи означают одно и то же:</p>
+<p><span class="math notranslate nohighlight">\(
+(x, y) \in R \quad \text{и} \quad xRy
+\)</span></p>
+<p><strong>Пример.</strong> Пусть <span class="math notranslate nohighlight">\(A\)</span> - произвольное множество. Отношение <span class="math notranslate nohighlight">\(\mathrm{id}_A = \{(x, x) \colon x \in A\}\)</span> называется тождественным отношением, оно обычно обозначается знаком <span class="math notranslate nohighlight">\(=\)</span>.</p>
+<p>Рассматривается более общий случай, чем отношения на одном множестве - это так называемые <em>соответствия</em>, т.е. подмножества декартова произведения <span class="math notranslate nohighlight">\(A \times B\)</span>.</p>
+<p>С соответствием <span class="math notranslate nohighlight">\(R\)</span> связаны его <em>область определения</em> <span class="math notranslate nohighlight">\(\mathrm{dom}\, R\)</span> и <em>область значений</em> <span class="math notranslate nohighlight">\(\mathrm{rng}\,R\)</span>:</p>
+<p><span class="math notranslate nohighlight">\({\mathrm {dom}}\, R = \{x \colon \exists y\, ( xRy ) \}\)</span></p>
+<p><span class="math notranslate nohighlight">\({\mathrm {rng}}\, R = \{y \colon \exists x\, ( xRy ) \}\)</span></p>
+<p><em>Обратным соответствием</em> для соответствия <span class="math notranslate nohighlight">\(R\)</span> называется множество пар</p>
+<p><span class="math notranslate nohighlight">\(R^{-1} = \{(x, y) \colon yRx\}\)</span></p>
+<p><em>Образом множества</em> <span class="math notranslate nohighlight">\(X\)</span> относительно соответствия <span class="math notranslate nohighlight">\(R\)</span> называется множество</p>
+<p><span class="math notranslate nohighlight">\(R(X) = \{y \colon \exists x \in X\, (xRy) \}\)</span></p>
+<p><em>Прообразом</em> <span class="math notranslate nohighlight">\(Y\)</span> относительно <span class="math notranslate nohighlight">\(R\)</span> называется множество <span class="math notranslate nohighlight">\(R^{-1}(Y)\)</span>.</p>
+<p><strong>Пример.</strong> Пусть <span class="math notranslate nohighlight">\(A\)</span> - множество мужчин, <span class="math notranslate nohighlight">\(B\)</span> - множество женщин. Зададим соответствие <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>: пусть мужчине <span class="math notranslate nohighlight">\(x\)</span> соответствует женщина <span class="math notranslate nohighlight">\(y\)</span> (пишем <span class="math notranslate nohighlight">\(xRy\)</span>), если <span class="math notranslate nohighlight">\(x\)</span> состоит или состоял с <span class="math notranslate nohighlight">\(y\)</span> в браке.</p>
+<p>Тогда <span class="math notranslate nohighlight">\(\mathrm{dom}\, R\)</span> - это все мужчины, которые когда-либо были женаты, <span class="math notranslate nohighlight">\(\mathrm{rng}\, R\)</span> - это все женщины, которые когда-либо были замужем. Пусть <span class="math notranslate nohighlight">\(X\)</span> - множество мужчин, проживающих во Владивостоке. Тогда <span class="math notranslate nohighlight">\(R(X)\)</span> - это множество всех их жён и бывших жён (не обязательно проживающих во Владивостоке). Если <span class="math notranslate nohighlight">\(Y\)</span> - множество женщин, проживающих во Владивостоке, то <span class="math notranslate nohighlight">\(R^{-1}(Y)\)</span> - это множество всех их мужей и бывших мужей (также не обязательно проживающих во Владивостоке). Наконец, отношение <span class="math notranslate nohighlight">\(R\)</span> означает “быть мужем”, тогда обратное отношение <span class="math notranslate nohighlight">\(R^{-1} \subset B \times A\)</span> означает “быть женой”.</p>
+<p>Из этого примера видно, что один и тот же элемент множества <span class="math notranslate nohighlight">\(A\)</span> может быть связан отношением как с одним элементом множества <span class="math notranslate nohighlight">\(B\)</span>, так и с несколькими, а может быть не связан ни с одним элементом.</p>
+<p><strong>Пример.</strong> Пусть <span class="math notranslate nohighlight">\(A\)</span> - множество людей, <span class="math notranslate nohighlight">\(B\)</span> - множество населенных пунктов. Определим соответствие <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>: пусть <span class="math notranslate nohighlight">\(xRy\)</span>, если человек <span class="math notranslate nohighlight">\(x\)</span> когда-либо посещал населенный пункт <span class="math notranslate nohighlight">\(y\)</span>. Если <span class="math notranslate nohighlight">\(X\)</span> - множество студентов ВВГУ, то <span class="math notranslate nohighlight">\(R(X)\)</span> - это все населенные пункты, в которых побывали студенты. Если <span class="math notranslate nohighlight">\(Y\)</span> - множество населённых пунктов Китая, то <span class="math notranslate nohighlight">\(R^{-1}(Y)\)</span> - это множество студентов ВВГУ, которые были в Китае. Для всего отношения <span class="math notranslate nohighlight">\(R\)</span> выполнено <span class="math notranslate nohighlight">\(\mathrm{dom}\,R = A\)</span> и <span class="math notranslate nohighlight">\(\mathrm{rng}\,R = B\)</span>.</p>
+<p><strong>Упражнение.</strong> Придумайте свой пример соответствия между двумя множествами <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span>. Опишите область определения, область значений, обратное соответствие. Задайте любое подмножество <span class="math notranslate nohighlight">\(X \subset A\)</span>, опишите его образ. Задайте любое подмножество <span class="math notranslate nohighlight">\(Y \subset B\)</span>, опишите его прообраз.</p>
 </section>
 <section id="id4">
 <h2>Представление бинарных отношений<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
@@ -472,7 +497,22 @@ document.write(`
 </section>
 </section>
 <section id="id8">
-<h2>Отношения порядка<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2>Свойства бинарных отношений<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+</section>
+<section id="id9">
+<h2>Функции<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+</section>
+<section id="id10">
+<h2>Суперпозиция отношений<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+</section>
+<section id="id11">
+<h2>Отношения эквивалентности<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+</section>
+<section id="id12">
+<h2>Отношения порядка<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+</section>
+<section id="id13">
+<h2>Лексикографический порядок<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -548,7 +588,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Перечисление пар</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Свойства бинарных отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Суперпозиция отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Лексикографический порядок</a></li>
 </ul>
   </nav></div>
 
