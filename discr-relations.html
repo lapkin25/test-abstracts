@@ -433,6 +433,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Отношения эквивалентности</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Отношения порядка</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Замыкание отношений</a></li>
 </ul>
             </nav>
         </div>
@@ -486,14 +487,249 @@ document.write(`
 </section>
 <section id="id4">
 <h2>Представление бинарных отношений<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Источник: Вялый и др. - Лекции по дискретной математике</p>
 <section id="id5">
 <h3>Граф<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><strong>Пример.</strong> Рассмотрим соответствие между студентами <span class="math notranslate nohighlight">\(A = \{\text{Маша}, \text{Джон}, \text{Алина}\}\)</span> и задачами <span class="math notranslate nohighlight">\(B = \{1, 2, 3, 4, 5\}\)</span>: для <span class="math notranslate nohighlight">\(x \in A\)</span> и <span class="math notranslate nohighlight">\(y \in B\)</span> верно <span class="math notranslate nohighlight">\(xRy\)</span>, если студент <span class="math notranslate nohighlight">\(x\)</span> решил задачу <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Информация о студентах, решивших задачи, представляется в виде двудольного графа.</p>
+<p><img alt="" src="_images/relations1.png" /></p>
+<p>Вместо линий можно рисовать стрелки слева направо, обозначающие все пары <span class="math notranslate nohighlight">\((x, y)\)</span>, связанные отношением <span class="math notranslate nohighlight">\(R\)</span>, т.е. <span class="math notranslate nohighlight">\((x, y) \in R\)</span>.</p>
+<p>Укажем на рисунке область определения <span class="math notranslate nohighlight">\(\mathrm{dom}\,R\)</span> и область значений <span class="math notranslate nohighlight">\(\mathrm{rng}\,R\)</span>. Область определения - это все студенты, решившие хотя бы одну задачу. Область значений - это все задачи, решенные хотя бы одним студентом.</p>
+<p>Чтобы изобразить граф обратного отношения <span class="math notranslate nohighlight">\(R^{-1}\)</span>, достаточно перерисовать все стрелки в обратную сторону.</p>
+<p><strong>Пример.</strong> На множестве городов <span class="math notranslate nohighlight">\(M\)</span> зададим отношение <span class="math notranslate nohighlight">\(R\)</span>, обозначающее возможность проехать из города <span class="math notranslate nohighlight">\(x\)</span> в город <span class="math notranslate nohighlight">\(y\)</span> по дороге, не проезжая мимо одного из других городов из множества <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p><img alt="" src="_images/relations2.png" /></p>
 </section>
 <section id="id6">
 <h3>Булева матрица<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Чтобы ввести отношение, изображенное на рисунке, в компьютерную программу, удобно представить его в виде булевой матрицы.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Маша</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Джон</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Алина</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Скажем, как определить по матрице область определения и область значений отношения.</p>
+<p>Область определения - это все строчки, в которых есть хотя бы одна единица. Область значений - это все столбцы, в которых есть хотя бы одна единица.</p>
+<p>Матрица обратного отношения <span class="math notranslate nohighlight">\(R^{-1}\)</span> получается транспонированием исходной матрицы.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Маша</p></th>
+<th class="head"><p>Джон</p></th>
+<th class="head"><p>Алина</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Пример.</strong> Отношение между городами представляется в виде следующей булевой матрицы.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Вл</p></th>
+<th class="head"><p>Нах</p></th>
+<th class="head"><p>Усс</p></th>
+<th class="head"><p>Арт</p></th>
+<th class="head"><p>Арс</p></th>
+<th class="head"><p>См</p></th>
+<th class="head"><p>Шк</p></th>
+<th class="head"><p>Пог</p></th>
+<th class="head"><p>Пар</p></th>
+<th class="head"><p>Фок</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Владивосток</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Находка</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Уссурийск</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Артем</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Арсеньев</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Смоляниново</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Шкотово</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Пограничный</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Партизанск</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Фокино</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Строго говоря, если на главной диагонали у нас стоят единицы, то и в каждой вершине графа должна быть петля.</p>
 </section>
 <section id="id7">
 <h3>Перечисление пар<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Любое бинарное отношение - это множество, а конечное множество можно задать перечислением его элементов.</p>
+<p>В нашем примере отношение <span class="math notranslate nohighlight">\(R\)</span> содержит следующие кортежи (упорядоченные пары):</p>
+<p><span class="math notranslate nohighlight">\((\text{Маша}, 1), (\text{Маша}, 4), (\text{Маша}, 5)\)</span></p>
+<p><span class="math notranslate nohighlight">\((\text{Джон}, 1), (\text{Джон}, 2), (\text{Алина}, 2), (\text{Алина}, 3)\)</span></p>
+<p>В реляционных базах данных информация (о мире) хранится в виде отношений. Например, понятие “место жительства” рассматривается как отношение между множеством людей и множеством жилых помещений и т.д.</p>
+<p><strong>Пример.</strong> Если за решение каждой задачи студенту ставится оценка от <span class="math notranslate nohighlight">\(1\)</span> до <span class="math notranslate nohighlight">\(5\)</span>, то такая информация представляется в виде <em>тернарного отношения</em> <span class="math notranslate nohighlight">\(T \subset A \times B \times C\)</span>, задаваемого также тернарным предикатом <span class="math notranslate nohighlight">\(T(x, y, z)\)</span>. Тройка <span class="math notranslate nohighlight">\((x, y, z)\)</span> включается в множество <span class="math notranslate nohighlight">\(T\)</span>, если студент <span class="math notranslate nohighlight">\(x\)</span> решил задачу <span class="math notranslate nohighlight">\(y\)</span> на оценку <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p><strong>Замечание.</strong> Если каждый студент <span class="math notranslate nohighlight">\(x\)</span> получает за решение задачи <span class="math notranslate nohighlight">\(y\)</span> ровно <span class="math notranslate nohighlight">\(z\)</span> баллов либо <span class="math notranslate nohighlight">\(0\)</span> баллов, когда задача не решена, то существует <em>функция</em> двух переменных <span class="math notranslate nohighlight">\(z = f(x, y)\)</span> - соответствие, которое каждой паре <span class="math notranslate nohighlight">\((x, y) \in A \times B\)</span> указывает единственный элемент <span class="math notranslate nohighlight">\(z \in C \cup \{0\}\)</span>.</p>
+<p>Запишем на языке логики предикатов упомянутое свойство:</p>
+<p><span class="math notranslate nohighlight">\(\forall x \in A,\, y \in B \, \exists ! z \in C \cup \{0\} \colon (x, y, z) \in T\)</span></p>
+<p><strong>Замечание.</strong> Квантор существования и единственности <span class="math notranslate nohighlight">\(\exists !\)</span> выражается на чистой логике предикатов так:</p>
+<p><span class="math notranslate nohighlight">\(\exists ! x \colon P(x) \; \Leftrightarrow \; \exists x \,P(x) \land \forall x_1\, \forall x_2\, (P(x_1) \land P(x_2) \to (x_1 = x_2))\)</span></p>
+<p>Просто “единственность” (“существует не более одного…”) в математике не предполагает существование, поэтому квантор <span class="math notranslate nohighlight">\(\exists !\)</span> выражается в виде конъюнкции свойства существования и свойства единственности.</p>
 </section>
 </section>
 <section id="id8">
@@ -513,6 +749,9 @@ document.write(`
 </section>
 <section id="id13">
 <h2>Лексикографический порядок<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+</section>
+<section id="id14">
+<h2>Замыкание отношений<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -594,6 +833,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Отношения эквивалентности</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Отношения порядка</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Замыкание отношений</a></li>
 </ul>
   </nav></div>
 
