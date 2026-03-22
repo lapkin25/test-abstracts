@@ -427,13 +427,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Перечисление пар</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Свойства бинарных отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Функции</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Суперпозиция отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Отношения эквивалентности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Отношения порядка</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Лексикографический порядок</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Свойства соответствий</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Иллюстрация свойств на графе соответствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Иллюстрация свойств на матрице соответствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Примеры</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Свойства бинарных отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Суперпозиция отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Замыкание отношений</a></li>
 </ul>
             </nav>
         </div>
@@ -733,25 +739,57 @@ document.write(`
 </section>
 </section>
 <section id="id8">
-<h2>Свойства бинарных отношений<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
-</section>
+<h2>Свойства соответствий<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Источник: Кузнецов - Дискретная математика для инженера</p>
+<p>Пусть <span class="math notranslate nohighlight">\(R \subset A \times B\)</span> - соответствие.</p>
+<p>Если <span class="math notranslate nohighlight">\(\mathrm{dom}\,R = A\)</span>, то соответствие называется <em>всюду определенным</em>.</p>
+<p>Если <span class="math notranslate nohighlight">\(\mathrm{rng}\,R = B\)</span>, то соответствие называется <em>сюръективным</em> (от французского “сюр” - предлог “на”; отношение накрывает всё множество <span class="math notranslate nohighlight">\(B\)</span>).</p>
+<p>Запишем данные свойства на языке логики предикатов.</p>
+<p><span class="math notranslate nohighlight">\(\mathrm{dom}\,R = A \quad \Longleftrightarrow \quad \forall x \in A\, \exists y \in B \colon (xRy)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mathrm{rng}\,R = B \quad \Longleftrightarrow \quad \forall y \in B\, \exists x \in A \colon (xRy)\)</span></p>
+<p>Соответствие <span class="math notranslate nohighlight">\(R\)</span> называется <em>инъективным</em>, если прообразом любого элемента из <span class="math notranslate nohighlight">\(\mathrm{rng} \, R\)</span> является единственный элемент из <span class="math notranslate nohighlight">\(\mathrm{dom} \, R\)</span>.</p>
+<p>Соответствие <span class="math notranslate nohighlight">\(R\)</span> называется <em>функциональным</em> (однозначным), если образом любого элемента из <span class="math notranslate nohighlight">\(\mathrm{dom} \, R\)</span> является единственный элемент из <span class="math notranslate nohighlight">\(\mathrm{ran} \, R\)</span>.</p>
+<p>Свойство инъективности выражается на языке логики предикатов так:</p>
+<p><span class="math notranslate nohighlight">\(\forall y \in B \colon \forall x_1, x_2 \in A \colon (x_1Ry \land x_2Ry \to x_1 = x_2)\)</span></p>
+<p>Свойство функциональности выражается на языке логики предикатов так:</p>
+<p><span class="math notranslate nohighlight">\(\forall x \in A \colon \forall y_1, y_2 \in B \colon (xRy_1 \land xRy_2 \to y_1 = y_2)\)</span></p>
+<p>Соответствие между <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> называется <em>взаимно однозначным</em> (биекцией, или “1-1-соответствием”), если оно всюду определено, сюръективно, функционально и инъективно.</p>
+<p><strong>Пример.</strong> Выведем отрицание свойства сюръективности с помощью законов логики предикатов.</p>
+<p><span class="math notranslate nohighlight">\(R \text{ - не сюръективно} \quad \Longleftrightarrow \quad \neg \forall y \in B\, \exists x \in A \colon (xRy) \;\; \Leftrightarrow\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Leftrightarrow \;\; \exists y \in B \, \neg \exists x\in A \colon (xRy) \;\; \Leftrightarrow \;\; \exists y \in B \, \forall x\in A \colon \neg (xRy)\)</span></p>
+<p>Итак, “не сюръективность” означает, что найдется элемент <span class="math notranslate nohighlight">\(y \in B\)</span>, которому не соответствует ни один элемент <span class="math notranslate nohighlight">\(x \in A\)</span>.</p>
+<p><strong>Упражнение.</strong> Запишите отрицание свойства инъективности соответствия <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>.</p>
 <section id="id9">
-<h2>Функции<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h3>Иллюстрация свойств на графе соответствия<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 </section>
 <section id="id10">
-<h2>Суперпозиция отношений<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h3>Иллюстрация свойств на матрице соответствия<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 </section>
 <section id="id11">
-<h2>Отношения эквивалентности<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h3>Примеры<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="id12">
-<h2>Отношения порядка<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<h2>Функции<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 </section>
 <section id="id13">
-<h2>Лексикографический порядок<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<h2>Свойства бинарных отношений<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p><strong>Упражнение.</strong> Запишите отрицание свойства транзитивности отношения <span class="math notranslate nohighlight">\(R \subset A \times A\)</span>.</p>
 </section>
 <section id="id14">
-<h2>Замыкание отношений<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<h2>Суперпозиция отношений<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+</section>
+<section id="id15">
+<h2>Отношения эквивалентности<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+</section>
+<section id="id16">
+<h2>Отношения порядка<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+</section>
+<section id="id17">
+<h2>Лексикографический порядок<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+</section>
+<section id="id18">
+<h2>Замыкание отношений<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -827,13 +865,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Перечисление пар</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Свойства бинарных отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Функции</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Суперпозиция отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Отношения эквивалентности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Отношения порядка</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Лексикографический порядок</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Свойства соответствий</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Иллюстрация свойств на графе соответствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Иллюстрация свойств на матрице соответствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Примеры</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Свойства бинарных отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Суперпозиция отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Замыкание отношений</a></li>
 </ul>
   </nav></div>
 
