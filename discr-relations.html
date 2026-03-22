@@ -440,6 +440,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Отношения порядка</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Лексикографический порядок</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Ядро функции</a></li>
 </ul>
             </nav>
         </div>
@@ -805,6 +806,27 @@ document.write(`
 </section>
 <section id="id12">
 <h2>Функции<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>Источник: Палий - Дискретная математика и математическая логика</p>
+<p><em>Функция</em> - это всюду определенное, однозначное соответствие <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>.
+Всякому <span class="math notranslate nohighlight">\(x \in A\)</span> соответствует единственный элемент <span class="math notranslate nohighlight">\(y \in B\)</span>, обозначаемый <span class="math notranslate nohighlight">\(y = f(x)\)</span>. Это означает, что если определен первый элемент упорядоченной пары, то второй элемент определяется единственным образом.</p>
+<p>Запишем свойство соответствия быть функцией в виде формулы логики предикатов:</p>
+<p><span class="math notranslate nohighlight">\(R \text{ - функция} \quad \Longleftrightarrow \quad \forall x\in A\, \exists ! y \in B \colon xRy\)</span></p>
+<p><strong>Упражнение.</strong> Запишите это свойство на языке чистой логики предикатов (без квантора “<span class="math notranslate nohighlight">\(\exists !\)</span>”).</p>
+<p>Функцию <span class="math notranslate nohighlight">\(f\)</span> из <span class="math notranslate nohighlight">\(A\)</span> в <span class="math notranslate nohighlight">\(B\)</span> коротко обозначают <span class="math notranslate nohighlight">\(f \colon A \to B\)</span>. Множество <span class="math notranslate nohighlight">\(A\)</span> - это область определения функции, <span class="math notranslate nohighlight">\(B\)</span> - область отправления функции, <span class="math notranslate nohighlight">\(\mathrm{rng} f = \{y \in B \colon \exists x \in A \, (y = f(x))\}\)</span> - область значений функции.</p>
+<p>Если <span class="math notranslate nohighlight">\(y = f(x)\)</span>, то элемент <span class="math notranslate nohighlight">\(x \in A\)</span> называют <em>аргументом функции</em>, или прообразом элемента <span class="math notranslate nohighlight">\(y \in B\)</span>. Элемент <span class="math notranslate nohighlight">\(y \in B\)</span> называют <em>значением функции</em>, или образом элемента <span class="math notranslate nohighlight">\(x \in A\)</span>.</p>
+<p>Если <span class="math notranslate nohighlight">\(\mathrm{rng} \, f = B\)</span>, то функция называется <em>сюръекцией</em>.</p>
+<p>Если соответствие <span class="math notranslate nohighlight">\(R = \{(x, y) \colon y = f(x)\}\)</span> инъективно, то функцию <span class="math notranslate nohighlight">\(f\)</span> называют <em>обратимой</em>, или <em>инъекцией</em>.</p>
+<p>Другими словами, <span class="math notranslate nohighlight">\(f\)</span> - обратима, если у каждого образа есть единственный прообраз. Проще говоря, разным аргументам <span class="math notranslate nohighlight">\(x \in A\)</span> соответствуют разные значения <span class="math notranslate nohighlight">\(y = f(x) \in B\)</span>.</p>
+<p>Функция <span class="math notranslate nohighlight">\(f \in A \to B\)</span> называется <em>биекцией</em>, если она одновременно сюръекция и инъекция.</p>
+<p>Функция <span class="math notranslate nohighlight">\(f^{-1} \colon \mathrm{rng\, f} \to A\)</span> - <em>обратная</em> к <span class="math notranslate nohighlight">\(f\)</span>, если для любого <span class="math notranslate nohighlight">\(x \in A\)</span> выполняется <span class="math notranslate nohighlight">\(f^{-1}(f(x)) = x\)</span>.</p>
+<p><strong>Утверждение.</strong> Пусть <span class="math notranslate nohighlight">\(f \colon A \to B\)</span> - биекция. Тогда существует обратная функция <span class="math notranslate nohighlight">\(f^{-1} \colon B \to A\)</span> - тоже биекция.</p>
+<p><em>Доказательство.</em> Так как <span class="math notranslate nohighlight">\(f\)</span> - биекция, то данное соответствие однозначно, всюду определено, сюръективно и инъективно. Следовательно, обратное соответствие также обладает всеми этими свойствами. По обратному соответствию корректно определяется функция <span class="math notranslate nohighlight">\(f^{-1}\)</span>.</p>
+<p><strong>Пример.</strong> На рис. а) изображено бинарное соответствие, но не функция.</p>
+<p>На рис. б) изображена сюръекция, но не инъекция.</p>
+<p>На рис. в) изображена инъекция, но не сюръекция.</p>
+<p>На рис. г) изображена биекция.</p>
+<p><img alt="" src="_images/relations7.png" /></p>
+<p><strong>Упражнение.</strong> Придумайте пример соответствия (например, между множествами <span class="math notranslate nohighlight">\(\mathbb R\)</span> и <span class="math notranslate nohighlight">\(\mathbb R\)</span>), которое является функцией, но при этом обратное соответствие функцией не является.</p>
 </section>
 <section id="id13">
 <h2>Свойства бинарных отношений<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
@@ -824,6 +846,9 @@ document.write(`
 </section>
 <section id="id18">
 <h2>Замыкание отношений<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+</section>
+<section id="id19">
+<h2>Ядро функции<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -912,6 +937,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Отношения порядка</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Лексикографический порядок</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Ядро функции</a></li>
 </ul>
   </nav></div>
 
