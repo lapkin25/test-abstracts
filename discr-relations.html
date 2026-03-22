@@ -748,7 +748,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\mathrm{dom}\,R = A \quad \Longleftrightarrow \quad \forall x \in A\, \exists y \in B \colon (xRy)\)</span></p>
 <p><span class="math notranslate nohighlight">\(\mathrm{rng}\,R = B \quad \Longleftrightarrow \quad \forall y \in B\, \exists x \in A \colon (xRy)\)</span></p>
 <p>Соответствие <span class="math notranslate nohighlight">\(R\)</span> называется <em>инъективным</em>, если прообразом любого элемента из <span class="math notranslate nohighlight">\(\mathrm{rng} \, R\)</span> является единственный элемент из <span class="math notranslate nohighlight">\(\mathrm{dom} \, R\)</span>.</p>
-<p>Соответствие <span class="math notranslate nohighlight">\(R\)</span> называется <em>функциональным</em> (однозначным), если образом любого элемента из <span class="math notranslate nohighlight">\(\mathrm{dom} \, R\)</span> является единственный элемент из <span class="math notranslate nohighlight">\(\mathrm{ran} \, R\)</span>.</p>
+<p>Соответствие <span class="math notranslate nohighlight">\(R\)</span> называется <em>функциональным</em> (однозначным), если образом любого элемента из <span class="math notranslate nohighlight">\(\mathrm{dom} \, R\)</span> является единственный элемент из <span class="math notranslate nohighlight">\(\mathrm{rng} \, R\)</span>.</p>
 <p>Свойство инъективности выражается на языке логики предикатов так:</p>
 <p><span class="math notranslate nohighlight">\(\forall y \in B \colon \forall x_1, x_2 \in A \colon (x_1Ry \land x_2Ry \to x_1 = x_2)\)</span></p>
 <p>Свойство функциональности выражается на языке логики предикатов так:</p>
@@ -761,12 +761,46 @@ document.write(`
 <p><strong>Упражнение.</strong> Запишите отрицание свойства инъективности соответствия <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>.</p>
 <section id="id9">
 <h3>Иллюстрация свойств на графе соответствия<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p><em>Всюду определенность:</em> из каждого элемента множества <span class="math notranslate nohighlight">\(A\)</span> (области отправления соответствия) выходит хотя бы одна стрелка.</p>
+<p><img alt="" src="_images/relations3.png" /></p>
+<p><em>Сюръективность:</em> в каждый элемент множества <span class="math notranslate nohighlight">\(B\)</span> (области прибытия соответствия) входит хотя бы одна стрелка.</p>
+<p><img alt="" src="_images/relations4.png" /></p>
+<p><em>Инъективность:</em> в каждый элемент области значений <span class="math notranslate nohighlight">\(\mathrm{rng}\, R\)</span> входит ровно одна стрелка. Следовательно, в каждый элемент области прибытия входит не более одной стрелки.</p>
+<p><img alt="" src="_images/relations5.png" /></p>
+<p><em>Взаимная однозначность:</em> из каждого элемента множества <span class="math notranslate nohighlight">\(A\)</span> выходит ровно одна стрелка, и в каждый элемент множества <span class="math notranslate nohighlight">\(B\)</span> входит ровно одна стрелка.</p>
+<p><img alt="" src="_images/relations6.png" /></p>
+<p><strong>Замечание.</strong> Взаимно однозначное соответствие <span class="math notranslate nohighlight">\(R\)</span> между <span class="math notranslate nohighlight">\(x \in A\)</span> и <span class="math notranslate nohighlight">\(y \in B\)</span> задает функцию <span class="math notranslate nohighlight">\(f \colon A \to B\)</span>, определенную всюду на множестве <span class="math notranslate nohighlight">\(A\)</span> и имеющую обратную <span class="math notranslate nohighlight">\(f^{-1} \colon B \to A\)</span>, всюду определенную на <span class="math notranslate nohighlight">\(B\)</span>.</p>
 </section>
 <section id="id10">
 <h3>Иллюстрация свойств на матрице соответствия<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>Строчки соответствуют элементам области отправления <span class="math notranslate nohighlight">\(A\)</span>, столбцы соответствуют элементам области прибытия <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p><em>Всюду определенность:</em> в каждой строчке матрицы соответствия есть хотя бы одна единица.</p>
+<p><em>Сюръективность:</em> в каждом столбце есть хотя бы одна единица.</p>
+<p><em>Инъективность:</em> в каждом столбце есть не более одной единицы.</p>
+<p><em>Функциональность:</em> в каждой строчке есть не более одной единицы.</p>
+<p><em>Взаимная однозначность:</em> в каждой строчке ровно одна единица, и в каждом столбце ровно одна единица.</p>
+<p><strong>Замечание.</strong> Взаимная однозначность соответствия <span class="math notranslate nohighlight">\(R \subset  A \times B\)</span> возможна только при равномощности множеств <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span>, т.е. <span class="math notranslate nohighlight">\(|A| = |B|\)</span>.</p>
 </section>
 <section id="id11">
 <h3>Примеры<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p><strong>Пример 1.</strong> Рассмотрим соответствие между местами в зрительном зале (множество <span class="math notranslate nohighlight">\(A\)</span>) и билетами (множество <span class="math notranslate nohighlight">\(B\)</span>).</p>
+<p>Всюду определенность: все места заняты.</p>
+<p>Сюръективность: все билеты проданы.</p>
+<p>Инъективность: каждому билету соответствует не более одного места в зале.</p>
+<p>Функциональность: каждому месту соответствует не более одного билета.</p>
+<p><strong>Замечание.</strong> Если <span class="math notranslate nohighlight">\(|A| = |B|\)</span> и <span class="math notranslate nohighlight">\(R\)</span> - сюръективно, то <span class="math notranslate nohighlight">\(R\)</span> - взаимно однозначно. (См. теорему о существовании и единственности представления булевой функции в виде многочлена Жегалкина.)</p>
+<p><strong>Пример 2.</strong>
+<em>Разнесет весна тополиный пух,</em></p>
+<p><em>Словно сто снегов, и окажется,</em></p>
+<p><em>Если ты одна любишь сразу двух,</em></p>
+<p><em>Значит, это не любовь, а только кажется.</em></p>
+<p>Пусть <span class="math notranslate nohighlight">\(A\)</span> - множество женщин, <span class="math notranslate nohighlight">\(B\)</span> - множество мужчин, соответствие <span class="math notranslate nohighlight">\(R\)</span> установлено так: <span class="math notranslate nohighlight">\(xRy\)</span>, если женщина <span class="math notranslate nohighlight">\(x\)</span> любит мужчину <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>В песне поется про соответствие, не обладающее свойством функциональности. В матрице такого соответствия в одной строчке может находиться более одной единицы.</p>
+<p><strong>Пример 3.</strong> Рассмотрим числовую функцию <span class="math notranslate nohighlight">\(f(x) = |x| + x\)</span>. График функции представляет собой соответствие <span class="math notranslate nohighlight">\(G \subset \mathbb R \times \mathbb R\)</span> - множество точек на плоскости <span class="math notranslate nohighlight">\(\mathbb R^2\)</span>.</p>
+<p>Это соответствие всюду определено и функционально, так как всякая вертикальная прямая пересекает график ровно в одной точке.</p>
+<p>Соответствие <span class="math notranslate nohighlight">\(G\)</span> не сюръективно, так как не любая горизонтальная прямая пересекает график функции <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Соответствие <span class="math notranslate nohighlight">\(G\)</span> не инъективно, так как некоторые горизонтальные прямые пересекают график более чем в одной точке.</p>
+<p><strong>Упражнение.</strong> Исследуйте функции <span class="math notranslate nohighlight">\(g(x) = |x|\)</span> и <span class="math notranslate nohighlight">\(h(x) = x^3 + 6\)</span> на свойства сюръективности, инъективности, биективности.</p>
 </section>
 </section>
 <section id="id12">
