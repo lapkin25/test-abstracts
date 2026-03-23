@@ -441,14 +441,17 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Суперпозиция отношений</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Ядро отношения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Вычисление суперпозиции отношений</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Примеры</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Ядро отношения</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Отношения эквивалентности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Отношения порядка</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Лексикографический порядок</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Замыкание отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Ядро функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Ядро функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Дополнительный материал</a></li>
 </ul>
             </nav>
         </div>
@@ -898,30 +901,73 @@ R \text{ - не симметрично} \quad \Longleftrightarrow \quad \exists 
 <li><p>Отношение “меньше”, заданное на множестве действительных чисел, антисимметрично: если <span class="math notranslate nohighlight">\(a &lt; b\)</span>, то неверно, что <span class="math notranslate nohighlight">\(b &lt; a\)</span>.</p></li>
 <li><p>Отношение “больше”, заданное на множестве действительных чисел, транзитивно: если <span class="math notranslate nohighlight">\(a &gt; b\)</span> и <span class="math notranslate nohighlight">\(b &gt; c\)</span>, то <span class="math notranslate nohighlight">\(a &gt; c\)</span>.</p></li>
 <li><p>Отношение “приближенно равно с точностью <span class="math notranslate nohighlight">\(\varepsilon\)</span>”, заданное на множестве действительных чисел (<span class="math notranslate nohighlight">\(|x - y| &lt; \varepsilon\)</span>) рефлексивно, симметрично, но не транзитивно.</p></li>
-<li><p>Отношение <span class="math notranslate nohighlight">\(R\)</span> на множестве людей, где <span class="math notranslate nohighlight">\(xRy \Leftrightarrow \text{\)</span>x<span class="math notranslate nohighlight">\( - потомок \)</span>y<span class="math notranslate nohighlight">\(}\)</span>, не рефлексивно, не симметрично и транзитивно.</p></li>
+<li><p>Отношение <span class="math notranslate nohighlight">\(R\)</span> на множестве людей, где <span class="math notranslate nohighlight">\(xRy \Leftrightarrow x\text{ - потомок }y\)</span>, не рефлексивно, не симметрично и транзитивно.</p></li>
 </ol>
 </section>
 </section>
 <section id="id17">
 <h2>Суперпозиция отношений<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>Источники: Судоплатов, Овчинникова - Дискретная математика; Haggard, Schlipf, Whitesides - Discrete mathematics for computer science; Палий - Дискретная математика и математическая логика</p>
+<p><em>Суперпозицией</em> соответствий <span class="math notranslate nohighlight">\(S \subset A \times B\)</span> и <span class="math notranslate nohighlight">\(T \subset B \times C\)</span> называется множество <span class="math notranslate nohighlight">\(S \circ T = \{(x, y) \in A \times C \colon \exists z \in B \, (xSz \land zSy)\}\)</span>.</p>
+<p>Итак, суперпозиция соответствий <span class="math notranslate nohighlight">\(S\)</span> и <span class="math notranslate nohighlight">\(T\)</span> - это множество пар, между которыми можно “проехать по графу” ровно с одной пересадкой.</p>
+<p><img alt="" src="_images/relations12.png" /></p>
+<p><strong>Теорема.</strong> Пусть <span class="math notranslate nohighlight">\(P, Q, R \subset A \times A\)</span> - бинарные отношения. Справедливы свойства:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((P \circ Q)^{-1} = Q^{-1} \circ P^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((P \circ Q) \circ R = P \circ (Q \circ R)\)</span> (ассоциативность суперпозиции)</p></li>
+</ol>
+<p>Свойство 1 можно запомнить так. Сначала мы надеваем рубашку, а на неё куртку. Снимаем наоборот: сначала куртку, потом рубашку.</p>
+<p>Свойство 2 иллюстрируется следующим примером. Допустим, вам нужно добраться от дома до университета, а по пути сначала зайти в магазин, а потом зайти перекусить. Вы можете срезать путь, если из дома сразу пойти перекусить, а оттуда в университет. Есть и другой способ: из дома зайти в магазин, а оттуда сразу пойти в университет. Результат один и тот же - вы доберетесь от дома до университета.</p>
+<p><strong>Пример.</strong> Пусть <span class="math notranslate nohighlight">\(A\)</span> - множество людей, на котором заданы отношения <span class="math notranslate nohighlight">\(W\)</span> и <span class="math notranslate nohighlight">\(M\)</span>: <span class="math notranslate nohighlight">\(xWy \Leftrightarrow y\text{ - жена }x\)</span>, <span class="math notranslate nohighlight">\(yMz \Leftrightarrow z\text{ - мать }x\)</span>. Тогда суперпозиция отношений <span class="math notranslate nohighlight">\(W \circ M\)</span> состоит из всех пар <span class="math notranslate nohighlight">\((x, y)\)</span>, для которых <span class="math notranslate nohighlight">\(y\)</span> - теща <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><strong>Замечание.</strong> Суперпозиция ассоциативна, но не коммутативна. В этом примере <span class="math notranslate nohighlight">\(M \circ W = \varnothing\)</span>, тогда как <span class="math notranslate nohighlight">\(W \circ M\)</span> - непустое отношение.</p>
+<p><img alt="" src="_images/relations13.jpg" /></p>
 <section id="id18">
-<h3>Ядро отношения<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
-</section>
+<h3>Вычисление суперпозиции отношений<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>Если бинарные отношения <span class="math notranslate nohighlight">\(P, Q \subset A \times A\)</span> заданы с помощью булевых матриц, их суперпозицию можно найти, перемножив две матрицы.</p>
+<p>В самом деле,</p>
+<p><span class="math notranslate nohighlight">\((P \circ Q)_{ij} = (\exists k \colon P_{ik} \land Q_{kj}) = \bigvee\limits_k (P_{ik} \land Q_{kj})\)</span></p>
+<p>Эта формула полностью соответствует правилу умножения матриц “строка на столбец”, только вместо умножения конъюнкция <span class="math notranslate nohighlight">\(\land\)</span>, а вместо сложения дизъюнкция <span class="math notranslate nohighlight">\(\vee\)</span>.</p>
+<p><strong>Замечание.</strong> Если <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(Q\)</span> - функции, то <span class="math notranslate nohighlight">\(P \circ Q\)</span> - также функция (суперпозиция функций).</p>
 </section>
 <section id="id19">
-<h2>Отношения эквивалентности<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<h3>Примеры<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p><strong>Пример.</strong> Рассмотрим отношения <span class="math notranslate nohighlight">\(\mathrm{IsMarriedTo}\)</span>, <span class="math notranslate nohighlight">\(\mathrm{IsParentOf}\)</span>.</p>
+<p>Дадим описание следующих отношений.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathrm{IsMarriedTo}^{-1} = \mathrm{IsMarriedTo}\)</span> - отношение “состоять в браке” симметрично.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{IsMarriedTo} \circ \mathrm{IsMarriedTo} = \{(x, x) \colon x\text{ женат/замужем}\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{IsParentOf} \circ \mathrm{IsParentOf}^{-1} = \mathrm{IsMarriedTo}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{IsMarriedTo} \cap \mathrm{IsMarriedTo}^{-1} = \mathrm{IsMarriedTo}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathrm{IsParentOf} \cap \mathrm{IsParentOf}^{-1} = \varnothing\)</span></p></li>
+</ol>
 </section>
 <section id="id20">
-<h2>Отношения порядка<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<h3>Ядро отношения<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>Пусть <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>. <em>Ядром</em> соответствия <span class="math notranslate nohighlight">\(R\)</span> называется суперпозиция <span class="math notranslate nohighlight">\(R \circ R^{-1} \subset A \times A\)</span>.</p>
+<p>Ядро состоит из всех пар вида <span class="math notranslate nohighlight">\((x, x)\)</span>, где <span class="math notranslate nohighlight">\(x \in A\)</span> - каждый первый элемент пар соответствия <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p><strong>Замечание.</strong> <span class="math notranslate nohighlight">\((R \circ R^{-1})^{-1} =   (R^{-1})^{-1} \circ R^{-1} =  R  \circ R^{-1}\)</span>, так что ядро - это симметричное отношение.</p>
+<p><strong>Задание.</strong> Прочитайте параграф 5.2 “Матрицы конечных бинарных отношений” в книге Палий на с. 65-67.</p>
+</section>
 </section>
 <section id="id21">
-<h2>Лексикографический порядок<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<h2>Отношения эквивалентности<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
 </section>
 <section id="id22">
-<h2>Замыкание отношений<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<h2>Отношения порядка<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
 </section>
 <section id="id23">
-<h2>Ядро функции<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<h2>Лексикографический порядок<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+</section>
+<section id="id24">
+<h2>Замыкание отношений<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+</section>
+<section id="id25">
+<h2>Ядро функции<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+</section>
+<section id="id26">
+<h2>Дополнительный материал<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://vk.com/video-225887804_456239023">Клип про отношения</a></p>
+<p>Задавайте вопросы <a class="reference external" href="https://vk.com/mathelem">в комментариях</a>.</p>
 </section>
 </section>
 
@@ -1011,14 +1057,17 @@ R \text{ - не симметрично} \quad \Longleftrightarrow \quad \exists 
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Суперпозиция отношений</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Ядро отношения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Вычисление суперпозиции отношений</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Примеры</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Ядро отношения</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Отношения эквивалентности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Отношения порядка</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Лексикографический порядок</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Замыкание отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Ядро функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Ядро функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Дополнительный материал</a></li>
 </ul>
   </nav></div>
 
