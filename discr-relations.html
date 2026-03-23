@@ -434,13 +434,21 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Функции</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Свойства бинарных отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Суперпозиция отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Отношения эквивалентности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Отношения порядка</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Лексикографический порядок</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Замыкание отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Ядро функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Свойства бинарных отношений</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Иллюстрация свойств на графе отношения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Иллюстрация свойств на матрице отношения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Примеры</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Суперпозиция отношений</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Ядро отношения</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Ядро функции</a></li>
 </ul>
             </nav>
         </div>
@@ -830,25 +838,90 @@ document.write(`
 </section>
 <section id="id13">
 <h2>Свойства бинарных отношений<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>Источники: Палий - Дискретная математика и математическая логика; Haggard, Schlipf, Whitesides - Discrete mathematics for computer science</p>
+<p>Пусть <span class="math notranslate nohighlight">\(R \subset A \times A\)</span> - бинарное отношение.</p>
+<p><span class="math notranslate nohighlight">\(R\)</span> называется <em>рефлексивным</em>, если всякий элемент множества <span class="math notranslate nohighlight">\(A\)</span> связан отношением с самим собой. На языке логики предикатов:</p>
+<p><span class="math notranslate nohighlight">\(
+\forall x\in A \colon (xRx)
+\)</span></p>
+<p>Критерий рефлексивности: <span class="math notranslate nohighlight">\(\mathrm{id}_A \subset R\)</span>. В самом деле, данное условие означает, что если <span class="math notranslate nohighlight">\(x = y\)</span>, то <span class="math notranslate nohighlight">\((x, y) \in R\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(R\)</span> называется <em>симметричным</em>, если все связи двусторонние: если <span class="math notranslate nohighlight">\(x\)</span> связан с <span class="math notranslate nohighlight">\(y\)</span>, то и <span class="math notranslate nohighlight">\(y\)</span> связан с <span class="math notranslate nohighlight">\(x\)</span>. В виде формулы:</p>
+<p><span class="math notranslate nohighlight">\(
+\forall x, y\in A \colon (xRy \to yRx)
+\)</span></p>
+<p>Критерий симметричности: <span class="math notranslate nohighlight">\(R = R^{-1}\)</span>. Эта запись означает, что если <span class="math notranslate nohighlight">\((x,y) \in R\)</span>, то <span class="math notranslate nohighlight">\((x,y) \in R^{-1}\)</span>, то есть <span class="math notranslate nohighlight">\((y, x) \in R\)</span>.</p>
+<p><strong>Замечание.</strong> Запишем отрицание свойства симметричности:</p>
+<p><span class="math notranslate nohighlight">\(
+R \text{ - не симметрично} \quad \Longleftrightarrow \quad \exists x, y \in A \colon (xRy \land \neg (yRx))
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(R\)</span> называется <em>транзитивным</em>, если любой транзитный маршрут гарантирует существование прямого маршрута. Другими словами, если <span class="math notranslate nohighlight">\((x, y) \in R\)</span> и <span class="math notranslate nohighlight">\((y, z) \in R\)</span>, то обязательно <span class="math notranslate nohighlight">\((x, z) \in R\)</span>. На языке логики предикатов:</p>
+<p><span class="math notranslate nohighlight">\(
+\forall x, y, z \in A\colon (xRy \land yRz \to xRz)
+\)</span></p>
+<p>Критерий транзитивности: <span class="math notranslate nohighlight">\(R \circ R \subset R\)</span>. Смысл этой записи в том, что если <span class="math notranslate nohighlight">\((x, z) \in R \circ R\)</span>, то <span class="math notranslate nohighlight">\((x, z) \in R\)</span>. С понятием суперпозиции отношений мы познакомимся чуть позже. Пока отметим, что отношение <span class="math notranslate nohighlight">\(R \circ R\)</span> соединяет между собой все такие пары элементов <span class="math notranslate nohighlight">\((x, z)\)</span>, между которыми есть транзитный маршрут (через <span class="math notranslate nohighlight">\(y \in A\)</span>).</p>
 <p><strong>Упражнение.</strong> Запишите отрицание свойства транзитивности отношения <span class="math notranslate nohighlight">\(R \subset A \times A\)</span>.</p>
-</section>
+<p><span class="math notranslate nohighlight">\(R\)</span> называется <em>антисимметричным</em>, если двухсторонних связей нет. Это означает, что одновременное выполнение условий <span class="math notranslate nohighlight">\((x, y) \in R\)</span> и <span class="math notranslate nohighlight">\((y, x) \in R\)</span> возможно только в случае <span class="math notranslate nohighlight">\(x = y\)</span>. Формула:</p>
+<p><span class="math notranslate nohighlight">\(
+\forall x, y \in A \colon (xRy \land yRx \to x = y)
+\)</span></p>
+<p>Критерий антисимметричности: <span class="math notranslate nohighlight">\(R \cap R^{-1} \subset \mathrm{id}_A\)</span>.</p>
+<p><strong>Упражнение.</strong> Поясните, как вы понимаете этот критерий.</p>
 <section id="id14">
-<h2>Суперпозиция отношений<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<h3>Иллюстрация свойств на графе отношения<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>В каждой вершине графа рефлексивного отношения есть петля.</p>
+<p>График рефлексивного отношения <span class="math notranslate nohighlight">\(R \subset \mathbb R \times \mathbb R\)</span> должен целиком содержать в себе прямую <span class="math notranslate nohighlight">\(x = y\)</span>.</p>
+<p><img alt="" src="_images/relations8.png" /></p>
+<p>В графе симметричного отношения все стрелки двухсторонние.</p>
+<p>График симметричного отношения <span class="math notranslate nohighlight">\(R \subset \mathbb R \times \mathbb R\)</span> симметричен относительно прямой <span class="math notranslate nohighlight">\(x = y\)</span>.</p>
+<p>Пример симметричного отношения:</p>
+<p><img alt="" src="_images/relations9.png" /></p>
+<p>Пример не симметричного отношения:</p>
+<p><img alt="" src="_images/relations10.png" /></p>
+<p>Транзитивность означает, что маршрут, проходящий через промежуточную вершину, гарантируют существование прямого маршрута.</p>
+<p>Пример не транзитивного отношения:</p>
+<p><img alt="" src="_images/relations11.png" /></p>
+<p><strong>Упражнение.</strong> Докажите, что если отношение симметрично и транзитивно, то оно рефлексивно.</p>
 </section>
 <section id="id15">
-<h2>Отношения эквивалентности<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<h3>Иллюстрация свойств на матрице отношения<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>В матрице рефлексивного отношения на главной диагонали всюду стоят единицы.</p>
+<p>Матрица симметричного отношения симметрична (т.е. совпадает с транспонированной).</p>
+<p>Матрица антисимметричного отношения не содержит симметричные относительно главной диагонали единицы.</p>
+<p>Для транзитивного отношения с матрицей <span class="math notranslate nohighlight">\(M\)</span> выполняется свойство <span class="math notranslate nohighlight">\(M \cdot M \leq M\)</span>. Это означает, что элементы логического умножения двух матриц <span class="math notranslate nohighlight">\(M \cdot M\)</span> не превосходят соответствующих элементов матрицы <span class="math notranslate nohighlight">\(M\)</span>.</p>
 </section>
 <section id="id16">
-<h2>Отношения порядка<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<h3>Примеры<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Отношение подобия треугольников, заданное на множестве всех треугольников евклидовой плоскости, является рефлексивным, так как каждый треугольник подобен себе самому.</p></li>
+<li><p>Отношение перпендикулярности прямых, заданное на множестве всех прямых евклидовой плоскости, не является рефлексивным (более того, оно <em>антирефлексивно</em>), так как никакая прямая не перпендикулярна себе самой.</p></li>
+<li><p>Отношение “проживать в одном доме”, заданное на множестве жителей некоторого города, симметрично. Если <span class="math notranslate nohighlight">\(a\)</span> живет в одном доме с <span class="math notranslate nohighlight">\(b\)</span>, то <span class="math notranslate nohighlight">\(b\)</span> живет в одном доме с <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
+<li><p>Отношение “меньше”, заданное на множестве действительных чисел, антисимметрично: если <span class="math notranslate nohighlight">\(a &lt; b\)</span>, то неверно, что <span class="math notranslate nohighlight">\(b &lt; a\)</span>.</p></li>
+<li><p>Отношение “больше”, заданное на множестве действительных чисел, транзитивно: если <span class="math notranslate nohighlight">\(a &gt; b\)</span> и <span class="math notranslate nohighlight">\(b &gt; c\)</span>, то <span class="math notranslate nohighlight">\(a &gt; c\)</span>.</p></li>
+<li><p>Отношение “приближенно равно с точностью <span class="math notranslate nohighlight">\(\varepsilon\)</span>”, заданное на множестве действительных чисел (<span class="math notranslate nohighlight">\(|x - y| &lt; \varepsilon\)</span>) рефлексивно, симметрично, но не транзитивно.</p></li>
+<li><p>Отношение <span class="math notranslate nohighlight">\(R\)</span> на множестве людей, где <span class="math notranslate nohighlight">\(xRy \Leftrightarrow \text{\)</span>x<span class="math notranslate nohighlight">\( - потомок \)</span>y<span class="math notranslate nohighlight">\(}\)</span>, не рефлексивно, не симметрично и транзитивно.</p></li>
+</ol>
+</section>
 </section>
 <section id="id17">
-<h2>Лексикографический порядок<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
-</section>
+<h2>Суперпозиция отношений<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
 <section id="id18">
-<h2>Замыкание отношений<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<h3>Ядро отношения<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="id19">
-<h2>Ядро функции<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<h2>Отношения эквивалентности<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+</section>
+<section id="id20">
+<h2>Отношения порядка<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+</section>
+<section id="id21">
+<h2>Лексикографический порядок<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+</section>
+<section id="id22">
+<h2>Замыкание отношений<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+</section>
+<section id="id23">
+<h2>Ядро функции<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -931,13 +1004,21 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Функции</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Свойства бинарных отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Суперпозиция отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Отношения эквивалентности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Отношения порядка</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Лексикографический порядок</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Замыкание отношений</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Ядро функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Свойства бинарных отношений</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Иллюстрация свойств на графе отношения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Иллюстрация свойств на матрице отношения</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Примеры</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Суперпозиция отношений</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Ядро отношения</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Отношения эквивалентности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Отношения порядка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Лексикографический порядок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Замыкание отношений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Ядро функции</a></li>
 </ul>
   </nav></div>
 
