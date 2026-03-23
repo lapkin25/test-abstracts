@@ -1005,28 +1005,85 @@ R \text{ - не симметрично} \quad \Longleftrightarrow \quad \exists 
 <h3>Ядро отношения<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>Пусть <span class="math notranslate nohighlight">\(R \subset A \times B\)</span>. <em>Ядром</em> соответствия <span class="math notranslate nohighlight">\(R\)</span> называется суперпозиция <span class="math notranslate nohighlight">\(R \circ R^{-1} \subset A \times A\)</span>.</p>
 <p>Ядро состоит из всех пар вида <span class="math notranslate nohighlight">\((x, x)\)</span>, где <span class="math notranslate nohighlight">\(x \in A\)</span> - каждый первый элемент пар соответствия <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p><strong>Упражнение.</strong> Обнаружьте и исправьте неточность в этой характеристике ядра.</p>
 <p><strong>Замечание.</strong> <span class="math notranslate nohighlight">\((R \circ R^{-1})^{-1} =   (R^{-1})^{-1} \circ R^{-1} =  R  \circ R^{-1}\)</span>, так что ядро - это симметричное отношение.</p>
 <p><strong>Задание.</strong> Прочитайте параграф 5.2 “Матрицы конечных бинарных отношений” в книге Палий на с. 65-67.</p>
 </section>
 </section>
 <section id="id21">
 <h2>Отношения эквивалентности<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<p>Источник: Хаггарти - Дискретная математика для программистов</p>
+<p>Рефлексивное, симметричное и транзитивное бинарное отношение на множестве <span class="math notranslate nohighlight">\(A\)</span> называется <em>отношением эквивалентности</em>.</p>
+<p>Отношение эквивалентности обобщает понятие равенства. Эквивалентные элементы (т.е. находящиеся в отношении эквивалентности), как правило, обладают какими-то общими признаками.</p>
+<p><strong>Пример.</strong> 1. Отношение <span class="math notranslate nohighlight">\(R\)</span> на множестве треугольников: <span class="math notranslate nohighlight">\(xRy\)</span>, если треугольник <span class="math notranslate nohighlight">\(x\)</span> имеет те же углы, что и треугольник <span class="math notranslate nohighlight">\(y\)</span>. Треугольники эквивалентны относительно этого отношения тогда и только тогда, когда они подобны.</p>
+<ol class="arabic simple" start="2">
+<li><p>Пусть отношение на множестве ненулевых целых чисел задано так: <span class="math notranslate nohighlight">\(xRy \;\Leftrightarrow\; x\cdot y &gt; 0\)</span>. Тогда <span class="math notranslate nohighlight">\(R\)</span> - это отношение эквивалентности, и эквивалентные числа имеют одинаковый знак.</p></li>
+<li><p>Отношение на множестве людей: “… имеет тот же возраст, что и …”. Тогда “эквивалентные” люди принадлежат к одной и той же возрастной группе.</p></li>
+</ol>
+<p><strong>Упражнение.</strong> Придумайте свой пример отношения эквивалентности на каком-либо множестве.</p>
+<p><em>Разбиением</em> множества <span class="math notranslate nohighlight">\(A\)</span> называется совокупность непустых подмножеств <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n \subset A\)</span>, удовлетворяющих следующим требованиям:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A = A_1 \cup A_2 \cup \ldots \cup A_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A_i \cap A_j = \varnothing\)</span> для любой пары <span class="math notranslate nohighlight">\((i, j)\)</span>, для которой <span class="math notranslate nohighlight">\(i \neq j\)</span></p></li>
+</ul>
+<p>Подмножества <span class="math notranslate nohighlight">\(A_i\)</span> называются <em>блоками</em> разбиения. Итак, разбиение - это представление всего множества в виде объединения системы непересекающихся подмножеств.</p>
+<p>Определим <em>класс эквивалентности</em> <span class="math notranslate nohighlight">\(E_x\)</span> произвольного элемента <span class="math notranslate nohighlight">\(x \in A\)</span> следующим образом: <span class="math notranslate nohighlight">\(E_x = \{z \in A\colon zRx\}\)</span>.</p>
+<p><strong>Теорема.</strong> Пусть <span class="math notranslate nohighlight">\(R\)</span> - отношение эквивалентности на непустом множестве <span class="math notranslate nohighlight">\(A\)</span>. Тогда различные классы эквивалентности определяют разбиение <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Чтобы понять эту теорему, представим себе граф отношения эквивалентности: в этом графе классу эквивалентности соответствует связная компонента, являющаяся полным подграфом.</p>
+<p><strong>Замечание.</strong> В учебнике Новикова “Дискретная математика” указанная теорема доказывается с помощью построения алгоритма выделения классов эквивалентности.</p>
 </section>
 <section id="id22">
 <h2>Отношения порядка<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<p>Рефлексивное, транзитивное, но антисимметричное отношение <span class="math notranslate nohighlight">\(R\)</span> на множестве <span class="math notranslate nohighlight">\(A\)</span> называется <em>частичным порядком</em>.</p>
+<p>Частичный порядок важен в тех ситуациях, когда мы хотим как-то охарактеризовать старшинство. Иными словами, решить, при каких условиях считать, что один элемент множества превосходит другой.</p>
+<p>Примеры частичных порядков:</p>
+<ul class="simple">
+<li><p>“<span class="math notranslate nohighlight">\(\leq\)</span>” на множестве вещественных чисел</p></li>
+<li><p>“<span class="math notranslate nohighlight">\(\subset\)</span>” на подмножествах универсального множества</p></li>
+<li><p>“… делится на …” на множестве натуральных чисел</p></li>
+</ul>
+<p>Множества с частичным порядком принято называть <em>частично упорядоченными множествами (ч.у.м.)</em>.</p>
+<p><em>Диаграмма Хассе</em> - это результат <em>транзитивного сокращения</em> частичного порядка: линии соединяют только непосредственных предшественников.</p>
+<p><strong>Задание.</strong> Узнайте как можно больше актуальной информации про диаграммы Хассе, пользуясь большой языковой моделью. Есть ли алгоритм, позволяющий построить диаграмму Хассе для заданного отношения частичного порядка?</p>
+<p><em>Линейным порядком</em> на множестве <span class="math notranslate nohighlight">\(A\)</span> называется отношение частичного порядка, при котором из любой пары элементов можно выделить предшествующий и последующий:</p>
+<p><span class="math notranslate nohighlight">\(\forall x, y \in A \colon (xRy \vee yRx)\)</span></p>
+<p>Примеры линейного порядка:</p>
+<ul class="simple">
+<li><p>“<span class="math notranslate nohighlight">\(\leq\)</span>” на множестве вещественных чисел</p></li>
+<li><p>лексикографическое упорядочение слов в словаре</p></li>
+</ul>
+<p>Различные сортирующие процедуры в информатике требуют, чтобы элементы сортируемых множеств были линейно упорядочены. В этом случае они могут выдавать упорядоченный список.</p>
+<p>Другие приложения используют частичный порядок, предполагая, что в любом частично упорядоченном множестве найдется <em>минимальный элемент</em> (не имеющий предшественников) и <em>максимальный элемент</em> (не имеющий последующих элементов).</p>
+<p><strong>Задание.</strong> Изучите алгоритм <em>топологической сортировки</em> (Рыбин - Дискретная математика и информатика, с. 448).</p>
+<p><strong>Замечание.</strong> Сравнивая длинные числовые кортежи, мы часто столкнемся с ситуацией, в которой нельзя сравнить пару кортежей, и тогда множество минимальных и максимальных элементов образуют так называемое паретово множество.</p>
+<p>Похоже, что “успешного успеха” не существует: можно быть более успешным в чём-то одном и менее успешным в чём-то другом.</p>
 </section>
 <section id="id23">
 <h2>Лексикографический порядок<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<p>Лексикографический порядок определяется на множестве строк, составленных из символов какого-либо алфавита.</p>
+<p>Запишите логическое условие, выражающее сравнение двух строк в алфавитном порядке. Разработайте алгоритм для сравнения строк. (См. Хаггарти, с. 84)</p>
 </section>
 <section id="id24">
 <h2>Замыкание отношений<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<p>Источники: Хаггарти - Дискретная математика для программистов (с. 75); Новиков - Дискретная математика; Рыбин - Дискретная математика и информатика</p>
+<p><em>Транзитивное замыкание</em> - это объединение степеней отношения <span class="math notranslate nohighlight">\(R \cup R \circ R \cup R \circ R \circ R \cup R \circ R \circ R \circ R \cup \ldots\)</span>.</p>
+<p>Замыкание по транзитивности имеет массу приложений. Допустим, нам дан неориентированный граф, отражающий коммуникационную сеть. В этом случае матрица замыкания по транзитивности позволит нам определить, существует ли возможность переправить сообщение из одного места в другое.</p>
+<p><strong>Задание.</strong> Изучите алгоритм Флойда нахождения транзитивного замыкания (Рыбин, с. 455).</p>
 </section>
 <section id="id25">
 <h2>Ядро функции<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+<p>Источник: Палий - Дискретная математика и математическая логика (с. 80); Новиков - Дискретная математика (с. 82)</p>
+<span style="color:red">
+<p><em>Гомоморфный образ группы</em></p>
+<p><em>До победы коммунизма</em></p>
+<p><em>Изоморфен фактор-группе</em></p>
+<p><em>По ядру гомоморфизма</em></p>
+</span>
 </section>
 <section id="id26">
 <h2>Дополнительный материал<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://vk.com/video-225887804_456239023">Клип про отношения</a></p>
+<p>Лекции УрФУ: <a class="reference external" href="https://vkvideo.ru/video-9594364_456239535?sh=4">1</a>, <a class="reference external" href="https://vkvideo.ru/video-9594364_456239534?sh=4">2</a>, <a class="reference external" href="https://vkvideo.ru/video-9594364_456239534?sh=4">3</a>, <a class="reference external" href="https://vkvideo.ru/video-9594364_456239532?sh=4">4</a>, <a class="reference external" href="https://vkvideo.ru/video-9594364_456239531?sh=4">5</a></p>
 <p>Задавайте вопросы <a class="reference external" href="https://vk.com/mathelem">в комментариях</a>.</p>
 </section>
 </section>
