@@ -24,6 +24,7 @@ chapters:
   - file: discr-boolean
   - file: discr-sets
   - file: discr-relations
+  - file: discr-combin
   - file: discr-graphs
 - file: algorithms
   sections:
