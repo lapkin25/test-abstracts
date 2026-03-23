@@ -941,6 +941,65 @@ R \text{ - не симметрично} \quad \Longleftrightarrow \quad \exists 
 <li><p><span class="math notranslate nohighlight">\(\mathrm{IsMarriedTo} \cap \mathrm{IsMarriedTo}^{-1} = \mathrm{IsMarriedTo}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathrm{IsParentOf} \cap \mathrm{IsParentOf}^{-1} = \varnothing\)</span></p></li>
 </ol>
+<p><strong>Пример.</strong> Суперпозиция отношений соответствует оператору <code class="docutils literal notranslate"><span class="pre">JOIN</span></code> в языке SQL.</p>
+<p><span class="math notranslate nohighlight">\(\text{ПРОЖИВАТЬ} \subset \text{ЛЮДИ} \times \text{ПОМЕЩЕНИЯ}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\text{НАХОДИТЬСЯ} \subset \text{ПОМЕЩЕНИЯ} \times \text{УЛИЦЫ}\)</span></p>
+<p>Тогда <span class="math notranslate nohighlight">\(\text{ПРОЖИВАТЬ-НА-УЛИЦЕ} \subset \text{ЛЮДИ} \times \text{УЛИЦЫ}\)</span>, и <span class="math notranslate nohighlight">\(\text{ПРОЖИВАТЬ-НА-УЛИЦЕ} = \text{ПРОЖИВАТЬ} \circ \text{НАХОДИТЬСЯ}\)</span>.</p>
+<p>Таблица отношения ПРОЖИВАТЬ:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>человек</p></th>
+<th class="head"><p>помещение</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Иван</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Пётр</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Сидор</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+<p>Таблица отношения НАХОДИТЬСЯ:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>помещение</p></th>
+<th class="head"><p>улица</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Гоголя</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Тихая</p></td>
+</tr>
+</tbody>
+</table>
+<p>Тогда таблица отношения ПРОЖИВАТЬ-НА-УЛИЦЕ:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>человек</p></th>
+<th class="head"><p>улица</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Иван</p></td>
+<td><p>Гоголя</p></td>
+</tr>
+<tr class="row-odd"><td><p>Пётр</p></td>
+<td><p>Гоголя</p></td>
+</tr>
+<tr class="row-even"><td><p>Сидор</p></td>
+<td><p>Тихая</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Упражнение.</strong> Придумайте свой пример предметной области, в которой будет полезна операция суперпозиции отношений.</p>
 </section>
 <section id="id20">
 <h3>Ядро отношения<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
