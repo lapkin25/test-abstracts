@@ -429,9 +429,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Сочетания без повторений</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Размещения с повторениями</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Сочетания с повторениями</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Резюме</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Примеры комбинаторных задач</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Дополнительный материал</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Связь с множествами и функциями</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Резюме</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Примеры комбинаторных задач</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Дополнительный материал</a></li>
 </ul>
             </nav>
         </div>
@@ -456,6 +457,11 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(|A \cup B| = |A| + |B| = n + m\)</span></p>
 <p><strong>Пример.</strong> На столе лежат конфеты двух видов: 5 шоколадных и 7 карамельных. Сколькими существует способов выбрать одну конфету?</p>
 <p>Два непересекающихся множества: шоколадные конфеты и карамельные конфеты. По правилу сложения ответ в задаче <span class="math notranslate nohighlight">\(5 + 7 = 12\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Правило сложения используется, когда количества соединены союзом “или”.</p>
+<p>Например: в стакане <span class="math notranslate nohighlight">\(n\)</span> ручек и <span class="math notranslate nohighlight">\(m\)</span> карандашей. Сколькими способами можно выбрать один пишущий предмет (карандаш <em>или</em> ручку)?</p>
+</div>
 </section>
 <section id="id4">
 <h3>Правило умножения<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
@@ -464,6 +470,11 @@ document.write(`
 <p><strong>Пример.</strong> Сегодня вечером мы посмотрим один из 3 фильмов, вслед за чем сыграем в одну из 2 настольных игр. Сколько существует способов провести вечер?</p>
 <p>Два множества: фильмов и настольных игр. Выбрать пару “фильм, игра” по правилу умножения можно <span class="math notranslate nohighlight">\(3 \cdot 2 = 6\)</span> способами.</p>
 <p><strong>Упражнение.</strong> Чтобы добраться до Москвы из Владивостока, надо сперва добраться до аэропорта (на такси, на поезде или на автобусе), а затем долететь на самолёте на одном из 4 рейсов. Сколькими способами можно добраться из Владивостока до Москвы?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Правило умножения используется, когда количества соединены союзом “и”.</p>
+<p>Например: в стакане <span class="math notranslate nohighlight">\(n\)</span> ручек и <span class="math notranslate nohighlight">\(m\)</span> карандашей. Сколькими способами можно выбрать пару предметов (карандаш <em>и</em> ручку)?</p>
+</div>
 </section>
 </section>
 <section id="id5">
@@ -499,22 +510,164 @@ document.write(`
 </section>
 <section id="id6">
 <h2>Сочетания без повторений<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Вернёмся к примеру с размещениями (упорядоченными выборками). Посмотрим, как связать упорядоченные выборки с неупорядоченными.</p>
+<p>Если <span class="math notranslate nohighlight">\(A = \{a, b, c, d\}\)</span>, <span class="math notranslate nohighlight">\(k = 2\)</span>, то все размещения:</p>
+<p>ab, ac, ad, ba, bc, bd, ca, cb, cd, da, db, dc</p>
+<p>Введём на множестве размещений отношение эквивалентности и сгруппируем все размещения по классам эквивалентности.</p>
+<p><span class="math notranslate nohighlight">\(
+\{ab, ba\}, \{ac, ca\}, \{ad, da\}, \{bc, cb\}, \{bd, db\}, \{cd, dc\}
+\)</span></p>
+<p>В каждой группе оказалось по два размещения. Если всего размещений <span class="math notranslate nohighlight">\(12\)</span>, а в каждой группе <span class="math notranslate nohighlight">\(2\)</span> размещения, то можно найти число групп: <span class="math notranslate nohighlight">\(12/2 = 6\)</span>.</p>
+<p>Как быть в общем случае выборки <span class="math notranslate nohighlight">\(k\)</span> элементов из <span class="math notranslate nohighlight">\(n\)</span>-элементного множества? Всего размещений <span class="math notranslate nohighlight">\(A_n^k\)</span>. Разобьём их на классы эквивалентности: в один класс попадут размещения, отличающиеся только порядком следования элементов. В каждом классе окажется <span class="math notranslate nohighlight">\(k!\)</span> размещений. Действительно, всякую неупорядоченную выборку из <span class="math notranslate nohighlight">\(k\)</span> элементов можно упорядочить <span class="math notranslate nohighlight">\(k!\)</span> способами.</p>
+<p>Каждый класс эквивалентности - это <em>сочетание</em> (без повторений), или неупорядоченная выборка <span class="math notranslate nohighlight">\(k\)</span> различных элементов <span class="math notranslate nohighlight">\(n\)</span>-элементного множества.</p>
+<p>Число сочетаний из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span> вычисляется по формуле</p>
+<p><span class="math notranslate nohighlight">\(
+C_n^k = \dfrac{A_n^k}{k!} = \dfrac{n!}{k!(n-k)!}
+\)</span></p>
+<p><strong>Пример.</strong> Перечислим все сочетания из множества <span class="math notranslate nohighlight">\(A = \{a, b, c, d\}\)</span> по <span class="math notranslate nohighlight">\(k = 2\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{c, d\}\)</span></p>
+<p>Каждое сочетание из 4 по 2 - это 2-элементное подмножество 4-элементного множества.</p>
+<p><strong>Пример.</strong> <span class="math notranslate nohighlight">\(n\)</span> человек пожали друг другу руки. Сколько рукопожатий?</p>
+<p>Посчитаем число неупорядоченных выборок из 2 разных объектов - это число сочетаний <span class="math notranslate nohighlight">\(C_n^2 = \dfrac{n!}{2!(n-2)!} = \dfrac{n(n-1)}{2}\)</span>.</p>
+<p><strong>Пример.</strong> Сколькими способами можно расставить 4 одинаковые фигуры на шахматной доске?</p>
+<p>Пусть <span class="math notranslate nohighlight">\(A\)</span> - это множество клеток шахматной доски, из которого извлекается <span class="math notranslate nohighlight">\(4\)</span> элемента (без учёта порядка).</p>
+<p>Упорядоченных выборок <span class="math notranslate nohighlight">\(64 \cdot 63 \cdot 62 \cdot 61\)</span>.
+Неупорядоченных выборок в <span class="math notranslate nohighlight">\(4! = 24\)</span> раз меньше, чем упорядоченных, потому что при выборе 4 мест существует <span class="math notranslate nohighlight">\(4!\)</span> способов упорядочить эту выборку.</p>
+<p>Итак, число способов выбрать 4 клетки из 64 (без учёта порядка) равно <span class="math notranslate nohighlight">\(C_{64}^4 = \dfrac{64 \cdot 63 \cdot 62 \cdot 61}{24}\)</span>.</p>
+<p><strong>Упражнение.</strong> Сколько треугольников можно построить на 10 точках?</p>
 </section>
 <section id="id7">
 <h2>Размещения с повторениями<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><em>Размещение с повторениями</em> - это упорядоченная выборка элементов заданного множества, в которой элементы могут повторяться.</p>
+<p>Например, если <span class="math notranslate nohighlight">\(A = \{a, b, c, d\}\)</span>, <span class="math notranslate nohighlight">\(k = 2\)</span>, то все размещения с повторениями:</p>
+<p>aa, ab, ac, ad, ba, bb, bc, bd, ca, cb, cc, cd, da, db, dc, dd</p>
+<p>На каждую из двух позиций мы можем выбрать любой из 4 элементов множества <span class="math notranslate nohighlight">\(A\)</span>. По правилу умножения, упорядоченных выборок с повторениями <span class="math notranslate nohighlight">\(4 \cdot 4 = 16\)</span>.</p>
+<p>Итак, число размещений с повторениями из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span> вычисляется по формуле</p>
+<p><span class="math notranslate nohighlight">\(\overline{A_n^k} = n^k\)</span></p>
+<p><strong>Пример.</strong> Сколько различных комбинаций может получиться при одновременном бросании трёх игральных костей?</p>
+<p>При бросании будем получать наборы <span class="math notranslate nohighlight">\((a_1, a_2, a_3)\)</span>, где <span class="math notranslate nohighlight">\(a_i \in \{1..6\}\)</span> - количество очков, выпавших на соответствующей кости. Общее число указанных наборов равно <span class="math notranslate nohighlight">\(\overline{A_6^3} = 6^3 = 216\)</span>.</p>
 </section>
 <section id="id8">
 <h2>Сочетания с повторениями<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 </section>
 <section id="id9">
-<h2>Резюме<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h2>Связь с множествами и функциями<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>число подмножеств</p>
+<p>число функций</p>
+<p>число инъекций</p>
 </section>
 <section id="id10">
-<h2>Примеры комбинаторных задач<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2>Резюме<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>таблица из 4 клеток - разновидности комбинаций</p>
 </section>
 <section id="id11">
-<h2>Дополнительный материал<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h2>Примеры комбинаторных задач<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p><strong>Пример.</strong> Сколькими способами можно поставить на шахматную доску белого и чёрного короля, чтобы они не били друг друга?</p>
+<p>Прежде всего надо определиться, что мы считаем. Из какого множества производится выборка? Считаем упорядоченные или неупорядоченные выборки? С повторениями или без повторений?</p>
+<p>Множество <span class="math notranslate nohighlight">\(A\)</span> - это клетки шахматной доски. Выбираем две разные клетки для двух разных королей (порядок важен!). Поэтому здесь упорядоченные выборки без повторений.</p>
+<p>Выбрать клетку для чёрного короля можно 64 способами. После этого белого короля можно поставить в любую клетку, не смежную с чёрным.</p>
+<p>Отметим в клетках число соседей.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+<p>Применяя правило сложения, рассмотрим 3 случая:</p>
+<ol class="arabic simple">
+<li><p>Чёрный король в углу <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(64 - 3 = 61\)</span> способ поставить белого</p></li>
+<li><p>Чёрный король с краю <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(64 - 5 = 59\)</span> способов поставить белого</p></li>
+<li><p>Чёрный король во внутренней клетке  <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(64 - 8 = 56\)</span> способов поставить белого</p></li>
+</ol>
+<p>Применяя правило умножения, запишем формулу:</p>
+<p><span class="math notranslate nohighlight">\(61 \cdot 4 + 59 \cdot (6 \cdot 4) + 56 \cdot 6^2 = 3676\)</span>.</p>
+<p><strong>Упражнение.</strong> В легковом автомобиле 5 мест (одно водительское и 4 пассажирских). Сколькими способами можно рассадить в автомобиль 5 друзей для поездки, если водительское удостоверение имеется только у троих?</p>
+</section>
+<section id="id12">
+<h2>Дополнительный материал<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://rutube.ru/video/7302365450d1cd5064ee3c4f8051f16e/?r=wd">Основы комбинаторики</a></p>
+<p><a class="reference external" href="https://stepik.org/course/57161">Комбинаторный минимум</a></p>
 </section>
 </section>
 
@@ -591,9 +744,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Сочетания без повторений</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Размещения с повторениями</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Сочетания с повторениями</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Резюме</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Примеры комбинаторных задач</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Дополнительный материал</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Связь с множествами и функциями</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Резюме</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Примеры комбинаторных задач</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Дополнительный материал</a></li>
 </ul>
   </nav></div>
 
