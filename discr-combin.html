@@ -432,7 +432,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Связь с множествами и функциями</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Резюме</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Примеры комбинаторных задач</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Дополнительный материал</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Свойства биномиальных коэффициентов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Бином Ньютона</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Формула включений и исключений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Числа Стирлинга второго рода</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Оценка числа беспорядков</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Дополнительный материал</a></li>
 </ul>
             </nav>
         </div>
@@ -549,16 +554,61 @@ C_n^k = \dfrac{A_n^k}{k!} = \dfrac{n!}{k!(n-k)!}
 </section>
 <section id="id8">
 <h2>Сочетания с повторениями<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Введем понятие мультимножества. Назовём <em><span class="math notranslate nohighlight">\(k\)</span>-мультимножеством</em> неупорядоченную выборку (с повторениями) из <span class="math notranslate nohighlight">\(k\)</span> элементов. Два <span class="math notranslate nohighlight">\(k\)</span>-мультимножества считаются одинаковыми, если одинаковых элементов в них поровну. Например, <span class="math notranslate nohighlight">\(\langle 1, 2, 2, 3\rangle = \langle 2, 1, 3, 2 \rangle\)</span>, но <span class="math notranslate nohighlight">\(\langle 1, 2, 3\rangle \neq \langle 1, 2, 2, 3\rangle\)</span>.</p>
+<p>Любое <span class="math notranslate nohighlight">\(k\)</span>-мультимножество, составленное из элементов <span class="math notranslate nohighlight">\(n\)</span>-элементного множества, называется <em>сочетанием с повторениями из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span></em>.</p>
+<p><strong>Пример.</strong> Все сочетания с повторениями из множества <span class="math notranslate nohighlight">\(A = \{a, b, c, d\}\)</span> по <span class="math notranslate nohighlight">\(k = 2\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(\langle a, a \rangle,  \langle a, b \rangle, \langle a, c \rangle, \langle a, d \rangle, \langle b, b \rangle, \langle b, c \rangle, \langle b, d \rangle, \langle c, c \rangle, \langle c, d \rangle, \langle d, d\rangle\)</span></p>
+<p>Как посчитать число различных сочетаний с повторениями из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span>?
+Может, просто разделить число размещений с повторениями на факториал чего-нибудь? Так не получится, ибо в разных классах эквивалентности здесь разное число элементов.</p>
+<p>Сопоставим каждому <span class="math notranslate nohighlight">\(k\)</span>-мультимножеству из элементов множества <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(|A| = n\)</span>, его двоичный код.</p>
+<p>На рисунке показано построение кода на примере мультимножества <span class="math notranslate nohighlight">\(\langle a, b, b, c, e, e, e\rangle\)</span> (выборка из множества <span class="math notranslate nohighlight">\(A = \{a, b, c, d, e\}\)</span>). Всего у нас 5 “типов” элементов выборки: a, b, c, d, e. Элементов каждого типа может выбрано сколько угодно, но так, чтобы в сумме было выбрано <span class="math notranslate nohighlight">\(k = 7\)</span> элементов.</p>
+<p>Красными черточками на рисунке обозначены элементы, отнесенные к одному из <span class="math notranslate nohighlight">\(n = 5\)</span> классов. Чтобы построить двочиный код, сопоставим каждой черточке “единицу”, а каждой перегородке между классами - “ноль”. В начале и конце кода нули не ставятся, за исключением случая, когда они соответствуют перегородкам.</p>
+<p>Таким образом, мультимножеству <span class="math notranslate nohighlight">\(\langle a, b, b, c, e, e, e\rangle\)</span> соответствует код <span class="math notranslate nohighlight">\(10110100111\)</span>.</p>
+<p><img alt="" src="_images/comb1.png" /></p>
+<p>Всякому сочетанию с повторениями из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span> соответствует двоичный код из <span class="math notranslate nohighlight">\(k\)</span> единиц и <span class="math notranslate nohighlight">\(n - 1\)</span> нулей. Обратно, по любой последовательности из <span class="math notranslate nohighlight">\(n + k - 1\)</span> нулей и единиц, в которой ровно <span class="math notranslate nohighlight">\(k\)</span> единиц, можно построить <span class="math notranslate nohighlight">\(k\)</span>-мультимножество, пользуясь тем же правилом.</p>
+<p>Иными словами, между всеми сочетаниями с повторениями из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span> и всеми двоичными кодами из <span class="math notranslate nohighlight">\(k\)</span> единиц и <span class="math notranslate nohighlight">\(n-1\)</span> нулей существует <u>взаимно однозначное соответствие</u> (биекция). Следовательно, сочетаний с повторениями столько же, сколько двоичных кодов.</p>
+<p>Посчитаем число двоичных кодов из <span class="math notranslate nohighlight">\(k\)</span> единиц и <span class="math notranslate nohighlight">\(n-1\)</span> нулей. Для этого заметим, что места из <span class="math notranslate nohighlight">\(n+k-1\)</span> цифр, на которых будут стоять единицы, образуют подмножество - неупорядоченную выборку без повторений, или сочетание без повторений из <span class="math notranslate nohighlight">\(n+k-1\)</span> по <span class="math notranslate nohighlight">\(k\)</span>. Итак, число двоичных кодов равно числу сочетаний без повторений из <span class="math notranslate nohighlight">\(n+k-1\)</span> по <span class="math notranslate nohighlight">\(k\)</span>, то есть <span class="math notranslate nohighlight">\(C_{n+k-1}^k\)</span>.</p>
+<p>Поэтому число сочетаний с повторениями из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span> вычисляется по формуле:</p>
+<p><span class="math notranslate nohighlight">\(
+\overline{C_n^k} = C_{n+k-1}^k
+\)</span></p>
+<p><strong>Пример.</strong> В магазине продаются онигири 3 видов. Покупатель хочет купить 5 онигири. Сколькими способами возможно сделать покупку?</p>
+<p>Производится неупорядоченная выборка с повторениями 5 онигири из множества из 3 видов. Число различных выборок вычисляется по формуле <span class="math notranslate nohighlight">\(\overline{C_3^5} = C_7^5 = C_7^2 = \dfrac{7 \cdot  6}{1 \cdot 2} = 42\)</span>.</p>
+<p><strong>Упражнение.</strong> Перечислите все сочетания с повторениями из <span class="math notranslate nohighlight">\(n = 4\)</span> по <span class="math notranslate nohighlight">\(k = 2\)</span>, укажите для каждого из них соответствующий двоичный код.</p>
 </section>
 <section id="id9">
 <h2>Связь с множествами и функциями<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
-<p>число подмножеств</p>
-<p>число функций</p>
-<p>число инъекций</p>
+<p><strong>Задача.</strong> Вычислить число всех подмножеств <span class="math notranslate nohighlight">\(n\)</span>-элементного множества, состоящих ровно из <span class="math notranslate nohighlight">\(k\)</span> элементов.</p>
+<p>Ответ: число сочетаний без повторений из <span class="math notranslate nohighlight">\(n\)</span> по <span class="math notranslate nohighlight">\(k\)</span>, то есть <span class="math notranslate nohighlight">\(C_n^k\)</span>.</p>
+<p><strong>Задача.</strong> Найти число различных функций <span class="math notranslate nohighlight">\(f \colon A \to B\)</span> из <span class="math notranslate nohighlight">\(n\)</span>-элементного множества <span class="math notranslate nohighlight">\(A\)</span> в <span class="math notranslate nohighlight">\(m\)</span>-элементное множество <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Ответ: число размещений с повторениями из <span class="math notranslate nohighlight">\(m\)</span> по <span class="math notranslate nohighlight">\(n\)</span>, то есть <span class="math notranslate nohighlight">\(\overline{A_m^n} = m^n\)</span>.</p>
+<p>(Действительно, производится выборка из <span class="math notranslate nohighlight">\(n\)</span> элементов <span class="math notranslate nohighlight">\(m\)</span>-элементного множества.)</p>
+<p><strong>Задача.</strong> Найти число инъекций <span class="math notranslate nohighlight">\(f \colon A \to B\)</span> из <span class="math notranslate nohighlight">\(n\)</span>-элементного множества <span class="math notranslate nohighlight">\(A\)</span> в <span class="math notranslate nohighlight">\(m\)</span>-элементное множество <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Ответ: число размещений без повторений из <span class="math notranslate nohighlight">\(m\)</span> по <span class="math notranslate nohighlight">\(n\)</span>, то есть <span class="math notranslate nohighlight">\(A_m^n\)</span>.</p>
+<p>(Производится выборка из <span class="math notranslate nohighlight">\(n\)</span> различных элементов <span class="math notranslate nohighlight">\(m\)</span>-элементного множества.)</p>
+<p><strong>Замечание.</strong> Число сюръекций вычисляется сложнее, см. раздел “Числа Стирлинга 2-го рода”.</p>
 </section>
 <section id="id10">
 <h2>Резюме<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
-<p>таблица из 4 клеток - разновидности комбинаций</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>без повторений</p></th>
+<th class="head"><p>с повторениями</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>упорядоченные выборки (размещения)</p></td>
+<td><p><span class="math notranslate nohighlight">\(A_n^k\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\overline{A_n^k}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>неупорядоченные выборки (сочетания)</p></td>
+<td><p><span class="math notranslate nohighlight">\(C_n^k\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\overline{C_n^k}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Решая комбинаторную задачу, нужно обозначить множество, из которого производится выборка, а затем указать разновидность выборки (по 2 критериям: наличие повторений и учёт порядка).</p>
 </section>
 <section id="id11">
 <h2>Примеры комбинаторных задач<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
@@ -665,7 +715,22 @@ C_n^k = \dfrac{A_n^k}{k!} = \dfrac{n!}{k!(n-k)!}
 <p><strong>Упражнение.</strong> В легковом автомобиле 5 мест (одно водительское и 4 пассажирских). Сколькими способами можно рассадить в автомобиль 5 друзей для поездки, если водительское удостоверение имеется только у троих?</p>
 </section>
 <section id="id12">
-<h2>Дополнительный материал<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<h2>Свойства биномиальных коэффициентов<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+</section>
+<section id="id13">
+<h2>Бином Ньютона<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+</section>
+<section id="id14">
+<h2>Формула включений и исключений<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+</section>
+<section id="id15">
+<h2>Числа Стирлинга второго рода<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+</section>
+<section id="id16">
+<h2>Оценка числа беспорядков<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+</section>
+<section id="id17">
+<h2>Дополнительный материал<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://rutube.ru/video/7302365450d1cd5064ee3c4f8051f16e/?r=wd">Основы комбинаторики</a></p>
 <p><a class="reference external" href="https://stepik.org/course/57161">Комбинаторный минимум</a></p>
 </section>
@@ -747,7 +812,12 @@ C_n^k = \dfrac{A_n^k}{k!} = \dfrac{n!}{k!(n-k)!}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Связь с множествами и функциями</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Резюме</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Примеры комбинаторных задач</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Дополнительный материал</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Свойства биномиальных коэффициентов</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Бином Ньютона</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Формула включений и исключений</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Числа Стирлинга второго рода</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Оценка числа беспорядков</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Дополнительный материал</a></li>
 </ul>
   </nav></div>
 
