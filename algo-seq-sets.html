@@ -433,6 +433,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Алгоритм</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Задача “Различные номера”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Формализация задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Решение</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -551,6 +556,44 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 <p>Остается реализовать функцию <code class="docutils literal notranslate"><span class="pre">my_mod(a,</span> <span class="pre">b)</span></code> для вычисления остатка от деления целого числа <span class="math notranslate nohighlight">\(a\)</span> на натуральное число <span class="math notranslate nohighlight">\(b\)</span>.</p>
 </section>
 </section>
+<section id="id11">
+<h2>Задача “Различные номера”<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p><em>Задача с чемпионата RuCode.СТАРТ 2024</em></p>
+<p>Одна телефонная компания в сотрудничестве с сетью автосалонов начала акцию. При регистрации нового автомобиля владельцу предоставляется номер телефона, похожий на номер автомобиля.</p>
+<p>Номерной знак имеет вид <code class="docutils literal notranslate"><span class="pre">lDDDll-DDD</span></code>, где <code class="docutils literal notranslate"><span class="pre">l</span></code> - место для буквы латинского алфавита из подмножества <code class="docutils literal notranslate"><span class="pre">A,</span> <span class="pre">B,</span> <span class="pre">C,</span> <span class="pre">E,</span> <span class="pre">H,</span> <span class="pre">K,</span> <span class="pre">M,</span> <span class="pre">O,</span> <span class="pre">P,</span> <span class="pre">T,</span> <span class="pre">X,</span> <span class="pre">Y</span></code>, а <code class="docutils literal notranslate"><span class="pre">D</span></code> - место для цифры от 0 до 9.</p>
+<p>Все цифры в телефонном номере соответствуют цифрам в номере автомобиля. Буквам соответствуют цифры, которых нет в номере автомобиля, при этом одинаковым буквам соответствуют одинаковые цифры, а разным - разные.</p>
+<p>Например, если у автомобиля номер <code class="docutils literal notranslate"><span class="pre">A451HA-077</span></code>, то телефонный номер может выглядеть как
+<code class="docutils literal notranslate"><span class="pre">9245192077</span></code> (<code class="docutils literal notranslate"><span class="pre">A</span></code> заменили двойкой, <code class="docutils literal notranslate"><span class="pre">H</span></code> — девяткой), или как <code class="docutils literal notranslate"><span class="pre">9345123077</span></code> (тройкой и двойкой соответственно):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A451HA077</span>
+<span class="mi">9245192077</span>
+<span class="mi">9345123077</span>
+</pre></div>
+</div>
+<p>Но соответствующий этому номерному знаку телефонный номер не может выглядеть, например, как <code class="docutils literal notranslate"><span class="pre">9245172077</span></code> (так как семёрка и заменяет <code class="docutils literal notranslate"><span class="pre">H</span></code>, и встречается в номере как цифра), или как
+<code class="docutils literal notranslate"><span class="pre">9245122077</span></code> (так как двойка заменяет и <code class="docutils literal notranslate"><span class="pre">H</span></code>, и <code class="docutils literal notranslate"><span class="pre">A</span></code>), или как <code class="docutils literal notranslate"><span class="pre">9245136077</span></code> (так как буква <code class="docutils literal notranslate"><span class="pre">A</span></code> заменена в
+одном случае двойкой, а в другой тройкой.</p>
+<p>При этом, как можно заметить, одному автомобильному номеру может соответствовать несколько телефонных номеров. Вам дано целое число <span class="math notranslate nohighlight">\(x\)</span>, определите, существует ли автомобильный номер,
+который имеет ровно <span class="math notranslate nohighlight">\(x\)</span> различных телефонных номеров, соответствующих ему (то есть что <span class="math notranslate nohighlight">\(x + 1\)</span>
+различный номер уже поставить в соответствие нельзя), и, если существует, выведите лексикографически наименьший такой номер.</p>
+<section id="id12">
+<h3>Формализация задачи<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Дано соответствие <span class="math notranslate nohighlight">\(R\)</span> между множеством а/м номеров и множеством телефонных номеров. Пускай <span class="math notranslate nohighlight">\(xRy\)</span>, если а/м номеру <span class="math notranslate nohighlight">\(x\)</span> соответствует телефонный номер <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Требуется выяснить мощности образов разных а/м номеров <span class="math notranslate nohighlight">\(x\)</span>, т.е. <span class="math notranslate nohighlight">\(|R(x)|\)</span>.</p>
+</section>
+<section id="id13">
+<h3>Решение<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>Разобьём все автомобильные номера на 6 непересекающихся множеств <span class="math notranslate nohighlight">\(N_k\)</span> по числу элементов в множестве <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(|A| = k \in \{1..6\}\)</span>, где <span class="math notranslate nohighlight">\(A\)</span> - множество цифр, встречающихся в автомобильном номере.</p>
+<p>Введём также множества <span class="math notranslate nohighlight">\(B_1, B_2, B_3\)</span> таким образом:</p>
+<p><span class="math notranslate nohighlight">\(B_1 = \{\text{а/м номера }x\colon \text{все 3 буквы одинаковые}\}\)</span></p>
+<p><span class="math notranslate nohighlight">\(B_2 = \{\text{а/м номера }x\colon \text{две буквы повторяются}\}\)</span></p>
+<p><span class="math notranslate nohighlight">\(B_3 = \{\text{а/м номера }x\colon \text{все 3 буквы различны}\}\)</span></p>
+<p>Итак, всё множество номеров разбивается на <span class="math notranslate nohighlight">\(18 = 6 \cdot 3\)</span> подмножеств вида <span class="math notranslate nohighlight">\(N_k \cap B_j\)</span>, где <span class="math notranslate nohighlight">\(k \in \{1..6\}, j \in \{1..3\}\)</span>. В рамках любого из этих подмножеств мощность образа <span class="math notranslate nohighlight">\(|R(x)|\)</span> у всех номеров <span class="math notranslate nohighlight">\(x\)</span> одна и та же.</p>
+<p><span class="math notranslate nohighlight">\(x \in N_k \cap B_1 \; \Rightarrow \; |R(x)| = A_{10-k}^1 = 10 - k\)</span></p>
+<p><span class="math notranslate nohighlight">\(x \in N_k \cap B_2 \; \Rightarrow \; |R(x)| = A_{10-k}^2 = (10 - k)(9 - k)\)</span></p>
+<p><span class="math notranslate nohighlight">\(x \in N_k \cap B_3 \; \Rightarrow \; |R(x)| = A_{10-k}^3 = (10 - k)(9 - k)(8 - k)\)</span></p>
+<p>Остаётся указать для каждой пары <span class="math notranslate nohighlight">\((k, j)\)</span>, <span class="math notranslate nohighlight">\(k \in \{1..6\}\)</span>, <span class="math notranslate nohighlight">\(j \in \{1..3\}\)</span>, лексикографически наименьший автомобильный номер, принадлежащий множеству <span class="math notranslate nohighlight">\(N_k \cap B_j\)</span>.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -628,6 +671,11 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Задача “Нарезка фантиков”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Формализация задачи</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Алгоритм</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Задача “Различные номера”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Формализация задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Решение</a></li>
 </ul>
 </li>
 </ul>
