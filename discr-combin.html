@@ -716,15 +716,57 @@ C_n^k = \dfrac{A_n^k}{k!} = \dfrac{n!}{k!(n-k)!}
 </section>
 <section id="id12">
 <h2>Свойства биномиальных коэффициентов<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>Числа <span class="math notranslate nohighlight">\(C_n^k\)</span> называются <em>биномиальными коэффициентами</em>.</p>
+<p>Докажем следующее тождество Паскаля:</p>
+<p><span class="math notranslate nohighlight">\(C_{n+1}^k = C_n^{k-1} + C_n^k\)</span></p>
+<p>Требуется проверить, что</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{(n+1)!}{k!(n-k+1)!} = \dfrac{n!}{(k-1)!(n-k+1)!} + \dfrac{n!}{k!(n-k)!}
+\)</span></p>
+<p>Домножив данное равенство на <span class="math notranslate nohighlight">\(\dfrac{(k-1)!(n-k)!}{n!}\)</span>, получим</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{n+1}{k(n-k+1)} = \dfrac{1}{n-k+1} + \dfrac{1}{k}
+\)</span></p>
+<p>Приводя слагаемые к общему знаменателю, убеждаемся, что это тождество.</p>
+<p>Установленное свойство позволяет расположить все биномиальные коэффициенты в виде <em>треугольника Паскаля</em>.</p>
+<p>        <span class="math notranslate nohighlight">\(C_0^0\)</span></p>
+<p>      <span class="math notranslate nohighlight">\(C_1^0\)</span> <span class="math notranslate nohighlight">\(C_1^1\)</span></p>
+<p>    <span class="math notranslate nohighlight">\(C_2^0\)</span> <span class="math notranslate nohighlight">\(C_2^1\)</span> <span class="math notranslate nohighlight">\(C_2^2\)</span></p>
+<p>  <span class="math notranslate nohighlight">\(C_3^0\)</span> <span class="math notranslate nohighlight">\(C_3^1\)</span> <span class="math notranslate nohighlight">\(C_3^2\)</span> <span class="math notranslate nohighlight">\(C_3^3\)</span></p>
+<p><span class="math notranslate nohighlight">\(C_4^0\)</span> <span class="math notranslate nohighlight">\(C_4^1\)</span> <span class="math notranslate nohighlight">\(C_4^2\)</span> <span class="math notranslate nohighlight">\(C_4^3\)</span> <span class="math notranslate nohighlight">\(C_4^4\)</span></p>
+<p>и так далее…</p>
+<p>     <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>    <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>   <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(2\)</span> <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>  <span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(3\)</span> <span class="math notranslate nohighlight">\(3\)</span> <span class="math notranslate nohighlight">\(1\)</span></p>
+<p><span class="math notranslate nohighlight">\(1\)</span> <span class="math notranslate nohighlight">\(4\)</span> <span class="math notranslate nohighlight">\(6\)</span> <span class="math notranslate nohighlight">\(4\)</span> <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>В силу тождества Паскаля каждое число внутри треугольника равно сумме двух чисел над ним. В силу тождеств <span class="math notranslate nohighlight">\(C_n^0 = C_n^n = 1\)</span> по бокам треугольника находятся числа <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Кроме того, в силу тождества <span class="math notranslate nohighlight">\(C_n^k = C_n^{n-k}\)</span> каждая строка треугольника Паскаля симметрична.</p>
+<p><strong>Упражнение.</strong> Докажите это тождество.</p>
 </section>
 <section id="id13">
 <h2>Бином Ньютона<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>Раскроем скобки в двучлене (биноме):</p>
+<p><span class="math notranslate nohighlight">\((a + b)^n = \underbrace{(a + b)(a + b)(a + b) \ldots (a + b)}_{n\text{ раз}}\)</span></p>
+<p>Получим <span class="math notranslate nohighlight">\(2^n\)</span> слагаемых, которые можно сгруппировать в одночлены вида <span class="math notranslate nohighlight">\(a^k b^{n-k}\)</span>.</p>
+<p>Каждое слагаемое похоже на двоичный кортеж с <span class="math notranslate nohighlight">\(k\)</span> единицами и <span class="math notranslate nohighlight">\((n-k)\)</span> нулями. Всего таких различных кортежей <span class="math notranslate nohighlight">\(C_n^k\)</span>. Поэтому перед одночленом <span class="math notranslate nohighlight">\(a^k b^{n-k}\)</span> надо поставить коэффициент <span class="math notranslate nohighlight">\(C_n^k\)</span>.</p>
+<p><span class="math notranslate nohighlight">\((a + b)^n = \sum\limits_{k=0}^n C_n^k a^k b^{n-k}\)</span></p>
+<p>Например,</p>
+<p><span class="math notranslate nohighlight">\((a + b)^4 = C_4^0 a^4 + C_4^1 a^3b + C_4^2 a^2 b^2 + C_4^3 a b^3 + C_4^4 b^4 =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4\)</span></p>
+<p><strong>Упражнение.</strong> Распишите по формуле бинома Ньютона выражение <span class="math notranslate nohighlight">\((a + b)^5\)</span>.</p>
+<p><strong>Замечание.</strong> Полагая <span class="math notranslate nohighlight">\(a = b = 1\)</span>, получаем, что сумма биномиальных коэффициентов в каждой строке треугольника Паскаля - это степень двойки.</p>
+<p>Это же свойство можно доказать из комбинаторных соображений (как?).</p>
+<p>Полагая <span class="math notranslate nohighlight">\(a = 1\)</span>, <span class="math notranslate nohighlight">\(b = -1\)</span>, получаем, что знакопеременная сумма биномиальных коэффициентов в <span class="math notranslate nohighlight">\(n\)</span>-й строчке треугольника Паскаля (при <span class="math notranslate nohighlight">\(n &gt; 0\)</span>) равна <span class="math notranslate nohighlight">\(0\)</span>.</p>
 </section>
 <section id="id14">
 <h2>Формула включений и исключений<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>См. Вялый и др. - Лекции по дискретной математике</p>
+<p>Доказательство формулы включений и исключений через характеристические функции множеств.</p>
 </section>
 <section id="id15">
 <h2>Числа Стирлинга второго рода<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<p>См. Виленкин “Комбинаторика”</p>
 </section>
 <section id="id16">
 <h2>Оценка числа беспорядков<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
