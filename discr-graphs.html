@@ -420,8 +420,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Алгоритм Прима</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Доказательство корректности алгоритма</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Основные понятия</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Связность графа</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Степени вершин</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Двудольные графы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Степенные последовательности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Вычисление отношения достижимости</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Топологическая сортировка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Взвешенные графы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Деревья</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Эйлеровы циклы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Планарные графы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Алгоритм Прима</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Доказательство корректности алгоритма</a></li>
 </ul>
 </li>
 </ul>
@@ -437,8 +448,222 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>Графы<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><span style="text-align:right"><small>Если вдруг все дороги ведут в никуда, значит, пора возвращаться домой…</small></span></p>
+<p>Возможно, самое распространенное применение графов —
+это описание сетей. Точки сети — это узлы графа, а связки — ребра между ними. Существует большое количество разных видов
+сетей; в первую очередь компьютерные сети, где все компьютеры
+соединены друг с другом, тут же и транспортные сети, которые
+с помощью автомагистралей, авиа- и железнодорожных путей
+соединяют друг с другом города. В плане компьютерных сетей
+самым ярким примером будет Интернет, да и название Сеть говорит само за себя: она состоит из страниц-узлов, соединенных
+друг с другом гиперссылками. «Википедия» — особо огромная
+сеть, разновидность глобальной Сети. Если заглянуть в область
+электроники, электросхемы состоят из электротехнических компонентов, таких как транзисторы, соединенных цепями. В биологии мы встречаем метаболические сети, которые, помимо прочего, содержат метаболические пути: химические вещества связаны
+химическими реакциями. Социальные сети представлены как
+графы, в которых узлами являются люди, а ребрами — их отношения. Распределение работы между людьми и машинами тоже
+можно смоделировать с помощью графов: задания — это узлы,
+а взаимосвязи между ними, например распределение приоритетов заданий, можно считать ребрами. (Луридас - Алгоритмы для начинающих)</p>
 <section id="id2">
-<h2>Алгоритм Прима<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>Основные понятия<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Источник: <a class="reference external" href="https://vkvideo.ru/video-186208863_456243946?list=ln-2Vgapr6Q3KfmldSo9E">лекции</a> ВМК МГУ</p>
+<p>Пусть задано конечное множество <span class="math notranslate nohighlight">\(V = \{v_1, v_2, \ldots, v_n\}\)</span> - <em>вершины графа</em>. Некоторые (неупорядоченные) пары вершин соединяются <em>рёбрами</em>, все рёбра образуют множество <span class="math notranslate nohighlight">\(E = \{e_1, e_2, \ldots, e_m\}\)</span>, где <span class="math notranslate nohighlight">\(e_k = \{v_i, v_j\}\)</span>.</p>
+<p><em>Графом</em> называется пара множеств: вершин и рёбер, то есть <span class="math notranslate nohighlight">\(G = \langle V, E \rangle\)</span>.</p>
+<p>Поскольку число различных неупорядоченных пар, выбранных из множества с <span class="math notranslate nohighlight">\(n\)</span> элементами, равно <span class="math notranslate nohighlight">\(C_n^2 = \dfrac{n(n-1)}{2}\)</span>, то максимальное число рёбер в графе равно <span class="math notranslate nohighlight">\(\dfrac{n(n-1)}{2}\)</span>.</p>
+<p><strong>Пример.</strong> На рисунке представлен граф с 7 вершинами и 5 рёбрами.</p>
+<p><span class="math notranslate nohighlight">\(V = \{v_1, v_2, \ldots, v_7\}\)</span></p>
+<p><span class="math notranslate nohighlight">\(E = \{e_1 = \{v_1, v_2\}, e_2 = \{v_2, v_4\}, e_3 = \{v_3, v_4\}, e_4 = \{v_3, v_1\}, e_5 = \{v_5, v_6\}\}\)</span></p>
+<p><img alt="" src="_images/graphs2.png" /></p>
+<p><em>Ориентированным графом</em> называется пара множеств: вершин и ориентированных рёбер. Ориентированное ребро - это упорядоченная пара вершин графа.</p>
+<p><strong>Пример.</strong> Если в предыдущем примере считать все пары упорядоченными, то получится такой орграф.</p>
+<p><span class="math notranslate nohighlight">\(V = \{v_1, v_2, \ldots, v_7\}\)</span></p>
+<p><span class="math notranslate nohighlight">\(E = \{(v_1, v_2), (v_2, v_4), (v_3, v_4), (v_3, v_1), (v_5, v_6)\}\)</span></p>
+<p><img alt="" src="_images/graphs3.png" /></p>
+<p>С помощью графа мы задаём структуру связей между элементами. Так, в компьютерной сети информацию можно передать между узлами по каналам связи, которые моделируются рёбрами графа.</p>
+<p>Граф с кратными рёбрами называют <em>мультиграфом</em>. Если, помимо кратных рёбер, допускаются и петли, получается <em>псевдограф</em>. Таким образом, в мультиграфе множество рёбер является мультимножеством, а в псевдографе в качестве рёбер выступают и пары одинаковых вершин.</p>
+<p><em>Путь в графе</em> - это чередующаяся последовательность вершин и рёбер этого графа <span class="math notranslate nohighlight">\(v_{i_1} \; e_{i_1} \; v_{i_2} \; e_{i_2} \; v_{i_3} \; \ldots\)</span>, в которой каждое ребро соединяет соседние с ним вершины.</p>
+<p><strong>Пример.</strong> В приведенном ориентированном графе допускается такой маршрут: <span class="math notranslate nohighlight">\(v_3 \; (v_3, v_1) \; v_1 \; (v_1, v_2) \; v_2 \; (v_2, v_4) \; v_4\)</span>.</p>
+<p>Если путь состоит из вершин <span class="math notranslate nohighlight">\(v_1, v_2, \ldots, v_l\)</span>, причём начальная вершина совпадает с конечной, то есть <span class="math notranslate nohighlight">\(v_1 = v_l\)</span>, то это замкнутый путь. Если в замкнутом пути вершины не повторяются, его называют <em>циклом</em>.</p>
+</section>
+<section id="id3">
+<h2>Связность графа<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Рассмотрим неориентированный граф.</p>
+<p>Граф называется <em>связным</em>, если между любой парой его вершин существует путь.</p>
+<p><em>Связная компонента</em> графа - это максимальный по включению (вершин и рёбер) связный подграф.</p>
+<p>Чтобы уточнить понятие связности, введем на множестве вершин графа отношение достижимости <span class="math notranslate nohighlight">\(\rho\)</span>. Пара вершин <span class="math notranslate nohighlight">\((v_i, v_j)\)</span> принадлежит отношению <span class="math notranslate nohighlight">\(\rho\)</span> (т.е. <span class="math notranslate nohighlight">\(v_i \rho v_j\)</span>), если существует путь из <span class="math notranslate nohighlight">\(v_i\)</span> в <span class="math notranslate nohighlight">\(v_j\)</span>.</p>
+<p><strong>Упражнение.</strong> Докажите, что отношение достижимости рефлексивно, симметрично и транзитивно.</p>
+<p>Итак, <span class="math notranslate nohighlight">\(\rho\)</span> является отношением эквивалентности.</p>
+<p>Следовательно, всё множество вершин разбивается на классы эквивалентности - это и есть связные компоненты.</p>
+<p><strong>Утверждение.</strong> В связном графе <span class="math notranslate nohighlight">\(|E(G)| \geq |V(G)| - 1\)</span>.</p>
+<p><em>Доказательство.</em> Проведем доказательство методом математической индукции по числу вершин графа. Докажем, что в любом связном графе с <span class="math notranslate nohighlight">\(n\)</span> вершинами справедливо <span class="math notranslate nohighlight">\(|E| \geq n - 1\)</span>. База индукции: при <span class="math notranslate nohighlight">\(n = 1\)</span> доказывать нечего. Гипотеза индукции: допустим, что утверждение доказано для <span class="math notranslate nohighlight">\(n = k\)</span>. Шаг индукции: рассмотрим граф с <span class="math notranslate nohighlight">\(n = k + 1\)</span> вершинами и докажем, что <span class="math notranslate nohighlight">\(|E| \geq k\)</span>. Уберём из графа <span class="math notranslate nohighlight">\(n\)</span>-ю вершину вместе со всеми исходящими из неё ребрами. Получим граф <span class="math notranslate nohighlight">\((V', E')\)</span>, в котором хотя бы на одно ребро меньше, и в нём <span class="math notranslate nohighlight">\(k\)</span> вершин. Значит, для этого графа <span class="math notranslate nohighlight">\(|E'| \geq k - 1\)</span>. Следовательно, для графа <span class="math notranslate nohighlight">\((V, E)\)</span> выполнено неравенство <span class="math notranslate nohighlight">\(|E| \geq |E'| + 1 \geq (k - 1) + 1 = k\)</span>. Утверждение доказано.</p>
+<p><strong>Утверждение.</strong> Для любого графа <span class="math notranslate nohighlight">\(G\)</span> выполняется неравенство:</p>
+<p><span class="math notranslate nohighlight">\(|E(G)| - |V(G)| + |C(G)| \geq 0\)</span>,</p>
+<p>где <span class="math notranslate nohighlight">\(V(G)\)</span> - множество вершин, <span class="math notranslate nohighlight">\(E(G)\)</span> - множество рёбер, <span class="math notranslate nohighlight">\(C(G)\)</span> - множество связных компонент.</p>
+<p>Число в левой части неравенства называется <em>цикломатическим числом графа</em>.</p>
+<p><em>Доказательство.</em> Разберём сначала случай связного графа, в котором <span class="math notranslate nohighlight">\(|C(G)| = 1\)</span>. В этом графе число рёбер не меньше, чем число вершин без единицы, т.е. <span class="math notranslate nohighlight">\(|E(G)| \geq |V(G)| - 1\)</span>.</p>
+<p>Теперь рассмотрим общий случай. Для каждой связной компоненты <span class="math notranslate nohighlight">\(G'\)</span> графа <span class="math notranslate nohighlight">\(G\)</span> выполняется неравенство <span class="math notranslate nohighlight">\(|E(G)| - |V(G)| + 1 \geq 0\)</span>. Суммируя эти неравенства по всем связным компонентам графа, приходим к требуемому неравенству.</p>
+</section>
+<section id="id4">
+<h2>Степени вершин<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Источник: Вялый и др. - Лекции по дискретной математике</p>
+<p>Рассмотрим неориентированный граф.</p>
+<p><em>Степень вершины</em> - это число смежных с этой вершиной рёбер.</p>
+<p>Будем обозначать степень вершины <span class="math notranslate nohighlight">\(u\)</span> через <span class="math notranslate nohighlight">\(\mathrm{deg}(u)\)</span>. По определению,</p>
+<p><span class="math notranslate nohighlight">\(
+\mathrm{deg}(u) = |\{ v \in V \colon \{u, v\} \in E \}|
+\)</span></p>
+<p>Эта запись означает: степень вершины <span class="math notranslate nohighlight">\(u\)</span> равна мощности множества вершин графа <span class="math notranslate nohighlight">\(v\)</span>, которые соединены ребром с <span class="math notranslate nohighlight">\(u\)</span>.</p>
+<p><strong>Лемма</strong> <em>(о рукопожатиях)</em>. В неориентированном графе <span class="math notranslate nohighlight">\(G\)</span> сумма степеней всех вершин равна удвоенному числу рёбер:</p>
+<p><span class="math notranslate nohighlight">\(
+\sum\limits_{v \in V} d(v) = 2|E|
+\)</span></p>
+<p><em>Доказательство.</em> Рассуждаем по индукции. Будем проводить в графе ребро за ребром. Пусть на <span class="math notranslate nohighlight">\(k\)</span>-шаге оказалось, что сумма степеней вершин равна удвоенному числу шагов <span class="math notranslate nohighlight">\(2k\)</span>. Сделаем ещё один шаг. Так как рёбра в графе не повторяются, при добавлении одного ребра общее число рёбер в графе увеличивается на <span class="math notranslate nohighlight">\(1\)</span>. При этом степени ровно двух вершин увеличатся на 1. Таким образом, к левой и правой части равенства будет прибавлено число <span class="math notranslate nohighlight">\(2\)</span>, следовательно, равенство остается верным.</p>
+<p><strong>Следствие.</strong> В любом неориентированном графе число вершин, имеющих нечетную степень, чётно.</p>
+<p><strong>Упражнение.</strong> Докажите, что в любом графе с более чем одной вершиной есть две вершины одинаковой степени.</p>
+<p><strong>Задача.</strong> На контрольной каждый из 20 школьников решил ровно 3 задачи, а каждую задачу решило ровно 5 человек. Сколько было задач?</p>
+<p>Построим двудольный граф (доля школьников и доля задач), в котором каждая из 20 вершин первой доли соединена ровно с 3 вершинами второй доли, а каждая вершина из второй доли соединена ровно с 5 вершинами первой доли.</p>
+<p>Заметим, что в двудольном графе сумма степеней вершин первой доли равна сумме степеней вершин второй доли. Обозначив пеизвестное число вершин второй доли через <span class="math notranslate nohighlight">\(x\)</span>, приходим к уравнению <span class="math notranslate nohighlight">\(20 \cdot 3 = 5x\)</span>. Отсюда <span class="math notranslate nohighlight">\(x = 12\)</span>. Значит, число задач равно 12.</p>
+<p><strong>Упражнение.</strong> В компании из 6 человек некоторые знакомы друг с другом (это симметрично: если А знаком с Б, то и Б знаком с А). Докажите, что можно выбрать трёх человек, которые либо попарно знакомы (все три пары), либо попарно незнакомы (все три пары).</p>
+</section>
+<section id="id5">
+<h2>Двудольные графы<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Источник: Вялый и др. - Лекции по дискретной математике</p>
+<p>Двудольный граф с долями <span class="math notranslate nohighlight">\(L\)</span> и <span class="math notranslate nohighlight">\(R\)</span> - это граф с множеством вершин <span class="math notranslate nohighlight">\(V = L \cup R\)</span>, где <span class="math notranslate nohighlight">\(L \cap R = \varnothing\)</span>, в котором всякое ребро соединяет вершину из левой доли <span class="math notranslate nohighlight">\(L\)</span> с вершиной из правой доли <span class="math notranslate nohighlight">\(R\)</span>. Итак, всякое ребро двудольного графа соединяет левую долю с правой.</p>
+<p>Например, левая доля - студенты, правая доля - учебные курсы. Вершины (студент и курс) соединены ребром, если студент прослушал соответствующий курс.</p>
+<p>Другой пример: левая доля - кавалеры, правая доля - дамы. Ребро означает, что они танцевали друг с другом.</p>
+<p>Ещё пример: левая доля - остановки, правая доля - маршруты автобусов. Путь в таком графе между двумя остановками - это возможность проехать между ними на автобусе (возможно, с пересадками).</p>
+<p><strong>Задача.</strong> Дан произвольный неориентированный граф. Как раскрасить его вершины в два цвета так, чтобы никакое ребро не соединяло пару вершин одного цвета? (Как сделать граф двудольным?)</p>
+<p><strong>Алгоритм раскраски.</strong> Начнём с любой вершины графа, начнём обход графа (в глубину или в ширину). При прохождении по всякому ребру меняем цвет вершины на противоположный. Если оказалось, что какое-нибудь ребро соединяет две вершины одного цвета, то значит, искомой раскраски не существует.</p>
+<p><strong>Теорема.</strong> Раскраска графа в два цвета возможна тогда и только тогда, когда в графе нет циклов нечётной длины.</p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow\)</span>: Если в графе есть цикл нечётной длины, то его нельзя раскрасить: проходя по циклу, получим противоречие. (Например, вершины треугольника нельзя раскрасить так, чтобы концы любого ребра были разного цвета.)</p>
+<p><span class="math notranslate nohighlight">\(\Leftarrow\)</span>: Предположим, что циклов нечётной длины нет. Выберем некоторую вершину <span class="math notranslate nohighlight">\(a\)</span> и решим, что она белая. Для любой другой вершины <span class="math notranslate nohighlight">\(b\)</span> посмотрим, сколько рёбер в пути от <span class="math notranslate nohighlight">\(a\)</span> к <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p><strong>Лемма.</strong> Пусть в графе нет циклов нечётной длины. Тогда если есть два пути из <span class="math notranslate nohighlight">\(a\)</span> в <span class="math notranslate nohighlight">\(b\)</span>, то либо в обоих чётное число рёбер, либо в обоих нечётное.</p>
+<p><em>Доказательство леммы.</em> Если есть путь <span class="math notranslate nohighlight">\(a \to b\)</span> с чётным числом рёбер, а также другой путь <span class="math notranslate nohighlight">\(a \to b\)</span> с нечётным числом рёбер, то в графе есть цикл с нечётным числом рёбер. Действительно, можно пройти из <span class="math notranslate nohighlight">\(a\)</span> в <span class="math notranslate nohighlight">\(b\)</span> по первому пути и вернуться по второму. Таким образом, это противоречит предположению, что в графе нет циклов нечётной длины. Значит, такого быть не может.</p>
+<p>Доказанная лемма позволяет разбить все вершины на 2 класса по чётности длины пути от выбранной вершины <span class="math notranslate nohighlight">\(a\)</span>. Требуемая раскраска построена.</p>
+<p><strong>Упражнение.</strong> Всякое ли дерево можно раскрасить в два цвета?</p>
+</section>
+<section id="id6">
+<h2>Степенные последовательности<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Источник: Свами, Тхуласираман - Графы, сети и алгоритмы (с. 157)</p>
+<p>Последовательность степеней всех вершин графа называется <em>степенной последовательностью</em> этого графа.</p>
+<p>Хакими и Гавел предложили алгоритм построения графа (если он существует), имеющего заданную последовательность степеней.</p>
+<p><strong>Алгоритм Хакими.</strong> Пусть <span class="math notranslate nohighlight">\(d_1 \geq d_2 \geq \ldots \geq d_n\)</span> - последовательность неотрицательных целых чисел.
+Уберём <span class="math notranslate nohighlight">\(d_1\)</span>, соединив вершину <span class="math notranslate nohighlight">\(v_1\)</span> рёбрами с вершинами <span class="math notranslate nohighlight">\(v_2, v_3, \ldots, v_{d_1 + 1}\)</span>. При этом числа <span class="math notranslate nohighlight">\(d_2, d_3, \ldots, d_{d_1 + 1}\)</span> уменьшатся на <span class="math notranslate nohighlight">\(1\)</span>. Если при уменьшении получается отрицательное число либо последовательность обрывается - то искомого графа не существует. Иначе продолжаем процесс для получившейся последовательности (упорядоченной по убыванию). Когда вся последовательность обнулится, алгоритм завершается.</p>
+<p>Сложность алгоритма Хакими составляет <span class="math notranslate nohighlight">\(O(N^2)\)</span>, где <span class="math notranslate nohighlight">\(N\)</span> - число вершин в графе.</p>
+<p><strong>Упражнение.</strong> Постройте любой граф по степенной последовательности <span class="math notranslate nohighlight">\(2, 2, 3, 3, 1, 1\)</span>.</p>
+</section>
+<section id="id7">
+<h2>Вычисление отношения достижимости<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Поскольку отношение достижимости получается в результате объединения всех степеней отношения, задаваемого графом, для вычисления отношения достижимости можно применить алгоритм Флойда нахождения транзитивного замыкания отношения.</p>
+<p><span class="math notranslate nohighlight">\(E^* = \mathrm{id}_V \cup E \cup E^2 \cup E^3 \cup \ldots \cup E^k \cup \ldots\)</span></p>
+<p>Смысл этой формулы в следующем. Чтобы понять, какие вершины достижимы одна из другой, следует сначала взять все пары вершин, достижимых за <span class="math notranslate nohighlight">\(0\)</span> шагов (т.е. все пары <span class="math notranslate nohighlight">\(\mathrm{id}_V = \{(v, v)\colon v \in V\}\)</span>). Дальше добавить к ним все пары вершин, между которыми можно пройти за <span class="math notranslate nohighlight">\(1\)</span> шаг (т.е. все вершины, соединенные ребром - множество <span class="math notranslate nohighlight">\(E\)</span>). Затем добавить все пары вершин, между которыми можно пройти за одну “пересадку” (т.е. <span class="math notranslate nohighlight">\(E^2\)</span>) и т.д.</p>
+<p>(см. Хаггарти - Дискретная математика для программистов, с. 178)</p>
+<p>Алгоритм Флойда генерирует последовательность матриц <span class="math notranslate nohighlight">\(W_0 = M, \; W_1, W_2, \ldots, W_n\)</span>, причем элемент матрицы <span class="math notranslate nohighlight">\(W_k\)</span> (<span class="math notranslate nohighlight">\(k \geq 1\)</span>), стоящий на пересечении <span class="math notranslate nohighlight">\(i\)</span>-й строки и <span class="math notranslate nohighlight">\(j\)</span>-го столбца <span class="math notranslate nohighlight">\(W_k(i, j)\)</span>, равен <span class="math notranslate nohighlight">\(1\)</span> в том и только том случае, когда существует путь (произвольной длины) из вершины <span class="math notranslate nohighlight">\(v_i\)</span> в вершину <span class="math notranslate nohighlight">\(v_j\)</span> с внутренними вершинами из множества <span class="math notranslate nohighlight">\(v_1, v_2, \ldots, v_k\)</span>.</p>
+<p>Матрица <span class="math notranslate nohighlight">\(W_0\)</span> совпадает с матрицей смежности <span class="math notranslate nohighlight">\(M\)</span> графа, а <span class="math notranslate nohighlight">\(W_n\)</span> - искомая матрица достижимости <span class="math notranslate nohighlight">\(M^*\)</span>. Последовательные проходы цикла <strong>for</strong> вычисляют матрицы <span class="math notranslate nohighlight">\(W_1, W_2, \ldots, W_n\)</span>.</p>
+<p><strong>Алгоритм Флойда</strong> <em>(вычисление транзитивного замыкания)</em>.</p>
+<p><span class="math notranslate nohighlight">\(W := M\)</span></p>
+<p><strong>for</strong> <span class="math notranslate nohighlight">\(k = 1\)</span> <strong>to</strong> <span class="math notranslate nohighlight">\(n\)</span> <strong>do</strong></p>
+<p>    <strong>for</strong> <span class="math notranslate nohighlight">\(i = 1\)</span> <strong>to</strong> <span class="math notranslate nohighlight">\(n\)</span> <strong>do</strong></p>
+<p>        <strong>for</strong> <span class="math notranslate nohighlight">\(j = 1\)</span> <strong>to</strong> <span class="math notranslate nohighlight">\(n\)</span> <strong>do</strong></p>
+<p>            <span class="math notranslate nohighlight">\(W(i, j) \leftarrow W(i, j) \vee (W(i, k) \land W(k, j))\)</span></p>
+<p>За каждый проход цикла (пронумерованный индексом <span class="math notranslate nohighlight">\(k\)</span>) алгоритм Флойда генерирует матрицу <span class="math notranslate nohighlight">\(W_k\)</span>, используя элементы предыдущей матрицы <span class="math notranslate nohighlight">\(W_{k-1}\)</span>.</p>
+<p>Чтобы найти <span class="math notranslate nohighlight">\(i\)</span>-ую строку матрицы <span class="math notranslate nohighlight">\(W_k\)</span>, нам следует вычислить выражения:</p>
+<p><span class="math notranslate nohighlight">\(W_{k-1}(i, j) \text{\textbf{ или }} (W_{k-1}(i, k)  \text{\textbf{ и }} W_{k-1}(k, j))\)</span></p>
+</section>
+<section id="id8">
+<h2>Топологическая сортировка<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Источник: Хаггарти - Дискретная математика для программистов (с. 174)</p>
+<p>Рассмотрим ориентированный, ациклический граф.</p>
+<p>Такой граф определяет частичный порядок на множестве вершин. Точнее, отношение достижимости в таком графе будет рефлексивным, антисимметричным и транзитивным отношением, то есть отношением частичного порядка.</p>
+<p>Выделим в этом отношении все <em>минимальные элементы</em> - это вершины графа, в которые не входит ребро. Уберём из графа все минимальные элементы вместе с исходящими из них рёбрами. Запишем все удалённые вершины друг за другом. Повторим эту процедуру, продолжая запись вершин в конец полученной последовательности, пока вершины не закончатся. Это и есть <em>алгоритм топологической сортировки</em>.</p>
+<p><strong>Упражнение.</strong> В таблице приведен список действий по приготовлению цыпленка с расставленными приоритетами. Нарисуйте орграф. Упорядочите список согласно приоритетам.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Задания</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>Предварительные действия</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>А</p></td>
+<td><p>Добавить лук к цыпленку</p></td>
+<td><p>И</p></td>
+</tr>
+<tr class="row-odd"><td><p>Б</p></td>
+<td><p>Вымыть салат-латук</p></td>
+<td><p>Л</p></td>
+</tr>
+<tr class="row-even"><td><p>В</p></td>
+<td><p>Приготовить салатную заправку</p></td>
+<td><p>Л</p></td>
+</tr>
+<tr class="row-odd"><td><p>Г</p></td>
+<td><p>Перемешать жаркое</p></td>
+<td><p>К</p></td>
+</tr>
+<tr class="row-even"><td><p>Д</p></td>
+<td><p>Перемешать салат</p></td>
+<td><p>Б, В</p></td>
+</tr>
+<tr class="row-odd"><td><p>Е</p></td>
+<td><p>Разрезать цыпленка</p></td>
+<td><p>никаких</p></td>
+</tr>
+<tr class="row-even"><td><p>Ж</p></td>
+<td><p>Растереть имбирь</p></td>
+<td><p>И</p></td>
+</tr>
+<tr class="row-odd"><td><p>З</p></td>
+<td><p>Подать готовое блюдо</p></td>
+<td><p>И</p></td>
+</tr>
+<tr class="row-even"><td><p>И</p></td>
+<td><p>Замариновать цыпленка</p></td>
+<td><p>Е</p></td>
+</tr>
+<tr class="row-odd"><td><p>К</p></td>
+<td><p>Поставить казанок на огонь</p></td>
+<td><p>А, Ж, З, Л</p></td>
+</tr>
+<tr class="row-even"><td><p>Л</p></td>
+<td><p>Приготовить рис</p></td>
+<td><p>никаких</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h2>Взвешенные графы<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>Предположим, что на множестве рёбер задана числовая функция <span class="math notranslate nohighlight">\(d \colon E \to \mathbb R\)</span>, сопоставляющая всякому ребру число - его вес. Тройка <span class="math notranslate nohighlight">\((V, E, d)\)</span> называется <em>взвешенным графом</em>.</p>
+<p>длина кратчайшего пути</p>
+<p>аксиомы метрики</p>
+<p>алгоритм Дейкстры</p>
+</section>
+<section id="id10">
+<h2>Деревья<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p><em>Дерево</em> - это связный, ациклический граф.</p>
+<p><strong>Утверждение.</strong> Граф является деревом тогда и только тогда, когда между любой парой его вершин существует ровно один путь.</p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow\)</span>: Предположим, что между вершинами <span class="math notranslate nohighlight">\(a\)</span> и <span class="math notranslate nohighlight">\(b\)</span> существует два пути. Но тогда объединение этих путей образует цикл. Противоречие.</p>
+<p><span class="math notranslate nohighlight">\(\Leftarrow\)</span>: Допустим, что в графе между каждой парой вершин существует ровно один путь, но граф не является деревом. Тогда в графе существуют циклы. Значит, между двумя вершинами есть два пути, их соединяющих. Противоречие.</p>
+<p><strong>Утверждение.</strong> Дерево с <span class="math notranslate nohighlight">\(n\)</span> вершинами имеет <span class="math notranslate nohighlight">\(n-1\)</span> ребро.</p>
+<p><em>Доказательство.</em> По индукции. Допустим, что для любого дерева с <span class="math notranslate nohighlight">\(|V| \leq k\)</span> утверждение доказано. Докажем утверждение в случае <span class="math notranslate nohighlight">\(|V| = k+1\)</span>. Возьмём любое ребро в дереве с <span class="math notranslate nohighlight">\(k+1\)</span> вершинами. При удалении этого ребра дерево распадается на два поддерева, в каждом из которых не более <span class="math notranslate nohighlight">\(k\)</span> вершин. В одном поддереве с <span class="math notranslate nohighlight">\(n_1\)</span> вершинами будет <span class="math notranslate nohighlight">\(n_1-1\)</span> рёбер, в другом поддереве с <span class="math notranslate nohighlight">\(n_2\)</span> вершинами будет <span class="math notranslate nohighlight">\(n_2-1\)</span> рёбер. Значит, всего в дереве <span class="math notranslate nohighlight">\((n_1-1) + (n_2 - 1) + 1 = (n_1 + n_2) - 1 = (k + 1) - 1\)</span> рёбер, что и требовалось доказать.</p>
+<p><strong>Упражнение.</strong> Докажите, что при удалении из графа любого ребра, не входящего ни в один цикл, граф теряет свойство связности.</p>
+</section>
+<section id="id11">
+<h2>Эйлеровы циклы<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p><em>Эйлеров цикл</em> - это замкнутый путь, проходящий по всем рёбрам графа (по одному разу).</p>
+<p><strong>Пример.</strong> Задача о кёнигсбергских мостах. Можно ли обойти все мосты по замкнутому пути, пройдя по каждому мосту только раз, вернувшись в исходную точку?</p>
+<p><img alt="" src="_images/graphs4.png" /></p>
+<p>Задача сводится к непрерывному росчерку линий графа.</p>
+<p><strong>Теорема.</strong> Необходимым и достаточным условием существования эйлерова цикла является чётность всех степеней вершин графа.</p>
+<p>&lt; алгоритм построения эйлерова цикла &gt;</p>
+<p><strong>Пример</strong> <em>(коды Грея)</em>. Можно ли перечислить в виде круговой последовательности все двоичные коды длины <span class="math notranslate nohighlight">\(n\)</span> так, чтобы каждый следующий код отличался от предыдущего ровно одной цифрой?</p>
+<p>Представим все <span class="math notranslate nohighlight">\(2^n\)</span> двоичных кодов в виде графа. Ребро соединяет два кода, если они отличаются только одной цифрой. Таким образом, степень каждой вершины равна <span class="math notranslate nohighlight">\(n\)</span>. Значит, задача имеет решение при любом чётном <span class="math notranslate nohighlight">\(n\)</span> и не имеет решения при нечётном <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</section>
+<section id="id12">
+<h2>Планарные графы<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+</section>
+<section id="id13">
+<h2>Алгоритм Прима<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
 <p> # <span class="math notranslate nohighlight">\(G = (V, E)\)</span> - исходный граф</p>
 <p><span class="math notranslate nohighlight">\(\sqsupset \, u_0 \in V\)</span> - произвольная вершина</p>
 <p><span class="math notranslate nohighlight">\(V' \leftarrow \{u_0\}; \;\; E' \leftarrow \varnothing\)</span></p>
@@ -450,8 +675,8 @@ document.write(`
 <p>    <span class="math notranslate nohighlight">\(V' \leftarrow V' \cup \{v_k\}\)</span></p>
 <p>    <span class="math notranslate nohighlight">\(E' \leftarrow E' \cup \{(u_k, v_k)\}\)</span></p>
 <p> # <span class="math notranslate nohighlight">\((V', E')\)</span> - минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span></p>
-<section id="id3">
-<h3>Доказательство корректности алгоритма<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3>Доказательство корректности алгоритма<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p>Проведем доказательство по индукции. Докажем следующее утверждение.</p>
 <p><em>На любом <span class="math notranslate nohighlight">\(k\)</span>-м шаге алгоритма (<span class="math notranslate nohighlight">\(k = 0..|V|-1\)</span>) построенное дерево <span class="math notranslate nohighlight">\(G' = (V', E')\)</span> содержится (является подграфом) в некотором минимальном остовном дереве графа <span class="math notranslate nohighlight">\(G\)</span>.</em></p>
 <p><strong>База индукции.</strong> При <span class="math notranslate nohighlight">\(k = 0\)</span> граф <span class="math notranslate nohighlight">\(G' = (V', E')\)</span>, где <span class="math notranslate nohighlight">\(V' = \{u_0\}\)</span>, <span class="math notranslate nohighlight">\(E' = \varnothing\)</span>, очевидно, является подграфом любого остовного дерева графа <span class="math notranslate nohighlight">\(G\)</span>.</p>
@@ -473,9 +698,9 @@ document.write(`
 <p><img alt="" src="_images/graphs1.png" /></p>
 <p>Заменим ребро <span class="math notranslate nohighlight">\((u, v)\)</span>, соединяющее подграфы <span class="math notranslate nohighlight">\(T_1\)</span> и <span class="math notranslate nohighlight">\(T_2\)</span>, на ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> - получим новое остовное дерево <span class="math notranslate nohighlight">\(T'\)</span>. Докажем его минимальность. В самом деле, в результате замены ребра <span class="math notranslate nohighlight">\((u, v)\)</span> на ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span> стоимость остовного дерева не увеличится. Следовательно, стоимость дерева <span class="math notranslate nohighlight">\(T'\)</span> минимальна.</p>
 <p>Значит, в графе <span class="math notranslate nohighlight">\(G\)</span> существует минимальное остовное дерево <span class="math notranslate nohighlight">\(T'\)</span>, содержащее подграф <span class="math notranslate nohighlight">\(G'\)</span>, построенный на <span class="math notranslate nohighlight">\((k-1)\)</span>-м шаге, и ребро <span class="math notranslate nohighlight">\((u_k, v_k)\)</span>. А это и есть подграф <span class="math notranslate nohighlight">\(G'\)</span>, построенный на <span class="math notranslate nohighlight">\(k\)</span>-м шаге.</p>
-<p>Из доказанного утверждения вытекает, что после выполнения всех шагов алгоритма будет построено минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>. Корректность алгоритма доказана.</p>
 </li>
 </ol>
+<p>Из доказанного утверждения вытекает, что после выполнения всех шагов алгоритма будет построено минимальное остовное дерево графа <span class="math notranslate nohighlight">\(G\)</span>. Корректность алгоритма доказана.</p>
 </section>
 </section>
 </section>
@@ -544,8 +769,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Алгоритм Прима</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Доказательство корректности алгоритма</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Основные понятия</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Связность графа</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Степени вершин</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Двудольные графы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Степенные последовательности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Вычисление отношения достижимости</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Топологическая сортировка</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Взвешенные графы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Деревья</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Эйлеровы циклы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Планарные графы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Алгоритм Прима</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Доказательство корректности алгоритма</a></li>
 </ul>
 </li>
 </ul>
