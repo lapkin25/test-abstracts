@@ -438,6 +438,15 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Решение</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Задача “Уникальные отрезки”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Формализация задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Решение</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Задача “Просто посчитать”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Решение</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -564,7 +573,7 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 <p>Все цифры в телефонном номере соответствуют цифрам в номере автомобиля. Буквам соответствуют цифры, которых нет в номере автомобиля, при этом одинаковым буквам соответствуют одинаковые цифры, а разным - разные.</p>
 <p>Например, если у автомобиля номер <code class="docutils literal notranslate"><span class="pre">A451HA-077</span></code>, то телефонный номер может выглядеть как
 <code class="docutils literal notranslate"><span class="pre">9245192077</span></code> (<code class="docutils literal notranslate"><span class="pre">A</span></code> заменили двойкой, <code class="docutils literal notranslate"><span class="pre">H</span></code> — девяткой), или как <code class="docutils literal notranslate"><span class="pre">9345123077</span></code> (тройкой и двойкой соответственно):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A451HA077</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">A451HA077</span>
 <span class="mi">9245192077</span>
 <span class="mi">9345123077</span>
 </pre></div>
@@ -592,6 +601,59 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 <p><span class="math notranslate nohighlight">\(x \in N_k \cap B_2 \; \Rightarrow \; |R(x)| = A_{10-k}^2 = (10 - k)(9 - k)\)</span></p>
 <p><span class="math notranslate nohighlight">\(x \in N_k \cap B_3 \; \Rightarrow \; |R(x)| = A_{10-k}^3 = (10 - k)(9 - k)(8 - k)\)</span></p>
 <p>Остаётся указать для каждой пары <span class="math notranslate nohighlight">\((k, j)\)</span>, <span class="math notranslate nohighlight">\(k \in \{1..6\}\)</span>, <span class="math notranslate nohighlight">\(j \in \{1..3\}\)</span>, лексикографически наименьший автомобильный номер, принадлежащий множеству <span class="math notranslate nohighlight">\(N_k \cap B_j\)</span>.</p>
+</section>
+</section>
+<section id="id14">
+<h2>Задача “Уникальные отрезки”<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p><em>Источник: Асанов и др. - <a class="reference external" href="https://znanium.ru/catalog/document?id=423916">Комбинаторные алгоритмы</a></em></p>
+<p>Дан набор из <span class="math notranslate nohighlight">\(n\)</span> отрезков, заданных своими концами <span class="math notranslate nohighlight">\(s_k\)</span> и <span class="math notranslate nohighlight">\(f_k\)</span>.
+Все числа целые. Отрезки, не содержащие в себе никакие другие
+отрезки, назовем уникальными.
+Предложите эффективный алгоритм, определяющий все уникальные отрезки.</p>
+<section id="id15">
+<h3>Формализация задачи<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>Даны отрезки <span class="math notranslate nohighlight">\(\{I_k = [s_k, f_k] \colon k = 1..n\}\)</span>. На множестве отрезков <span class="math notranslate nohighlight">\(I_1, I_2, \ldots, I_n\)</span> определено отношение <span class="math notranslate nohighlight">\(R(I_i, I_j) = \)</span> “отрезок <span class="math notranslate nohighlight">\(I_i\)</span> содержит в себе отрезок <span class="math notranslate nohighlight">\(I_j\)</span>, т.е. <span class="math notranslate nohighlight">\(I_j \subseteq I_i\)</span>”.</p>
+<p>Требуется найти множество истинности предиката <span class="math notranslate nohighlight">\(P(i) = \)</span> “отрезок <span class="math notranslate nohighlight">\(I_i\)</span> уникальный” = <span class="math notranslate nohighlight">\(\neg \exists j \neq i \colon R(I_i, I_j)\)</span>.</p>
+</section>
+<section id="id16">
+<h3>Решение<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>Наивный (переборный) алгоритм требует <span class="math notranslate nohighlight">\(O(n^2)\)</span> времени.</p>
+<p>Для разработки быстрого алгоритма со сложностью <span class="math notranslate nohighlight">\(O(n \log n)\)</span> применим метод сканирующей прямой (с координатой <span class="math notranslate nohighlight">\(x\)</span>). Будем поддерживать структуру данных типа “динамическое множество”, в которой храним отрезки с началом <span class="math notranslate nohighlight">\(s_k \leq x\)</span> и концом <span class="math notranslate nohighlight">\(f_k \geq x\)</span>.</p>
+<p>При движении сканирующей прямой вправо динамическое множество модифицируется за счет добавления и извлечения отрезков. Для этого из множества извлекаются отрезки, для которых <span class="math notranslate nohighlight">\(f_k &lt; x\)</span>, и добавляются отрезки, для которых <span class="math notranslate nohighlight">\(s_k \leq x\)</span>.</p>
+<p>Опишем алгоритм на псевдокоде.</p>
+<p><span class="math notranslate nohighlight">\(R \leftarrow \{I_k \colon k=1..n\}\)</span>    # множество уникальных отрезков</p>
+<p><span class="math notranslate nohighlight">\(J \leftarrow \varnothing\)</span>   # динамическое множество</p>
+<p><strong>for</strong> <span class="math notranslate nohighlight">\(x \leftarrow\)</span> все числа из множества <span class="math notranslate nohighlight">\(\{s_k\} \cup \{f_k\}\)</span> в порядке возрастания:</p>
+<p>     # <span class="math notranslate nohighlight">\(x\)</span> - прежнее значение, <span class="math notranslate nohighlight">\(x'\)</span> - текущее значение</p>
+<p>     извлечь из <span class="math notranslate nohighlight">\(J\)</span> все <span class="math notranslate nohighlight">\(I_k \colon f_k = x\)</span></p>
+<p>     добавить в <span class="math notranslate nohighlight">\(J\)</span> все <span class="math notranslate nohighlight">\(I_k \colon s_k = x'\)</span></p>
+<p>     <span class="math notranslate nohighlight">\(m \leftarrow \min \{f_j \colon s_j = x'\}\)</span></p>
+<p>     # теперь <span class="math notranslate nohighlight">\(\exists j \colon (s_j = x' \,\&amp;\, f_j \geq m)\)</span></p>
+<p>     # поэтому все отрезки из <span class="math notranslate nohighlight">\(J\)</span>, которые заканчиваются позже <span class="math notranslate nohighlight">\(m\)</span>, не уникальны</p>
+<p>     <strong>for</strong> всех <span class="math notranslate nohighlight">\(I_k \in J \cap \{I_k \colon f_k \geq m\}\)</span>:</p>
+<p>          # отметить отрезок <span class="math notranslate nohighlight">\(I_k\)</span> не уникальным</p>
+<p>          <span class="math notranslate nohighlight">\(R \leftarrow R \setminus \{I_k\}\)</span></p>
+<p>          # извлечь отрезок <span class="math notranslate nohighlight">\(I_k\)</span> из динамического множества</p>
+<p>          <span class="math notranslate nohighlight">\(J \leftarrow J \setminus \{I_k\}\)</span></p>
+<p>Идея алгоритма в том, чтобы по мере сканирования отрезков вертикальной прямой смотреть, для каких отрезков, которые начинаются прямо сейчас, найдётся один из уже начавшихся, но ещё не закончившихся отрезков. Все такие отрезки содержат в себе другой отрезок, а потому не уникальны.</p>
+</section>
+</section>
+<section id="id17">
+<h2>Задача “Просто посчитать”<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p><em>Задача с тренировки клуба алгоритмического программирования (весна 2026)</em></p>
+<p>Сколько раз такой шаблон встречается на шахматной доске размера <span class="math notranslate nohighlight">\(N\)</span> строк на <span class="math notranslate nohighlight">\(M\)</span> столбцов, левый верхний угол которой может быть чёрным (<span class="math notranslate nohighlight">\(c = 0\)</span>) либо белым (<span class="math notranslate nohighlight">\(c = 1\)</span>)?</p>
+<p><img alt="" src="_images/chess1.png" /></p>
+<p>Даны числа <span class="math notranslate nohighlight">\(N, M, c\)</span>, требуется найти число способов приложить такой трафарет к какой-нибудь клетке шахматной доски так, чтобы цвета совпали.</p>
+<section id="id18">
+<h3>Решение<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>Первый способ (годится для небольших <span class="math notranslate nohighlight">\(N, M\)</span>) - простой пересчёт.</p>
+<p>Определим на множестве клеток шахматной доски <span class="math notranslate nohighlight">\(A = \{(x, y) \colon x \in 1..M, \, y \in 1..N\}\)</span> вспомогательный предикат <span class="math notranslate nohighlight">\(B(x, y) = \)</span> “клетка <span class="math notranslate nohighlight">\((x, y)\)</span> чёрного цвета”.</p>
+<p>Также определим на множестве <span class="math notranslate nohighlight">\(A\)</span> предикат <span class="math notranslate nohighlight">\(R(x, y) = \)</span> “к клетке <span class="math notranslate nohighlight">\((x, y)\)</span> можно приложить трафарет”.</p>
+<p>Справедлива формула <span class="math notranslate nohighlight">\(R(x, y) = B(x, y) \,\&amp;\, (x + 4 \leq M) \,\&amp;\, (y + 1 \leq N)\)</span>.</p>
+<p>Остаётся просто перебрать все <span class="math notranslate nohighlight">\((x, y) \in A\)</span> и пересчитать число элементов в множестве <span class="math notranslate nohighlight">\(\{(x, y) \in A \colon R(x, y)\}\)</span>.</p>
+<p>Второй способ (работает за <span class="math notranslate nohighlight">\(O(1)\)</span>, годится для очень больших <span class="math notranslate nohighlight">\(N, M\)</span>) - вывод формулы для <span class="math notranslate nohighlight">\(|\{(x, y) \in A \colon R(x, y)\}|\)</span>.</p>
+<p>Заметим, что область истинности предиката <span class="math notranslate nohighlight">\(R\)</span> - это множество чёрных клеток в прямоугольнике с шириной <span class="math notranslate nohighlight">\(w = M - 4\)</span> и высотой <span class="math notranslate nohighlight">\(h = N - 1\)</span>.</p>
+<p>Чтобы вычислить число чёрных клеток в прямоугольнике <span class="math notranslate nohighlight">\(w \times h\)</span>, подсчитаем отдельно клетки в нечётных строках и клетки в чётных строках. Всего нечётных строк <span class="math notranslate nohighlight">\(\lceil \frac{h}{2} \rceil\)</span>, в каждой из них <span class="math notranslate nohighlight">\(\lceil \frac{w}{2} \rceil\)</span> чёрных клеток. Так что число чёрных клеток в нечётных строках равно <span class="math notranslate nohighlight">\(\lceil \frac{h}{2} \rceil \cdot \lceil \frac{w}{2} \rceil\)</span>. Аналогично вычисляется число чёрных клеток в чётных строках. (Это в случае <span class="math notranslate nohighlight">\(c = 0\)</span>; случай <span class="math notranslate nohighlight">\(c = 1\)</span> следует также рассмотреть отдельно.)</p>
 </section>
 </section>
 </section>
@@ -676,6 +738,15 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Задача “Различные номера”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Формализация задачи</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Решение</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Задача “Уникальные отрезки”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Формализация задачи</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Решение</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Задача “Просто посчитать”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Решение</a></li>
 </ul>
 </li>
 </ul>
