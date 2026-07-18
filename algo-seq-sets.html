@@ -447,6 +447,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Решение</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Задача “Генерируем красивые строки”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Решение</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -656,6 +660,46 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 <p>Чтобы вычислить число чёрных клеток в прямоугольнике <span class="math notranslate nohighlight">\(w \times h\)</span>, подсчитаем отдельно клетки в нечётных строках и клетки в чётных строках. Всего нечётных строк <span class="math notranslate nohighlight">\(\lceil \frac{h}{2} \rceil\)</span>, в каждой из них <span class="math notranslate nohighlight">\(\lceil \frac{w}{2} \rceil\)</span> чёрных клеток. Так что число чёрных клеток в нечётных строках равно <span class="math notranslate nohighlight">\(\lceil \frac{h}{2} \rceil \cdot \lceil \frac{w}{2} \rceil\)</span>. Аналогично вычисляется число чёрных клеток в чётных строках. (Это в случае <span class="math notranslate nohighlight">\(c = 0\)</span>; случай <span class="math notranslate nohighlight">\(c = 1\)</span> следует также рассмотреть отдельно.)</p>
 </section>
 </section>
+<section id="id19">
+<h2>Задача “Генерируем красивые строки”<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<p><em>Задача с онлайн-тура чемпионата RuCode 2026</em></p>
+<p>Пусть <span class="math notranslate nohighlight">\(k\)</span> - натуральное число. Среди всех двоичных строк <span class="math notranslate nohighlight">\(\mathbb{B}^*\)</span> выделим множество <em>красивых строк</em> - это строки <span class="math notranslate nohighlight">\(s\)</span>, обладающие свойствами: а) длина больше <span class="math notranslate nohighlight">\(k\)</span>: <span class="math notranslate nohighlight">\(|s| &gt; k\)</span>; б) <span class="math notranslate nohighlight">\(s\)</span> состоит из чередующихся блоков длины <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Например, при <span class="math notranslate nohighlight">\(k = 1\)</span> строка <code class="docutils literal notranslate"><span class="pre">001</span></code> не является красивой, а <code class="docutils literal notranslate"><span class="pre">0101</span></code> — является, при <span class="math notranslate nohighlight">\(k = 2\)</span> строки
+<code class="docutils literal notranslate"><span class="pre">11</span></code>, <code class="docutils literal notranslate"><span class="pre">01100</span></code> и <code class="docutils literal notranslate"><span class="pre">00111100</span></code> не являются красивыми (в первой длина строки равна <span class="math notranslate nohighlight">\(k\)</span>, во второй первый
+блок неполный, а в третьей второй и третий блок являются соседними, но оба состоят из единиц),
+а строки <code class="docutils literal notranslate"><span class="pre">0011</span></code> или <code class="docutils literal notranslate"><span class="pre">11001100</span></code> — являются.</p>
+<p>Вам дана двоичная строка, в которой есть хотя бы одна пара различных цифр. За одну операцию
+вы можете удалить любой символ из этой строки (при этом порядок остальных символов останется
+неизменным, то есть, например, при удалении второго слева символа из строки <code class="docutils literal notranslate"><span class="pre">11010</span></code> получится
+строка <code class="docutils literal notranslate"><span class="pre">1010</span></code>). Требуется удалить <em>наименьшее количество</em> символов так, чтобы строка стала красивой,
+и вывести длину получившейся в итоге красивой строки и наименьшее возможное значение <span class="math notranslate nohighlight">\(k\)</span> для
+такой строки.</p>
+<section id="id20">
+<h3>Решение<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>Представим блоки, из которых состоит заданная строка <span class="math notranslate nohighlight">\(s\)</span>, в виде диаграммы. Вертикальная ось обозначает значение параметра <span class="math notranslate nohighlight">\(k\)</span>. По горизонтали располагаются блоки, сгруппированные по длине.</p>
+<p>На рисунке показан пример диаграммы для строки <code class="docutils literal notranslate"><span class="pre">1001000111010011</span></code>.</p>
+<p><img alt="" src="_images/diagram1.png" /></p>
+<p>Определим функцию <span class="math notranslate nohighlight">\(f(k) = \)</span> “минимальное количество удаленных символов, чтобы строка стала <span class="math notranslate nohighlight">\(k\)</span>-красивой”.</p>
+<p>Опишем процедуру вычисления <span class="math notranslate nohighlight">\(f(k)\)</span> при заданном <span class="math notranslate nohighlight">\(k\)</span>. Во-первых, все блоки длины больше <span class="math notranslate nohighlight">\(k\)</span> следует укоротить до длины <span class="math notranslate nohighlight">\(k\)</span>. Во-вторых, из полученной последовательности блоков длины <span class="math notranslate nohighlight">\(k\)</span> необходимо выделить наибольшую чередующуюся подпоследовательность, а остальные символы удаляются.</p>
+<p>Следовательно, <span class="math notranslate nohighlight">\(f(k) = (z_{k+1} + 2z_{k+2} + 3z_{k+3} + \ldots) + k \cdot m\)</span>.</p>
+<p>Здесь <span class="math notranslate nohighlight">\(z_i\)</span> - это количество блоков длины <span class="math notranslate nohighlight">\(i\)</span>; <span class="math notranslate nohighlight">\(m\)</span> - количество удаленных блоков (длины не меньше <span class="math notranslate nohighlight">\(k\)</span>). На диаграмме рассматриваемые блоки будут находиться выше прямой с ординатой <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Если <span class="math notranslate nohighlight">\(z_i\)</span> вычислить нетрудно, то для вычисления <span class="math notranslate nohighlight">\(m\)</span> придется попотеть.</p>
+<p>Рассмотрим двоичную строку <span class="math notranslate nohighlight">\(t\)</span>, в которой каждый символ соответствует блоку исходной строки. Как найти минимальное число символов, которое надо удалить из этой строки, чтобы в строке не осталось одинаковых символов, стоящих рядом? Достаточно просто посчитать число блоков в этой строке.</p>
+<p>Итак, если у нас есть строка <span class="math notranslate nohighlight">\(s\)</span>, состоящая из блоков длины <span class="math notranslate nohighlight">\(k\)</span>, мы можем просто объединить блоки в блоки и посчитать их количество - это и будет число <span class="math notranslate nohighlight">\(m\)</span>.
+Теперь мы знаем, как посчитать <span class="math notranslate nohighlight">\(f(k)\)</span> за время <span class="math notranslate nohighlight">\(O(n)\)</span>, где <span class="math notranslate nohighlight">\(n\)</span> - длина строки: <span class="math notranslate nohighlight">\(n = |s|\)</span>. Значит, у нас есть алгоритм вычисления оптимального <span class="math notranslate nohighlight">\(k\)</span>, работающий за время <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p>
+<p>Для полного решения задачи этого недостаточно, так как <span class="math notranslate nohighlight">\(n\)</span> может достигать <span class="math notranslate nohighlight">\(10^6\)</span>. Подумаем, как оптимизировать вычисление <span class="math notranslate nohighlight">\(m\)</span> при разных <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p><strong>Первый способ.</strong> Будем поддерживать два множества: множество <span class="math notranslate nohighlight">\(A_0\)</span> координат блоков из нулей и множество <span class="math notranslate nohighlight">\(A_1\)</span> координат блоков из единиц. Присвоим сначала <span class="math notranslate nohighlight">\(k\)</span> максимальное значение. Поддерживаем структуру данных “упорядоченное множество”. Спуская прямую на диаграмме, добавляем новые элементы в множество.</p>
+<p>Далее просматриваем все добавленные элементы (соответствующие блокам длины <span class="math notranslate nohighlight">\(k\)</span>). Для каждого блока с координатой <span class="math notranslate nohighlight">\(x\)</span> осуществляем поиск в множествах <span class="math notranslate nohighlight">\(A_0\)</span>, <span class="math notranslate nohighlight">\(A_1\)</span> максимального элемента, не превосходящего заданного <span class="math notranslate nohighlight">\(x\)</span>, и минимального элемента, не меньшего <span class="math notranslate nohighlight">\(x\)</span>. Все блоки из множеств <span class="math notranslate nohighlight">\(A_0\)</span>, <span class="math notranslate nohighlight">\(A_1\)</span> потребуется помечать как видимые либо скрытые. Скрытые блоки для этого можно хранить в отдельных упорядоченных множествах <span class="math notranslate nohighlight">\(A_0'\)</span>, <span class="math notranslate nohighlight">\(A_1'\)</span>.</p>
+<p>Если предшествующий среди всех видимых блоков состоит из других цифр, то делаем текущий блок видимым, иначе он будет скрыт. Если текущий блок видимый, а последующий блок скрыт и состоит из других цифр, то делаем его видимым.
+Подсчитав количество скрытых блоков, найдем число <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>Сложность алгоритма составит <span class="math notranslate nohighlight">\(O(n\log n)\)</span>.</p>
+<p><strong>Второй способ.</strong> Зафиксируем конкретное значение <span class="math notranslate nohighlight">\(k\)</span>. Просматриваем всю строку <span class="math notranslate nohighlight">\(s\)</span> слева направо. Пусть <span class="math notranslate nohighlight">\(x\)</span> - текущая позиция в строке, причем <span class="math notranslate nohighlight">\(s[x] \neq s[x-1]\)</span>. Находим минимальную позицию <span class="math notranslate nohighlight">\(j\)</span> в строке <span class="math notranslate nohighlight">\(s\)</span>, такую, что <span class="math notranslate nohighlight">\(j \geq x\)</span> и количество символов от <span class="math notranslate nohighlight">\(x\)</span> до <span class="math notranslate nohighlight">\(j\)</span>, равных <span class="math notranslate nohighlight">\(s[x]\)</span>, равно <span class="math notranslate nohighlight">\(k\)</span>. Затем присваиваем <span class="math notranslate nohighlight">\(x\)</span> число <span class="math notranslate nohighlight">\(j\)</span> и находим новое <span class="math notranslate nohighlight">\(x'\)</span>, для которого <span class="math notranslate nohighlight">\(x' \geq x\)</span> и <span class="math notranslate nohighlight">\(s[x'] \neq s[x'-1]\)</span>.
+Прибавляем к числу <span class="math notranslate nohighlight">\(m\)</span> число <span class="math notranslate nohighlight">\(j-x+1-k\)</span>, эти символы не равны <span class="math notranslate nohighlight">\(s[x]\)</span>, поэтому их нужно удалить.</p>
+<p>Для конкретного <span class="math notranslate nohighlight">\(k\)</span> процедура займет <span class="math notranslate nohighlight">\(\dfrac{n}{k}\log n\)</span> действий.</p>
+<p>Поэтому для всех <span class="math notranslate nohighlight">\(k\)</span> потребуется <span class="math notranslate nohighlight">\(O\left(n\log n(1 + 1/2 + 1/3 + \ldots)\right) = O(n\log^2 n)\)</span> действий.</p>
+<p>Второй способ проще в реализации, поэтому предпочтительнее.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -747,6 +791,10 @@ a-x + L + d, &amp; \text{ если }x &gt; a\end{cases}\)</span></p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Задача “Просто посчитать”</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Решение</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Задача “Генерируем красивые строки”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Решение</a></li>
 </ul>
 </li>
 </ul>
