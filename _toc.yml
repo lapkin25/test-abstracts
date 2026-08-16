@@ -33,6 +33,7 @@ chapters:
   - file: algo-trees-graphs
 - file: logic-computation
   sections:
+  - file: logic-propositional-algebra
   - file: logic-and-programming
 - file: entertainment
   sections:
