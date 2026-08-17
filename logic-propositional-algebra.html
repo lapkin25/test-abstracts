@@ -433,14 +433,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Интерпретатор логических формул</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Основные равносильности</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Тавтологии</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Улучшенный интерпретатор логических формул</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Тавтологии</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Улучшенный интерпретатор логических формул</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Теорема о подстановке в тавтологию</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Проверка тождественной истинности формулы</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Логическое следствие</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Нормальные формы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Логическое следствие</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -777,9 +779,7 @@ x\;y\;z\;x\;\neg\;\&amp;\;\vee\;\to\neg
 </section>
 </section>
 <section id="id12">
-<h2>Основные равносильности<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-<section id="id13">
-<h3>Тавтологии<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<h2>Тавтологии<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <p><strong>Определение.</strong> <em>Тавтология</em> (общезначимая формула, тождественно истинная формула) - это формула алгебры логики <span class="math notranslate nohighlight">\(A\)</span>, которая равна <span class="math notranslate nohighlight">\(1\)</span> на любой оценке: <span class="math notranslate nohighlight">\(A \equiv 1\)</span>.</p>
 <p>Каждая тавтология - это схема истинных высказываний, в этом смысле тавтология выражает некоторый <em>логический закон</em>.</p>
 <p><strong>Пример.</strong> Следующие формулы являются тавтологиями:</p>
@@ -792,9 +792,8 @@ x\;y\;z\;x\;\neg\;\&amp;\;\vee\;\to\neg
 <li><p><span class="math notranslate nohighlight">\(\neg (x \,\&amp;\, y) \leftrightarrow (\neg x \vee \neg y)\)</span> (закон де Моргана);</p></li>
 <li><p><span class="math notranslate nohighlight">\(\neg (x \vee y) \leftrightarrow (\neg x \,\&amp;\, \neg y)\)</span> (закон де Моргана).</p></li>
 </ul>
-</section>
-<section id="id14">
-<h3>Улучшенный интерпретатор логических формул<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<section id="id13">
+<h3>Улучшенный интерпретатор логических формул<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>В <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic2">электронном ресурсе</a> размещён улучшенный интерпретатор логических формул.</p>
 <p>В формулы добавлены переменные, реализовано построение таблицы истинности формулы.</p>
 <p>Пример ввода формулы:</p>
@@ -811,15 +810,51 @@ x\;y\;z\;x\;\neg\;\&amp;\;\vee\;\to\neg
 </div>
 <p><strong>Упражнение.</strong> Используйте интерпретатор, чтобы проверить перечисленные выше тавтологии.</p>
 </section>
+<section id="id14">
+<h3>Теорема о подстановке в тавтологию<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p><strong>Теорема.</strong> Пусть <span class="math notranslate nohighlight">\(A\)</span> - тавтология. При замене в формуле <span class="math notranslate nohighlight">\(A\)</span> всех вхождений каждой переменной <span class="math notranslate nohighlight">\(x_i\)</span> на соответствующую формулу <span class="math notranslate nohighlight">\(B_i\)</span> снова получится тавтология:</p>
+<p><span class="math notranslate nohighlight">\(
+A \equiv 1 \;\Rightarrow\; A[B_1/x_1, \ldots, B_n/x_n] \equiv 1.
+\)</span></p>
+<p><strong>Пример.</strong> <span class="math notranslate nohighlight">\(x \to x\)</span> - тавтология, пусть <span class="math notranslate nohighlight">\(B = (y \vee z)\)</span>. Подставляя <span class="math notranslate nohighlight">\(B\)</span> вместо <span class="math notranslate nohighlight">\(x\)</span> (осуществляя замену <span class="math notranslate nohighlight">\([B/x]\)</span>), получаем тавтологию <span class="math notranslate nohighlight">\((y \vee z) \to (y \vee z)\)</span>.</p>
+<p><strong>Пример.</strong> <span class="math notranslate nohighlight">\((x \to y) \to ((y \to z) \to (x \to z))\)</span> - тавтология. Осуществляя замену <span class="math notranslate nohighlight">\([\neg p/x,\; p \,\&amp;\, q/y,\; q \to r / z]\)</span>, получаем тавтологию:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg p \to p \,\&amp;\, q) \to ((p \,\&amp;\, q \to (q \to r)) \to (\neg p \to (q \to r)))
+\)</span></p>
 </section>
 <section id="id15">
-<h2>Нормальные формы<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<h3>Проверка тождественной истинности формулы<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>Чтобы проверить, является ли формула тавтологией, не всегда нужно строить таблицу истинности.</p>
+<p><strong>Пример.</strong> Найдем контрпример, опровергающий тождественную истинность формулы <span class="math notranslate nohighlight">\((x \to y) \to (y \to x)\)</span>.</p>
+<p>Все контрпримеры (значения переменных <span class="math notranslate nohighlight">\(x, y\)</span>) подчиняются системе логических уравнений:</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}x \to y &amp;= 1,\\ y \to x &amp;= 0.\end{aligned}\right.
+\)</span></p>
+<p>Из второго уравнения выражаем <span class="math notranslate nohighlight">\(x = 0\)</span>, <span class="math notranslate nohighlight">\(y = 1\)</span> (поскольку импликация ложна только в одном случае).</p>
+<p>Подставляя найденные значения в первое уравнение, убеждаемся, что оно выполняется при этих значениях <span class="math notranslate nohighlight">\(x, y\)</span>.</p>
+<p>Итак, найден контрпример: <span class="math notranslate nohighlight">\(x = 0, \; y = 1\)</span>. На этой оценке исходная формула <span class="math notranslate nohighlight">\((x \to y) \to (y \to x)\)</span> равна <span class="math notranslate nohighlight">\(0\)</span>. Значит, формула не является тавтологией.</p>
+<p><strong>Пример.</strong> Проверим, является ли тавтологией формула</p>
+<p><span class="math notranslate nohighlight">\((x \to z) \,\&amp;\, (y \to u) \,\&amp;\, (\neg z \vee \neg u) \to (\neg x \vee \neg y)\)</span>.</p>
+<p>Все контрпримеры (наборы значений переменных <span class="math notranslate nohighlight">\(x, y, z, u\)</span>, при которых формула равна <span class="math notranslate nohighlight">\(0\)</span>), подчиняются системе</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}x \to z &amp;= 1,\\ y \to u &amp;= 1,\\ \neg z \vee \neg u &amp;= 1,\\ \neg x \vee \neg y &amp;= 0.\end{aligned}\right.
+\)</span></p>
+<p>Решим систему. Из последнего уравнения <span class="math notranslate nohighlight">\(x = 1\)</span>, <span class="math notranslate nohighlight">\(y = 1\)</span>. Тогда из первого и второго уравнений <span class="math notranslate nohighlight">\(z = 1\)</span>, <span class="math notranslate nohighlight">\(u = 1\)</span>.</p>
+<p>Подставляя найденные значения в третье уравнение, получаем
+<span class="math notranslate nohighlight">\(0 \vee 0 = 1\)</span> - уравнение не выполняется! Полученное противоречие говорит о том, что система решений не имеет. Контрпримеров, при которых исходная формула обращается в <span class="math notranslate nohighlight">\(0\)</span>, не существует. Значит, формула - тавтология.</p>
+</section>
 </section>
 <section id="id16">
-<h2>Логическое следствие<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
-</section>
+<h2>Основные равносильности<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<iframe src="https://vk.ru/video_ext.php?oid=-225887804&id=456239025&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe></section>
 <section id="id17">
-<h2>Литература<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<h2>Нормальные формы<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+</section>
+<section id="id18">
+<h2>Логическое следствие<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+</section>
+<section id="id19">
+<h2>Литература<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 <p>Стюарт - Теория вычислений для программистов</p>
 <p>Хаггарти - Дискретная математика для программистов</p>
@@ -902,14 +937,16 @@ x\;y\;z\;x\;\neg\;\&amp;\;\vee\;\to\neg
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Интерпретатор логических формул</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Основные равносильности</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Тавтологии</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Улучшенный интерпретатор логических формул</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Тавтологии</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Улучшенный интерпретатор логических формул</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Теорема о подстановке в тавтологию</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Проверка тождественной истинности формулы</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Логическое следствие</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Нормальные формы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Логическое следствие</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
 </ul>
   </nav></div>
 
