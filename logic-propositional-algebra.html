@@ -443,16 +443,18 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Равносильность формул</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Основные равносильности</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Законы нуля и единицы</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Законы с одной переменной</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Формула замены импликации</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Закон контрапозиции</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Законы де Моргана</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Формула замены импликации</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Закон контрапозиции</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Законы дистрибутивности</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Законы поглощения</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Равносильные преобразования</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Равносильные преобразования</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Вопросы к коллоквиуму по теме</a></li>
 </ul>
             </nav>
         </div>
@@ -946,20 +948,81 @@ A \equiv 1 \;\Rightarrow\; A[B_1/x_1, \ldots, B_n/x_n] \equiv 1.
 </tbody>
 </table>
 <section id="id19">
-<h4>Законы нуля и единицы<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<h4>Законы де Моргана<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+<p><strong>Пример.</strong> Высказывание: “Эта девушка умна и красива.”</p>
+<p>Выделим элементарные высказывания:</p>
+<p><span class="math notranslate nohighlight">\(x = \)</span> “девушка умна”</p>
+<p><span class="math notranslate nohighlight">\(y = \)</span> “девушка красива”</p>
+<p>Формула: <span class="math notranslate nohighlight">\(x \,\&amp;\, y\)</span>.</p>
+<p>Спросим, когда наше высказывание ложно? Только, когда девушка не умна и не красива? Нет, еще когда она умна и не красива. И когда она не умна и красива. Значит, противоположное высказывание: “девушка не умна или не красива”, то есть</p>
+<p><span class="math notranslate nohighlight">\(
+\neg (x \,\&amp;\, y) = \neg x \vee \neg y
+\)</span></p>
+<p><strong>Пример.</strong> Высказывание: “У меня на компьютере установлена система Windows или Linux”.</p>
+<p>Выделим элементарные высказывания:</p>
+<p><span class="math notranslate nohighlight">\(x = \)</span> “на компьютере установлена Windows”</p>
+<p><span class="math notranslate nohighlight">\(y = \)</span> “на компьютере установлена Linux”</p>
+<p>Высказывание выражается формулой <span class="math notranslate nohighlight">\(x \vee y\)</span>.</p>
+<p>Противоположное высказывание: “У меня на компьютере не установлена ни Windows, ни Linux”.</p>
+<p>В самом деле, дизъюнкция ложна тогда и только тогда, когда оба операнда ложны. А оба операнда <span class="math notranslate nohighlight">\(x, y\)</span> ложны тогда и только тогда, когда конъюнкция <span class="math notranslate nohighlight">\(\neg x \,\&amp;\, \neg y\)</span> истинна. Поэтому</p>
+<p><span class="math notranslate nohighlight">\(
+\neg(x \vee y) = \neg x \,\&amp;\, \neg y
+\)</span></p>
 </section>
 <section id="id20">
-<h4>Законы с одной переменной<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<h4>Формула замены импликации<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<p><strong>Пример.</strong> Высказывание: “Или ты прекращаешь играть в компьютер, или останешься голодным”.</p>
+<p>Элементарные высказывания:</p>
+<p><span class="math notranslate nohighlight">\(x = \)</span> “играю в компьютер”</p>
+<p><span class="math notranslate nohighlight">\(y = \)</span> “остаюсь голодным”</p>
+<p>Формула: <span class="math notranslate nohighlight">\(\neg x \vee y\)</span>.</p>
+<p>Смысл высказывания: если я играю в компьютер, я остаюсь голодным.</p>
+<p>Равносильная формула: <span class="math notranslate nohighlight">\(x \to y\)</span>.</p>
 </section>
 <section id="id21">
-<h4>Формула замены импликации<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<h4>Закон контрапозиции<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<p><strong>Пример.</strong> Высказывание: “То, что не вечно, не имеет права называться любовью”.</p>
+<p>Выделим в нём элементарные высказывания о некотором предмете:</p>
+<p><span class="math notranslate nohighlight">\(x = \)</span> “это вечно”</p>
+<p><span class="math notranslate nohighlight">\(y = \)</span> “это любовь”</p>
+<p>Запишем высказывание формулой: <span class="math notranslate nohighlight">\(\neg x \to \neg y\)</span>.</p>
+<p>По закону контрапозиции</p>
+<p><span class="math notranslate nohighlight">\(
+\neg x \to \neg y = y \to x
+\)</span></p>
+<p>Прочитаем равносильное высказывание <span class="math notranslate nohighlight">\(y \to x\)</span>. “Всякая любовь вечна.”</p>
+<p>Оба высказывания несут в себе одну и ту же информацию (с точностью до эмоциональных оттенков предложений русского языка).</p>
 </section>
 <section id="id22">
-<h4>Закон контрапозиции<a class="headerlink" href="#id22" title="Link to this heading">#</a></h4>
-</section>
+<h4>Законы дистрибутивности<a class="headerlink" href="#id22" title="Link to this heading">#</a></h4>
+<p><strong>Упражнение.</strong> Проиллюстрируйте законы дистрибутивности на кругах Эйлера.</p>
 </section>
 <section id="id23">
-<h3>Равносильные преобразования<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<h4>Законы поглощения<a class="headerlink" href="#id23" title="Link to this heading">#</a></h4>
+<p>Рассмотрим два элементарных высказывания: <span class="math notranslate nohighlight">\(x = \)</span> “вода камень точит”, <span class="math notranslate nohighlight">\(y = \)</span> “вода камень мочит”.</p>
+<p>Известно, что если вода камень точит, то она его мочит. Иначе говоря, высказывание <span class="math notranslate nohighlight">\(x\)</span> “сильнее”, чем <span class="math notranslate nohighlight">\(y\)</span>. На языке алгебры логики это выражается так: <span class="math notranslate nohighlight">\(x \to y = 1\)</span>.</p>
+<p><strong>Пример.</strong> Составное высказывание: “вода камень точит и вода камень мочит”, <span class="math notranslate nohighlight">\(x \,\&amp;\, y\)</span>. Всякий раз, когда <span class="math notranslate nohighlight">\(x = 1\)</span>, верно, что <span class="math notranslate nohighlight">\(y = 1\)</span>. Поэтому конъюнкцию формул <span class="math notranslate nohighlight">\(x\,\&amp;\,y\)</span> и <span class="math notranslate nohighlight">\(x \to y\)</span> можно упростить:</p>
+<p><span class="math notranslate nohighlight">\(
+(x\,\&amp;\,y)\,\&amp;\,(x \to y) = x \,\&amp;\, (x \to y).
+\)</span></p>
+<p>То же самое происходит, когда мы более “слабое” высказывание <span class="math notranslate nohighlight">\(x \vee y\)</span> соединяем конъюнкцией с более “сильным” <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+ (x \vee y) \,\&amp;\,x = x.
+\)</span></p>
+<p>Итак, с конъюнкцией “побеждает” более сильное высказывание.</p>
+<p><strong>Пример.</strong> Составное высказывание: “вода камень точит или вода камень мочит”, <span class="math notranslate nohighlight">\(x \vee y\)</span>. Всякий раз, когда <span class="math notranslate nohighlight">\(x = 1\)</span>, верно, что <span class="math notranslate nohighlight">\(y = 1\)</span>. Поэтому конъюнкцию формул <span class="math notranslate nohighlight">\(x \vee y\)</span> и <span class="math notranslate nohighlight">\(x \to y\)</span> можно упростить:</p>
+<p><span class="math notranslate nohighlight">\(
+(x\vee y)\,\&amp;\,(x \to y) = y \,\&amp;\, (x \to y).
+\)</span></p>
+<p>То же самое происходит, когда мы более “слабое” высказывание <span class="math notranslate nohighlight">\(x\)</span> соединяем дизъюнкцией с более “сильным” <span class="math notranslate nohighlight">\(x \,\&amp;\, y\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+x \vee (x \,\&amp;\, y) = x.
+\)</span></p>
+<p>Итак, с дизъюнкцией остается более слабое высказывание.</p>
+</section>
+</section>
+<section id="id24">
+<h3>Равносильные преобразования<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <p>Равносильные преобразования формул алгебры логики возможны благодаря следующей теореме.</p>
 <p><strong>Теорема</strong> <em>(об эквивалентной замене)</em>. Пусть <span class="math notranslate nohighlight">\(C\)</span> - формула алгебры логики. В результате замены любой её подформулы <span class="math notranslate nohighlight">\(A\)</span> на равносильную ей подформулу <span class="math notranslate nohighlight">\(B\)</span> (т.е. <span class="math notranslate nohighlight">\(A \equiv B\)</span>), получится формула, равносильная формуле <span class="math notranslate nohighlight">\(C\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(
@@ -972,11 +1035,29 @@ A \equiv B \; \Rightarrow \; C[A] \equiv C[B].
 <p><strong>Замечание.</strong> В ходе равносильных преобразований заменяемая подформула должна оставаться в скобках!</p>
 <iframe src="https://vk.ru/video_ext.php?oid=-225887804&id=456239025&autoplay=1" width="426" height="240" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe></section>
 </section>
-<section id="id24">
-<h2>Литература<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<section id="id25">
+<h2>Литература<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 <p>Стюарт - Теория вычислений для программистов</p>
 <p>Хаггарти - Дискретная математика для программистов</p>
+</section>
+<section id="id26">
+<h2>Вопросы к коллоквиуму по теме<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<small>
+<ol class="arabic simple">
+<li><p>Обоснуйте формулу замены импликации, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон де Моргана для отрицания конъюнкции, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон де Моргана для отрицания дизъюнкции, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте первый закон дистрибутивности, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте второй закон дистрибутивности, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон поглощения с дизъюнкцией, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон поглощения с конъюнкцией, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон склеивания с дизъюнкцией, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон склеивания с конъюнкцией, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон сокращения с дизъюнкцией, не строя таблицу истинности.</p></li>
+<li><p>Обоснуйте закон сокращения с конъюнкцией, не строя таблицу истинности.
+</small></p></li>
+</ol>
 </section>
 </section>
 
@@ -1065,16 +1146,18 @@ A \equiv B \; \Rightarrow \; C[A] \equiv C[B].
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Равносильность формул</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Основные равносильности</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Законы нуля и единицы</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Законы с одной переменной</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Формула замены импликации</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Закон контрапозиции</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Законы де Моргана</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Формула замены импликации</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Закон контрапозиции</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Законы дистрибутивности</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Законы поглощения</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Равносильные преобразования</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Равносильные преобразования</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Вопросы к коллоквиуму по теме</a></li>
 </ul>
   </nav></div>
 
