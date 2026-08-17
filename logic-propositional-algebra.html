@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Алгебра высказываний &#8212; Элементы математики</title>
+    <title>Алгебра высказываний - 1 &#8212; Элементы математики</title>
   
   
   
@@ -68,7 +68,7 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Логика в программировании" href="logic-and-programming.html" />
+    <link rel="next" title="Алгебра высказываний - 2" href="logic-propositional-algebra-2.html" />
     <link rel="prev" title="Логика и вычисления" href="logic-computation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -217,7 +217,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="logic-computation.html">Логика и вычисления</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Алгебра высказываний</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Алгебра высказываний - 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra-2.html">Алгебра высказываний - 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-and-programming.html">Логика в программировании</a></li>
 </ul>
 </li>
@@ -411,7 +412,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Алгебра высказываний</h1>
+    <h1>Алгебра высказываний - 1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -439,10 +440,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Проверка тождественной истинности формулы</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Логическое следствие</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Равносильность формул</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Основные равносильности</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Законы нуля и единицы</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Законы с одной переменной</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Формула замены импликации</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Закон контрапозиции</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Равносильные преобразования</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -455,7 +465,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Алгебра высказываний<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>Алгебра высказываний - 1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>Формулы алгебры логики, логические операции, булевы функции<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
@@ -846,15 +856,124 @@ A \equiv 1 \;\Rightarrow\; A[B_1/x_1, \ldots, B_n/x_n] \equiv 1.
 </section>
 <section id="id16">
 <h2>Основные равносильности<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
-<iframe src="https://vk.ru/video_ext.php?oid=-225887804&id=456239025&autoplay=1" width="853" height="480" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe></section>
 <section id="id17">
-<h2>Нормальные формы<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<h3>Равносильность формул<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p><strong>Определение.</strong> Две формулы алгебры логики <span class="math notranslate nohighlight">\(A, B\)</span> называются <em>равносильными</em> (или <em>эквивалентными</em>), если на любой оценке их значения совпадают.</p>
+<p>Равносильность формул <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> обозначают <span class="math notranslate nohighlight">\(A \equiv B\)</span> или, для упрощения, <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
+<p>Равносильные формулы имеют одинаковые таблицы истинности. Два столбика таблицы истинности равны, только если их эквиваленция тождественно истинна.</p>
+<p><strong>Теорема.</strong> Формулы <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> равносильны тогда и только тогда, когда формула <span class="math notranslate nohighlight">\(A \leftrightarrow B\)</span> является тавтологией.</p>
+<p>Следующая теорема вытекает из теоремы о подстановке в тавтологию.</p>
+<p><strong>Теорема.</strong> Пусть <span class="math notranslate nohighlight">\(A \equiv B\)</span>. При замене в формулах <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> всех вхождений переменной <span class="math notranslate nohighlight">\(x_i\)</span> на соответствующую формулу <span class="math notranslate nohighlight">\(C_i\)</span> снова получается равносильность:</p>
+<p><span class="math notranslate nohighlight">\(A \equiv B \;\Rightarrow\; A[C_1/x_1,\ldots,C_n/x_n] \equiv B[C_1/x_1,\ldots,C_n/x_n].\)</span></p>
 </section>
 <section id="id18">
-<h2>Логическое следствие<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
-</section>
+<h3>Основные равносильности<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<p>Перечислим основные равносильности, которые желательно знать. Здесь <span class="math notranslate nohighlight">\(A, B, C\)</span> - любые формулы, <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> - любая тавтология (формула тождественно равна <span class="math notranslate nohighlight">\(1\)</span>), <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> - любое противоречие (формула тождественно равна <span class="math notranslate nohighlight">\(0\)</span>).</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>закон c <span class="math notranslate nohighlight">\(\&amp;\)</span></p></th>
+<th class="head"><p>закон с <span class="math notranslate nohighlight">\(\vee\)</span></p></th>
+<th class="head"><p>название</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, A = A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee A = A\)</span></p></td>
+<td><p>идемпотентность</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, B = B \,\&amp;\, A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee B = B \vee A\)</span></p></td>
+<td><p>коммутативность</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, (B\,\&amp;\, C) = (A \,\&amp;\, B) \,\&amp;\, C\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee (B \vee C) = (A \vee B) \vee C\)</span></p></td>
+<td><p>ассоциативность</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, (B\vee C) = (A \,\&amp;\, B) \vee (A \,\&amp;\, C)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee (B \,\&amp;\, C) = (A \vee B) \,\&amp;\, (A \vee C)\)</span></p></td>
+<td><p>дистрибутивность</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, (B \vee A) = A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee (B \,\&amp;\, A) = A\)</span></p></td>
+<td><p>поглощение</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\neg (A \,\&amp;\, B) = \neg A \vee \neg B\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\neg (A \vee B) = \neg A \,\&amp;\, \neg B\)</span></p></td>
+<td><p>де Моргана</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>закон</p></th>
+<th class="head"><p>название</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \to B = \neg A \vee B\)</span></p></td>
+<td><p>замена импликации</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\neg (A \to B) = A \,\&amp;\, \neg B\)</span></p></td>
+<td><p>отрицание импликации</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \to B = \neg B \to \neg A\)</span></p></td>
+<td><p>контрапозиция</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\neg\neg A = A\)</span></p></td>
+<td><p>двойное отрицание</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, \neg A = \mathbf{0}\)</span></p></td>
+<td><p>противоречие</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(A \vee \neg A = \mathbf{1}\)</span></p></td>
+<td><p>исключенного третьего</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>закон c <span class="math notranslate nohighlight">\(\&amp;\)</span></p></th>
+<th class="head"><p>закон с <span class="math notranslate nohighlight">\(\vee\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, \mathbf{0} = \mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee \mathbf{0} = A\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, \mathbf{1} = A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(A \vee \mathbf{1} = \mathbf{1}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 <section id="id19">
-<h2>Литература<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<h4>Законы нуля и единицы<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
+</section>
+<section id="id20">
+<h4>Законы с одной переменной<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+</section>
+<section id="id21">
+<h4>Формула замены импликации<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+</section>
+<section id="id22">
+<h4>Закон контрапозиции<a class="headerlink" href="#id22" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="id23">
+<h3>Равносильные преобразования<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<p>Равносильные преобразования формул алгебры логики возможны благодаря следующей теореме.</p>
+<p><strong>Теорема</strong> <em>(об эквивалентной замене)</em>. Пусть <span class="math notranslate nohighlight">\(C\)</span> - формула алгебры логики. В результате замены любой её подформулы <span class="math notranslate nohighlight">\(A\)</span> на равносильную ей подформулу <span class="math notranslate nohighlight">\(B\)</span> (т.е. <span class="math notranslate nohighlight">\(A \equiv B\)</span>), получится формула, равносильная формуле <span class="math notranslate nohighlight">\(C\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+A \equiv B \; \Rightarrow \; C[A] \equiv C[B].
+\)</span></p>
+<p><strong>Пример.</strong> Докажем равносильность <span class="math notranslate nohighlight">\((x \to y) \to y \equiv x \vee y\)</span>.</p>
+<p><span class="math notranslate nohighlight">\({\color{Blue}(x \to y)} \to y = {\color{Blue}\neg ( x \to y)} \vee y =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= {\color{Blue} (x \,\&amp;\, \neg y) \vee y} = (x \vee y) \,\&amp;\, {\color{Blue}(\neg y \vee y)} =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= {\color{Blue}(x \vee y) \,\&amp;\, 1} = x \vee y.\)</span></p>
+<p><strong>Замечание.</strong> В ходе равносильных преобразований заменяемая подформула должна оставаться в скобках!</p>
+<iframe src="https://vk.ru/video_ext.php?oid=-225887804&id=456239025&autoplay=1" width="426" height="240" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe></section>
+</section>
+<section id="id24">
+<h2>Литература<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 <p>Стюарт - Теория вычислений для программистов</p>
 <p>Хаггарти - Дискретная математика для программистов</p>
@@ -901,11 +1020,11 @@ A \equiv 1 \;\Rightarrow\; A[B_1/x_1, \ldots, B_n/x_n] \equiv 1.
       </div>
     </a>
     <a class="right-next"
-       href="logic-and-programming.html"
+       href="logic-propositional-algebra-2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Логика в программировании</p>
+        <p class="prev-next-title">Алгебра высказываний - 2</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -943,10 +1062,19 @@ A \equiv 1 \;\Rightarrow\; A[B_1/x_1, \ldots, B_n/x_n] \equiv 1.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Проверка тождественной истинности формулы</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Логическое следствие</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Основные равносильности</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Равносильность формул</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Основные равносильности</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Законы нуля и единицы</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Законы с одной переменной</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Формула замены импликации</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Закон контрапозиции</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Равносильные преобразования</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Литература</a></li>
 </ul>
   </nav></div>
 
