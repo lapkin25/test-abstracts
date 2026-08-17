@@ -433,10 +433,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Интерпретатор логических формул</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Основные равносильности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Логическое следствие</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Основные равносильности</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Улучшенный интерпретатор логических формул</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Нормальные формы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Логическое следствие</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -679,11 +682,10 @@ document.write(`
 <li><p>Если <span class="math notranslate nohighlight">\(A, B\)</span> - формулы, то <span class="math notranslate nohighlight">\((A \,\&amp;\, B)\)</span>, <span class="math notranslate nohighlight">\((A \vee B)\)</span>, <span class="math notranslate nohighlight">\((A \to B)\)</span> - формулы.</p></li>
 </ol>
 <p>Эквиваленция <span class="math notranslate nohighlight">\(A \leftrightarrow B\)</span> определяется как сокращение: <span class="math notranslate nohighlight">\(A \leftrightarrow B = (A \to B) \,\&amp;\, (B \to A)\)</span>.</p>
-<p>
 <small>
 Наше определение сильно ограничивает множество правильно построенных формул. Так, $(x \,\&\, y)$ - это формула, но $x \,\&\, y$ - не формула. В связи с этим в математической записи обычно расширяют множество синтаксически корректных формул, разрешая писать не все скобки. При этом любой строке, где расставлены не все скобки, однозначно соответствует формула со всеми скобками.
 </small>
-</p>
+<br/><br/>
 <p>Определение множества правильно построенных формул можно записать в виде синтаксических правил:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;формула&gt; ::= &lt;константа&gt; | &lt;переменная&gt;
 &lt;константа&gt; ::= 0 | 1
@@ -760,19 +762,36 @@ x\;y\;z\;x\;\neg\;\&amp;\;\vee\;\to\neg
 </section>
 <section id="id11">
 <h3>Интерпретатор логических формул<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Итак, мы описали язык логических формул, указали его операционную семантику.</p>
+<p>Согласно правилам операционной семантики, вычисление логической формулы (в которой нет логических переменных) сводится к последовательной замене коротких подформул на результат их оценки.</p>
+<p>В <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic1">электронном ресурсе</a> размещён скрипт, в котором реализовано вычисление логической формулы по правилам операционной семантики.</p>
+<p>Все логические формулы задаются в виде структуры “дерево формулы”. В языке Python дерево реализуется набором объектов (соответствующих классов), ссылающихся друг на друга.</p>
+<p>Пример вывода программы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(¬(1 ∨ 0) → (0 &amp; 1))
+(¬1 → (0 &amp; 1))
+(0 → (0 &amp; 1))
+(0 → 0)
+1
+</pre></div>
+</div>
+<p><strong>Упражнение.</strong> Реализуйте вывод логической формулы в префиксной и постфиксной записи.</p>
 </section>
 </section>
 <section id="id12">
 <h2>Основные равносильности<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
-</section>
 <section id="id13">
-<h2>Нормальные формы<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<h3>Улучшенный интерпретатор логических формул<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>парсинг, возможность ввода переменных, построение таблиц истинности</p>
+</section>
 </section>
 <section id="id14">
-<h2>Логическое следствие<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<h2>Нормальные формы<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 </section>
 <section id="id15">
-<h2>Литература<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<h2>Логическое следствие<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+</section>
+<section id="id16">
+<h2>Литература<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 <p>Стюарт - Теория вычислений для программистов</p>
 <p>Хаггарти - Дискретная математика для программистов</p>
@@ -855,10 +874,13 @@ x\;y\;z\;x\;\neg\;\&amp;\;\vee\;\to\neg
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Интерпретатор логических формул</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Основные равносильности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Логическое следствие</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Основные равносильности</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Улучшенный интерпретатор логических формул</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Нормальные формы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Логическое следствие</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Литература</a></li>
 </ul>
   </nav></div>
 
