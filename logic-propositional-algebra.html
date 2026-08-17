@@ -495,12 +495,12 @@ document.write(`
 </table>
 <p><small>Оценка - это функция, определенная на множестве булевых переменных, со значениями в множестве <span class="math notranslate nohighlight">\(\{0, 1\}\)</span>.</small></p>
 <p><strong>Замечание.</strong> Всякая булева переменная соответствует <em>элементарному высказыванию</em>. Истинностное значение элементарного высказывания сразу берется из таблицы (оценки).</p>
-<p>С помощью двух элементарных высказываний <span class="math notranslate nohighlight">\(x, y\)</span> и союза <strong>и</strong> составим новое высказывание <span class="math notranslate nohighlight">\(x \text{\bf \;и\;} y\)</span>. Это <em>составное высказывание</em>. Истинностное значение составного высказывания вычисляется с помощью оценки по таблице истинности.</p>
+<p>С помощью двух элементарных высказываний <span class="math notranslate nohighlight">\(x, y\)</span> и союза <strong>и</strong> составим новое высказывание <span class="math notranslate nohighlight">\(x \;\textbf{и}\; y\)</span>. Это <em>составное высказывание</em>. Истинностное значение составного высказывания вычисляется с помощью оценки по таблице истинности.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(x \text{\bf \;и\;} y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x \;\textbf{и}\; y\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -604,21 +604,21 @@ document.write(`
 <p><em>Первый способ</em> - руководствоваться таблицей истинности.</p>
 <p>Разделим таблицу на две части: верхнюю и нижнюю. Верхняя часть соответствует значениям <span class="math notranslate nohighlight">\(x = 0\)</span>, нижняя - <span class="math notranslate nohighlight">\(x = 1\)</span>. Отдельно для верхней и для нижней части таблицы выпишем свою формулу.</p>
 <p><span class="math notranslate nohighlight">\(x = 0\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(f(x,y,z) = 1\)</span></p>
-<p><span class="math notranslate nohighlight">\(x = 1\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(f(x,y,z) = y \text{\bf\;и\;}\text{\bf не\;}z\)</span></p>
+<p><span class="math notranslate nohighlight">\(x = 1\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(f(x,y,z) = y \;\textbf{и}\;\textbf{не}\;z\)</span></p>
 <p>А затем объединим два кусочка в общую формулу:</p>
-<p><span class="math notranslate nohighlight">\(f(x, y, z) = (\text{\bf не\;} x \text{\bf\;и\;} 1) \text{\bf\;или\;} (x \text{\bf\;и\;} y \text{\bf\;и\;}\text{\bf не\;}z) =\)</span></p>
-<p><span class="math notranslate nohighlight">\(= \text{\bf не\;} x \text{\bf\;или\;} (x \text{\bf\;и\;} y \text{\bf\;и\;}\text{\bf не\;}z) =\)</span></p>
-<p><span class="math notranslate nohighlight">\(= \text{\bf не\;} x \text{\bf\;или\;} (y \text{\bf\;и\;}\text{\bf не\;}z) =\)</span></p>
-<p><span class="math notranslate nohighlight">\(= \text{\bf если\;} x \text{\bf\;то\;} (y \text{\bf\;и\;}\text{\bf не\;}z)\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(x, y, z) = (\textbf{не}\; x \;\textbf{и}\; 1) \;\textbf{или}\; (x \;\textbf{и}\; y \;\textbf{и}\;\textbf{не}\;z) =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= \textbf{не}\; x \;\textbf{или}\; (x \;\textbf{и}\; y \;\textbf{и}\;\textbf{ не}\;z) =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= \textbf{не}\; x \;\textbf{или}\; (y \;\textbf{и}\;\textbf{не}\;z) =\)</span></p>
+<p><span class="math notranslate nohighlight">\(= \textbf{если}\; x \;\textbf{то}\; (y \;\textbf{и}\;\textbf{не}\;z)\)</span></p>
 <p><em>Второй способ</em> - руководствоваться словесным описанием.</p>
 <p>Рассмотрим высказывание: “если водитель сел за руль, у него есть водительские права и он не находится в состоянии алкогольного опьянения”.</p>
-<p>Выделим в этом высказывании <em>корневой союз</em>: <span class="math notranslate nohighlight">\(\text{\bf если\;} A \text{\bf\;то\;} B\)</span>, где
+<p>Выделим в этом высказывании <em>корневой союз</em>: <span class="math notranslate nohighlight">\(\textbf{ если}\; A \;\textbf{то}\; B\)</span>, где
 <span class="math notranslate nohighlight">\(A = \)</span> “водитель сел за руль”, <span class="math notranslate nohighlight">\(B = \)</span> “у него есть водительские права и он не находится в состоянии алкогольного опьянения”.</p>
 <p>Высказывание <span class="math notranslate nohighlight">\(A\)</span> сразу запишем в виде формулы: <span class="math notranslate nohighlight">\(A = x\)</span>.</p>
-<p>Для высказывания <span class="math notranslate nohighlight">\(B\)</span> снова выделим корневой союз: <span class="math notranslate nohighlight">\(B = B' \;\text{\bf и}\; B''\)</span>, где <span class="math notranslate nohighlight">\(B' = \)</span> “у водителя есть водительские права”, <span class="math notranslate nohighlight">\(B'' = \)</span> “он не находится в состоянии алкогольного опьянения”.</p>
-<p>Высказывание <span class="math notranslate nohighlight">\(B'\)</span> запишем в виде формулы: <span class="math notranslate nohighlight">\(B' = y\)</span>. В высказывании <span class="math notranslate nohighlight">\(B''\)</span> выделяем корневой союз: <span class="math notranslate nohighlight">\(B'' = \text{\bf не\;} C\)</span>. Здесь <span class="math notranslate nohighlight">\(C = z\)</span>.</p>
-<p>Следовательно, <span class="math notranslate nohighlight">\(B = y \;\text{\bf и}\; \text{\bf не\;} z\)</span>.</p>
-<p>Исходное высказывание: <span class="math notranslate nohighlight">\(\text{\bf если\;} x \text{\bf\;то\;} (y \;\text{\bf и}\; \text{\bf не\;} z)\)</span>.</p>
+<p>Для высказывания <span class="math notranslate nohighlight">\(B\)</span> снова выделим корневой союз: <span class="math notranslate nohighlight">\(B = B' \;\textbf{и}\; B''\)</span>, где <span class="math notranslate nohighlight">\(B' = \)</span> “у водителя есть водительские права”, <span class="math notranslate nohighlight">\(B'' = \)</span> “он не находится в состоянии алкогольного опьянения”.</p>
+<p>Высказывание <span class="math notranslate nohighlight">\(B'\)</span> запишем в виде формулы: <span class="math notranslate nohighlight">\(B' = y\)</span>. В высказывании <span class="math notranslate nohighlight">\(B''\)</span> выделяем корневой союз: <span class="math notranslate nohighlight">\(B'' = \textbf{не}\; C\)</span>. Здесь <span class="math notranslate nohighlight">\(C = z\)</span>.</p>
+<p>Следовательно, <span class="math notranslate nohighlight">\(B = y \;\textbf{ и}\; \textbf{ не}\; z\)</span>.</p>
+<p>Исходное высказывание: <span class="math notranslate nohighlight">\(\textbf{ если}\; x \;\textbf{то}\; (y \;\textbf{ и}\; \textbf{ не}\; z)\)</span>.</p>
 </section>
 <section id="id6">
 <h3>Логические операции<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
@@ -632,22 +632,22 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{\bf не}\; A\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\textbf{не}\; A\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\neg A\)</span></p></td>
 <td><p>отрицание</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(A\;\text{\bf и}\; B\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(A\;\textbf{и}\; B\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A \,\&amp;\, B\)</span></p></td>
 <td><p>конъюнкция</p></td>
 <td><p>умножение</p></td>
 </tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A\;\text{\bf или}\; B\)</span></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(A\;\textbf{или}\; B\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A \vee B\)</span></p></td>
 <td><p>дизъюнкция</p></td>
 <td><p>сложение</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{\bf если}\; A\;\text{\bf то}\; B\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\textbf{если}\; A\;\textbf{то}\; B\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(A \to B\)</span></p></td>
 <td><p>импликация</p></td>
 <td><p></p></td>
