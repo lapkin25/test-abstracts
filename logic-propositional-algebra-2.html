@@ -58,6 +58,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'logic-propositional-algebra-2';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
@@ -421,7 +423,23 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Логическое следствие</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Выполнимость логических формул</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Логическое следствие</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Понятие логического следствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Критерии логического следствия</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Табличный критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Первый критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Второй критерий</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Метод от противного</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Метод резолюций</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Правило резолюции</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -437,9 +455,423 @@ document.write(`
 <h1>Алгебра высказываний - 2<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>Нормальные формы<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>программа для построения СДНФ;
+самостоятельно допишите СКНФ</p>
 </section>
 <section id="id3">
-<h2>Логическое следствие<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>Выполнимость логических формул<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><strong>Определение.</strong> Множество формул <span class="math notranslate nohighlight">\(\Gamma\)</span> называется <em>выполнимым</em>, если существует такая оценка (набор значений переменных) <span class="math notranslate nohighlight">\(v\)</span>, при которой все формулы из <span class="math notranslate nohighlight">\(\Gamma\)</span> принимают значение <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Оценку <span class="math notranslate nohighlight">\(v\)</span>, на которой все формулы из <span class="math notranslate nohighlight">\(\Gamma\)</span> равны <span class="math notranslate nohighlight">\(1\)</span>, называется <em>выполняющей оценкой</em> (выполняющим набором) для множества <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
+<small>
+Буквой $v$ здесь обозначен "словарь", который каждой переменной ставит в соответствие значение $0$ или $1$. Это и есть оценка.
+</small><br/><br/>
+<p><strong>Определение.</strong> Невыполнимые множества формул называют <em>несовместными</em>.</p>
+<p><strong>Определение.</strong> Формула <span class="math notranslate nohighlight">\(A\)</span> называется <em>выполнимой</em>, если выполнимо множество <span class="math notranslate nohighlight">\(\{A\}\)</span>.</p>
+<p><strong>Пример.</strong> Множество формул <span class="math notranslate nohighlight">\(\{\neg x, x \,\&amp;\, y\}\)</span> несовместно. Всякий раз, когда первая формула равна <span class="math notranslate nohighlight">\(1\)</span>, вторая обращается в <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p><strong>Пример.</strong> Множество формул <span class="math notranslate nohighlight">\(\{x \vee y, \; \neg y \to z, \; z \leftrightarrow x\}\)</span> выполнимо. Выполняющая оценка: <span class="math notranslate nohighlight">\(x = 1, \, y = 1, \, z = 1\)</span>.</p>
+<p><em>Критерий несовместности</em> множества <span class="math notranslate nohighlight">\(\Gamma = \{A_1, A_2, \ldots, A_n\}\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\Gamma \text{ - несовместно} \;\;\Longleftrightarrow \;\; A_1 \,\&amp;\, A_2\,\&amp;\, \ldots \,\&amp;\, A_n \equiv 0.
+\)</span></p>
+<p><strong>Пример.</strong> Множество <span class="math notranslate nohighlight">\(\{x, \; x \to y, \; \neg y\}\)</span> несовместно, так как</p>
+<p><span class="math notranslate nohighlight">\(
+x \,\&amp;\, (x \to y) \,\&amp;\, \neg y = x \,\&amp;\, (\neg x \vee y) \,\&amp;\, \neg y = 0.
+\)</span></p>
+<p><strong>Упражнение.</strong> Докажите, что если множество формул <span class="math notranslate nohighlight">\(\Gamma\)</span> несовместно, то любое его расширение, т.е. множество формул <span class="math notranslate nohighlight">\(\Delta\)</span> такое, что <span class="math notranslate nohighlight">\(\Gamma \subset \Delta\)</span>, также несовместно.</p>
+</section>
+<section id="id4">
+<h2>Логическое следствие<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>Понятие логического следствия<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><strong>Пример.</strong> Даны два высказывания, выделяющие “истинные” ситуации <span class="math notranslate nohighlight">\(x, y, z\)</span>, где <span class="math notranslate nohighlight">\(x = \)</span> “человек ошибается”, <span class="math notranslate nohighlight">\(y = \)</span> “человек работает”, <span class="math notranslate nohighlight">\(z = \)</span> “человек ест”:</p>
+<ol class="arabic simple">
+<li><p>Не ошибается только тот, кто ничего не делает: <span class="math notranslate nohighlight">\(\neg x \to \neg y\)</span>.</p></li>
+<li><p>Кто не работает, тот не ест: <span class="math notranslate nohighlight">\(\neg y \to \neg z\)</span>.</p></li>
+</ol>
+<p>Укажем с помощью таблицы истинности, в каких ситуациях оба высказывания истинны.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(F_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(F_2\)</span></p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\neg x \to \neg y\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\neg y \to \neg z\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(F_1 \,\&amp;\, F_2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Подумаем, какая формула описывает все “истинные” ситуации.</p>
+<p>Во-первых, по таблице истинности <span class="math notranslate nohighlight">\(F_1 \,\&amp;\, F_2\)</span> можно построить формулу - она в точности опишет все “истинные” ситуации.</p>
+<p>Во-вторых, чтобы описать “истинные” ситуации с помощью простой формулы, мы можем порассуждать, каким общим свойством обладают все “истинные” ситуации. Иначе говоря, попробуем вывести логическое следствие из наших гипотез.</p>
+<p>Итак, рассуждаем. Формула <span class="math notranslate nohighlight">\(\neg x \to \neg y\)</span> сообщает, что ложность <span class="math notranslate nohighlight">\(x\)</span> всегда гарантирует ложность <span class="math notranslate nohighlight">\(y\)</span> (то есть ситуация, когда <span class="math notranslate nohighlight">\(x = 0\)</span> и <span class="math notranslate nohighlight">\(y = 1\)</span>, у нас исключается). Вторая формула <span class="math notranslate nohighlight">\(\neg y \to \neg z\)</span>, с другой стороны, гарантирует, что при ложном <span class="math notranslate nohighlight">\(y\)</span> ложно и <span class="math notranslate nohighlight">\(z\)</span>. Объединяя наши рассуждения, получим, что при ложном <span class="math notranslate nohighlight">\(x\)</span> ложно <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>Следовательно, при истинных гипотезах <span class="math notranslate nohighlight">\(\neg x \to \neg y\)</span> и <span class="math notranslate nohighlight">\(\neg y \to \neg z\)</span> истинна формула <span class="math notranslate nohighlight">\(\neg x \to \neg z\)</span>. По закону контрапозиции <span class="math notranslate nohighlight">\(\neg x \to \neg z = z \to x\)</span>. Теперь мы можем сформулировать логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg x \to \neg y,\;\; \neg y \to \neg z \; \models \; z \to x
+\)</span></p>
+<p>Путем рассуждений мы установили, что все ситуации, когда <span class="math notranslate nohighlight">\(F_1 \,\&amp;\, F_2 = 1\)</span>, должны удовлетворять формуле <span class="math notranslate nohighlight">\(z \to x\)</span>.</p>
+<p>Построим таблицу истинности, чтобы проверить выкладки.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(F_1 \,\&amp;\, F_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z \to x\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Мы подтвердили, что во всех ситуациях, когда истинны обе гипотезы <span class="math notranslate nohighlight">\(F_1, F_2\)</span>, истинна и формула <span class="math notranslate nohighlight">\(z \to x\)</span>. Но это не значит, что <span class="math notranslate nohighlight">\(F_1 \,\&amp;\, F_2 = z \to x\)</span>.</p>
+<p>Логическое следствие <span class="math notranslate nohighlight">\(F_1,\; F_2 \models z \to x\)</span> означает тождественную истинность импликации <span class="math notranslate nohighlight">\(F_1 \,\&amp;\, F_2 \to (z \to x)\)</span>. Поговорим об этом подробнее в следующем разделе.</p>
+<p>Логическое следствие мы привыкли понимать так. Говорят, что утверждение <span class="math notranslate nohighlight">\(A\)</span> вытекает (следует) из утверждений <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span>, если утверждение <span class="math notranslate nohighlight">\(A\)</span> истинно всегда, когда истинны утверждения <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span>.</p>
+<p>В математической логике понятие логического следствия уточняется следующим образом.</p>
+<p><strong>Определение.</strong> Формула алгебры логики <span class="math notranslate nohighlight">\(A\)</span> <em>логически следует</em> из множества формул (гипотез) <span class="math notranslate nohighlight">\(\Gamma = \{A_1, A_2, \ldots, A_n\}\)</span>, если <span class="math notranslate nohighlight">\(v(A) = 1\)</span> для любой оценки <span class="math notranslate nohighlight">\(v\)</span>, при которой все формулы из <span class="math notranslate nohighlight">\(\Gamma\)</span> принимают значение <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Обозначение для логического следствия:</p>
+<p><span class="math notranslate nohighlight">\(\Gamma \models A\)</span> или <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n \models A\)</span></p>
+</section>
+<section id="id6">
+<h3>Критерии логического следствия<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h4>Табличный критерий<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>Из определения логического следствия вытекает <em>критерий на основе таблицы истинности</em>:</p>
+<p>Выделим все строчки таблицы истинности, в которых все гипотезы равны <span class="math notranslate nohighlight">\(1\)</span>. Формула <span class="math notranslate nohighlight">\(A\)</span> следует из <span class="math notranslate nohighlight">\(\Gamma\)</span>, если во всех выделенных строчках <span class="math notranslate nohighlight">\(A = 1\)</span>.</p>
+<p><strong>Пример.</strong> Спортсмен посещает спорткомплекс (бассейн <span class="math notranslate nohighlight">\(x\)</span>, групповые программы <span class="math notranslate nohighlight">\(y\)</span>, тренажерный зал <span class="math notranslate nohighlight">\(z\)</span>). Всякий раз, когда он ходит в тренажерный зал, он ходит и в бассейн. Сегодня спортсмен был в тренажерном зале или на групповых программах. Следовательно, спортсмен точно был в бассейне или на групповых программах.</p>
+<p>Проверим логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; z \vee y \; \models \; x \vee y.
+\)</span></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z \to x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z \vee y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x \vee y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>В таблице жирным выделены все оценки, при которых обе гипотезы равны <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Во всех выделенных строчках следствие <span class="math notranslate nohighlight">\(x \vee y\)</span> также равно <span class="math notranslate nohighlight">\(1\)</span>. Логическое следствие доказано.</p>
+<p><strong>Пример.</strong> Спортсмен посещает спорткомплекс (бассейн <span class="math notranslate nohighlight">\(x\)</span>, групповые программы <span class="math notranslate nohighlight">\(y\)</span>, тренажерный зал <span class="math notranslate nohighlight">\(z\)</span>). Всякий раз, когда он ходит в тренажерный зал, он ходит и в бассейн. Сегодня спортсмен был в бассейне или на групповых программах. Можно ли сделать вывод, что спортсмен точно был в тренажерном зале или на групповых программах?</p>
+<p>Проверим логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; x \vee y \; \models \; z \vee y.
+\)</span></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z \to x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x \vee y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(z \vee y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\color{Red}\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\color{Red}\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\color{Red}\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\color{Red} 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\color{Red} 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\color{Red} 0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>В таблице жирным выделены все оценки, при которых обе гипотезы равны <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Теперь в таблице виден <em>контрпример</em>: в красной строчке обе посылки равны <span class="math notranslate nohighlight">\(1\)</span>, а следствие равно <span class="math notranslate nohighlight">\(0\)</span>. Существование хотя бы одного контрпримера сразу опровергает логическое следствие. Значит, логического следствия нет:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; x \vee y \; \nvDash \; z \vee y.
+\)</span></p>
+<p>Таким образом, в ситуации, когда спортсмен пошел только в бассейн (<span class="math notranslate nohighlight">\(x=1,\,y=0,\,z=0\)</span>), все гипотезы выполняются, а следствие не выполняется!</p>
+</section>
+<section id="id8">
+<h4>Первый критерий<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>Помимо табличного критерия, имеется <em>первый критерий логического следствия</em> - тождественная истинность импликации.</p>
+<p>Например,
+<span class="math notranslate nohighlight">\(
+z \to x, \;\; z \vee y \; \models \; x \vee y \;\; \Longleftrightarrow
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\Longleftrightarrow \;\; (z \to x) \,\&amp;\, (z\vee y) \to (x \vee y).
+\)</span></p>
+<p>Действительно, логическое следствие <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n \models A\)</span> означает, что для любой оценки, если истинны все гипотезы, то истинно и следствие <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+A_1, A_2, \ldots, A_n \models A \;\; \Longleftrightarrow \;\; \left(A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \to A\right) \equiv 1.
+\)</span></p>
+<p>Любой контрпример сразу обнуляет выражение <span class="math notranslate nohighlight">\(\left(A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \to A\right)\)</span>.</p>
+</section>
+<section id="id9">
+<h4>Второй критерий<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p><em>Второй критерий логического следствия</em> - проверка несовместности гипотез с отрицанием следствия.</p>
+<p>Например, чтобы проверить логическое следствие</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; x \vee y \; \models \; z \vee y,
+\)</span></p>
+<p>напишем условие, которому подчиняются все контрпример - гипотезы истинны, следствие ложно:</p>
+<p><span class="math notranslate nohighlight">\(
+(z \to x) \,\&amp;\, (x \vee y) \,\&amp;\, \neg (z \vee y).
+\)</span></p>
+<p>Логическое следствие имеет место, если это выражение никогда не равно <span class="math notranslate nohighlight">\(1\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; x \vee y \; \models \; z \vee y \;\; \Longleftrightarrow
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\Longleftrightarrow \;\; (z \to x) \,\&amp;\, (x \vee y) \,\&amp;\, \neg (z \vee y) \equiv 0.
+\)</span></p>
+<p>Действительно, из формул <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span> логически следует формула <span class="math notranslate nohighlight">\(A\)</span> тогда и только тогда, когда множество формул <span class="math notranslate nohighlight">\(\{A_1, A_2, \ldots, A_n, \neg A\}\)</span> несовместно. Критерий несовместности - противоречивость конъюнкции:</p>
+<p><span class="math notranslate nohighlight">\(
+A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
+\)</span></p>
+<p>Слева от знака <span class="math notranslate nohighlight">\(\equiv\)</span> записано условие нарушения логического следствия. Противоречивость (<span class="math notranslate nohighlight">\(\equiv 0\)</span>) означает, что это условие никогда не выполняется: логическое следствие нарушить никак нельзя.</p>
+<p><strong>Упражнение.</strong> Пользуясь формулой для отрицания импликации, выведите второй критерий из первого.</p>
+</section>
+</section>
+<section id="id10">
+<h3>Метод от противного<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>примеры со спортсменом</p>
+<p>Дальнейшее улучшение эмулятора - парсинг; проверка логического следствия - демонстрация работы программы с вводом формулы по критерию лог. следствия</p>
+</section>
+</section>
+<section id="id11">
+<h2>Метод резолюций<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>Сказать, зачем он нужен - для компьютерного логического вывода (запросы к базе знаний)</p>
+<section id="id12">
+<h3>Правило резолюции<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Пример</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{A \vee B, \;\; \neg A \vee C}{B \vee C}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(A = \)</span> “прогулял пару”</p>
+<p><span class="math notranslate nohighlight">\(B = \)</span> “слушаю лекцию”</p>
+<p><span class="math notranslate nohighlight">\(C = \)</span> “сплю”</p>
+<p>компьютерное задание - метод резолюций; показать программу</p>
+</section>
+</section>
+<section id="id13">
+<h2>Литература<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 </section>
 </section>
 
@@ -508,7 +940,23 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Логическое следствие</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Выполнимость логических формул</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Логическое следствие</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Понятие логического следствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Критерии логического следствия</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Табличный критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Первый критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Второй критерий</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Метод от противного</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Метод резолюций</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Правило резолюции</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Литература</a></li>
 </ul>
   </nav></div>
 
