@@ -422,24 +422,31 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Выполнимость логических формул</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Логическое следствие</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Понятие логического следствия</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Критерии логического следствия</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Табличный критерий</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Первый критерий</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Второй критерий</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Нормальные формы</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Понятия нормальных форм</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Приведение формулы к КНФ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Приведение формулы к ДНФ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Программная реализация</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Совершенные нормальные формы</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Метод от противного</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Выполнимость логических формул</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Логическое следствие</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Понятие логического следствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Критерии логического следствия</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Табличный критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Первый критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Второй критерий</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Метод резолюций</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Правило резолюции</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Метод от противного</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Метод резолюций</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Правило резолюции</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -455,11 +462,148 @@ document.write(`
 <h1>Алгебра высказываний - 2<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2>Нормальные формы<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>программа для построения СДНФ;
-самостоятельно допишите СКНФ</p>
-</section>
+<p>Нормальные формы в алгебре логики - это формулы специального вида. Любую булеву функцию всегда можно записать в нормальной форме, что упрощает обработку формул.
+Так, ДНФ (дизъюнктивная нормальная форма) удобно упрощается и минимизируется, КНФ (конъюнктивная нормальная форма) удобна для автоматизированного решения проблемы выполнимости. А совершенные формы (СДНФ, СКНФ) всегда единственны, поэтому позволяют сравнивать разные булевы функции друг с другом.</p>
 <section id="id3">
-<h2>Выполнимость логических формул<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h3>Понятия нормальных форм<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><strong>Определение.</strong> <em>Литера</em> - это формула, состоящая из булевой переменной или ее отрицания.</p>
+<p><strong>Определение.</strong> <em>Дизъюнкт</em> (элементарная дизъюнкция) - это одна или более литер, соединенных операцией дизъюнкции <span class="math notranslate nohighlight">\(\vee\)</span>.</p>
+<p><strong>Определение.</strong> <em>Конъюнкт</em> (элементарная конъюнкция) - это одна или более литер, соединенных операцией конъюнкции <span class="math notranslate nohighlight">\(\&amp;\)</span>.</p>
+<p><strong>Определение.</strong> <em>Конъюнктивная нормальная форма</em> (КНФ) - это один или более дизъюнктов, соединенных операцией конъюнкции.</p>
+<p><strong>Определение.</strong> <em>Дизъюнктивная нормальная форма</em> (ДНФ) - это один или более конъюнктов, соединенных операцией дизъюнкции.</p>
+<p><small>В дизъюнктивной форме корневая операция - дизъюнкция. В конъюнктивной форме корневая операция - конъюнкция.</small></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;литера&gt; ::= &lt;переменная&gt; | ¬&lt;переменная&gt;
+&lt;дизъюнкт&gt; ::= &lt;литера&gt; | &lt;дизъюнкт&gt; ∨ &lt;литера&gt;
+&lt;конъюнкт&gt; ::= &lt;литера&gt; | &lt;конъюнкт&gt; &amp; &lt;литера&gt;
+&lt;КНФ&gt; ::= (&lt;дизъюнкт&gt;) | &lt;КНФ&gt; &amp; (&lt;дизъюнкт&gt;)
+&lt;ДНФ&gt; ::= &lt;конъюнкт&gt; | &lt;ДНФ&gt; ∨ &lt;конъюнкт&gt;
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>Приведение формулы к КНФ<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Представим <em>алгоритм</em> приведения любой формулы алгебры логики к КНФ.</p>
+<p>Дано: формула <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Построить: формула <span class="math notranslate nohighlight">\(A'\)</span> в КНФ, такая, что <span class="math notranslate nohighlight">\(A' \equiv A\)</span>.</p>
+<p>Согласно определению формулы алгебры логики, формула <span class="math notranslate nohighlight">\(A\)</span> получена в результате применения одного из трех правил:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> - булева переменная</p></li>
+</ol>
+<p>В этом случае формула уже в КНФ, <span class="math notranslate nohighlight">\(A' = A\)</span>.</p>
+<ol class="arabic simple" start="2">
+<li><p><span class="math notranslate nohighlight">\(A = \neg B\)</span>, где <span class="math notranslate nohighlight">\(B\)</span> - формула алгебры логики.</p></li>
+</ol>
+<p>В этом случае формулу <span class="math notranslate nohighlight">\(B\)</span> нужно привести к ДНФ - формуле <span class="math notranslate nohighlight">\(B'\)</span>. А затем применить закон де Моргана к формуле <span class="math notranslate nohighlight">\(\neg B'\)</span> - получится формула <span class="math notranslate nohighlight">\(A'\)</span>, находящаяся в КНФ, причем <span class="math notranslate nohighlight">\(A' \equiv A\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p><span class="math notranslate nohighlight">\(A = (A_1 \,\&amp;\, A_2)\)</span> или <span class="math notranslate nohighlight">\(A = (A_1 \vee A_2)\)</span> или <span class="math notranslate nohighlight">\(A = (A_1 \to A_2)\)</span>.</p></li>
+</ol>
+<p>а) Если <span class="math notranslate nohighlight">\(A = (A_1 \,\&amp;\, A_2)\)</span>, то достаточно привести формулу <span class="math notranslate nohighlight">\(A_1\)</span> к КНФ <span class="math notranslate nohighlight">\(A_1'\)</span> и формулу <span class="math notranslate nohighlight">\(A_2\)</span> к КНФ <span class="math notranslate nohighlight">\(A_2'\)</span> - получится формула <span class="math notranslate nohighlight">\(A' = (A_1' \,\&amp;\, A_2')\)</span>, находящаяся в КНФ и равносильная формуле <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>б) Если <span class="math notranslate nohighlight">\(A = (A_1 \vee A_2)\)</span>, то нужно привести формулу <span class="math notranslate nohighlight">\(A_1\)</span> к КНФ <span class="math notranslate nohighlight">\(A_1'\)</span>, формулу <span class="math notranslate nohighlight">\(A_2\)</span> к КНФ <span class="math notranslate nohighlight">\(A_2'\)</span>, а затем применить второй закон дистрибутивности, чтобы вывести КНФ формулы <span class="math notranslate nohighlight">\(A' = A_1 \vee A_2\)</span>.</p>
+<p>Например, <span class="math notranslate nohighlight">\(A_1' = (x \vee y) \,\&amp;\, z\)</span>, <span class="math notranslate nohighlight">\(A_2' = (\neg x \vee z) \,\&amp;\, (y \vee \neg z)\)</span>. Тогда <span class="math notranslate nohighlight">\(A' = \left( (x \vee y) \,\&amp;\, z \right) \vee \left( (\neg x \vee z) \,\&amp;\, (y \vee \neg z) \right) = \)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= (x \vee y \vee \neg x \vee z) \,\&amp;\, (x \vee y \vee y \vee \neg z) \,\&amp;\, (z \vee \neg x \vee z) \,\&amp;\, (z \vee y \vee \neg z).
+\)</span></p>
+<p>в) Если <span class="math notranslate nohighlight">\(A = (A_1 \to A_2)\)</span>, то формулу <span class="math notranslate nohighlight">\(A_1\)</span> нужно привести к ДНФ <span class="math notranslate nohighlight">\(A_1'\)</span>, а формулу <span class="math notranslate nohighlight">\(A_2\)</span> к КНФ <span class="math notranslate nohighlight">\(A_2'\)</span>, после чего применить закон дистрибутивности к формуле <span class="math notranslate nohighlight">\((\neg A_1' \vee A_2')\)</span> так же, как в случае б).</p>
+<p>Описанный алгоритм выглядит громоздко для ручного использования, зато он поддаётся автоматизации, поскольку чётко опирается на рекурсивную структуру формул.</p>
+<p><strong>Пример.</strong> Приведем формулу к КНФ:</p>
+<p><span class="math notranslate nohighlight">\(
+((x \to y) \to (z \to \neg x)) \to (\neg y \to \neg z).
+\)</span></p>
+<p>Сначала необходимо привести эту формулу к <em>формуле с тесными отрицаниями</em> (в которой отрицания относятся только к переменным).</p>
+<p>Применяем формулу замены импликации:
+<span class="math notranslate nohighlight">\(
+((x \to y) \to (z \to \neg x)) \to (\neg y \to \neg z) =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= ((\neg x \vee y) \to (\neg z \vee \neg x)) \to (y \vee \neg z) =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \neg(\neg (\neg x \vee y) \vee (\neg z \vee \neg x))  \vee (y \vee \neg z).
+\)</span></p>
+<p>Применяем закон де Моргана:</p>
+<p><span class="math notranslate nohighlight">\(
+\ldots = (\neg\neg (\neg x \vee y) \,\&amp;\, \neg(\neg z \vee \neg x))  \vee (y \vee \neg z) =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= ( (\neg x \vee y) \,\&amp;\, (z \,\&amp;\, x))  \vee (y \vee \neg z).
+\)</span></p>
+<p>Уберём лишние скобки:</p>
+<p><span class="math notranslate nohighlight">\(
+\ldots = (\neg x \vee y) \,\&amp;\,z \,\&amp;\, x  \vee y \vee \neg z.
+\)</span></p>
+<p>Полученную формулу с тесными отрицаниями нужно привести к КНФ.</p>
+<p>Имея в виду аналогию между логическими и арифметическими операциями, перепишем эту формулу в алгебраической форме:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg x \cdot y + z + x) \cdot y \cdot \neg z.
+\)</span></p>
+<p>Раскроем скобки:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg x \cdot y + z + x) \cdot y \cdot \neg z =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= (\neg x \cdot y \cdot y \cdot \neg z) + (z \cdot y \cdot \neg z) + (x \cdot y \cdot \neg z).
+\)</span></p>
+<p>Вернёмся к логической символике:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg x \vee y \vee y \vee \neg z) \,\&amp;\, (z \vee y \vee \neg z) \,\&amp;\, (x \vee y \vee \neg z).
+\)</span></p>
+<p>По закону идемпотентности <span class="math notranslate nohighlight">\(y \vee y = y\)</span>.</p>
+<p>По закону исключенного третьего <span class="math notranslate nohighlight">\(z \vee \neg z = 1\)</span>, а по закону единицы <span class="math notranslate nohighlight">\(y \vee 1 = 1\)</span>.</p>
+<p>Получаем КНФ:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg x \vee y \vee \neg z) \,\&amp;\, (x \vee y \vee \neg z).
+\)</span></p>
+</section>
+<section id="id5">
+<h3>Приведение формулы к ДНФ<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>На практике удобно пользоваться аналогией между логическими операциями <span class="math notranslate nohighlight">\(\&amp;\)</span> и <span class="math notranslate nohighlight">\(\vee\)</span> с одной стороны и арифметическими операциями <span class="math notranslate nohighlight">\(\cdot\)</span> и <span class="math notranslate nohighlight">\(+\)</span> с другой, так как равносильность</p>
+<p><span class="math notranslate nohighlight">\(
+A \,\&amp;\, (B \vee C) = A \,\&amp;\, B \vee A \,\&amp;\, C
+\)</span></p>
+<p>напоминает тождество</p>
+<p><span class="math notranslate nohighlight">\(
+A \cdot (B + C) = A \cdot B + A \cdot C.
+\)</span></p>
+<p><strong>Пример.</strong> Приведем формулу из предыдущего примера к ДНФ.</p>
+<p>Первый шаг такой же - привести формулу к формуле с тесными отрицаниями:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg x \vee y) \,\&amp;\,z \,\&amp;\, x  \vee y \vee \neg z
+\)</span></p>
+<p>Остается раскрыть скобки по первому закону дистрибутивности.</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg x \vee y) \,\&amp;\,z \,\&amp;\, x  \vee y \vee \neg z =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \neg x \,\&amp;\, z \,\&amp;\, x \vee y \,\&amp;\, z \,\&amp;\, x \vee y \vee \neg z.
+\)</span></p>
+<p>Первый конъюнкт равен <span class="math notranslate nohighlight">\(0\)</span> по закону противоречия <span class="math notranslate nohighlight">\(x \,\&amp;\, \neg x = 0\)</span>.</p>
+<p>Получаем ДНФ:</p>
+<p><span class="math notranslate nohighlight">\(
+y \,\&amp;\, z \,\&amp;\, x \vee y \vee \neg z.
+\)</span></p>
+</section>
+<section id="id6">
+<h3>Программная реализация<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Ознакомьтесь с реализацией алгоритма приведения к КНФ/ДНФ в <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic3">электронном ресурсе</a>.</p>
+<p>Пример вывода программы:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Формула: (((x &amp; z) → y) &amp; (¬y ∨ z))
+ДНФ: (¬x &amp; ¬y) ∨ (¬x &amp; z) ∨ (¬z &amp; ¬y) ∨ (¬z &amp; z) ∨ (y &amp; ¬y) ∨ (y &amp; z)
+КНФ: (¬x ∨ ¬z ∨ y) &amp; (¬y ∨ z)
+</pre></div>
+</div>
+<p><strong>Упражнение.</strong> Допишите программу для дополнительного упрощения нормальной формы по закону исключенного третьего и законам поглощения.</p>
+</section>
+<section id="id7">
+<h3>Совершенные нормальные формы<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Любая формула, находящаяся в ДНФ, с помощью равносильных преобразований приводится к СДНФ.</p>
+<p>Любая формула, находящаяся в КНФ, с помощью равносильных преобразований приводится к СКНФ.</p>
+<p>Кроме того, существуют алгоритмы построения СДНФ и СКНФ по таблице истинности.</p>
+<p><a class="reference external" href="https://vk.ru/wall-225887804_136">Материалы для самостоятельного изучения</a></p>
+<p><strong>Упражнение.</strong> Вам дана программа для построения СДНФ по таблице истинности. Напишите аналогичную программу для построения СКНФ.</p>
+</section>
+</section>
+<section id="id8">
+<h2>Выполнимость логических формул<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p><strong>Определение.</strong> Множество формул <span class="math notranslate nohighlight">\(\Gamma\)</span> называется <em>выполнимым</em>, если существует такая оценка (набор значений переменных) <span class="math notranslate nohighlight">\(v\)</span>, при которой все формулы из <span class="math notranslate nohighlight">\(\Gamma\)</span> принимают значение <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p>Оценку <span class="math notranslate nohighlight">\(v\)</span>, на которой все формулы из <span class="math notranslate nohighlight">\(\Gamma\)</span> равны <span class="math notranslate nohighlight">\(1\)</span>, называется <em>выполняющей оценкой</em> (выполняющим набором) для множества <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
 <small>
@@ -479,10 +623,10 @@ x \,\&amp;\, (x \to y) \,\&amp;\, \neg y = x \,\&amp;\, (\neg x \vee y) \,\&amp;
 \)</span></p>
 <p><strong>Упражнение.</strong> Докажите, что если множество формул <span class="math notranslate nohighlight">\(\Gamma\)</span> несовместно, то любое его расширение, т.е. множество формул <span class="math notranslate nohighlight">\(\Delta\)</span> такое, что <span class="math notranslate nohighlight">\(\Gamma \subset \Delta\)</span>, также несовместно.</p>
 </section>
-<section id="id4">
-<h2>Логическое следствие<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<section id="id5">
-<h3>Понятие логического следствия<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h2>Логическое следствие<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h3>Понятие логического следствия<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p><strong>Пример.</strong> Даны два высказывания, выделяющие “истинные” ситуации <span class="math notranslate nohighlight">\(x, y, z\)</span>, где <span class="math notranslate nohighlight">\(x = \)</span> “человек ошибается”, <span class="math notranslate nohighlight">\(y = \)</span> “человек работает”, <span class="math notranslate nohighlight">\(z = \)</span> “человек ест”:</p>
 <ol class="arabic simple">
 <li><p>Не ошибается только тот, кто ничего не делает: <span class="math notranslate nohighlight">\(\neg x \to \neg y\)</span>.</p></li>
@@ -643,10 +787,10 @@ x \,\&amp;\, (x \to y) \,\&amp;\, \neg y = x \,\&amp;\, (\neg x \vee y) \,\&amp;
 <p>Обозначение для логического следствия:</p>
 <p><span class="math notranslate nohighlight">\(\Gamma \models A\)</span> или <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n \models A\)</span></p>
 </section>
-<section id="id6">
-<h3>Критерии логического следствия<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<section id="id7">
-<h4>Табличный критерий<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<section id="id11">
+<h3>Критерии логического следствия<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id12">
+<h4>Табличный критерий<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p>Из определения логического следствия вытекает <em>критерий на основе таблицы истинности</em>:</p>
 <p>Выделим все строчки таблицы истинности, в которых все гипотезы равны <span class="math notranslate nohighlight">\(1\)</span>. Формула <span class="math notranslate nohighlight">\(A\)</span> следует из <span class="math notranslate nohighlight">\(\Gamma\)</span>, если во всех выделенных строчках <span class="math notranslate nohighlight">\(A = 1\)</span>.</p>
 <p><strong>Пример.</strong> Спортсмен посещает спорткомплекс (бассейн <span class="math notranslate nohighlight">\(x\)</span>, групповые программы <span class="math notranslate nohighlight">\(y\)</span>, тренажерный зал <span class="math notranslate nohighlight">\(z\)</span>). Всякий раз, когда он ходит в тренажерный зал, он ходит и в бассейн. Сегодня спортсмен был в тренажерном зале или на групповых программах. Следовательно, спортсмен точно был в бассейне или на групповых программах.</p>
@@ -806,8 +950,8 @@ z \to x, \;\; x \vee y \; \nvDash \; z \vee y.
 \)</span></p>
 <p>Таким образом, в ситуации, когда спортсмен пошел только в бассейн (<span class="math notranslate nohighlight">\(x=1,\,y=0,\,z=0\)</span>), все гипотезы выполняются, а следствие не выполняется!</p>
 </section>
-<section id="id8">
-<h4>Первый критерий<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<section id="id13">
+<h4>Первый критерий<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
 <p>Помимо табличного критерия, имеется <em>первый критерий логического следствия</em> - тождественная истинность импликации.</p>
 <p>Например,
 <span class="math notranslate nohighlight">\(
@@ -822,8 +966,8 @@ A_1, A_2, \ldots, A_n \models A \;\; \Longleftrightarrow \;\; \left(A_1 \,\&amp;
 \)</span></p>
 <p>Любой контрпример сразу обнуляет выражение <span class="math notranslate nohighlight">\(\left(A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \to A\right)\)</span>.</p>
 </section>
-<section id="id9">
-<h4>Второй критерий<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<section id="id14">
+<h4>Второй критерий<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
 <p><em>Второй критерий логического следствия</em> - проверка несовместности гипотез с отрицанием следствия.</p>
 <p>Например, чтобы проверить логическое следствие</p>
 <p><span class="math notranslate nohighlight">\(
@@ -848,17 +992,17 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
 <p><strong>Упражнение.</strong> Пользуясь формулой для отрицания импликации, выведите второй критерий из первого.</p>
 </section>
 </section>
-<section id="id10">
-<h3>Метод от противного<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3>Метод от противного<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>примеры со спортсменом</p>
 <p>Дальнейшее улучшение эмулятора - парсинг; проверка логического следствия - демонстрация работы программы с вводом формулы по критерию лог. следствия</p>
 </section>
 </section>
-<section id="id11">
-<h2>Метод резолюций<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="id16">
+<h2>Метод резолюций<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
 <p>Сказать, зачем он нужен - для компьютерного логического вывода (запросы к базе знаний)</p>
-<section id="id12">
-<h3>Правило резолюции<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id17">
+<h3>Правило резолюции<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>Пример</p>
 <p><span class="math notranslate nohighlight">\(
 \dfrac{A \vee B, \;\; \neg A \vee C}{B \vee C}
@@ -869,8 +1013,8 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
 <p>компьютерное задание - метод резолюций; показать программу</p>
 </section>
 </section>
-<section id="id13">
-<h2>Литература<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section id="id18">
+<h2>Литература<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 </section>
 </section>
@@ -939,24 +1083,31 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Нормальные формы</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Выполнимость логических формул</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Логическое следствие</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Понятие логического следствия</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Критерии логического следствия</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Табличный критерий</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Первый критерий</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Второй критерий</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Нормальные формы</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Понятия нормальных форм</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Приведение формулы к КНФ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Приведение формулы к ДНФ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Программная реализация</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Совершенные нормальные формы</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Метод от противного</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Выполнимость логических формул</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Логическое следствие</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Понятие логического следствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Критерии логического следствия</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Табличный критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Первый критерий</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Второй критерий</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Метод резолюций</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Правило резолюции</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Метод от противного</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Метод резолюций</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Правило резолюции</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Литература</a></li>
 </ul>
   </nav></div>
 
