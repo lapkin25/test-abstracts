@@ -440,13 +440,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Метод от противного</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Программная реализация</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Метод резолюций</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Правило резолюции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Метод резолюций</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Правило резолюции</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -995,14 +996,41 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
 <section id="id15">
 <h3>Метод от противного<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>примеры со спортсменом</p>
-<p>Дальнейшее улучшение эмулятора - парсинг; проверка логического следствия - демонстрация работы программы с вводом формулы по критерию лог. следствия</p>
-</section>
 </section>
 <section id="id16">
-<h2>Метод резолюций<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
-<p>Сказать, зачем он нужен - для компьютерного логического вывода (запросы к базе знаний)</p>
+<h3>Программная реализация<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>В <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic4">электронном ресурсе</a> доступна программа для проверки логического следствия <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n \models A\)</span>.</p>
+<p>Реализован парсер логических формул.</p>
+<p>Программа читает из файла несколько формул - гипотезы и следствие.</p>
+<p>Пример входного файла:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">-&gt;</span> <span class="o">~</span><span class="n">y</span>
+<span class="n">y</span>
+<span class="o">~</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>Пример вывода:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Гипотезы:
+(x → ¬y)
+y
+Следствие:
+¬x
+Критерий логического следствия:
+(((x → ¬y) &amp; y) → ¬x)
+Таблица истинности:
+(0, 0) -&gt; 1
+(0, 1) -&gt; 1
+(1, 0) -&gt; 1
+(1, 1) -&gt; 1
+</pre></div>
+</div>
+<p><strong>Упражнение.</strong> Реализуйте вывод подробной таблицы истинности (столбцы для всех гипотез <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span>, следствия <span class="math notranslate nohighlight">\(A\)</span> и импликации <span class="math notranslate nohighlight">\(A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \to A\)</span>) и списка всех контрпримеров к логическому следствию.</p>
+</section>
+</section>
 <section id="id17">
-<h3>Правило резолюции<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<h2>Метод резолюций<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>Сказать, зачем он нужен - для компьютерного логического вывода (запросы к базе знаний)</p>
+<section id="id18">
+<h3>Правило резолюции<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p>Пример</p>
 <p><span class="math notranslate nohighlight">\(
 \dfrac{A \vee B, \;\; \neg A \vee C}{B \vee C}
@@ -1013,8 +1041,8 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
 <p>компьютерное задание - метод резолюций; показать программу</p>
 </section>
 </section>
-<section id="id18">
-<h2>Литература<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<section id="id19">
+<h2>Литература<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 </section>
 </section>
@@ -1101,13 +1129,14 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Метод от противного</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Программная реализация</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Метод резолюций</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Правило резолюции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Метод резолюций</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Правило резолюции</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
 </ul>
   </nav></div>
 
