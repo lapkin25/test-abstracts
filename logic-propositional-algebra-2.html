@@ -445,9 +445,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Метод резолюций</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Правило резолюции</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Проверка логического следствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Задачи на метод резолюций</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -995,7 +997,58 @@ A_1 \,\&amp;\, A_2 \,\&amp;\, \ldots \,\&amp;\, A_n \,\&amp;\, \neg A \equiv 0.
 </section>
 <section id="id15">
 <h3>Метод от противного<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
-<p>примеры со спортсменом</p>
+<p>Вернёмся к примерам со спортсменом.</p>
+<p><strong>Пример.</strong> Проверим логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; z \vee y \; \models \; x \vee y.
+\)</span></p>
+<p>Все контрпримеры (значения <span class="math notranslate nohighlight">\(x,y,z\)</span>, при которых гипотезы истинны, а следствие ложно) удовлетворяют системе логических уравнений:</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}
+z \to x &amp;= 1,\\
+z \vee y &amp;= 1, \\
+x \vee y &amp;= 0.
+\end{aligned}\right.
+\)</span></p>
+<p>Давайте найдём все контрпримеры (или докажем, что их нет).</p>
+<p>Поскольку дизъюнкция равна <span class="math notranslate nohighlight">\(0\)</span>, только когда оба операнда равны <span class="math notranslate nohighlight">\(0\)</span>, то из третьего уравнения выводим <span class="math notranslate nohighlight">\(x = 0, \, y = 0\)</span>.</p>
+<p>Подставляя найденные значения в первые два уравнения, приходим к системе</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}
+z \to 0 &amp;= 1,\\
+z \vee 0 &amp;= 1.
+\end{aligned}\right.
+\)</span></p>
+<p>Отсюда, поскольку <span class="math notranslate nohighlight">\(z \to 0 = \neg z\)</span> и <span class="math notranslate nohighlight">\(z \vee 0 = z\)</span>, получаем</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}
+\neg z &amp;= 1,\\
+z &amp;= 1.
+\end{aligned}\right.
+\)</span></p>
+<p>Система уравнений противоречива. Значит, решений системы нет. И контрпримеров к логическому следствию тоже нет.</p>
+<p>Вывод: логическое следствие нельзя нарушить <span class="math notranslate nohighlight">\(\Rightarrow\)</span> логическое следствие выполнено.</p>
+<p><strong>Пример.</strong> Проверим логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; x \vee y \; \models \; z \vee y.
+\)</span></p>
+<p>Точно так же составляем систему логических уравнений, приравнивая гипотезы к <span class="math notranslate nohighlight">\(1\)</span>, а следствие к <span class="math notranslate nohighlight">\(0\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}
+z \to x &amp;= 1,\\
+x \vee y &amp;= 1, \\
+z \vee y &amp;= 0.
+\end{aligned}\right.
+\)</span></p>
+<p>Из третьего уравнения <span class="math notranslate nohighlight">\(z = 0\)</span>, <span class="math notranslate nohighlight">\(y = 0\)</span>. Тогда все контрпримеры обязаны удовлетворять системе</p>
+<p><span class="math notranslate nohighlight">\(
+\left\{\begin{aligned}
+0 \to x &amp;= 1,\\
+x \vee 0 &amp;= 1.
+\end{aligned}\right.
+\)</span></p>
+<p>Первое уравнение выполнено при любом <span class="math notranslate nohighlight">\(x\)</span>. А из второго уравнения находим <span class="math notranslate nohighlight">\(x = 1\)</span>.</p>
+<p>Итак, мы нашли контрпример: <span class="math notranslate nohighlight">\(x=1,\,y=0,\,z=0\)</span>. Логическое следствие нарушается.</p>
 </section>
 <section id="id16">
 <h3>Программная реализация<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
@@ -1028,21 +1081,173 @@ y
 </section>
 <section id="id17">
 <h2>Метод резолюций<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
-<p>Сказать, зачем он нужен - для компьютерного логического вывода (запросы к базе знаний)</p>
+<p>Как быстро проверить логическое следствие, включающее много формул?</p>
+<p>Как найти выполняющий набор для формулы алгебры логики или установить, что формула невыполнима?</p>
+<p>Как решить эти вопросы для очень больших задач с помощью компьютера?</p>
+<p>На помощь приходит <em>метод резолюций</em>.</p>
+<p>Типичный пример применения метода резолюций: представьте, что у вас есть база знаний, записанная в форме дизъюнктов (логики высказываний или логики предикатов). Вы хотите узнать, будет ли заданная формула истинной, когда истинны все допущения базы знаний. Другими словами, вы делаете <em>запрос к базе знаний</em> и хотите выяснить истинность следствия.</p>
+<p>Например, вы знаете, что:</p>
+<ul class="simple">
+<li><p>если не сдать логику (<span class="math notranslate nohighlight">\(\neg x)\)</span>, сессия не будет закрыта (<span class="math notranslate nohighlight">\(\neg y)\)</span>;</p></li>
+<li><p>если не закрыть сессию (<span class="math notranslate nohighlight">\(\neg y\)</span>), не будет стипендии (<span class="math notranslate nohighlight">\(\neg z\)</span>).</p></li>
+</ul>
+<p>Вы почти уверены, но хотите уточнить: правда ли, что стипендия будет только в том случае, если сдашь логику (<span class="math notranslate nohighlight">\(z \to x\)</span>)?</p>
+<p>База знаний: <span class="math notranslate nohighlight">\(\neg x \to \neg y,\; \neg y \to \neg z\)</span>.</p>
+<p>Запрос: <span class="math notranslate nohighlight">\(\;?\, z \to x\)</span>.</p>
+<p>Решение:</p>
+<p>Компьютер берёт отрицание вашего запроса и добавляет его в базу знаний, а затем проверяет, что полученное множество формул несовместно.</p>
+<p>Чтобы быстро проверить несовместность формул, алгоритм пытается вывести противоречие (тождественный <span class="math notranslate nohighlight">\(0\)</span>) из множества дизъюнктов с помощью <em>правила резолюции</em>.</p>
+<p>Если противоречие удается вывести - значит, множество формул несовместно.</p>
+<p>Если противоречие никак не выводится - значит, множество формул выполнимо, и с помощью метода резолюций можно даже подобрать выполняющую оценку.</p>
 <section id="id18">
 <h3>Правило резолюции<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
-<p>Пример</p>
+<p>Правило резолюции - это вот такое логическое следствие (здесь <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, <span class="math notranslate nohighlight">\(C\)</span> - любые формулы):</p>
 <p><span class="math notranslate nohighlight">\(
 \dfrac{A \vee B, \;\; \neg A \vee C}{B \vee C}
 \)</span></p>
+<p><strong>Пример.</strong> Придадим буквам смысл:</p>
 <p><span class="math notranslate nohighlight">\(A = \)</span> “прогулял пару”</p>
 <p><span class="math notranslate nohighlight">\(B = \)</span> “слушаю лекцию”</p>
 <p><span class="math notranslate nohighlight">\(C = \)</span> “сплю”</p>
-<p>компьютерное задание - метод резолюций; показать программу</p>
-</section>
+<p>Формулы над чертой - это наши гипотезы, их мы считаем истинными.</p>
+<p>То есть, с одной стороны, из формулы <span class="math notranslate nohighlight">\(A \vee B\)</span> не может быть, что я одновременно не прогулял пару и не слушаю лекцию. С другой стороны, из формулы <span class="math notranslate nohighlight">\(A \vee C\)</span> не может быть, что я одновременно прогулял пару и не сплю.</p>
+<p>Согласно правилу резолюции, я делаю вывод: или я слушаю лекцию, или сплю (или и то, и другое одновременно).</p>
+<p><strong>Упражнение.</strong> Обоснуйте правило резолюции: а) с помощью компьютерной программы проверки логического следствия; б) методом от противного.</p>
 </section>
 <section id="id19">
-<h2>Литература<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<h3>Проверка логического следствия<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p>Так как метод резолюций применяется к дизъюнктам, для проверки выполнимости булевой формулы следует привести формулу к КНФ.</p>
+<p><strong>Пример.</strong> Проверим логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; z \vee y \; \models \; x \vee y.
+\)</span></p>
+<p>Согласно второму критерию логического следствия, нужно проверить несовместность множества формул</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \; z \vee y, \; \neg(x \vee y),
+\)</span></p>
+<p>то есть тождественную ложность их конъюнкции:</p>
+<p><span class="math notranslate nohighlight">\(
+(z \to x)\,\&amp;\, (z \vee y)\,\&amp;\, \neg(x \vee y) \equiv 0.
+\)</span></p>
+<p>Приводим эту формулу к КНФ:</p>
+<p><span class="math notranslate nohighlight">\(
+(z \to x)\,\&amp;\, (z \vee y)\,\&amp;\, \neg(x \vee y) =
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= (\neg z \vee x)\,\&amp;\, (z \vee y)\,\&amp;\, \neg x \,\&amp;\, \neg y.
+\)</span></p>
+<p>Перечисляем все дизъюнкты:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg z \vee x, \;z \vee y,\; \neg x,\; \neg y.
+\)</span></p>
+<p>Нам осталось вооружиться правилом резолюции, чтобы вывести <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Первые два дизъюнкта резольвируют. Это значит, что к ним можно применить правило резолюции.
+Контрарные (противоположные) литеры вычеркиваются, а остатки соединяются.</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{\neg z \vee x,\; z \vee y}{x \vee y}
+\)</span></p>
+<p>Логическое следствие добавляется в базу знаний:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg z \vee x,\; z \vee y,\; \neg x,\; \neg y, \; x\vee y.
+\)</span></p>
+<p>Снова ищем, какие дизъюнкты резольвируют.
+Теперь это два последних дизъюнкта. Дизъюнкт <span class="math notranslate nohighlight">\(\neg y\)</span> запишем в виде <span class="math notranslate nohighlight">\(0 \vee \neg y\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{0 \vee \neg y, \; x \vee y}{0 \vee x}
+\)</span></p>
+<p>Логическое следствие: <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Снова пополняем базу знаний:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg z \vee x,\; z \vee y,\; \neg x,\; \neg y, \; x\vee y, \; x.
+\)</span></p>
+<p>Из дизъюнктов <span class="math notranslate nohighlight">\(x\)</span> и <span class="math notranslate nohighlight">\(\neg x\)</span> сразу выводим <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Итак, формула <span class="math notranslate nohighlight">\((z \to x)\,\&amp;\, (z \vee y)\,\&amp;\, \neg(x \vee y)\)</span> оказалась невыполнимой. А значит, логическое следствие нарушить нельзя. Логическое следствие выполняется.</p>
+<p><strong>Пример.</strong> Проверим логическое следствие:</p>
+<p><span class="math notranslate nohighlight">\(
+z \to x, \;\; x \vee y \; \models \; z \vee y.
+\)</span></p>
+<p>Второй критерий логического следствия:</p>
+<p><span class="math notranslate nohighlight">\(
+(z \to x) \,\&amp;\, (x \vee y) \,\&amp;\, \neg (z \vee y) \equiv 0.
+\)</span></p>
+<p>Приводим формулу к КНФ:</p>
+<p><span class="math notranslate nohighlight">\(
+(\neg z \vee x) \,\&amp;\, (x \vee y) \,\&amp;\, \neg z \,\&amp;\, \neg  y.
+\)</span></p>
+<p>Перечисляем все дизъюнкты:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg z \vee x, \; x \vee y, \; \neg z, \; \neg  y.
+\)</span></p>
+<p>Применяем правило резолюций:</p>
+<p>Из второго и четвертого дизъюнктов выводим <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Больше ничего вывести не получается.</p>
+<p>Чтобы наша КНФ равнялась <span class="math notranslate nohighlight">\(1\)</span>, мы выяснили, что должны быть истинными формулы <span class="math notranslate nohighlight">\(x,\, \neg y, \, \neg z\)</span>. Поэтому попутно найден контрпример: <span class="math notranslate nohighlight">\(x = 1,\,y = 0, \, z = 0\)</span>, опровергающий логическое следствие.</p>
+</section>
+<section id="id20">
+<h3>Задачи на метод резолюций<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p><strong>Задача.</strong> Три комнаты: 1, 2, 3. В каждой ровно один обитатель: принцесса, тигр, призрак (все разные, по одному).</p>
+<p>Таблички:</p>
+<p>Комната 1: «Призрак в комнате 3».</p>
+<p>Комната 2: «Принцесса не в комнате 1».</p>
+<p>Комната 3: «Тигр в комнате 2».</p>
+<p>Правила правдивости:</p>
+<p>Если в комнате принцесса, то надпись на её двери истинна.</p>
+<p>Если в комнате тигр, то надпись на его двери ложна.</p>
+<p>Если в комнате призрак, то надпись может быть любой (нет ограничений).</p>
+<p>Цель: определить, кто в какой комнате, используя метод резолюций.</p>
+<p><em>Схема решения.</em> Введем булевы переменные <span class="math notranslate nohighlight">\(P_{i, X}\)</span>, где <span class="math notranslate nohighlight">\(i = 1, 2, 3\)</span> - номер комнаты, <span class="math notranslate nohighlight">\(X = P, T, G\)</span> (принцесса, тигр, призрак). То есть всего 9 переменных. Например, <span class="math notranslate nohighlight">\(P_{1, P}\)</span> означает “в комнате 1 - принцесса”.</p>
+<p>Запишем ограничения в виде формул алгебры логики.</p>
+<p>Сначала скажем, что каждый обитатель находится в одной своей комнате.</p>
+<p><span class="math notranslate nohighlight">\(P_{1,P} \vee P_{2,P} \vee P_{3,P}\)</span></p>
+<p>Для любых <span class="math notranslate nohighlight">\(i, j\)</span>, где <span class="math notranslate nohighlight">\(i\neq j\)</span> справедлива формула: <span class="math notranslate nohighlight">\(P_{i, P} \to \neg P_{j, P}\)</span> (если принцесса в <span class="math notranslate nohighlight">\(i\)</span>-й комнате, то в <span class="math notranslate nohighlight">\(j\)</span>-й комнате её нет), или, по формуле замены импликации, <span class="math notranslate nohighlight">\(\neg P_{i, P} \vee \neg P_{j, P}\)</span>.</p>
+<p>Итак,</p>
+<p><span class="math notranslate nohighlight">\(\neg P_{1, P} \vee \neg P_{2, P}, \; \neg P_{1, P} \vee \neg P_{3, P}, \; \neg P_{2, P} \vee \neg P_{3, P}.\)</span></p>
+<p>Аналогично для <span class="math notranslate nohighlight">\(T\)</span> и <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>Итого мы записали 12 дизъюнктов.</p>
+<p>Теперь скажем, что в каждой комнате находится ровно один обитатель.</p>
+<p>В первой комнате кто-то есть:</p>
+<p><span class="math notranslate nohighlight">\(
+P_{1, P} \vee P_{1, T} \vee P_{1, G}
+\)</span></p>
+<p>Аналогично для второй и третьей комнат.</p>
+<p>Также запишем условия, что если в комнате есть кто-то один, то кого-то другого там нет.</p>
+<p>Для каждого <span class="math notranslate nohighlight">\(i = 1, 2, 3\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg P_{i, P} \vee \neg P_{i, T}, \; \neg P_{i, P} \vee \neg P_{i, G}, \; \neg P_{i, T} \vee \neg P_{i, G}.
+\)</span></p>
+<p>Итого мы записали ещё 12 дизъюнктов.</p>
+<p>Дальше запишем условия на табличках.</p>
+<p>Комната 1: «Призрак в комнате 3» <span class="math notranslate nohighlight">\(\Rightarrow \; S_1 = P_{3, G}\)</span></p>
+<p>Комната 2: «Принцесса не в комнате 1» <span class="math notranslate nohighlight">\(\Rightarrow \; S_2 = \neg P_{1, P}\)</span></p>
+<p>Комната 3: «Тигр в комнате 2» <span class="math notranslate nohighlight">\(\Rightarrow \; S_3 = P_{2, T}\)</span></p>
+<p>Правила правдивости:</p>
+<p>Если <span class="math notranslate nohighlight">\(P_{i, P}\)</span> (принцесса), то <span class="math notranslate nohighlight">\(S_i\)</span> истинно <span class="math notranslate nohighlight">\(\Rightarrow \; P_{i, P} \to S_i\)</span></p>
+<p>Если <span class="math notranslate nohighlight">\(P_{i, T}\)</span> (тигр), то <span class="math notranslate nohighlight">\(S_i\)</span> ложно <span class="math notranslate nohighlight">\(\Rightarrow \; P_{i, T} \to \neg S_i\)</span></p>
+<p>Итак, дизъюнкты:</p>
+<p>(первое правило правдивости)</p>
+<p><span class="math notranslate nohighlight">\(P_{1, P} \to P_{3, G} = \neg P_{1, P} \vee P_{3, G}\)</span></p>
+<p><span class="math notranslate nohighlight">\(P_{2, P} \to \neg P_{1, P} = \neg P_{2, P} \vee \neg P_{1, P}\)</span></p>
+<p><span class="math notranslate nohighlight">\(P_{3, P} \to P_{2, T} = \neg P_{3, P} \vee P_{2, T}\)</span></p>
+<p>(второе правило правдивости)</p>
+<p><span class="math notranslate nohighlight">\(P_{1, T} \to \neg P_{3, G} = \neg P_{1, T} \vee \neg P_{3, G}\)</span></p>
+<p><span class="math notranslate nohighlight">\(P_{2, T} \to P_{1, P} = \neg P_{2, T} \vee P_{1, P}\)</span></p>
+<p><span class="math notranslate nohighlight">\(P_{3, T} \to \neg P_{2, T} = \neg P_{3, T} \vee \neg P_{2, T}\)</span></p>
+<p>Итого у нас ещё 6 дизъюнктов.</p>
+<p>Итак, всего 9 переменных и 30 дизъюнктов.</p>
+<p>Нашу КНФ теперь не так сложно ввести в компьютерную программу, которая найдет выполняющий набор значений переменных.</p>
+<p><strong>Задача.</strong> Классическая “задача Эйнштейна” тоже сводится к задаче выполнимости системы ограничений.</p>
+<p>Есть 5 домов в ряд, пронумерованных 1-5 слева направо. В каждом живёт ровно один человек. У каждого человека есть ровно одна характеристика из каждой категории: национальность, цвет дома, напиток, автомобиль, питомец.</p>
+<p>И есть набор условий, которые переводятся в логические формулы.</p>
+<p>Надо определить, кто держит рыбок.</p>
+<p>Для решения этой задачи по методу резолюций перебираем <span class="math notranslate nohighlight">\(i\)</span> от 1 до 5 и добавляем к базе знаний отрицание условия, что “<span class="math notranslate nohighlight">\(i\)</span>-й человек держит рыбок”, и пытаемся вывести противоречие. (То есть проверяем по очереди все возможные логические следствия.)</p>
+<p><strong>Задача.</strong> <a class="reference external" href="https://www.babyblog.ru/community/jumpy/post/344969">Зоологика</a>: закодируйте пример с помощью логических формул и решите методом резолюций.</p>
+<p><strong>Упражнение.</strong> Вам дана программа, в которой реализован метод резолюций. Решите с помощью этой программы разобранные задачи.</p>
+<p>Для быстрого нахождения всех выполняющих наборов можно использовать SAT-солвер <code class="docutils literal notranslate"><span class="pre">pycosat</span></code>. (Можно обратиться к нейросети, чтобы представить условие задачи в формате, который понимает SAT-солвер, например, DIMACS CNF. Не забывайте, что ответственность за правильность нейросетевого решения лежит на вас! Перепроверяйте!) Ещё вариант (медленнее) - построить таблицу истинности.</p>
+<p>Дополнительные материалы по SAT-солверам: <a class="reference external" href="https://habr.com/ru/articles/857352/">1</a>, <a class="reference external" href="https://habr.com/ru/articles/951876/">2</a>, <a class="reference external" href="https://habr.com/ru/articles/1071466/">3</a></p>
+</section>
+</section>
+<section id="id21">
+<h2>Литература<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
 <p>Крупский, Плиско - Математическая логика и теория алгоритмов</p>
 </section>
 </section>
@@ -1134,9 +1339,11 @@ y
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Метод резолюций</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Правило резолюции</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Проверка логического следствия</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Задачи на метод резолюций</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Литература</a></li>
 </ul>
   </nav></div>
 
