@@ -35,6 +35,7 @@ chapters:
   sections:
   - file: logic-propositional-algebra
   - file: logic-propositional-algebra-2
+  - file: logic-propositional-calculus
   - file: logic-and-programming
 - file: entertainment
   sections:
