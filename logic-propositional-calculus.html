@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Исчисление высказываний &#8212; Элементы математики</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/../styles/editor_styles.css?v=14e1f340" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'logic-propositional-calculus';</script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="_static/../js/pyodide_api.js?v=56641602"></script>
+    <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
+    <script src="_static/../js/editor.bundle.js?v=1047e269"></script>
+    <script src="_static/tests/ls_task1.js?v=115f8710"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Логика в программировании" href="logic-and-programming.html" />
+    <link rel="prev" title="Алгебра высказываний - 2" href="logic-propositional-algebra-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Элементы математики - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Элементы математики - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Элементы математики
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="linalg.html">Линейная алгебра</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-spaces.html">Линейные пространства и линейные отображения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear-mappings.html">Линейные отображения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix-mult.html">Умножение матриц</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ls.html">Аппроксимация. Метод наименьших квадратов</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="statistics.html">Статистика</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-regression.html">Линейная регрессия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression_use.html">Использование линейной регрессии</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naive-Bayes.html">Наивный байесовский классификатор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monte_carlo.html">Метод Монте-Карло</a></li>
+<li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="discr.html">Дискретная математика</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-boolean.html">Булевы функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-sets.html">Множества</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-relations.html">Отношения и функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-combin.html">Комбинаторика</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discr-graphs.html">Графы</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="algorithms.html">Алгоритмы</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="algo-intro1.html">Начало тренировок</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-seq-sets.html">Последовательности и множества</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algo-trees-graphs.html">Деревья и графы</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="logic-computation.html">Логика и вычисления</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra.html">Алгебра высказываний - 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra-2.html">Алгебра высказываний - 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Исчисление высказываний</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logic-and-programming.html">Логика в программировании</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="entertainment.html">Развлечения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="math_cards.html">Математические открытки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math_songs.html">Математические песни</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lapkin25/test-abstracts" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Flogic-propositional-calculus.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/logic-propositional-calculus.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Исчисление высказываний</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Исчисление высказываний: от философии науки к цифровой инженерии (эссе)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Почему формализация вообще важна: взгляд Вигнера</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Программа Гильберта: стремление к полной формализации математики</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">В чём была суть программы</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Как это связано с нашей темой</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Удар по программе: теоремы Гёделя</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Проблема разрешимости</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Роль работ Тьюринга</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Что это значило</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">От слов к символам: Фреге и Буль</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">От формул к железу: революция Шеннона</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Практический пример</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Синтез: как всё это связано</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Мини‑упражнения для закрепления</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Куда двигаться дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Пример из жизни</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Программная реализация</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Исчисление высказываний<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>Формальные системы (логика, алгебра, исчисления) дают нам язык, который удивительно хорошо описывает структуру задач реального мира.</p>
+<p>Исчисление высказываний не объясняет, почему природа устроена так, а не иначе; оно лишь показывает, как с помощью строгих правил из немногих исходных идей можно получить много нетривиальных следствий, которые потом подтверждаются опытом.</p>
+<section id="id2">
+<h2>Исчисление высказываний: от философии науки к цифровой инженерии (эссе)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><em>Помощь в составлении эссе оказала Алиса AI</em></p>
+<section id="id3">
+<h3>Почему формализация вообще важна: взгляд Вигнера<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Начнём с большого вопроса: почему математика так хорошо описывает природу? На этот вопрос пытался ответить физик Юджин Вигнер в статье «О непостижимой эффективности математики в естественных науках» (1960).</p>
+<p>Вигнер подчёркивал, что математические конструкции, созданные зачастую в отрыве от практики, неожиданно оказываются идеально пригодными для описания широкого класса природных явлений.</p>
+<p>Например:</p>
+<ul class="simple">
+<li><p><em>Уравнения Максвелла.</em> Выведенные для известных в XIX веке электрических и магнитных явлений, они позже предсказали существование радиоволн.</p></li>
+<li><p><em>Закон всемирного тяготения.</em> Сначала описывал падение тел на Земле, а затем оказался точным инструментом для расчёта орбит планет.</p></li>
+</ul>
+<p>Для нас, изучающих логику, ключевой вывод такой: чтобы использовать эту «эффективность», нужно уметь строго формулировать утверждения и выводить из них следствия. Именно здесь на сцену выходит формальная логика: она даёт однозначный язык и правила вывода, которые позволяют превратить интуитивные идеи в проверяемые утверждения.</p>
+<p>Сам факт, что природа так хорошо «ложится» на формальные схемы, — это и есть та самая «непостижимость», о которой говорил Вигнер. А исчисление высказываний — один из самых простых и наглядных инструментов для такой формализации.</p>
+</section>
+<section id="id4">
+<h3>Программа Гильберта: стремление к полной формализации математики<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Параллельно с размышлениями о связи математики и реальности в начале XX века развивалась мощная программа по основаниям математики — программа Давида Гильберта.</p>
+<section id="id5">
+<h4>В чём была суть программы<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>Гильберт хотел сделать математику полностью надёжной и прозрачной через полную формализацию:</p>
+<ol class="arabic simple">
+<li><p><em>Формальная система аксиом.</em> Все математические утверждения должны быть записаны как формулы в строго определённом языке.</p></li>
+<li><p><em>Чёткие правила вывода.</em> Доказательство — это просто последовательность формул, где каждая следующая получается из предыдущих по формальным правилам.</p></li>
+<li><p><em>Доказательство непротиворечивости.</em> Главная цель: доказать, что в такой системе нельзя одновременно вывести утверждение и его отрицание (то есть система не содержит внутренних противоречий).</p></li>
+<li><p><em>Полнота.</em> В идеале хотелось бы, чтобы любое истинное утверждение можно было доказать в рамках системы.</p></li>
+</ol>
+</section>
+<section id="id6">
+<h4>Как это связано с нашей темой<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>Программа Гильберта напрямую мотивировала развитие математической логики: именно ради этих целей активно исследовались исчисления высказываний и предикатов, формальные доказательства, вопросы разрешимости. Исчисление высказываний здесь — это «пробный полигон»: на нём удобно изучать, как устроены формальные системы, прежде чем переходить к более сложным теориям.</p>
+</section>
+<section id="id7">
+<h4>Удар по программе: теоремы Гёделя<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>В 1931 году Курт Гёдель доказал свои знаменитые теоремы о неполноте, которые показали принципиальные ограничения формальных систем:</p>
+<ul class="simple">
+<li><p>В достаточно богатой формальной системе всегда найдутся истинные утверждения, которые нельзя доказать внутри этой системы.</p></li>
+<li><p>Невозможно доказать непротиворечивость системы средствами самой этой системы.</p></li>
+</ul>
+<p>Это не отменило ценность формализации, но показало, что «абсолютной надёжности» в духе Гильберта достичь нельзя. Тем не менее, именно программа Гильберта дала мощный импульс развитию логики, теории доказательств и вычислимости — и в конечном счёте повлияла на то, как мы сегодня строим формальные методы в информатике.</p>
+</section>
+<section id="id8">
+<h4>Проблема разрешимости<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<p>В 1928 году Давид Гильберт и Вильгельм Аккерман в книге «Принципы математической логики» сформулировали задачу, известную как проблема разрешимости (Entscheidungsproblem). Вопрос звучал так: существует ли универсальный алгоритм (эффективная процедура), который для любой заданной формулы в логике первого порядка мог бы за конечное число шагов ответить: «да» (формула общезначима, то есть истинна во всех возможных моделях) или «нет» (не общезначима)? Иными словами, можно ли механически, шаг за шагом, проверять истинность любого математического утверждения, если оно записано в формальном языке?</p>
+<p>Гильберт видел в этом ключевой шаг для своей программы по основаниям математики: если такой алгоритм есть, то доказательство теорем сведётся к рутинной механической процедуре — выписал аксиомы, применил правила вывода, и алгоритм сам найдёт доказательство или опровержение.</p>
+<p>Кстати, для некоторых частных случаев ответ был положительным. Например, для исчисления высказываний проблему разрешимости решили: там действительно есть эффективный метод (например, построение таблиц истинности). Но Гильберт и Аккерман ставили вопрос шире — для всей логики первого порядка.</p>
+</section>
+<section id="id9">
+<h4>Роль работ Тьюринга<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<p>Прорыв случился в 1936 году. Алан Тьюринг опубликовал статью «О вычислимых числах в приложении к проблеме разрешения». Чтобы доказать неразрешимость Entscheidungsproblem, ему пришлось сначала чётко определить, что вообще значит «алгоритм» в математическом смысле. Для этого он ввёл абстрактную модель — машину Тьюринга. Это мысленный эксперимент: устройство с бесконечной лентой, головкой для чтения/записи и таблицей переходов. Ключевая идея: любая интуитивно понятная вычислимая задача может быть смоделирована такой машиной.</p>
+<p>Опираясь на эту модель, Тьюринг показал, что проблема разрешимости неразрешима в общем случае. Один из ключевых шагов в его доказательстве связан с так называемой проблемой остановки: можно ли создать алгоритм, который по описанию любой машины Тьюринга и её входным данным определит, остановится ли эта машина или зациклится навсегда? Тьюринг доказал, что такого универсального алгоритма не существует. А поскольку проблему остановки можно свести к проблеме разрешимости, это и показало: не бывает алгоритма, который бы для любой логической формулы гарантированно давал ответ «да» или «нет».</p>
+<p>Интересно, что почти одновременно с Тьюрингом аналогичный результат получил Алонзо Чёрч (используя λ-исчисление).</p>
+</section>
+<section id="id10">
+<h4>Что это значило<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<p>Результат Тьюринга (и Чёрча) нанёс серьёзный удар по программе Гильберта. Он показал фундаментальное ограничение: в достаточно богатых формальных системах (вроде арифметики натуральных чисел) принципиально не существует механического способа, который бы для всякого утверждения решал, доказуемо оно или нет. Это тесно перекликалось и с теоремами Гёделя о неполноте (1931 год): они уже показали, что в таких системах есть истинные утверждения, которые нельзя доказать внутри самой системы.</p>
+<p>Тем не менее, работа Тьюринга имела колоссальное значение не только для логики. Его модель вычислений заложила теоретический фундамент для всей современной компьютерной науки.</p>
+</section>
+</section>
+<section id="id11">
+<h3>От слов к символам: Фреге и Буль<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Чтобы формализация работала, нужны чёткие правила. В этом направлении работали два ключевых автора.</p>
+<p>Готлоб Фреге развивал строгую систему логики и заложил основы формальных систем. Для темы исчисления высказываний важно, что Фреге показал, как можно строить рассуждения с чёткими правилами вывода, чтобы они были однозначными и воспроизводимыми.</p>
+<p>Джордж Буль создал алгебру логики (булеву алгебру), где высказывания — это переменные, а связки («И», «ИЛИ», «НЕ») — операции над ними. Это и есть алгебраический язык исчисления высказываний.</p>
+<p>На практике это выглядит так: мы берём простые утверждения и обозначаем их буквами:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span>: «Система включена»</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span>: «Дверь открыта»</p></li>
+</ul>
+<p>Тогда сложное утверждение «Система включена и дверь открыта» записывается как
+<span class="math notranslate nohighlight">\(P \,\&amp;\, Q\)</span>. А «Система включена или дверь открыта» — как <span class="math notranslate nohighlight">\(P\vee Q\)</span>.</p>
+<p>Важный навык — упрощать такие выражения. Например, с помощью законов де Моргана:</p>
+<p><span class="math notranslate nohighlight">\(
+\neg (P \,\&amp;\, Q) = \neg P \vee \neg Q
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\neg (P \vee Q) = \neg P \,\&amp;\, \neg Q
+\)</span></p>
+<p>Таким образом, Фреге дал «грамматику» формальных рассуждений, а Буль — «арифметику» для высказываний. Вместе они создали аппарат, который позволяет работать с логикой как с точной наукой.</p>
+</section>
+<section id="id12">
+<h3>От формул к железу: революция Шеннона<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Следующий шаг — перейти от абстрактных формул к реальным устройствам. Эту связь блестяще показал Клод Шеннон в магистерской диссертации «Символический анализ релейных и переключательных схем» (1938).</p>
+<p>Шеннон продемонстрировал, что булева алгебра идеально описывает поведение электрических схем:</p>
+<ul class="simple">
+<li><p><em>Переключатель/контакт</em> — это логическая переменная.</p></li>
+<li><p><em>Последовательное соединение контактов</em> — конъюнкция (<span class="math notranslate nohighlight">\(A \,\&amp;\, B\)</span>): цепь замкнута, только если оба контакта замкнуты.</p></li>
+<li><p><em>Параллельное соединение</em> — дизъюнкция (<span class="math notranslate nohighlight">\(A \vee B\)</span>): цепь замкнута, если хотя бы один контакт замкнут.</p></li>
+<li><p><em>Реле с инверсией</em> — отрицание (<span class="math notranslate nohighlight">\(\neg A\)</span>).</p></li>
+</ul>
+<section id="id13">
+<h4>Практический пример<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
+<p>Представьте схему сигнализации: «Сигнал подаётся, если открыта дверь ИЛИ разбито окно, И при этом система включена».</p>
+<p>Обозначим:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D\)</span>: «Дверь открыта»</p></li>
+<li><p><span class="math notranslate nohighlight">\(W\)</span>: «Окно разбито»</p></li>
+<li><p><span class="math notranslate nohighlight">\(S\)</span>: «Система включена»</p></li>
+</ul>
+<p>Формула: <span class="math notranslate nohighlight">\((D \vee W) \,\&amp;\, S\)</span>.</p>
+<p>Если мы хотим упростить схему или проверить её поведение, мы можем использовать законы булевой алгебры. Например, раскрыть скобки или применить законы поглощения. Это напрямую экономит компоненты и делает схему надёжнее.</p>
+<p>Именно так формальная логика становится инженерной дисциплиной. Логические вентили (AND, OR, NOT, NAND, NOR) — прямое воплощение булевых операций. Вся цифровая электроника (процессоры, память) построена на этих принципах.</p>
+</section>
+</section>
+<section id="id14">
+<h3>Синтез: как всё это связано<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>Давайте соберём картину воедино:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Идея</p></th>
+<th class="head"><p>Автор</p></th>
+<th class="head"><p>Роль в науке и информатике</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Математика удивительно хорошо описывает мир</p></td>
+<td><p>Вигнер</p></td>
+<td><p>Обоснование ценности формальных моделей: если мир «логичен», формальные системы будут эффективны.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Стремление к полной формализации и доказательству непротиворечивости</p></td>
+<td><p>Гильберт (с оговоркой Гёделя)</p></td>
+<td><p>Мотивация для развития математической логики и теории доказательств; фундамент для формальных методов.</p></td>
+</tr>
+<tr class="row-even"><td><p>Строгие правила вывода и формализация</p></td>
+<td><p>Фреге</p></td>
+<td><p>Основа для построения непротиворечивых систем и автоматического вывода.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Алгебра высказываний, операции над истинностными значениями</p></td>
+<td><p>Буль</p></td>
+<td><p>Математический аппарат для работы с логическими выражениями и их упрощения.</p></td>
+</tr>
+<tr class="row-even"><td><p>Применение булевой логики к схемам</p></td>
+<td><p>Шеннон</p></td>
+<td><p>Инженерная реализация: логика → схемы → компьютеры.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Мы видим красивую цепочку: философия науки (Вигнер) задаёт вопрос «почему математика работает?», программа Гильберта и логика (Фреге, Буль) даёт инструменты, чтобы эту работу сделать максимально строгой и понятной, а инженерия (Шеннон) показывает, как эти инструменты превращаются в реальные устройства. Исчисление высказываний — это точка пересечения всех трёх направлений.</p>
+<section id="id15">
+<h4>Мини‑упражнения для закрепления<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><em>Перевод в логику.</em> Дано описание: «Сигнализация срабатывает, если открыта дверь ИЛИ разбито окно, И при этом система включена». Запишите это как формулу и попробуйте её упростить.</p></li>
+<li><p><em>Схема по формуле.</em> Дана формула <span class="math notranslate nohighlight">\((A \vee B) \,\&amp;\, \neg C\)</span>. Нарисуйте схему из контактов и реле, которая реализует эту логику.</p></li>
+<li><p><em>Связь с SAT.</em> Объясните, что задача «найти такие значения переменных, при которых формула истинна» — это и есть задача выполнимости (SAT). Это прямой мост к темам SAT‑солверов, CNF и метода резолюций.</p></li>
+</ol>
+</section>
+<section id="id16">
+<h4>Куда двигаться дальше<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><em>Логика предикатов.</em> Переход от простых высказываний к кванторам и переменным, что нужно для более сложных моделей.</p></li>
+<li><p><em>SMT‑солверы.</em> Развитие идей SAT с учётом дополнительных теорий (арифметика, массивы и т. п.).</p></li>
+<li><p><em>Нейросимволический ИИ.</em> Современные попытки соединить гибкость нейросетей с жёсткой логикой формальных систем — тема, которая активно развивается сегодня.</p></li>
+<li><p><em>Теория доказательств и автоматизация доказательств.</em> Изучение того, как формальные системы используются для проверки математических теорем и программ.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id17">
+<h2>Пример из жизни<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>Принципами исчисления высказываний пользуются не только в естественных и технических науках, но и в повседневных делах.</p>
+<p>Давайте попробуем придать точную форму житейским рассуждениям.</p>
+<p>Краткая справка, что такое вообще исчисление:</p>
+<ul class="simple">
+<li><p>Задаётся <em>язык формул</em>, который используется для записи высказываний.</p></li>
+<li><p>Вводятся <em>аксиомы</em> - исходные формулы, из которых будут выводиться все возможные следствия.</p></li>
+<li><p>Указываются <em>правила вывода</em>, по которым выводятся новые формулы.</p></li>
+</ul>
+<p>В результате получаются все <em>выводимые</em> формулы  языка. Если согласовать правила и аксиомы с той сермяжной правдой, которую мы хотим описать при помощи исчисления, то можно добиться того, что <em>выводимость</em> и <em>истинность</em> формулы будут эквивалентны друг другу.</p>
+<p>Выводить новые формулы можно не только из аксиом, но и из любого множества формул (так называемых <em>гипотез</em>), которые считаются условно истинными.</p>
+<p><strong>Пример.</strong> Допустим, человек придерживается следующих убеждений: “Если молодой человек и девушка любят друг друга, то они не могут быть
+не уверены в своих чувствах. Если молодой человек и девушка сожительствуют, то они
+не уверены в своих чувствах. Если они вступили в брак, то они любят друг друга. Если
+они не уверены в своих чувствах, то они не вступают в брак.”</p>
+<p>Какой вывод он может сделать, если: а) молодой человек и девушка вступили в брак; б)
+молодой человек и девушка сожительствуют?</p>
+<p>Обозначим через <span class="math notranslate nohighlight">\(\Gamma\)</span> множество <em>гипотез</em>, которое моделирует систему убеждений, истинных для конкретного человека.</p>
+<p>Введем элементарные высказывания:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a = \)</span> “молодой человек и девушка вступили в брак”</p></li>
+<li><p><span class="math notranslate nohighlight">\(b = \)</span> “молодой человек и девушка любят друг друга”</p></li>
+<li><p><span class="math notranslate nohighlight">\(c = \)</span> “молодой человек и девушка сожительствуют”</p></li>
+<li><p><span class="math notranslate nohighlight">\(d = \)</span> “молодой человек и девушка не уверены в своих чувствах”</p></li>
+</ul>
+<p>Запишем гипотезы:</p>
+<p><span class="math notranslate nohighlight">\(b \to \neg d, \;\; c \to d, \;\; a \to b, \;\; d \to \neg a.\)</span></p>
+<p>В случае а) добавим к нашему множеству гипотез формулу <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<p>Воспользуемся правилом <em>modus ponens</em>:</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{A \to B, \; A}{B},
+\)</span></p>
+<p>а также правилом отрицания (<em>modus tollens</em>):</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{A \to B, \; \neg B}{\neg A}.
+\)</span></p>
+<p>Вывод в исчислении высказываний:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(b \to \neg d\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(c \to d\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(a \to b\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(d \to \neg a\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> - MP из 3, 5</p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg d\)</span> - MP из 1, 6</p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg c\)</span> - MT из 2, 7</p></li>
+</ol>
+<p>Итак, из гипотез <span class="math notranslate nohighlight">\(\Gamma\)</span> (убеждения) и дополнительной гипотезы <span class="math notranslate nohighlight">\(a =\)</span> “молодой человек и девушка вступили в брак” вытекает, что:</p>
+<ul class="simple">
+<li><p>они любят друг друга (<span class="math notranslate nohighlight">\(b\)</span>)</p></li>
+<li><p>они не сожительствуют (<span class="math notranslate nohighlight">\(\neg c\)</span>)</p></li>
+<li><p>они не могут быть не уверены в своих чувствах (<span class="math notranslate nohighlight">\(\neg d\)</span>)</p></li>
+</ul>
+<p>Теперь рассмотрим случай б), когда в качестве гипотезы принята формула <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(b \to \neg d\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(c \to d\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(a \to b\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(d \to \neg a\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span> - гипотеза</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> - MP из 2, 5</p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg a\)</span> - MP из 4, 6</p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg b\)</span> - MT из 1, 6</p></li>
+</ol>
+<p>Итак, из гипотез <span class="math notranslate nohighlight">\(\Gamma\)</span> (убеждения) и дополнительной гипотезы <span class="math notranslate nohighlight">\(c =\)</span> “молодой человек и девушка сожительствуют” вытекает, что:</p>
+<ul class="simple">
+<li><p>они не вступили в брак (<span class="math notranslate nohighlight">\(\neg a\)</span>)</p></li>
+<li><p>они не любят друг друга (<span class="math notranslate nohighlight">\(\neg b\)</span>)</p></li>
+<li><p>они не уверены в своих чувствах (<span class="math notranslate nohighlight">\(d\)</span>)</p></li>
+</ul>
+<p>Из нашего примера видно, как исчисление высказываний помогает механизировать и автоматизировать логические выводы.</p>
+<p>Будучи чисто механическим инструментом, исчисление высказываний имеет понятную семантику. Любая формула, выводимая из аксиом в исчислении высказываний, - это тавтология алгебры высказываний. Любая формула, выводимая из гипотез, - это следствие этих гипотез в алгебре высказываний.</p>
+<p>С практической точки зрения, исчисление высказываний - удобный инструмент для логического вывода следствий из заданных гипотез.</p>
+</section>
+<section id="id18">
+<h2>Программная реализация<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+</section>
+<section id="id19">
+<h2>Литература<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://vk.ru/wall-225887804_136">Материалы для самостоятельного изучения</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="logic-propositional-algebra-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Алгебра высказываний - 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="logic-and-programming.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Логика в программировании</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Исчисление высказываний: от философии науки к цифровой инженерии (эссе)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Почему формализация вообще важна: взгляд Вигнера</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Программа Гильберта: стремление к полной формализации математики</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">В чём была суть программы</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Как это связано с нашей темой</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Удар по программе: теоремы Гёделя</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Проблема разрешимости</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Роль работ Тьюринга</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Что это значило</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">От слов к символам: Фреге и Буль</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">От формул к железу: революция Шеннона</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Практический пример</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Синтез: как всё это связано</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Мини‑упражнения для закрепления</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Куда двигаться дальше</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Пример из жизни</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Программная реализация</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Кафедра математики и моделирования
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
