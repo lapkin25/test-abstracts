@@ -447,8 +447,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Пример из жизни</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Программная реализация</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Схемы аксиом и правило вывода</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Аксиомы с импликацией (А1, А2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Теорема о дедукции</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Правила вывода с импликацией</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Программная реализация</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Литература</a></li>
 </ul>
             </nav>
         </div>
@@ -697,11 +703,124 @@ document.write(`
 <p>С практической точки зрения, исчисление высказываний - удобный инструмент для логического вывода следствий из заданных гипотез.</p>
 </section>
 <section id="id18">
-<h2>Программная реализация<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<h2>Схемы аксиом и правило вывода<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<p>В исчислении высказываний описывают множество истинных формул с помощью правил вывода. Буквы, входящие в формулы и обозначающие логические переменные, здесь не заменяют на нули и единицы. Буква в исчислении высказываний означает не любое значение (0 или 1), а любую формулу.</p>
+<p>В основе логического вывода лежат аксиомы.
+Перечислим эти базовые формулы. В алгебре высказываний все они - тавтологии. Это значит, что, интерпретируя их, как раньше, получаем их тождественную истинность - истинность на любой оценке.</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(A \to (B \to A)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A \to (B \to C)) \to ((A \to B) \to (A \to C))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A \,\&amp;\, B) \to A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A \,\&amp;\, B) \to B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \to (B \to (A \,\&amp;\, B))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \to (A \vee B)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B \to (A \vee B)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A \to C) \to ((B \to C) \to ((A \vee B) \to C))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\neg A \to (A \to B)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A \to B) \to ((A \to \neg B) \to \neg A)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \vee \neg A\)</span></p></li>
+</ol>
+<p>К аксиомам мы еще вернемся, заучивать их наизусть не обязательно.</p>
+<p>Основным правилом вывода в исчислении высказываний служит <em>правило заключения</em> (латинское название - modus ponens):</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{A \to B, \; A}{B}
+\)</span></p>
+<p>Данная запись расшифровывается так. Если на место <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> подставить любые формулы, то, если две формулы <span class="math notranslate nohighlight">\(A \to B\)</span> и <span class="math notranslate nohighlight">\(A\)</span> у нас выведены как истинные, то из них выводится формула <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p><small>Если мы приняли, что <span class="math notranslate nohighlight">\(A\)</span> влечет <span class="math notranslate nohighlight">\(B\)</span>, то, зная <span class="math notranslate nohighlight">\(A\)</span>, заключаем <span class="math notranslate nohighlight">\(B\)</span>.
+</small></p>
+<p><strong>Определение.</strong> <em>Вывод формулы</em> <span class="math notranslate nohighlight">\(A\)</span> - это последовательность формул <span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_n\)</span>, в которой <span class="math notranslate nohighlight">\(A_n = A\)</span>, а все промежуточные формулы <span class="math notranslate nohighlight">\(A_i, \, i = 1..n\)</span> - это либо аксиома, либо результат применения правила modus ponens к двум выведенным ранее формулам, т.е. для любого <span class="math notranslate nohighlight">\(i = 1..n\)</span> найдутся две формулы <span class="math notranslate nohighlight">\(A_j\)</span>, <span class="math notranslate nohighlight">\(A_k\)</span> (<span class="math notranslate nohighlight">\(j &lt; i,\,k &lt; i\)</span>) такие, что <span class="math notranslate nohighlight">\(A_k = A_j \to A_i\)</span>.</p>
+<small>
+    Существование возможности вывести формулу $A$ обозначается так: $\vdash A$ (выводимость $A$).
+</small>
+<p>Зачем нужны аксиомы? Почему они именно такие?</p>
+<p>В алгебре высказываний мы вводили логические операции с помощью таблиц истинности. В исчислении высказываний, как мы сказали, каждая буква обозначает формулу. Аксиомы нужны для того, чтобы указать, что вообще значат те же значки <span class="math notranslate nohighlight">\(\neg, \&amp;, \vee, \to\)</span>. То есть мы заходим в ту же науку с другого ракурса - с точки зрения формальной аксиоматической теории.</p>
+<p>Что это нам даёт? Иной механизм вывода и обоснования логических следствий, не требующий подстановки на место букв всевозможных значений переменных. Исчисление высказываний похоже на то, как мы рассуждаем (в математике и вообще в жизни). Алгебра высказываний удобнее компьютеру - каждая булева переменная имеет значение 0 или 1. Исчисление высказываний должно помочь нам работать с компьютером (например, делать логические выводы о программном коде).</p>
+<section id="id19">
+<h3>Аксиомы с импликацией (А1, А2)<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p><em>Аксиома 1:</em> <span class="math notranslate nohighlight">\(A \to (B \to A)\)</span></p>
+<p>Можно назвать её аксиомой добавления посылки (переход к частному случаю).</p>
+<p>Давайте внимательно посмотрим на эту формулу. Что она означает? Если <span class="math notranslate nohighlight">\(A\)</span> истинно, то, если вдобавок будет выполнено <span class="math notranslate nohighlight">\(B\)</span> (частный случай), утверждение <span class="math notranslate nohighlight">\(A\)</span> останется в силе. То есть наше первоначальное знание истинности <span class="math notranslate nohighlight">\(A\)</span> никуда не исчезает.</p>
+<p><strong>Примеры.</strong></p>
+<ol class="arabic simple">
+<li><p>Все люди любят спать (<span class="math notranslate nohighlight">\(A\)</span>). Следовательно, все преподаватели (<span class="math notranslate nohighlight">\(B\)</span>) любят спать.</p></li>
+<li><p>Всё на огороде съедобно (<span class="math notranslate nohighlight">\(A\)</span>). Следовательно, сорняки (<span class="math notranslate nohighlight">\(B\)</span>) тоже съедобны.</p></li>
+</ol>
+<p><em>Аксиома 2:</em> <span class="math notranslate nohighlight">\((A \to (B \to C)) \to ((A \to B) \to (A \to C))\)</span></p>
+<p>Эта аксиома указывает на возможность провести логический вывод в частном случае (<span class="math notranslate nohighlight">\(A\)</span>).
+Назовём её аксиомой транзитивности импликации.</p>
+<p>По смыслу аксиома 2 означает следующее. Допустим, мы знаем, что из <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> следует <span class="math notranslate nohighlight">\(C\)</span>. Тогда, если из <span class="math notranslate nohighlight">\(A\)</span> следует <span class="math notranslate nohighlight">\(B\)</span> (<span class="math notranslate nohighlight">\(A\)</span> “сильнее” <span class="math notranslate nohighlight">\(B\)</span>), то из <span class="math notranslate nohighlight">\(A\)</span> следует <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p><strong>Примеры.</strong></p>
+<ol class="arabic simple">
+<li><p>Летом (<span class="math notranslate nohighlight">\(A\)</span>) в жару (<span class="math notranslate nohighlight">\(B\)</span>) быстро потеешь (<span class="math notranslate nohighlight">\(C\)</span>). Следовательно, если летом жарко (<span class="math notranslate nohighlight">\(A \to B\)</span>), то летом быстро потеешь (<span class="math notranslate nohighlight">\(A\to C\)</span>).</p></li>
+<li><p>Если вода камень точит, то она его мочит. А если вода камень мочит, то он мокрый.</p></li>
+</ol>
+<p>Пусть <span class="math notranslate nohighlight">\(A = \)</span> “вода камень точит”, <span class="math notranslate nohighlight">\(B = \)</span> “вода камень мочит”, <span class="math notranslate nohighlight">\(C = \)</span> “камень мокрый”.</p>
+<p>Из того факта, что вода камень точит, напрямую не вытекает, что камень мокрый! Благодаря аксиоме 2 мы знаем, что если <span class="math notranslate nohighlight">\(A \to B\)</span> и <span class="math notranslate nohighlight">\(B \to C\)</span>, то <span class="math notranslate nohighlight">\(A \to C\)</span>.</p>
+<p>Из первых двух аксиом выводится хитрая теорема: <span class="math notranslate nohighlight">\(A \to A\)</span>.</p>
+<p>Она не настолько очевидна. Ведь на месте <span class="math notranslate nohighlight">\(A\)</span> может находиться любая формула! А про значок <span class="math notranslate nohighlight">\(\to\)</span> в нашей новой теории мы знаем только то, что он функционирует согласно аксиомам 1 и 2. Функционирование теории не обязано автоматически соответствовать нашему опыту! Математическая модель не обязана описывать всё на свете с абсолютной точностью. Только исследуя нашу формальную теорию с помощью математических выводов, нам удастся понять, как она в действительности работает. Включите здоровый скепсис, и пойдём дальше.</p>
+<small>
+Первое правило логики - следить за своими высказываниями.
+</small>
+<p>Давайте построим вывод (доказательство) теоремы <span class="math notranslate nohighlight">\(A \to A\)</span>.
+Напомним, что в аксиомах 1, 2 на место букв можно подставить любые формулы.</p>
+<ol class="arabic simple">
+<li><p>Согласно аксиоме 1 [<span class="math notranslate nohighlight">\(A := A\)</span>, <span class="math notranslate nohighlight">\(B := A\)</span>],</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(
+A \to (A \to A)
+\)</span></p>
+<p>(эту формулу мы вывели из первой схемы аксиом)</p>
+<ol class="arabic simple" start="2">
+<li><p>Согласно аксиоме 2 [<span class="math notranslate nohighlight">\(A := A\)</span>, <span class="math notranslate nohighlight">\(B := (A \to A)\)</span>, <span class="math notranslate nohighlight">\(C := A\)</span>],</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(
+(A \to ((A \to A) \to A)) \to ((A \to (A \to A)) \to (A \to A))
+\)</span></p>
+<ol class="arabic simple" start="3">
+<li><p>Согласно аксиоме 1 [<span class="math notranslate nohighlight">\(A := A\)</span>, <span class="math notranslate nohighlight">\(B := (A \to A)\)</span>],</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(
+A \to ((A \to A) \to A)
+\)</span></p>
+<ol class="arabic simple" start="4">
+<li><p>Применяя modus ponens к формулам 2, 3, откусываем заведомо истинную посылку и приходим к следствию:</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(
+(A \to (A \to A)) \to (A \to A)
+\)</span></p>
+<ol class="arabic simple" start="5">
+<li><p>Применяя modus ponens к формулам 1, 4, откусываем истинную посылку и делаем вывод:</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(A \to A\)</span></p>
+</section>
+<section id="id20">
+<h3>Теорема о дедукции<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>Из аксиом 1, 2 получается дополнительное правило вывода - <em>правило введения импликации</em>.</p>
+<p>Сперва поясним идею, не обращаясь к формулам.</p>
+<p>Вспомните себя, когда вы были абитуриентом и выбирали вуз и направление для поступления.
+Вы рассуждали: вот поступлю на ИТ-специальность, тогда… И дальше вы делали выводы из своего дополнительного предположения - как будто вы уже поступили на ИТ-специальность.</p>
+<p>Вы могли долго фантазировать, рассуждать, предполагать… Но в конечном итоге делали вывод: “если я поступлю туда-то, то мне следует ожидать того-то” - вы делали условное умозаключение.</p>
+<p>Пусть <span class="math notranslate nohighlight">\(\Gamma\)</span> - это ваши гипотезы, то есть набор предположений. Формула <span class="math notranslate nohighlight">\(A\)</span> - это дополнительное предположение (условие), например: “я поступил(а) на ИТ-специальность”. В ходе рассуждений из гипотез <span class="math notranslate nohighlight">\(\Gamma,\, A\)</span> вы делаете вывод. Обозначим формулу - результат вывода - через <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Коротко ваш вывод можно записать так: <span class="math notranslate nohighlight">\(\Gamma, A \vdash B\)</span>.</p>
+<p>По правилу введения импликации, отсюда следует такой вывод условного высказывания: <span class="math notranslate nohighlight">\(\Gamma \vdash A\to B\)</span>.</p>
+<p>То есть, если спуститься на землю и оставить в стороне дополнительные допущения (типа <span class="math notranslate nohighlight">\(A = \)</span> “я поступил в университет”), вы, однако, обладаете определенным знанием - результатом собственного умозаключения. Вы имеете право сказать слово “если”. Если <span class="math notranslate nohighlight">\(A\)</span> (поступлю в университет), то <span class="math notranslate nohighlight">\(B\)</span> (буду хорошо учиться).</p>
+<p>Коротко правило введения импликации записывается так:</p>
+<p><span class="math notranslate nohighlight">\(
+\dfrac{\Gamma, A \vdash B}{\Gamma \vdash A \to B}
+\)</span></p>
+<p>Доказательство теоремы о дедукции прочитайте в <a class="reference external" href="https://vk.ru/wall-225887804_136">дополнительных материалах</a>.</p>
+</section>
+<section id="id21">
+<h3>Правила вывода с импликацией<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<p>modus ponens (с гипотезами), правило введения импликации, правило сечения - расписать алгоритм получения вывода из квазивывода</p>
+</section>
+</section>
+<section id="id22">
+<h2>Программная реализация<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
 <p>В <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic5">электронном ресурсе</a> размещён тренажер по исчислению высказываний.</p>
 </section>
-<section id="id19">
-<h2>Литература<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<section id="id23">
+<h2>Литература<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://vk.ru/wall-225887804_136">Материалы для самостоятельного изучения</a></p>
 </section>
 </section>
@@ -794,8 +913,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Пример из жизни</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Программная реализация</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Схемы аксиом и правило вывода</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Аксиомы с импликацией (А1, А2)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Теорема о дедукции</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Правила вывода с импликацией</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Программная реализация</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Литература</a></li>
 </ul>
   </nav></div>
 
