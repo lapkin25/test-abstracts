@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Дискретная математика &#8212; Элементы математики</title>
+    <title>Логика предикатов &#8212; Элементы математики</title>
   
   
   
@@ -58,7 +58,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'discr';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'logic-predicate-logic';</script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script src="_static/../js/pyodide_api.js?v=56641602"></script>
     <script src="_static/../js/editor_api.js?v=f0b4a606"></script>
@@ -66,8 +68,8 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Дискретная математика: введение" href="discr-intro.html" />
-    <link rel="prev" title="Матрица неточности" href="confusion.html" />
+    <link rel="next" title="Логика в программировании" href="logic-and-programming.html" />
+    <link rel="prev" title="Исчисление высказываний" href="logic-propositional-calculus.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -198,7 +200,7 @@
 <li class="toctree-l2"><a class="reference internal" href="confusion.html">Матрица неточности</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Дискретная математика</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="discr.html">Дискретная математика</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
 <li class="toctree-l2"><a class="reference internal" href="discr-boolean.html">Булевы функции</a></li>
@@ -214,11 +216,11 @@
 <li class="toctree-l2"><a class="reference internal" href="algo-trees-graphs.html">Деревья и графы</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="logic-computation.html">Логика и вычисления</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="logic-computation.html">Логика и вычисления</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra.html">Алгебра высказываний - 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra-2.html">Алгебра высказываний - 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-propositional-calculus.html">Исчисление высказываний</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logic-predicate-logic.html">Логика предикатов</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Логика предикатов</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-and-programming.html">Логика в программировании</a></li>
 </ul>
 </li>
@@ -298,7 +300,7 @@
       
       
       
-      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Fdiscr.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/lapkin25/test-abstracts/issues/new?title=Issue%20on%20page%20%2Flogic-predicate-logic.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -328,7 +330,7 @@
       
       
       
-      <li><a href="_sources/discr.md" target="_blank"
+      <li><a href="_sources/logic-predicate-logic.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -338,7 +340,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -399,7 +401,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -410,11 +414,27 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Дискретная математика</h1>
+    <h1>Логика предикатов</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Вступление</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Основные понятия логики предикатов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Цифровой пример</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Пример из жизни</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Зачем программисту логика предикатов?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Строгие определения</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Литература</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -425,18 +445,117 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Дискретная математика<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="discr-intro.html">Дискретная математика: введение</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discr-induction.html">Метод математической индукции</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discr-boolean.html">Булевы функции</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discr-sets.html">Множества</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discr-relations.html">Отношения и функции</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discr-combin.html">Комбинаторика</a></li>
-<li class="toctree-l1"><a class="reference internal" href="discr-graphs.html">Графы</a></li>
+<h1>Логика предикатов<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>Вступление<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Основные понятия логики предикатов<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Логика предикатов оперирует следующими центральными понятиями:</p>
+<ul class="simple">
+<li><p>универсум - совокупность объектов, о которой говорится в высказывании</p></li>
+<li><p>предикаты - высказывания про элементы универсума</p></li>
+<li><p>операции - действия над элементами универсума</p></li>
+<li><p>кванторы - связки “все” и “существует”</p></li>
+<li><p>обычные логические связки (отрицание, конъюнкция, дизъюнкция, импликация)</p></li>
 </ul>
+<p>С уроков русского языка мы помним разбор предложения по составляющим: подлежащее, сказуемое, дополнение, определение, обстоятельство.
+Слово “предикат” означает сказуемое. Предикат - это то, что говорится об объекте (подлежащем).</p>
+<p>Про каждый объект (элемент универсума) говорится высказывание, и по отношению к каждому объекту в отдельности оно истинно либо ложно. Получается много высказываний - столько же, сколько элементов в универсуме.</p>
+<p>Это большое количество высказываний можно “свернуть” в одно высказывание при помощи квантора общности либо квантора существования. Например, “все выключатели выключены” - это конъюнкция отдельных высказываний (каждое высказывание - про каждый выключатель). Или противоположное высказывание: “некоторые выключатели включены” - это дизъюнкция отдельных высказываний.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Квантор</p></th>
+<th class="head"><p>Обозначение</p></th>
+<th class="head"><p>Смысл</p></th>
+<th class="head"><p>Аналог</p></th>
+<th class="head"><p>Нейтральный элемент</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“для всех”</p></td>
+<td><p><span class="math notranslate nohighlight">\(\forall\)</span></p></td>
+<td><p>большое И</p></td>
+<td><p>произведение <span class="math notranslate nohighlight">\(\Pi\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>“существует”</p></td>
+<td><p><span class="math notranslate nohighlight">\(\exists\)</span></p></td>
+<td><p>большое ИЛИ</p></td>
+<td><p>сумма <span class="math notranslate nohighlight">\(\Sigma\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>Цифровой пример<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Конкретная матрица / одномерный массив - турнир вычислений (кто какие задачи смог решить)</p>
+<p><strong>Упражнение.</strong> Реализуйте вычисление квантора общности и квантора существования по числовому массиву, пользуясь функцией <code class="docutils literal notranslate"><span class="pre">reduce</span></code>.</p>
+</section>
+<section id="id5">
+<h3>Пример из жизни<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Переведем песню про бобра на язык логики предикатов.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Сидим с бобром за столом
+Вдвоём, на ужин готовим полено.
+Давай поговорим, бобёр,
+О том, что наболело.
+Скажи, зачем же между нами плотина?
+Скажи, зачем между нами обрыв?
+Я обниму твоё пушистое тело.
+Ну почему бобры так добры?
+</pre></div>
 </div>
+<p>Универсум <span class="math notranslate nohighlight">\(U_1\)</span> - множество бобров, универсум <span class="math notranslate nohighlight">\(U_2\)</span> - множество людей, универсум <span class="math notranslate nohighlight">\(U_3\)</span> - множество съестных продуктов, универсум <span class="math notranslate nohighlight">\(U_4\)</span> - множество тем для разговора.</p>
+<p>Одноместные предикаты:</p>
+<p><span class="math notranslate nohighlight">\(K(x) = \)</span> “<span class="math notranslate nohighlight">\(x\)</span> добрый” (<span class="math notranslate nohighlight">\(x \in U_1\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(T(x) = \)</span> “<span class="math notranslate nohighlight">\(x\)</span> сидит за столом” (<span class="math notranslate nohighlight">\(x \in U_1\)</span> или <span class="math notranslate nohighlight">\(x \in U_2\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(P(x) = \)</span> “<span class="math notranslate nohighlight">\(x\)</span> наболело” (<span class="math notranslate nohighlight">\(x \in U_4\)</span>)</p>
+<p>Двухместные предикаты:</p>
+<p><span class="math notranslate nohighlight">\(C(x, y)\)</span> = “<span class="math notranslate nohighlight">\(x\)</span> готовит на ужин <span class="math notranslate nohighlight">\(y\)</span>” (<span class="math notranslate nohighlight">\(x \in U_1\)</span> или <span class="math notranslate nohighlight">\(x \in U_2\)</span>; <span class="math notranslate nohighlight">\(y \in U_3\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(H(x, y)\)</span> = “<span class="math notranslate nohighlight">\(x\)</span> обнимает <span class="math notranslate nohighlight">\(y\)</span>”</p>
+<p>Трёхместные предикаты:</p>
+<p><span class="math notranslate nohighlight">\(S(x, y, z) = \)</span> “<span class="math notranslate nohighlight">\(x\)</span> говорит с <span class="math notranslate nohighlight">\(y\)</span> про <span class="math notranslate nohighlight">\(z\)</span>” (<span class="math notranslate nohighlight">\(x, y \in U_1 \cup U_2\)</span>; <span class="math notranslate nohighlight">\(z \in U_4\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(B(x, y, z) = \)</span> “между <span class="math notranslate nohighlight">\(x\)</span> и <span class="math notranslate nohighlight">\(y\)</span> находится <span class="math notranslate nohighlight">\(z\)</span>”</p>
+<p>Предметные константы:</p>
+<p><span class="math notranslate nohighlight">\(a\)</span> - человек</p>
+<p><span class="math notranslate nohighlight">\(b\)</span> - бобёр</p>
+<p><span class="math notranslate nohighlight">\(c\)</span> - обрыв</p>
+<p><span class="math notranslate nohighlight">\(d\)</span> - плотина</p>
+<p><span class="math notranslate nohighlight">\(e\)</span> - полено</p>
+<p>Вариант перевода песни на язык логики предикатов:</p>
+<p><span class="math notranslate nohighlight">\(T(a) \,\&amp;\, T(b)\)</span></p>
+<p><span class="math notranslate nohighlight">\(C(a, e) \,\&amp;\, C(b, e)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\exists z\, \left( P(z) \,\&amp;\, S(a, b, z) \right)\)</span></p>
+<p><span class="math notranslate nohighlight">\(B(a, b, d) \,\&amp;\, B(a, b, e)\)</span></p>
+<p><span class="math notranslate nohighlight">\(H(a, b)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\forall x\, ((x \in U_1) \to K(x))\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Пришли</span> <span class="n">мы</span> <span class="n">к</span> <span class="n">дому</span> <span class="n">бобра</span><span class="p">,</span>
+<span class="n">Он</span> <span class="n">мне</span> <span class="n">дал</span> <span class="n">с</span> <span class="n">собой</span> <span class="n">добра</span> <span class="n">четыре</span> <span class="n">ведра</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Введем дополнительные универсумы: <span class="math notranslate nohighlight">\(U_5\)</span> - множество вёдер, <span class="math notranslate nohighlight">\(U_6\)</span> - множество домов. Не забудем про множество целых неотрицательных чисел <span class="math notranslate nohighlight">\(U_7 = \mathbb N_0\)</span>.</p>
+<p>Введем предикаты <span class="math notranslate nohighlight">\(R(x, y) = \)</span> “<span class="math notranslate nohighlight">\(x\)</span> пришел к <span class="math notranslate nohighlight">\(y\)</span>” (<span class="math notranslate nohighlight">\(x \in U_1 \cup U_2\)</span>, <span class="math notranslate nohighlight">\(y \in U_6\)</span>), <span class="math notranslate nohighlight">\(G(x, y, z) = \)</span> “<span class="math notranslate nohighlight">\(x\)</span> дает <span class="math notranslate nohighlight">\(y\)</span> предмет <span class="math notranslate nohighlight">\(z\)</span>”.</p>
+<p>Введем операцию <span class="math notranslate nohighlight">\(h(x) = \text{дом бобра }x\)</span> (<span class="math notranslate nohighlight">\(x \in U_1\)</span>).</p>
+<p>Новые две строчки переводятся на язык логики предикатов так:</p>
+<p><span class="math notranslate nohighlight">\(R(a, h(b)) \,\&amp;\, R(b, h(b))\)</span></p>
+<p><span class="math notranslate nohighlight">\(\exists z_1 \, \exists z_2 \, \exists z_3 \, \exists z_4 \, \bigl(G(b, a, z_1) \,\&amp;\, G(b, a, z_2) \,\&amp;\, G(b, a, z_3) \,\&amp;\, G(b, a, z_4) \,\&amp;\,\bigr.\)</span></p>
+<p><span class="math notranslate nohighlight">\(\bigl.\,\&amp;\,(z_i \in U_5) \,\&amp;\, \forall i\, \forall j\,\left(i \in 1..4 \,\&amp;\, j \in 1..4 \,\&amp;\, \neg (i = j) \to \neg(z_i = z_j) \right) \bigr)\)</span></p>
+<p>Благодаря точной и однозначной записи всех формул на языке логики предикатов, становится возможной процедура логического вывода.</p>
+<p><strong>Упражнение.</strong> Обратитесь к любой <a class="reference external" href="https://alice.yandex.ru/">большой языковой модели</a> с просьбой перевести и другие куплеты песни про бобра на язык логики предикатов.</p>
+</section>
+<section id="id6">
+<h3>Зачем программисту логика предикатов?<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Логика предикатов нужна, чтобы выражать высказывания про наборы объектов. Например, “в массиве найдутся два одинаковых числа” или “все числа положительны”.
+Как и логика высказываний, логика предикатов необходима для того, чтобы комментировать и анализировать программный код.</p>
+</section>
+</section>
+<section id="id7">
+<h2>Строгие определения<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+</section>
+<section id="id8">
+<h2>Литература<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>Зюзьков - Введение в математическую логику</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -470,20 +589,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="confusion.html"
+       href="logic-propositional-calculus.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Матрица неточности</p>
+        <p class="prev-next-title">Исчисление высказываний</p>
       </div>
     </a>
     <a class="right-next"
-       href="discr-intro.html"
+       href="logic-and-programming.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Дискретная математика: введение</p>
+        <p class="prev-next-title">Логика в программировании</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -494,7 +613,28 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Вступление</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Основные понятия логики предикатов</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Цифровой пример</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Пример из жизни</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Зачем программисту логика предикатов?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Строгие определения</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Литература</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
