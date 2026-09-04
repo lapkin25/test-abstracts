@@ -33,9 +33,11 @@ chapters:
   - file: algo-trees-graphs
 - file: logic-computation
   sections:
+  - file: logic-intro
   - file: logic-propositional-algebra
   - file: logic-propositional-algebra-2
   - file: logic-propositional-calculus
+  - file: logic-propositional-calculus-2
   - file: logic-predicate-logic
   - file: logic-and-programming
 - file: entertainment
