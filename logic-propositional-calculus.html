@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Исчисление высказываний &#8212; Элементы математики</title>
+    <title>Исчисление высказываний - 1 &#8212; Элементы математики</title>
   
   
   
@@ -68,7 +68,7 @@
     <script src="_static/tests/ls_task1.js?v=115f8710"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Логика предикатов" href="logic-predicate-logic.html" />
+    <link rel="next" title="Исчисление высказываний - 2" href="logic-propositional-calculus-2.html" />
     <link rel="prev" title="Алгебра высказываний - 2" href="logic-propositional-algebra-2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -217,9 +217,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="logic-computation.html">Логика и вычисления</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="logic-intro.html">Введение</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra.html">Алгебра высказываний - 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-propositional-algebra-2.html">Алгебра высказываний - 2</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Исчисление высказываний</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Исчисление высказываний - 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logic-propositional-calculus-2.html">Исчисление высказываний - 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-predicate-logic.html">Логика предикатов</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logic-and-programming.html">Логика в программировании</a></li>
 </ul>
@@ -414,7 +416,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Исчисление высказываний</h1>
+    <h1>Исчисление высказываний - 1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -452,10 +454,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Аксиомы с импликацией (А1, А2)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Теорема о дедукции</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Правила вывода с импликацией</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Правило рассуждения от противного (А10)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Программная реализация</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Программная реализация</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Вопросы к коллоквиуму по теме</a></li>
 </ul>
             </nav>
         </div>
@@ -468,7 +472,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Исчисление высказываний<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>Исчисление высказываний - 1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>Формальные системы (логика, алгебра, исчисления) дают нам язык, который удивительно хорошо описывает структуру задач реального мира.</p>
 <p>Исчисление высказываний не объясняет, почему природа устроена так, а не иначе; оно лишь показывает, как с помощью строгих правил из немногих исходных идей можно получить много нетривиальных следствий, которые потом подтверждаются опытом.</p>
 <section id="id2">
@@ -745,6 +749,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Все люди любят спать (<span class="math notranslate nohighlight">\(A\)</span>). Следовательно, все преподаватели (<span class="math notranslate nohighlight">\(B\)</span>) любят спать.</p></li>
 <li><p>Всё на огороде съедобно (<span class="math notranslate nohighlight">\(A\)</span>). Следовательно, сорняки (<span class="math notranslate nohighlight">\(B\)</span>) тоже съедобны.</p></li>
+<li><p>Если злоумышленник решил слить на кого-нибудь компромат (<span class="math notranslate nohighlight">\(A\)</span>), то он всё равно это сделает, даже если  ему заплатят (<span class="math notranslate nohighlight">\(B\)</span>).</p></li>
 </ol>
 <p><em>Аксиома 2:</em> <span class="math notranslate nohighlight">\((A \to (B \to C)) \to ((A \to B) \to (A \to C))\)</span></p>
 <p>Эта аксиома указывает на возможность провести логический вывод в частном случае (<span class="math notranslate nohighlight">\(A\)</span>).
@@ -815,14 +820,41 @@ A \to ((A \to A) \to A)
 <h3>Правила вывода с импликацией<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <p>modus ponens (с гипотезами), правило введения импликации, правило сечения - расписать алгоритм получения вывода из квазивывода</p>
 </section>
-</section>
 <section id="id22">
-<h2>Программная реализация<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
-<p>В <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic5">электронном ресурсе</a> размещён тренажер по исчислению высказываний.</p>
+<h3>Правило рассуждения от противного (А10)<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<p>Рассуждением от противного мы пользуемся тогда, когда внезапно приходим к выводу, который не стыкуется с нашими представлениями.</p>
+<p><strong>Пример.</strong> Покупатель платит в супермаркете на кассе самообслуживания. Он уверен, что отсканировал штрих-коды на всех продуктах. Если всë отсканировано, то автомат примет платеж. Из этих гипотез вытекает, что покупка состоится. Но внезапно автомат подает сигнал ошибки. Это не стыкуется, противоречит нашим представлениям. Значит, они ошибочны.</p>
+</section>
 </section>
 <section id="id23">
-<h2>Литература<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<h2>Программная реализация<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<p>В <a class="reference external" href="https://github.com/lapkin25/comp-logic/tree/main/lec/logic5">электронном ресурсе</a> размещён тренажер по исчислению высказываний.</p>
+</section>
+<section id="id24">
+<h2>Литература<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://vk.ru/wall-225887804_136">Материалы для самостоятельного изучения</a></p>
+</section>
+<section id="id25">
+<h2>Вопросы к коллоквиуму по теме<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+<small>
+<ol class="arabic simple">
+<li><p>Обоснуйте правило удаления импликации.</p></li>
+<li><p>Обоснуйте правило введения посылки.</p></li>
+<li><p>Обоснуйте правило транзитивности.</p></li>
+<li><p>Обоснуйте правило введения конъюнкции.</p></li>
+<li><p>Обоснуйте правило удаления конъюнкции.</p></li>
+<li><p>Обоснуйте правило соединения посылок.</p></li>
+<li><p>Обоснуйте правило разъединения посылок.</p></li>
+<li><p>Обоснуйте правило введения дизъюнкции.</p></li>
+<li><p>Обоснуйте правило удаления дизъюнкции (разбор случаев).</p></li>
+<li><p>Обоснуйте правило исчерпывающего разбора случаев.</p></li>
+<li><p>Обоснуйте правило введения отрицания (рассуждение от противного).</p></li>
+<li><p>Обоснуйте правило вывода из противоречия.</p></li>
+<li><p>Обоснуйте правило навешивания двойного отрицания.</p></li>
+<li><p>Обоснуйте правило снятия двойного отрицания.</p></li>
+<li><p>Обоснуйте правило modus tollens.
+</small></p></li>
+</ol>
 </section>
 </section>
 
@@ -866,11 +898,11 @@ A \to ((A \to A) \to A)
       </div>
     </a>
     <a class="right-next"
-       href="logic-predicate-logic.html"
+       href="logic-propositional-calculus-2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Логика предикатов</p>
+        <p class="prev-next-title">Исчисление высказываний - 2</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -918,10 +950,12 @@ A \to ((A \to A) \to A)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Аксиомы с импликацией (А1, А2)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Теорема о дедукции</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Правила вывода с импликацией</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Правило рассуждения от противного (А10)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Программная реализация</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Программная реализация</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Литература</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Вопросы к коллоквиуму по теме</a></li>
 </ul>
   </nav></div>
 
